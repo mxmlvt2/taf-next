@@ -82,6 +82,17 @@ export default async function HomeSections({ locale }: HomeSectionsProps) {
 
   return (
     <>
+      {/* ── Section 1: Company intro text ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="font-[Jost] text-gray-500 text-sm leading-relaxed max-w-3xl">
+            {isEn
+              ? 'For years we have been supporting customers in the production of clothing and accessories, delivering reliable zippers as well as zipper tapes and sliders. As a distributor of zippers, we offer solutions tailored to the needs of the clothing, technical, furniture and outdoor markets. We mainly carry products from the renowned YKK company and the best alternatives.'
+              : 'Od lat wspieramy klientów w produkcji odzieży i akcesoriów, dostarczając niezawodne zamki błyskawiczne, jak również taśmy zamkowe i suwaki. Jako dystrybutor zamków błyskawicznych, oferujemy rozwiązania dopasowane do potrzeb rynków odzieżowego, technicznego, meblowego oraz outdoorowego. W naszym asortymencie posiadamy głównie produkty renomowanej firmy YKK oraz najlepsze zamienniki.'}
+          </p>
+        </div>
+      </section>
+
       {/* ── Section 2: Type of Zippers (dark background) ── */}
       <section className="py-20 bg-[#111111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,6 +125,17 @@ export default async function HomeSections({ locale }: HomeSectionsProps) {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Section 2b: Zipper types text bridge ── */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="font-[Jost] text-gray-500 text-sm leading-relaxed max-w-3xl">
+            {isEn
+              ? 'For each product group we ensure colour variety, personalisation options and technical support. Our specialists will advise you on how to choose the right type of zipper for a specific application. We serve both large brands and local manufacturers, guaranteeing quality regardless of the scale of the order.'
+              : 'Dla każdej grupy produktowej zapewniamy różnorodność kolorystyczną, opcje personalizacji oraz wsparcie techniczne. Nasi specjaliści doradzą, jak dobrać odpowiedni typ zamka do konkretnego zastosowania. Obsługujemy zarówno duże marki, jak i lokalnych producentów, gwarantując jakość niezależnie od skali zamówienia.'}
+          </p>
         </div>
       </section>
 
@@ -205,8 +227,8 @@ export default async function HomeSections({ locale }: HomeSectionsProps) {
               {recentPosts.map(post => {
                 const featuredImg = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
                 const postHref = isEn
-                  ? `/${post.slug}/`
-                  : `/pl/${post.slug}/`;
+                  ? `/blog/${post.slug}/`
+                  : `/pl/blog/${post.slug}/`;
                 const dateStr = new Date(post.date).toLocaleDateString(
                   isEn ? 'en-GB' : 'pl-PL',
                   { year: 'numeric', month: 'long', day: 'numeric' }
