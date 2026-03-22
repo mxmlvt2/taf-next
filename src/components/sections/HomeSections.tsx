@@ -16,66 +16,66 @@ export default async function HomeSections({ locale }: HomeSectionsProps) {
 
   const typeCategories = [
     {
-      label: isEn ? 'Nylon Zippers' : 'Zamki nylonowe',
-      desc: isEn ? 'Flexible coil zippers for every application' : 'Elastyczne zamki spiralne do każdego zastosowania',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/nylon-kategoria.jpg',
-      href: isEn ? `${base}/type-of-zippers/nylon-zippers/` : '/pl/rodzaje-zamkow/zamki-nylonowe/',
-    },
-    {
       label: isEn ? 'Plastic Zippers' : 'Zamki plastikowe',
       desc: isEn ? 'Durable molded Delrin zippers' : 'Trwałe zamki kostkowe Delrin',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/plastik-kategoria.jpg',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/plastikowyzielony-1.jpg',
       href: isEn ? `${base}/type-of-zippers/plastic-zippers/` : '/pl/rodzaje-zamkow/zamki-plastikowe/',
+    },
+    {
+      label: isEn ? 'Nylon Zippers' : 'Zamki nylonowe',
+      desc: isEn ? 'Flexible coil zippers for every application' : 'Elastyczne zamki spiralne do każdego zastosowania',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg',
+      href: isEn ? `${base}/type-of-zippers/nylon-zippers/` : '/pl/rodzaje-zamkow/zamki-nylonowe/',
     },
     {
       label: isEn ? 'Metal Zippers' : 'Zamki metalowe',
       desc: isEn ? 'Premium metal zippers for fashion & workwear' : 'Zamki metalowe premium do mody i odzieży roboczej',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/metal-kategoria.jpg',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/metalslider34-scaled.jpg',
       href: isEn ? `${base}/type-of-zippers/metal-zippers/` : '/pl/rodzaje-zamkow/zamki-metalowe/',
     },
   ];
 
   const usageCategories = [
     {
-      slug: isEn ? 'fashion' : 'moda',
-      label: isEn ? 'Fashion' : 'Moda',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/moda-kategoria.jpg',
-      href: isEn ? `${base}/use-of-zippers/fashion/` : '/pl/zastosowanie-zamkow/moda/',
+      slug: isEn ? 'fire-protection' : 'odziez-ognioodporna',
+      label: isEn ? 'Fire-Resistant Clothing' : 'Odzież ognioodporna',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png',
+      href: isEn ? `${base}/use-of-zippers/fire-protection/` : '/pl/zastosowanie-zamkow/odziez-ognioodporna/',
+    },
+    {
+      slug: isEn ? 'military' : 'wojsko',
+      label: isEn ? 'Military' : 'Wojsko',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png',
+      href: isEn ? `${base}/use-of-zippers/military/` : '/pl/zastosowanie-zamkow/wojsko/',
     },
     {
       slug: isEn ? 'cycling-sportswear' : 'odziez-sportowa',
       label: isEn ? 'Cycling & Sportswear' : 'Kolarstwo & odzież sportowa',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/sport-kategoria.jpg',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png',
       href: isEn ? `${base}/use-of-zippers/cycling-sportswear/` : '/pl/zastosowanie-zamkow/odziez-sportowa/',
     },
     {
       slug: isEn ? 'baby' : 'dzieci',
       label: isEn ? 'Baby' : 'Dzieci',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/dzieci-kategoria.jpg',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png',
       href: isEn ? `${base}/use-of-zippers/baby/` : '/pl/zastosowanie-zamkow/dzieci/',
     },
     {
-      slug: isEn ? 'military' : 'wojsko',
-      label: isEn ? 'Military' : 'Wojsko',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/wojsko-kategoria.jpg',
-      href: isEn ? `${base}/use-of-zippers/military/` : '/pl/zastosowanie-zamkow/wojsko/',
+      slug: isEn ? 'fashion' : 'moda',
+      label: isEn ? 'Fashion' : 'Moda',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png',
+      href: isEn ? `${base}/use-of-zippers/fashion/` : '/pl/zastosowanie-zamkow/moda/',
     },
     {
       slug: isEn ? 'furniture' : 'meble',
       label: isEn ? 'Furniture' : 'Meble',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/meble-kategoria.jpg',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png',
       href: isEn ? `${base}/use-of-zippers/furniture/` : '/pl/zastosowanie-zamkow/meble/',
-    },
-    {
-      slug: isEn ? 'fire-protection' : 'odziez-ognioodporna',
-      label: isEn ? 'Fire-Resistant Clothing' : 'Odzież ognioodporna',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/ogien-kategoria.jpg',
-      href: isEn ? `${base}/use-of-zippers/fire-protection/` : '/pl/zastosowanie-zamkow/odziez-ognioodporna/',
     },
     {
       slug: isEn ? 'buckles-plastic-hardware' : 'zapiecia-elementy-plastikowe',
       label: isEn ? 'Buckles & Plastic Hardware' : 'Zapięcia & elementy plastikowe',
-      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/wojsko-kategoria.jpg',
+      img: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png',
       href: isEn ? `${base}/use-of-zippers/buckles-plastic-hardware/` : '/pl/zapiecia-elementy-plastikowe/',
     },
   ];

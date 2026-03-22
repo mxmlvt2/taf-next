@@ -17,37 +17,37 @@ const USE_CATS_EN = [
   {
     label: 'Zippers for fire-resistant clothing',
     href: '/use-of-zippers/fire-protection/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/ogien-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png',
   },
   {
     label: 'Zippers for Military',
     href: '/use-of-zippers/military/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/wojsko-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png',
   },
   {
     label: 'Zippers for cycling & sportswear',
     href: '/use-of-zippers/cycling-sportswear/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/sport-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png',
   },
   {
     label: 'Zippers for babies',
     href: '/use-of-zippers/baby/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/dzieci-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png',
   },
   {
     label: 'Zippers for fashion',
     href: '/use-of-zippers/fashion/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/moda-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png',
   },
   {
     label: 'Zippers for furniture',
     href: '/use-of-zippers/furniture/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/meble-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png',
   },
   {
     label: 'Buckles & plastic hardware',
     href: '/use-of-zippers/buckles-plastic-hardware/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/wojsko-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png',
   },
 ];
 
@@ -55,37 +55,37 @@ const USE_CATS_PL = [
   {
     label: 'Zamki do odzieży ognioodpornej',
     href: '/pl/zastosowanie-zamkow/odziez-ognioodporna/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/ogien-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png',
   },
   {
     label: 'Zamki dla wojska',
     href: '/pl/zastosowanie-zamkow/wojsko/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/wojsko-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png',
   },
   {
     label: 'Zamki dla kolarstwa i sportu',
     href: '/pl/zastosowanie-zamkow/odziez-sportowa/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/sport-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png',
   },
   {
     label: 'Zamki do odzieży dziecięcej',
     href: '/pl/zastosowanie-zamkow/dzieci/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/dzieci-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png',
   },
   {
     label: 'Zamki dla mody',
     href: '/pl/zastosowanie-zamkow/moda/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/moda-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png',
   },
   {
     label: 'Zamki do mebli',
     href: '/pl/zastosowanie-zamkow/meble/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/meble-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png',
   },
   {
     label: 'Zapięcia i elementy plastikowe',
     href: '/pl/zapiecia-elementy-plastikowe/',
-    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/wojsko-kategoria.jpg',
+    img: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png',
   },
 ];
 
