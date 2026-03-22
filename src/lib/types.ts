@@ -72,6 +72,22 @@ export interface MenuItem {
   children?: MenuItem[];
 }
 
+export interface WPProduct {
+  id: number;
+  slug: string;
+  title: { rendered: string };
+  content: { rendered: string };
+  excerpt: { rendered: string };
+  featured_media: number;
+  yoast_head_json: YoastHeadJson;
+  link: string;
+  modified: string;
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{ source_url: string; alt_text: string }>;
+    'wp:term'?: Array<Array<{ id: number; name: string; slug: string }>>;
+  };
+}
+
 export interface WPMedia {
   id: number;
   source_url: string;

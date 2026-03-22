@@ -1,4 +1,4 @@
-import type { Locale, WPPage, WPPost, ZipperCard, ZipperDetails, MenuItem, WPMedia } from './types';
+import type { Locale, WPPage, WPPost, WPProduct, ZipperCard, ZipperDetails, MenuItem, WPMedia } from './types';
 
 const WP_API = 'https://trimsandfasteners.com/wp-json';
 
@@ -93,6 +93,21 @@ export async function getZipperCards(category: string, locale: Locale): Promise<
   try {
     const res = await fetch(
       `${WP_API}/taf/v1/zippers?category=${category}&lang=${locale}`,
+      { next: { revalidate: 3600 } }
+    );
+    if (!res.ok) return [];
+    return res.json();
+  } catch {
+    return [];
+  }
+}
+
+// Returns zippers in exact ID order — for category carousels with known popup IDs
+export async function getZippersByIds(ids: number[], locale: Locale): Promise<ZipperCard[]> {
+  if (!ids.length) return [];
+  try {
+    const res = await fetch(
+      `${WP_API}/taf/v1/zippers-by-ids?ids=${ids.join(',')}&lang=${locale}`,
       { next: { revalidate: 3600 } }
     );
     if (!res.ok) return [];
@@ -250,6 +265,69 @@ export async function getPageTranslations(pageId: number): Promise<Record<string
     return res.json();
   } catch {
     return {};
+  }
+}
+
+// ─── WooCommerce Products ─────────────────────────────────────────────────────
+
+export async function getAllProductSlugs(locale: Locale): Promise<string[]> {
+  try {
+    const res = await fetch(
+      `${WP_API}/wp/v2/product?${langParam(locale)}&per_page=100&status=publish&_fields=slug`,
+      { next: { revalidate: 3600 } }
+    );
+    if (!res.ok) return [];
+    const products: { slug: string }[] = await res.json();
+    return products.map(p => p.slug);
+  } catch {
+    return [];
+  }
+}
+
+export async function getProductBySlug(slug: string, locale: Locale): Promise<WPProduct | null> {
+  try {
+    const res = await fetch(
+      `${WP_API}/wp/v2/product?slug=${slug}&${langParam(locale)}&_embed`,
+      { next: { revalidate: 3600 } }
+    );
+    if (!res.ok) return null;
+    const products: WPProduct[] = await res.json();
+    return products[0] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export async function getRelatedProducts(
+  excludeId: number,
+  categoryId: number,
+  locale: Locale
+): Promise<WPProduct[]> {
+  try {
+    const res = await fetch(
+      `${WP_API}/wp/v2/product?product_cat=${categoryId}&${langParam(locale)}&per_page=5&_embed&status=publish`,
+      { next: { revalidate: 3600 } }
+    );
+    if (!res.ok) return [];
+    const products: WPProduct[] = await res.json();
+    return products.filter(p => p.id !== excludeId).slice(0, 4);
+  } catch {
+    return [];
+  }
+}
+
+// ─── Recent Posts (for blog sidebar) ─────────────────────────────────────────
+
+export async function getRecentPosts(locale: Locale, count = 4): Promise<WPPost[]> {
+  try {
+    const res = await fetch(
+      `${WP_API}/wp/v2/posts?${langParam(locale)}&per_page=${count}&page=1&_embed&status=publish&orderby=date&order=desc`,
+      { next: { revalidate: 1800 } }
+    );
+    if (!res.ok) return [];
+    return res.json();
+  } catch {
+    return [];
   }
 }
 

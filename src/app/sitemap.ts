@@ -53,21 +53,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ];
   } catch {}
 
-  // 3. Individual zipper/product pages (EN + PL)
-  let zipperEntries: MetadataRoute.Sitemap = [];
+  // (Elementor popup zippers removed — products are WooCommerce at /product/[slug]/)
+
+  // 4. WooCommerce product pages (EN + PL)
+  let productEntries: MetadataRoute.Sitemap = [];
   try {
     const [enRes, plRes] = await Promise.all([
-      fetch(`${WP_API}/taf/v1/all-zippers?lang=en`, { next: { revalidate: 3600 } }),
-      fetch(`${WP_API}/taf/v1/all-zippers?lang=pl`, { next: { revalidate: 3600 } }),
+      fetch(`${WP_API}/wp/v2/product?per_page=100&lang=en&_fields=slug,modified&status=publish`, { next: { revalidate: 3600 } }),
+      fetch(`${WP_API}/wp/v2/product?per_page=100&lang=pl&_fields=slug,modified&status=publish`, { next: { revalidate: 3600 } }),
     ]);
-    const enZippers: Array<{ slug: string }> = enRes.ok ? await enRes.json() : [];
-    const plZippers: Array<{ slug: string }> = plRes.ok ? await plRes.json() : [];
+    const enProducts: Array<{ slug: string; modified: string }> = enRes.ok ? await enRes.json() : [];
+    const plProducts: Array<{ slug: string; modified: string }> = plRes.ok ? await plRes.json() : [];
 
-    zipperEntries = [
-      ...enZippers.map(z => ({ url: `${BASE}/zipper/${z.slug}/`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.75 })),
-      ...plZippers.map(z => ({ url: `${BASE}/pl/zamek/${z.slug}/`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.75 })),
+    productEntries = [
+      ...enProducts.map(p => ({
+        url: `${BASE}/product/${p.slug}/`,
+        lastModified: new Date(p.modified),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+        alternates: { languages: { en: `${BASE}/product/${p.slug}/` } },
+      })),
+      ...plProducts.map(p => ({
+        url: `${BASE}/pl/produkt/${p.slug}/`,
+        lastModified: new Date(p.modified),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      })),
     ];
   } catch {}
 
-  return [...staticEntries, ...blogEntries, ...zipperEntries];
+  return [...staticEntries, ...blogEntries, ...productEntries];
 }

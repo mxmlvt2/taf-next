@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getPageBySlug, getZipperCards, extractYoastMeta } from '@/lib/wordpress';
+import Link from 'next/link';
+import { getPageBySlug, getZippersByIds, extractYoastMeta } from '@/lib/wordpress';
+import { CATEGORY_POPUP_IDS } from '@/lib/popup-ids';
 import type { Locale } from '@/lib/types';
 import ZipperGrid from '@/components/zipper/ZipperGrid';
 
@@ -67,60 +69,106 @@ export default async function TypePage({ params }: Props) {
   const meta = TYPE_SLUGS[enSlug!];
   const wpSlug = locale === 'en' ? meta.wpSlugEn : meta.wpSlugPl;
 
+  const lang = locale as Locale;
+  const popupKey = lang === 'en' ? enSlug! : meta.wpSlugPl;
+  const popupIds = CATEGORY_POPUP_IDS[lang]?.[popupKey] ?? [];
+
   const [page, zippers] = await Promise.all([
-    getPageBySlug(wpSlug, locale as Locale),
-    getZipperCards(enSlug!, locale as Locale),
+    getPageBySlug(wpSlug, lang),
+    getZippersByIds(popupIds, lang),
   ]);
 
   const title = page?.title.rendered || (locale === 'en' ? meta.labelEn : meta.labelPl);
+  const contactHref = locale === 'en' ? '/contact/' : '/pl/kontakt/';
+
+  // FAQ schema from Yoast if available
+  const faqSchema = page?.yoast_head_json?.schema;
 
   return (
     <div>
-      <div className="bg-gray-900 text-white py-16">
+      {/* Dark hero */}
+      <div className="bg-gray-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="text-xs text-white/50 font-[Jost] mb-4">
-            <span>{locale === 'en' ? 'Type of Zippers' : 'Rodzaje zamków'}</span>
-            <span className="mx-2">›</span>
-            <span className="text-white/80">{title}</span>
+          <nav className="text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+            <Link href={locale === 'en' ? '/' : '/pl/'} className="hover:text-white transition-colors">
+              {locale === 'en' ? 'Home' : 'Start'}
+            </Link>
+            <span>›</span>
+            <Link
+              href={locale === 'en' ? '/type-of-zippers/' : '/pl/rodzaje-zamkow/'}
+              className="hover:text-white transition-colors"
+            >
+              {locale === 'en' ? 'Type of Zippers' : 'Rodzaje zamków'}
+            </Link>
+            <span>›</span>
+            <span className="text-white/70">{locale === 'en' ? meta.labelEn : meta.labelPl}</span>
           </nav>
+
           <h1
-            className="font-[Jost] text-3xl sm:text-5xl font-normal"
+            className="font-[Jost] text-3xl sm:text-5xl font-normal mb-5 max-w-3xl"
             dangerouslySetInnerHTML={{ __html: title }}
           />
+
           {page?.excerpt.rendered && (
             <div
-              className="font-[Jost] text-white/70 mt-4 max-w-2xl"
+              className="font-[Jost] text-white/70 mb-8 max-w-2xl text-base leading-relaxed"
               dangerouslySetInnerHTML={{ __html: page.excerpt.rendered }}
             />
           )}
+
+          <Link
+            href={contactHref}
+            className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            {locale === 'en' ? 'Contact us' : 'Skontaktuj się'}
+          </Link>
         </div>
       </div>
 
+      {/* Page content from WP (alternating image/text sections) */}
       {page?.content.rendered && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div
-            className="prose prose-gray max-w-none font-[Jost]"
+            className="prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl prose-img:shadow-md"
             dangerouslySetInnerHTML={{ __html: page.content.rendered }}
           />
         </section>
       )}
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-20">
-        {zippers.length > 0 ? (
-          <>
-            <p className="font-[Jost] text-sm text-gray-400 mb-6">
+      {/* Product grid */}
+      {zippers.length > 0 && (
+        <section className="bg-gray-50 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-[Jost] text-2xl sm:text-3xl font-normal mb-3">
+              {locale === 'en' ? 'Our products' : 'Nasze produkty'}
+            </h2>
+            <p className="font-[Jost] text-sm text-gray-400 mb-8">
               {zippers.length} {locale === 'en' ? 'products' : 'produktów'}
             </p>
             <ZipperGrid zippers={zippers} />
-          </>
-        ) : (
-          <div className="text-center py-20">
-            <p className="font-[Jost] text-gray-400">
-              {locale === 'en' ? 'Products will appear once API is configured.' : 'Produkty pojawią się po skonfigurowaniu API.'}
-            </p>
           </div>
-        )}
-      </section>
+        </section>
+      )}
+
+      {/* Nylon size chart link (only for nylon page) */}
+      {enSlug === 'nylon-zippers' && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <Link
+            href={locale === 'en' ? '/nylon-zipper-chain-size-chart/' : '/pl/tasmy-spiralne-zestawienie-rozmiarow/'}
+            className="inline-flex items-center gap-2 text-sm font-[Jost] text-gray-600 hover:text-black border border-gray-200 hover:border-gray-400 rounded-lg px-5 py-3 transition-colors"
+          >
+            {locale === 'en' ? 'View Nylon Zipper Chain Size Chart →' : 'Zobacz tabelę rozmiarów taśm nylonowych →'}
+          </Link>
+        </section>
+      )}
+
+      {/* JSON-LD FAQ schema if available from Yoast */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
     </div>
   );
 }

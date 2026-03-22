@@ -12,7 +12,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
     e.preventDefault();
     setStatus('sending');
     try {
-      const res = await fetch('https://trimsandfasteners.com/wp-json/contact-form-7/v1/contact-forms/FORM_ID/feedback', {
+      const res = await fetch('https://trimsandfasteners.com/wp-json/contact-form-7/v1/contact-forms/1647/feedback', {
         method: 'POST',
         body: new URLSearchParams({
           'your-name': form.name,
