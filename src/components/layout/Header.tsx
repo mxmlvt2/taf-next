@@ -94,6 +94,7 @@ export default function Header({ menu, translations }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [hoveredUseCat, setHoveredUseCat] = useState(0);
+  const [hoveredTypeCat, setHoveredTypeCat] = useState(0);
   const headerRef = useRef<HTMLDivElement>(null);
 
   const useCats = locale === 'en' ? USE_CATS_EN : USE_CATS_PL;
@@ -111,19 +112,19 @@ export default function Header({ menu, translations }: HeaderProps) {
   const otherLocale = locale === 'en' ? 'pl' : 'en';
   const otherUrl = translations[otherLocale] || (otherLocale === 'pl' ? '/pl/' : '/');
 
-  // Type of Zippers items (simple list)
+  // Type of Zippers items with hover images
   const typeItems = locale === 'en'
     ? [
-        { label: 'Plastic zippers', href: '/type-of-zippers/plastic-zippers/' },
-        { label: 'Nylon zippers', href: '/type-of-zippers/nylon-zippers/', sub: { label: 'Nylon zipper chain size chart', href: '/nylon-zipper-chain-size-chart/' } },
-        { label: 'Metal zippers', href: '/type-of-zippers/metal-zippers/' },
-        { label: 'Personalization', href: '/personalization/' },
+        { label: 'Plastic zippers', href: '/type-of-zippers/plastic-zippers/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/ffwefw-scaled.jpeg' },
+        { label: 'Nylon zippers', href: '/type-of-zippers/nylon-zippers/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzipper1-scaled.jpg', sub: { label: 'Nylon zipper chain size chart', href: '/nylon-zipper-chain-size-chart/' } },
+        { label: 'Metal zippers', href: '/type-of-zippers/metal-zippers/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg' },
+        { label: 'Personalization', href: '/personalization/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/logobymoulding-scaled.png' },
       ]
     : [
-        { label: 'Zamki plastikowe', href: '/pl/rodzaje-zamkow/zamki-plastikowe/' },
-        { label: 'Zamki nylonowe', href: '/pl/rodzaje-zamkow/zamki-nylonowe/', sub: { label: 'Tabela rozmiarów taśm nylonowych', href: '/pl/tasmy-spiralne-zestawienie-rozmiarow/' } },
-        { label: 'Zamki metalowe', href: '/pl/rodzaje-zamkow/zamki-metalowe/' },
-        { label: 'Personalizacja', href: '/pl/personalizacja/' },
+        { label: 'Zamki plastikowe', href: '/pl/rodzaje-zamkow/zamki-plastikowe/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/ffwefw-scaled.jpeg' },
+        { label: 'Zamki nylonowe', href: '/pl/rodzaje-zamkow/zamki-nylonowe/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzipper1-scaled.jpg', sub: { label: 'Tabela rozmiarów taśm nylonowych', href: '/pl/tasmy-spiralne-zestawienie-rozmiarow/' } },
+        { label: 'Zamki metalowe', href: '/pl/rodzaje-zamkow/zamki-metalowe/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg' },
+        { label: 'Personalizacja', href: '/pl/personalizacja/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/logobymoulding-scaled.png' },
       ];
 
   // Simple nav items (non-dropdown)
@@ -198,29 +199,49 @@ export default function Header({ menu, translations }: HeaderProps) {
 
               {openDropdown === 'type' && (
                 <div
-                  className="absolute top-full left-0 mt-0 bg-white shadow-lg border border-gray-100 py-2 min-w-56 z-50"
+                  className="absolute top-full left-0 mt-0 bg-white shadow-lg border border-gray-100 z-50 flex"
+                  style={{ minWidth: '480px' }}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  {typeItems.map(item => (
-                    <div key={item.href}>
-                      <Link
-                        href={item.href}
-                        className="block px-5 py-2.5 text-sm text-gray-700 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
-                        onClick={() => setOpenDropdown(null)}
-                      >
-                        {item.label}
-                      </Link>
-                      {item.sub && (
+                  {/* Left: list */}
+                  <div className="py-3 flex-1">
+                    {typeItems.map((item, i) => (
+                      <div key={item.href}>
                         <Link
-                          href={item.sub.href}
-                          className="block pl-9 pr-5 py-2 text-xs text-gray-500 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
+                          href={item.href}
+                          className={`block px-5 py-2.5 text-sm font-[Jost] transition-colors ${
+                            hoveredTypeCat === i
+                              ? 'text-black bg-gray-50'
+                              : 'text-gray-700 hover:text-black hover:bg-gray-50'
+                          }`}
+                          onMouseEnter={() => setHoveredTypeCat(i)}
                           onClick={() => setOpenDropdown(null)}
                         >
-                          {item.sub.label}
+                          {item.label}
                         </Link>
-                      )}
-                    </div>
-                  ))}
+                        {item.sub && (
+                          <Link
+                            href={item.sub.href}
+                            className="block pl-9 pr-5 py-2 text-xs text-gray-500 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
+                            onMouseEnter={() => setHoveredTypeCat(i)}
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            {item.sub.label}
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  {/* Right: hover image */}
+                  <div className="w-48 flex-shrink-0 relative overflow-hidden bg-gray-100">
+                    <Image
+                      src={typeItems[hoveredTypeCat]?.img || typeItems[0].img}
+                      alt={typeItems[hoveredTypeCat]?.label || ''}
+                      fill
+                      className="object-cover transition-all duration-300"
+                      sizes="192px"
+                    />
+                  </div>
                 </div>
               )}
             </div>
