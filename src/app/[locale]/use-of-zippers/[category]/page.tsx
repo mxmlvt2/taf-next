@@ -103,7 +103,7 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <div>
       {/* Dark hero */}
-      <div className="bg-gray-900 text-white py-20">
+      <div className="bg-[#111111] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={locale === 'en' ? '/' : '/pl/'} className="hover:text-white transition-colors">
@@ -121,20 +121,20 @@ export default async function CategoryPage({ params }: Props) {
           </nav>
 
           <h1
-            className="font-[Jost] text-3xl sm:text-5xl font-normal mb-5 max-w-3xl"
+            className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl"
             dangerouslySetInnerHTML={{ __html: title }}
           />
 
           {page?.excerpt.rendered && (
             <div
-              className="font-[Jost] text-white/70 mb-8 max-w-2xl text-base leading-relaxed"
+              className="font-[Jost] text-white/60 mb-8 max-w-2xl text-sm leading-relaxed"
               dangerouslySetInnerHTML={{ __html: page.excerpt.rendered }}
             />
           )}
 
           <Link
             href={contactHref}
-            className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {locale === 'en' ? 'Contact us' : 'Skontaktuj się'}
           </Link>
@@ -153,9 +153,9 @@ export default async function CategoryPage({ params }: Props) {
 
       {/* Our products section */}
       {zippers.length > 0 && (
-        <section className="bg-gray-50 py-16">
+        <section className="bg-[#f5f3ef] py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-[Jost] text-2xl sm:text-3xl font-normal mb-3">
+            <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-3 text-[#111]">
               {locale === 'en' ? 'Our products' : 'Nasze produkty'}
             </h2>
             <p className="font-[Jost] text-sm text-gray-400 mb-8">

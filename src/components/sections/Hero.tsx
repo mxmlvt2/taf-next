@@ -33,7 +33,7 @@ export default function Hero({ slides = DEFAULT_SLIDES, title, subtitle, descrip
   const contactUrl = locale === 'en' ? '/contact/' : '/pl/kontakt/';
 
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Slideshow */}
       {slides.map((src, i) => (
         <div
@@ -51,36 +51,38 @@ export default function Hero({ slides = DEFAULT_SLIDES, title, subtitle, descrip
         </div>
       ))}
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      {/* Dark overlay — strong near-black matching WP */}
+      <div className="absolute inset-0 bg-black/70" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center sm:text-left">
-        <span className="block font-[Jost] text-white/80 text-base sm:text-lg font-normal mb-2 tracking-wide animate-fade-in">
-          {title || t('brand')}
-        </span>
-        <h1 className="font-[Jost] text-3xl sm:text-5xl font-normal text-white leading-snug mb-4 animate-fade-in">
-          {subtitle || t('tagline')}
-        </h1>
-        {description && (
-          <p
-            className="font-[Jost] text-white/80 text-base font-normal mb-8 max-w-xl"
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
-        )}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center sm:justify-start">
-          <Link
-            href={ctaUrl || contactUrl}
-            className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            {t('cta')}
-          </Link>
-          <Link
-            href={locale === 'en' ? '/use-of-zippers/' : '/pl/zastosowanie-zamkow/'}
-            className="inline-block border border-white/60 text-white font-[Jost] font-medium text-sm px-6 py-3 rounded-lg hover:bg-white/10 transition-colors"
-          >
-            {t('ctaSub')}
-          </Link>
+      {/* Content — left-aligned */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-2xl">
+          <span className="block font-[Jost] text-white/70 text-sm sm:text-base font-light mb-4 tracking-widest uppercase animate-fade-in">
+            {title || t('brand')}
+          </span>
+          <h1 className="font-[Jost] text-4xl sm:text-6xl font-light text-white leading-tight mb-5 animate-fade-in">
+            {subtitle || t('tagline')}
+          </h1>
+          {description && (
+            <p
+              className="font-[Jost] text-white/70 text-base font-light mb-8 max-w-lg leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+          )}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link
+              href={ctaUrl || contactUrl}
+              className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-7 py-3 hover:bg-gray-100 transition-colors"
+            >
+              {t('cta')}
+            </Link>
+            <Link
+              href={locale === 'en' ? '/use-of-zippers/' : '/pl/zastosowanie-zamkow/'}
+              className="inline-block border border-white/50 text-white font-[Jost] font-medium text-sm px-7 py-3 hover:bg-white/10 transition-colors"
+            >
+              {t('ctaSub')}
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -91,7 +93,7 @@ export default function Hero({ slides = DEFAULT_SLIDES, title, subtitle, descrip
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-2 h-2 rounded-full transition-all ${i === current ? 'bg-white w-6' : 'bg-white/50'}`}
+              className={`h-1.5 rounded-full transition-all ${i === current ? 'bg-white w-8' : 'bg-white/40 w-4'}`}
               aria-label={`Slide ${i + 1}`}
             />
           ))}

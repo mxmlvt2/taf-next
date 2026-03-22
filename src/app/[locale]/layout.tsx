@@ -43,7 +43,7 @@ export default async function LocaleLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-white text-gray-900 antialiased">
+      <body className="bg-white text-[#111111] antialiased">
         <NextIntlClientProvider messages={messages}>
           <Header menu={menu} translations={{}} />
           <main>{children}</main>

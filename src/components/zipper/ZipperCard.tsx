@@ -28,7 +28,7 @@ export default function ZipperCard({ zipper }: ZipperCardProps) {
   return (
     <>
       <div
-        className="group cursor-pointer bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+        className="group cursor-pointer bg-white border border-gray-100 overflow-hidden hover:shadow-sm transition-all duration-300"
         onClick={() => setModalOpen(true)}
         onMouseEnter={prefetch}
         onFocus={prefetch}
@@ -37,20 +37,21 @@ export default function ZipperCard({ zipper }: ZipperCardProps) {
         aria-label={`${t('viewDetails')}: ${zipper.name}`}
         onKeyDown={e => e.key === 'Enter' && setModalOpen(true)}
       >
-        <div className="overflow-hidden aspect-square bg-gray-50">
+        <div className="overflow-hidden aspect-square bg-white">
           <Image
             src={zipper.thumbnailUrl}
             alt={zipper.thumbnailAlt || zipper.name}
             width={400}
             height={400}
-            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+            className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
           />
         </div>
-        <div className="p-3">
-          <h3 className="font-[Jost] text-sm font-medium text-gray-800 leading-tight line-clamp-2">
+        <div className="px-3 py-2 border-t border-gray-100">
+          <h3 className="font-[Jost] text-xs font-normal text-gray-700 leading-tight line-clamp-2">
             {zipper.name}
           </h3>
+          <p className="font-[Jost] text-xs text-gray-400 mt-1">{t('viewDetails')} →</p>
         </div>
       </div>
 

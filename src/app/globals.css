@@ -2,12 +2,30 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111111;
+  --taf-black: #111111;
+  --taf-cream: #f5f3ef;
+  --taf-text: #444444;
+  --taf-text-light: #666666;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: 'Jost', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Prose overrides to match WP body text */
+p, li {
+  color: #444;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  color: #111;
   font-family: 'Jost', Arial, sans-serif;
 }
 

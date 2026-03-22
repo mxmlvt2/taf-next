@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article>
       {/* Dark hero with post title */}
-      <div className="bg-gray-900 text-white py-16 sm:py-20">
+      <div className="bg-[#111111] text-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href={backHref}
@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: Props) {
             {formatDate(post.date, locale as Locale)}
           </time>
           <h1
-            className="font-[Jost] text-3xl sm:text-5xl font-normal leading-snug max-w-4xl"
+            className="font-[Jost] text-3xl sm:text-5xl font-light leading-snug max-w-4xl"
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
         </div>
@@ -123,8 +123,8 @@ export default async function BlogPostPage({ params }: Props) {
             />
 
             {/* CTA box */}
-            <div className="mt-12 bg-gray-900 text-white rounded-2xl p-8 text-center">
-              <h3 className="font-[Jost] text-2xl font-normal mb-3">
+            <div className="mt-12 bg-[#111111] text-white p-8 text-center">
+              <h3 className="font-[Jost] text-2xl font-light mb-3">
                 {locale === 'en'
                   ? 'Need the perfect zipper?'
                   : 'Potrzebujesz idealnego zamka?'}

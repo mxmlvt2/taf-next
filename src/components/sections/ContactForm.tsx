@@ -53,7 +53,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
             required
             value={form.name}
             onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-            className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-[Jost] focus:outline-none focus:border-black transition-colors"
+            className="w-full border border-gray-300 px-4 py-3 text-sm font-[Jost] focus:outline-none focus:border-black transition-colors bg-white"
           />
         </div>
         <div>
@@ -63,7 +63,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
             required
             value={form.email}
             onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-            className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-[Jost] focus:outline-none focus:border-black transition-colors"
+            className="w-full border border-gray-300 px-4 py-3 text-sm font-[Jost] focus:outline-none focus:border-black transition-colors bg-white"
           />
         </div>
       </div>
@@ -83,7 +83,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
           rows={6}
           value={form.message}
           onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-          className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-[Jost] focus:outline-none focus:border-black transition-colors resize-none"
+          className="w-full border border-gray-300 px-4 py-3 text-sm font-[Jost] focus:outline-none focus:border-black transition-colors resize-none bg-white"
         />
       </div>
       {status === 'error' && (
@@ -92,7 +92,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full bg-black text-white font-[Jost] font-medium text-sm py-3 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-60"
+        className="w-full bg-[#111111] text-white font-[Jost] font-normal text-sm py-3 hover:bg-black transition-colors disabled:opacity-60"
       >
         {status === 'sending' ? t('sending') : t('send')}
       </button>

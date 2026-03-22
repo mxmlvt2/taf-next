@@ -30,18 +30,27 @@ export default async function PersonalizationPage({ params }: Props) {
 
   return (
     <div>
-      <div className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Dark hero with background image — matches WP personalization page */}
+      <div className="relative bg-[#111111] text-white overflow-hidden" style={{ minHeight: '280px' }}>
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: 'url(https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg)' }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 flex flex-col justify-end" style={{ minHeight: '280px' }}>
           <h1
-            className="font-[Jost] text-3xl sm:text-5xl font-normal"
+            className="font-[Jost] text-4xl sm:text-6xl font-light"
             dangerouslySetInnerHTML={{ __html: page?.title.rendered || (locale === 'en' ? 'Personalization' : 'Personalizacja') }}
           />
+          {locale === 'en' && (
+            <p className="font-[Jost] text-white/60 text-base font-light mt-2">Your vision, our mission</p>
+          )}
         </div>
       </div>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {page?.content.rendered ? (
           <div
-            className="prose prose-gray max-w-none font-[Jost]"
+            className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-light prose-headings:text-[#111] prose-p:text-gray-500 prose-p:text-sm"
             dangerouslySetInnerHTML={{ __html: page.content.rendered }}
           />
         ) : (

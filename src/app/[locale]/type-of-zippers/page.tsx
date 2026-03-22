@@ -32,24 +32,24 @@ export default async function TypeOfZippersPage({ params }: Props) {
 
   const types = isEn
     ? [
-        { label: 'Nylon Zippers', desc: 'Flexible coil zippers — the most versatile type. Available water-resistant, concealed, and with custom tapes.', href: '/type-of-zippers/nylon-zippers/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png' },
-        { label: 'Plastic Zippers', desc: 'Durable molded Delrin zippers. Waterproof, flame-retardant, UV-resistant options available.', href: '/type-of-zippers/plastic-zippers/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png' },
-        { label: 'Metal Zippers', desc: 'Premium brass, aluminium and stainless steel zippers for fashion, workwear, and footwear.', href: '/type-of-zippers/metal-zippers/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png' },
+        { label: 'Nylon Zippers', desc: 'Flexible coil zippers — the most versatile type. Available water-resistant, concealed, and with custom tapes.', href: '/type-of-zippers/nylon-zippers/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/nylon-kategoria.jpg' },
+        { label: 'Plastic Zippers', desc: 'Durable molded Delrin zippers. Waterproof, flame-retardant, UV-resistant options available.', href: '/type-of-zippers/plastic-zippers/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/plastik-kategoria.jpg' },
+        { label: 'Metal Zippers', desc: 'Premium brass, aluminium and stainless steel zippers for fashion, workwear, and footwear.', href: '/type-of-zippers/metal-zippers/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/metal-kategoria.jpg' },
       ]
     : [
-        { label: 'Zamki nylonowe', desc: 'Elastyczne zamki spiralne — najbardziej wszechstronny typ. Dostępne wodoodporne, ukryte i z własną taśmą.', href: '/pl/rodzaje-zamkow/zamki-nylonowe/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png' },
-        { label: 'Zamki plastikowe', desc: 'Trwałe zamki kostkowe Delrin. Opcje wodoodporne, trudnopalne, odporne na UV.', href: '/pl/rodzaje-zamkow/zamki-plastikowe/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png' },
-        { label: 'Zamki metalowe', desc: 'Zamki premium z mosiądzu, aluminium i stali nierdzewnej do mody, odzieży roboczej i obuwia.', href: '/pl/rodzaje-zamkow/zamki-metalowe/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png' },
+        { label: 'Zamki nylonowe', desc: 'Elastyczne zamki spiralne — najbardziej wszechstronny typ. Dostępne wodoodporne, ukryte i z własną taśmą.', href: '/pl/rodzaje-zamkow/zamki-nylonowe/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/nylon-kategoria.jpg' },
+        { label: 'Zamki plastikowe', desc: 'Trwałe zamki kostkowe Delrin. Opcje wodoodporne, trudnopalne, odporne na UV.', href: '/pl/rodzaje-zamkow/zamki-plastikowe/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/plastik-kategoria.jpg' },
+        { label: 'Zamki metalowe', desc: 'Zamki premium z mosiądzu, aluminium i stali nierdzewnej do mody, odzieży roboczej i obuwia.', href: '/pl/rodzaje-zamkow/zamki-metalowe/', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/08/metal-kategoria.jpg' },
       ];
 
   return (
     <div>
-      <div className="bg-gray-900 text-white py-16">
+      <div className="bg-[#111111] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-[Jost] text-3xl sm:text-5xl font-normal">
+          <h1 className="font-[Jost] text-3xl sm:text-5xl font-light">
             {isEn ? 'Types of Zippers' : 'Rodzaje zamków'}
           </h1>
-          <p className="font-[Jost] text-white/60 mt-3 max-w-xl">
+          <p className="font-[Jost] text-white/50 mt-3 max-w-xl text-sm">
             {isEn
               ? 'Nylon coil, plastic molded and metal zippers — choose the right type for your project.'
               : 'Zamki nylonowe spiralne, plastikowe kostkowe i metalowe — wybierz odpowiedni typ do swojego projektu.'}
@@ -57,28 +57,30 @@ export default async function TypeOfZippersPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {types.map(type => (
-            <Link key={type.label} href={type.href} className="group block">
-              <div className="relative overflow-hidden rounded-xl aspect-[4/3] mb-4">
-                <Image
-                  src={type.img}
-                  alt={type.label}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h2 className="font-[Jost] text-white text-xl font-medium">{type.label}</h2>
+      <div className="bg-[#f5f3ef] min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {types.map(type => (
+              <Link key={type.label} href={type.href} className="group block">
+                <div className="relative overflow-hidden aspect-[4/3] mb-4">
+                  <Image
+                    src={type.img}
+                    alt={type.label}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h2 className="font-[Jost] text-white text-lg font-light">{type.label}</h2>
+                  </div>
                 </div>
-              </div>
-              <p className="font-[Jost] text-sm text-gray-500 group-hover:text-gray-700 transition-colors leading-relaxed">
-                {type.desc}
-              </p>
-            </Link>
-          ))}
+                <p className="font-[Jost] text-sm text-gray-500 group-hover:text-gray-700 transition-colors leading-relaxed">
+                  {type.desc}
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>

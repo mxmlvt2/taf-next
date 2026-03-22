@@ -31,15 +31,15 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <div className="bg-[#f5f3ef] min-h-screen">
-      {/* Main about section — light background, two-column */}
+      {/* Main about section — cream background, two-column */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: text content */}
           <div>
-            <p className="font-[Jost] text-sm font-medium text-gray-500 uppercase tracking-widest mb-4">
+            <p className="font-[Jost] text-xs font-normal text-gray-500 uppercase tracking-widest mb-4">
               {locale === 'en' ? 'Trims and Fasteners Company' : 'Firma Trims and Fasteners'}
             </p>
-            <h1 className="font-[Jost] text-4xl sm:text-5xl font-normal text-gray-900 leading-tight mb-8">
+            <h1 className="font-[Jost] text-4xl sm:text-5xl font-light text-[#111] leading-tight mb-8">
               {page?.title.rendered
                 ? <span dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
                 : (locale === 'en' ? 'Proven supplier of zip fasteners' : 'Sprawdzony dostawca zamków błyskawicznych')}
@@ -47,11 +47,11 @@ export default async function AboutPage({ params }: Props) {
 
             {page?.content.rendered ? (
               <div
-                className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal text-gray-700"
+                className="prose max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-light prose-headings:text-[#111] prose-p:text-gray-500 prose-p:text-sm prose-p:leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: page.content.rendered }}
               />
             ) : (
-              <div className="space-y-4 font-[Jost] text-gray-700 leading-relaxed">
+              <div className="space-y-4 font-[Jost] text-gray-500 text-sm leading-relaxed">
                 <p>
                   {locale === 'en'
                     ? 'TAF – Trims and Fasteners is a professional distributor of YKK zippers and fasteners, serving fashion, military, sportswear, furniture, and industrial clients across Europe.'
@@ -69,8 +69,8 @@ export default async function AboutPage({ params }: Props) {
           {/* Right: large TAF logo graphic */}
           <div className="flex items-center justify-center lg:justify-end">
             <div className="relative">
-              {/* Large TAF text graphic */}
-              <div className="text-[12rem] sm:text-[16rem] font-[Jost] font-bold text-gray-900/10 leading-none select-none pointer-events-none">
+              {/* Large TAF text graphic — very light watermark */}
+              <div className="text-[12rem] sm:text-[16rem] font-[Jost] font-bold text-[#111]/8 leading-none select-none pointer-events-none">
                 TAF
               </div>
               {/* Actual logo on top */}
@@ -88,32 +88,7 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Stats / highlights row */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-            {[
-              {
-                value: 'YKK',
-                label: locale === 'en' ? 'Authorized Distributor' : 'Autoryzowany Dystrybutor',
-              },
-              {
-                value: '20+',
-                label: locale === 'en' ? 'Years of Experience' : 'Lat Doświadczenia',
-              },
-              {
-                value: '500+',
-                label: locale === 'en' ? 'Products in Range' : 'Produktów w Asortymencie',
-              },
-            ].map(stat => (
-              <div key={stat.value} className="border-b-2 border-gray-900 pb-6 pt-2">
-                <p className="font-[Jost] text-4xl font-normal text-gray-900 mb-2">{stat.value}</p>
-                <p className="font-[Jost] text-sm text-gray-500">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Footer-style dark section is in the actual Footer, so no stats needed — the WP page just has the content */}
     </div>
   );
 }

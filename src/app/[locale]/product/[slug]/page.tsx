@@ -112,7 +112,7 @@ export default async function ProductPage({ params }: Props) {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-start">
           {/* Left: image */}
-          <div className="relative aspect-square overflow-hidden rounded-2xl bg-gray-50 group">
+          <div className="relative aspect-square overflow-hidden bg-white border border-gray-100 group">
             {featuredImg ? (
               <>
                 <Image
@@ -140,7 +140,7 @@ export default async function ProductPage({ params }: Props) {
           {/* Right: details */}
           <div className="flex flex-col">
             <h1
-              className="font-[Jost] text-3xl font-normal text-black leading-snug mb-5"
+              className="font-[Jost] text-3xl font-light text-[#111] leading-snug mb-5"
               dangerouslySetInnerHTML={{ __html: name }}
             />
 
@@ -172,12 +172,12 @@ export default async function ProductPage({ params }: Props) {
 
       {/* Related products */}
       {related.length > 0 && (
-        <section className="bg-gray-50 py-16">
+        <section className="bg-[#f5f3ef] py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-[Jost] text-2xl font-normal mb-8">
+            <h2 className="font-[Jost] text-2xl font-light mb-8 text-[#111] text-center">
               {locale === 'en' ? 'Related products' : 'Powiązane produkty'}
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {related.slice(0, 4).map(rel => {
                 const relImg = rel._embedded?.['wp:featuredmedia']?.[0];
                 const relName = rel.title?.rendered || '';
@@ -188,27 +188,27 @@ export default async function ProductPage({ params }: Props) {
                   <Link
                     key={rel.id}
                     href={relHref}
-                    className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow"
+                    className="group bg-white overflow-hidden border border-gray-100 hover:shadow-sm transition-shadow"
                   >
-                    <div className="relative aspect-square bg-gray-50">
+                    <div className="relative aspect-square bg-white">
                       {relImg ? (
                         <Image
                           src={relImg.source_url}
                           alt={relImg.alt_text || relName}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="object-contain group-hover:scale-105 transition-transform duration-300"
                           sizes="(max-width: 640px) 50vw, 25vw"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-gray-200 text-2xl font-[Jost]">TAF</div>
                       )}
                     </div>
-                    <div className="p-3">
+                    <div className="p-3 border-t border-gray-100">
                       <p
-                        className="font-[Jost] text-sm text-gray-800 mb-2 line-clamp-2"
+                        className="font-[Jost] text-xs font-normal text-gray-700 mb-1 line-clamp-2"
                         dangerouslySetInnerHTML={{ __html: relName }}
                       />
-                      <span className="font-[Jost] text-xs text-gray-500 hover:text-black transition-colors">
+                      <span className="font-[Jost] text-xs text-gray-400">
                         {locale === 'en' ? 'Learn more' : 'Dowiedz się więcej'} →
                       </span>
                     </div>

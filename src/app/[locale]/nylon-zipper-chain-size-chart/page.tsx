@@ -31,10 +31,10 @@ export default async function SizeChartPage({ params }: Props) {
 
   return (
     <div>
-      <div className="bg-gray-900 text-white py-16">
+      <div className="bg-[#111111] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1
-            className="font-[Jost] text-3xl sm:text-4xl font-normal"
+            className="font-[Jost] text-3xl sm:text-4xl font-light"
             dangerouslySetInnerHTML={{ __html: page?.title.rendered || 'Nylon Zipper Chain Size Chart' }}
           />
         </div>

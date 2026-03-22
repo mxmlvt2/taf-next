@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLocale } from 'next-intl';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, Phone } from 'lucide-react';
 import type { MenuItem } from '@/lib/types';
 import type { Locale } from '@/lib/types';
 
@@ -130,54 +130,82 @@ export default function Header({ menu, translations }: HeaderProps) {
   const simpleItems = locale === 'en'
     ? [
         { label: 'About Us', href: '/about-us/' },
-        { label: 'Blog', href: '/blog/' },
         { label: 'Contact', href: '/contact/' },
       ]
     : [
         { label: 'O nas', href: '/pl/o-nas/' },
-        { label: 'Blog', href: '/pl/blog/' },
         { label: 'Kontakt', href: '/pl/kontakt/' },
       ];
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm" ref={headerRef}>
+      {/* Top bar: phones + email */}
+      <div className="hidden lg:block border-b border-gray-100 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-9 text-xs font-[Jost] text-gray-500">
+            <div className="flex items-center gap-5">
+              <a href="tel:+48221101101" className="flex items-center gap-1.5 hover:text-black transition-colors">
+                <Phone size={11} />
+                +48 22 1101 01
+              </a>
+              <a href="tel:+48723331331" className="flex items-center gap-1.5 hover:text-black transition-colors">
+                <Phone size={11} />
+                +48 723 331 331
+              </a>
+            </div>
+            <a href="mailto:contact@trimsandfasteners.com" className="hover:text-black transition-colors">
+              contact@trimsandfasteners.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main nav row */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href={locale === 'en' ? '/' : '/pl/'} className="flex items-center gap-3 flex-shrink-0">
+          <Link href={locale === 'en' ? '/' : '/pl/'} className="flex items-center flex-shrink-0">
             <Image
               src="https://trimsandfasteners.com/wp-content/uploads/2025/08/Projekt-bez-nazwy-75.png"
               alt="TAF - Trims and Fasteners"
-              width={120}
-              height={48}
-              className="h-12 w-auto"
+              width={100}
+              height={40}
+              className="h-10 w-auto"
               priority
             />
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
+            {/* Start */}
+            <Link
+              href={locale === 'en' ? '/' : '/pl/'}
+              className="px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
+            >
+              {locale === 'en' ? 'Start' : 'Start'}
+            </Link>
+
             {/* Type of Zippers */}
             <div className="relative">
               <button
-                className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-black rounded-md hover:bg-gray-50 transition-colors font-[Jost]"
+                className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
                 onClick={() => setOpenDropdown(openDropdown === 'type' ? null : 'type')}
                 onMouseEnter={() => setOpenDropdown('type')}
               >
-                {locale === 'en' ? 'Type of Zippers' : 'Rodzaje zamków'}
-                <ChevronDown size={14} className={`transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
+                {locale === 'en' ? 'Type of zippers' : 'Rodzaje zamków'}
+                <ChevronDown size={13} className={`transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
               </button>
 
               {openDropdown === 'type' && (
                 <div
-                  className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-64 z-50"
+                  className="absolute top-full left-0 mt-0 bg-white shadow-lg border border-gray-100 py-2 min-w-56 z-50"
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {typeItems.map(item => (
                     <div key={item.href}>
                       <Link
                         href={item.href}
-                        className="block px-4 py-2.5 text-sm text-gray-700 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
+                        className="block px-5 py-2.5 text-sm text-gray-700 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
                         onClick={() => setOpenDropdown(null)}
                       >
                         {item.label}
@@ -185,10 +213,10 @@ export default function Header({ menu, translations }: HeaderProps) {
                       {item.sub && (
                         <Link
                           href={item.sub.href}
-                          className="block pl-8 pr-4 py-2 text-xs text-gray-500 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
+                          className="block pl-9 pr-5 py-2 text-xs text-gray-500 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
                           onClick={() => setOpenDropdown(null)}
                         >
-                          └ {item.sub.label}
+                          {item.sub.label}
                         </Link>
                       )}
                     </div>
@@ -200,18 +228,18 @@ export default function Header({ menu, translations }: HeaderProps) {
             {/* Use of Zippers — mega menu with hover image */}
             <div className="relative">
               <button
-                className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-black rounded-md hover:bg-gray-50 transition-colors font-[Jost]"
+                className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
                 onClick={() => setOpenDropdown(openDropdown === 'use' ? null : 'use')}
                 onMouseEnter={() => setOpenDropdown('use')}
               >
-                {locale === 'en' ? 'Use of Zippers' : 'Zastosowanie zamków'}
-                <ChevronDown size={14} className={`transition-transform ${openDropdown === 'use' ? 'rotate-180' : ''}`} />
+                {locale === 'en' ? 'Use of zippers' : 'Zastosowanie zamków'}
+                <ChevronDown size={13} className={`transition-transform ${openDropdown === 'use' ? 'rotate-180' : ''}`} />
               </button>
 
               {openDropdown === 'use' && (
                 <div
-                  className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-xl border border-gray-100 z-50 flex"
-                  style={{ minWidth: '580px' }}
+                  className="absolute top-full left-0 mt-0 bg-white shadow-lg border border-gray-100 z-50 flex"
+                  style={{ minWidth: '560px' }}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {/* Left: category list */}
@@ -234,13 +262,13 @@ export default function Header({ menu, translations }: HeaderProps) {
                   </div>
 
                   {/* Right: hover image */}
-                  <div className="w-52 flex-shrink-0 relative overflow-hidden rounded-r-lg bg-gray-100">
+                  <div className="w-48 flex-shrink-0 relative overflow-hidden bg-gray-100">
                     <Image
                       src={useCats[hoveredUseCat]?.img || useCats[0].img}
                       alt={useCats[hoveredUseCat]?.label || ''}
                       fill
                       className="object-cover transition-all duration-300"
-                      sizes="208px"
+                      sizes="192px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3">
@@ -258,21 +286,48 @@ export default function Header({ menu, translations }: HeaderProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-black rounded-md hover:bg-gray-50 transition-colors font-[Jost]"
+                className="px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
               >
                 {item.label}
               </Link>
             ))}
+
+            {/* Search */}
+            <button
+              className="px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost] flex items-center gap-1"
+              aria-label="Search"
+            >
+              {locale === 'en' ? 'Search...' : 'Szukaj...'}
+            </button>
           </nav>
 
-          {/* Right: lang switcher + mobile toggle */}
-          <div className="flex items-center gap-3">
-            <a
-              href={otherUrl}
-              className="text-sm font-medium text-gray-500 hover:text-black border border-gray-200 rounded px-2 py-1 font-[Jost] transition-colors"
+          {/* Right: search icon + lang flags + mobile toggle */}
+          <div className="flex items-center gap-2">
+            {/* Search icon button */}
+            <button
+              className="hidden lg:flex items-center justify-center w-8 h-8 bg-black text-white hover:bg-gray-800 transition-colors"
+              aria-label="Search"
             >
-              {otherLocale.toUpperCase()}
-            </a>
+              <Search size={14} />
+            </button>
+
+            {/* Language switcher with flag-style buttons */}
+            <div className="hidden lg:flex items-center gap-0">
+              <a
+                href={locale === 'en' ? '#' : '/'}
+                className={`text-xs font-[Jost] font-medium px-2 py-1 transition-colors ${locale === 'en' ? 'text-black' : 'text-gray-400 hover:text-black'}`}
+              >
+                EN
+              </a>
+              <span className="text-gray-300 text-xs">|</span>
+              <a
+                href={locale === 'pl' ? '#' : '/pl/'}
+                className={`text-xs font-[Jost] font-medium px-2 py-1 transition-colors ${locale === 'pl' ? 'text-black' : 'text-gray-400 hover:text-black'}`}
+              >
+                PL
+              </a>
+            </div>
+
             <button
               className="lg:hidden p-2 text-gray-700"
               onClick={() => setMobileOpen(!mobileOpen)}
