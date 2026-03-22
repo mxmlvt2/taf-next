@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Start",
+    "typeOfZippers": "Rodzaje zamków",
+    "useOfZippers": "Zastosowanie zamków",
+    "personalization": "Personalizacja",
+    "aboutUs": "O nas",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "nylonZippers": "Zamki nylonowe",
+    "plasticZippers": "Zamki plastikowe",
+    "metalZippers": "Zamki metalowe",
+    "fashion": "Zamki dla mody",
+    "cycling": "Kolarstwo & odzież sportowa",
+    "baby": "Odzież dziecięca",
+    "military": "Wojsko",
+    "furniture": "Meble",
+    "fireProtection": "Odzież ognioodporna",
+    "buckles": "Zapięcia & elementy plastikowe"
+  },
+  "hero": {
+    "brand": "Trims and fasteners",
+    "tagline": "Łączymy innowacje i pasję z najnowszą wiedzą technologiczną",
+    "cta": "Kontakt",
+    "ctaSub": "Zobacz ofertę"
+  },
+  "zipper": {
+    "viewDetails": "Zobacz szczegóły",
+    "close": "Zamknij",
+    "specifications": "Specyfikacja",
+    "loading": "Ładowanie..."
+  },
+  "contact": {
+    "title": "Skontaktuj się z nami",
+    "name": "Imię i nazwisko",
+    "email": "E-mail",
+    "company": "Firma",
+    "message": "Wiadomość",
+    "send": "Wyślij wiadomość",
+    "sending": "Wysyłanie...",
+    "success": "Wiadomość została wysłana!",
+    "error": "Coś poszło nie tak. Spróbuj ponownie."
+  },
+  "footer": {
+    "rights": "Wszelkie prawa zastrzeżone",
+    "privacy": "Polityka prywatności"
+  },
+  "blog": {
+    "readMore": "Czytaj więcej",
+    "backToBlog": "Powrót do bloga"
+  },
+  "common": {
+    "learnMore": "Dowiedz się więcej",
+    "seeAll": "Zobacz wszystkie"
+  }
+}

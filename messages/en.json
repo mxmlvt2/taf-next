@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Home",
+    "typeOfZippers": "Type of Zippers",
+    "useOfZippers": "Use of Zippers",
+    "personalization": "Personalization",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "blog": "Blog",
+    "nylonZippers": "Nylon Zippers",
+    "plasticZippers": "Plastic Zippers",
+    "metalZippers": "Metal Zippers",
+    "fashion": "Zips for Fashion",
+    "cycling": "Cycling & Sportswear",
+    "baby": "Baby",
+    "military": "Military",
+    "furniture": "Furniture",
+    "fireProtection": "Fire-Resistant Clothing",
+    "buckles": "Buckles & Plastic Hardware"
+  },
+  "hero": {
+    "brand": "Trims and fasteners",
+    "tagline": "Combine innovation and passion with a technological latest knowledge",
+    "cta": "Contact Us",
+    "ctaSub": "See our range"
+  },
+  "zipper": {
+    "viewDetails": "View Details",
+    "close": "Close",
+    "specifications": "Specifications",
+    "loading": "Loading..."
+  },
+  "contact": {
+    "title": "Contact us",
+    "name": "Full name",
+    "email": "E-mail",
+    "company": "Company",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Your message has been sent!",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy"
+  },
+  "blog": {
+    "readMore": "Read more",
+    "backToBlog": "Back to blog"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "seeAll": "See all"
+  }
+}

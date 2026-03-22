@@ -1,0 +1,84 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { getBlogPosts } from '@/lib/wordpress';
+import type { Locale } from '@/lib/types';
+import { formatDate, stripHtml } from '@/lib/utils';
+
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: locale === 'en' ? 'Blog | TAF Zippers' : 'Blog | TAF Zamki',
+    description: locale === 'en'
+      ? 'News, guides and insights about zippers and fasteners from TAF.'
+      : 'Aktualności, poradniki i informacje o zamkach błyskawicznych od TAF.',
+    alternates: {
+      canonical: locale === 'en' ? 'https://trimsandfasteners.com/blog/' : 'https://trimsandfasteners.com/pl/blog/',
+      languages: {
+        en: 'https://trimsandfasteners.com/blog/',
+        pl: 'https://trimsandfasteners.com/pl/blog/',
+      },
+    },
+  };
+}
+
+export default async function BlogPage({ params }: Props) {
+  const { locale } = await params;
+  const { posts } = await getBlogPosts(locale as Locale);
+
+  return (
+    <div>
+      <div className="bg-gray-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="font-[Jost] text-3xl sm:text-5xl font-normal">Blog</h1>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {posts.length === 0 ? (
+          <p className="font-[Jost] text-gray-400 text-center py-20">
+            {locale === 'en' ? 'No posts yet.' : 'Brak wpisów.'}
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map(post => {
+              const featuredImage = post._embedded?.['wp:featuredmedia']?.[0];
+              const href = locale === 'en' ? `/blog/${post.slug}/` : `/pl/blog/${post.slug}/`;
+              return (
+                <article key={post.id} className="group">
+                  <Link href={href}>
+                    <div className="overflow-hidden rounded-xl aspect-video bg-gray-100 mb-4">
+                      {featuredImage ? (
+                        <Image
+                          src={featuredImage.source_url}
+                          alt={featuredImage.alt_text || post.title.rendered}
+                          width={600}
+                          height={338}
+                          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                          <span className="text-gray-400 text-sm font-[Jost]">TAF</span>
+                        </div>
+                      )}
+                    </div>
+                    <time className="text-xs text-gray-400 font-[Jost]">{formatDate(post.date, locale as Locale)}</time>
+                    <h2
+                      className="font-[Jost] font-medium text-lg mt-1 mb-2 group-hover:text-gray-600 transition-colors line-clamp-2"
+                      dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                    />
+                    <p className="font-[Jost] text-sm text-gray-500 line-clamp-3">
+                      {stripHtml(post.excerpt.rendered)}
+                    </p>
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
