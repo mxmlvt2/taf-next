@@ -30,7 +30,10 @@ export default async function PrivacyPolicyPage({ params }: Props) {
   const page = await getPageBySlug(slug, locale as Locale);
 
   const rawContent = page?.content.rendered ?? '';
-  const content = rawContent ? stripElementorHero(rawContent) : '';
+  // Strip Elementor hero (if multi-section) and remove duplicate h1 from WP content
+  const stripped = rawContent ? stripElementorHero(rawContent) : '';
+  const content = stripped.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, '');
+  const pageTitle = page?.title.rendered || (locale === 'en' ? 'Privacy Policy' : 'Polityka prywatności');
 
   return (
     <div className="bg-white">
@@ -42,11 +45,12 @@ export default async function PrivacyPolicyPage({ params }: Props) {
               {locale === 'en' ? 'Home' : 'Start'}
             </Link>
             <span>›</span>
-            <span className="text-gray-600">{locale === 'en' ? 'Privacy Policy' : 'Polityka prywatności'}</span>
+            <span className="text-gray-600" dangerouslySetInnerHTML={{ __html: pageTitle }} />
           </nav>
-          <h1 className="font-[Jost] text-3xl sm:text-4xl font-light text-[#111]">
-            {locale === 'en' ? 'Privacy Policy' : 'Polityka prywatności'}
-          </h1>
+          <h1
+            className="font-[Jost] text-3xl sm:text-4xl font-light text-[#111]"
+            dangerouslySetInnerHTML={{ __html: pageTitle }}
+          />
         </div>
       </div>
 
@@ -56,11 +60,12 @@ export default async function PrivacyPolicyPage({ params }: Props) {
           <div
             className="
               prose prose-gray max-w-none font-[Jost]
-              prose-headings:font-[Jost] prose-headings:font-normal prose-headings:text-[#111]
+              prose-headings:font-[Jost] prose-headings:text-[#111]
               prose-h1:text-3xl prose-h1:font-light
               prose-h2:text-xl prose-h2:font-semibold prose-h2:mt-10 prose-h2:mb-3
               prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-2
-              prose-h3:text-base prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-2
+              prose-h3:text-lg prose-h3:font-semibold prose-h3:mt-8 prose-h3:mb-3
+              prose-h3:border-b prose-h3:border-gray-100 prose-h3:pb-2
               prose-p:text-gray-600 prose-p:text-sm prose-p:leading-relaxed prose-p:my-3
               prose-li:text-gray-600 prose-li:text-sm
               prose-ul:my-3 prose-ol:my-3
