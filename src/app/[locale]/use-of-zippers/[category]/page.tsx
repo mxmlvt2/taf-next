@@ -11,6 +11,10 @@ import FaqAccordion from '@/components/sections/FaqAccordion';
 import FireProtectionContent from '@/components/sections/FireProtectionContent';
 import MilitaryContent from '@/components/sections/MilitaryContent';
 import CyclingSportswearContent from '@/components/sections/CyclingSportswearContent';
+import BabyContent from '@/components/sections/BabyContent';
+import FashionContent from '@/components/sections/FashionContent';
+import FurnitureContent from '@/components/sections/FurnitureContent';
+import BucklesContent from '@/components/sections/BucklesContent';
 
 // EN slug → WP slug mapping (both EN and PL)
 const CATEGORY_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string }> = {
@@ -169,6 +173,10 @@ export default async function CategoryPage({ params }: Props) {
       {enSlug === 'fire-protection' && <FireProtectionContent locale={locale} position="above" />}
       {enSlug === 'military' && <MilitaryContent locale={locale} position="above" />}
       {enSlug === 'cycling-sportswear' && <CyclingSportswearContent locale={locale} position="above" />}
+      {enSlug === 'baby' && <BabyContent locale={locale} position="above" />}
+      {enSlug === 'fashion' && <FashionContent locale={locale} position="above" />}
+      {enSlug === 'furniture' && <FurnitureContent locale={locale} position="above" />}
+      {enSlug === 'buckles-plastic-hardware' && <BucklesContent locale={locale} position="above" />}
 
       {/* Our products section */}
       {zippers.length > 0 && (
@@ -189,6 +197,10 @@ export default async function CategoryPage({ params }: Props) {
       {enSlug === 'fire-protection' && <FireProtectionContent locale={locale} position="below" />}
       {enSlug === 'military' && <MilitaryContent locale={locale} position="below" />}
       {enSlug === 'cycling-sportswear' && <CyclingSportswearContent locale={locale} position="below" />}
+      {enSlug === 'baby' && <BabyContent locale={locale} position="below" />}
+      {enSlug === 'fashion' && <FashionContent locale={locale} position="below" />}
+      {enSlug === 'furniture' && <FurnitureContent locale={locale} position="below" />}
+      {enSlug === 'buckles-plastic-hardware' && <BucklesContent locale={locale} position="below" />}
 
       {/* FAQ accordion (extracted from Elementor HTML widget) */}
       <FaqAccordion items={faqItems} locale={locale} />
