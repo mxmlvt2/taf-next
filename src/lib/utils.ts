@@ -102,6 +102,55 @@ export function stripElementorHero(html: string): string {
 }
 
 /**
+ * Strip nested div blocks from HTML by tracking div depth.
+ * Used to remove plugin-injected blocks (TOC, related posts, etc.)
+ */
+function stripNestedDiv(html: string, startPattern: RegExp): string {
+  const match = startPattern.exec(html);
+  if (!match) return html;
+
+  const startIdx = match.index;
+  let pos = startIdx + match[0].length;
+  let depth = 1;
+
+  while (pos < html.length && depth > 0) {
+    if (html[pos] === '<' && html[pos + 1] === 'd' && html[pos + 2] === 'i' && html[pos + 3] === 'v') {
+      depth++;
+      while (pos < html.length && html[pos] !== '>') pos++;
+      pos++;
+    } else if (html[pos] === '<' && html[pos + 1] === '/' && html[pos + 2] === 'd' && html[pos + 3] === 'i' && html[pos + 4] === 'v' && html[pos + 5] === '>') {
+      depth--;
+      if (depth === 0) return html.slice(0, startIdx) + html.slice(pos + 6);
+      pos += 6;
+    } else {
+      pos++;
+    }
+  }
+  return html;
+}
+
+/**
+ * Clean WP blog post content by removing plugin-injected blocks:
+ * - Table of Contents (EzTOC, Rank Math, LuckyWP, Gutenberg)
+ * - Related/Other Posts (Jetpack, YARPP, and common Elementor widgets)
+ */
+export function cleanBlogContent(html: string): string {
+  let result = html;
+  // TOC plugins
+  result = stripNestedDiv(result, /<div[^>]*id=["']ez-toc-container["']/i);
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*\bez-toc\b[^"']*["']/i);
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*wp-block-rank-math-toc-block[^"']*["']/i);
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*luckywp-toc[^"']*["']/i);
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*wp-block-table-of-contents[^"']*["']/i);
+  // Related / other posts
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*jp-relatedposts[^"']*["']/i);
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*yarpp-related[^"']*["']/i);
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*related-posts[^"']*["']/i);
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*elementor-widget-posts[^"']*["']/i);
+  return result;
+}
+
+/**
  * Strip language suffixes added to EN popup post titles in WP
  * e.g. "CFOR-39 DS5YG eng" → "CFOR-39 DS5YG"
  *      "VSOR-36 DA-3-eng"  → "VSOR-36 DA-3"

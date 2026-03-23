@@ -86,9 +86,16 @@ export default function Hero({ slides = DEFAULT_SLIDES, title, subtitle, descrip
         </div>
       </div>
 
+      {/* Mouse scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+        <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
+          <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
+        </div>
+      </div>
+
       {/* Slide dots */}
       {slides.length > 1 && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           {slides.map((_, i) => (
             <button
               key={i}

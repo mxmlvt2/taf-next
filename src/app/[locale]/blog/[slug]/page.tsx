@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getPostBySlug, getAllPostSlugs, extractYoastMeta, getRecentPosts } from '@/lib/wordpress';
 import type { Locale } from '@/lib/types';
-import { formatDate } from '@/lib/utils';
+import { formatDate, cleanBlogContent } from '@/lib/utils';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -118,8 +118,8 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Left: main article content */}
           <div className="flex-1 min-w-0">
             <div
-              className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl"
-              dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+              className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl blog-article-content"
+              dangerouslySetInnerHTML={{ __html: cleanBlogContent(post.content.rendered) }}
             />
 
             {/* CTA box */}

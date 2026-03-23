@@ -322,11 +322,11 @@ export default function Header({ menu, translations }: HeaderProps) {
         </div>
       </div>
 
-      {/* Mega menu: Type of Zippers — positioned from left edge of nav container */}
+      {/* Mega menu: Type of Zippers — centered horizontally */}
       {openDropdown === 'type' && (
         <div
-          className="absolute top-full left-0 z-50 flex bg-white"
-          style={{ marginTop: '10px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)', width: '860px' }}
+          className="absolute top-full z-50 flex bg-white"
+          style={{ left: '50%', transform: 'translateX(-50%)', boxShadow: '0 8px 30px rgba(0,0,0,0.12)', width: '860px' }}
           onMouseLeave={() => setOpenDropdown(null)}
         >
           <div className="py-4 flex-1">
@@ -367,11 +367,11 @@ export default function Header({ menu, translations }: HeaderProps) {
         </div>
       )}
 
-      {/* Mega menu: Use of Zippers — same dimensions as Type */}
+      {/* Mega menu: Use of Zippers — centered horizontally */}
       {openDropdown === 'use' && (
         <div
-          className="absolute top-full left-0 z-50 flex bg-white"
-          style={{ marginTop: '10px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)', width: '860px' }}
+          className="absolute top-full z-50 flex bg-white"
+          style={{ left: '50%', transform: 'translateX(-50%)', boxShadow: '0 8px 30px rgba(0,0,0,0.12)', width: '860px' }}
           onMouseLeave={() => setOpenDropdown(null)}
         >
           <div className="py-4 flex-1">
