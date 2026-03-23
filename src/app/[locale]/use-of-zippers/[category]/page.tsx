@@ -3,10 +3,11 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPageBySlug, getZippersByIds, extractYoastMeta } from '@/lib/wordpress';
-import { stripElementorHero } from '@/lib/utils';
+import { stripElementorHero, extractFaqItems, stripFaqBlock } from '@/lib/utils';
 import type { Locale } from '@/lib/types';
 import ZipperGrid from '@/components/zipper/ZipperGrid';
 import { CATEGORY_POPUP_IDS } from '@/lib/popup-ids';
+import FaqAccordion from '@/components/sections/FaqAccordion';
 
 // EN slug → WP slug mapping (both EN and PL)
 const CATEGORY_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string }> = {
@@ -102,6 +103,11 @@ export default async function CategoryPage({ params }: Props) {
   // FAQ schema from Yoast if available
   const faqSchema = page?.yoast_head_json?.schema;
 
+  // Extract FAQ items from Elementor HTML widget and strip from content
+  const rawContent = page?.content.rendered ?? '';
+  const faqItems = extractFaqItems(rawContent);
+  const cleanContent = faqItems.length > 0 ? stripFaqBlock(rawContent) : rawContent;
+
   return (
     <div>
       {/* Dark hero with background image */}
@@ -157,11 +163,11 @@ export default async function CategoryPage({ params }: Props) {
       </div>
 
       {/* Page content from WP (editorial sections with alternating image+text) */}
-      {page?.content.rendered && (
+      {cleanContent && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div
             className="elementor-content prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl prose-img:shadow-md"
-            dangerouslySetInnerHTML={{ __html: stripElementorHero(page.content.rendered) }}
+            dangerouslySetInnerHTML={{ __html: stripElementorHero(cleanContent) }}
           />
         </section>
       )}
@@ -180,6 +186,9 @@ export default async function CategoryPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      {/* FAQ accordion (extracted from Elementor HTML widget) */}
+      <FaqAccordion items={faqItems} locale={locale} />
 
       {/* JSON-LD FAQ schema if available from Yoast */}
       {faqSchema && (

@@ -22,6 +22,42 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 }
 
 /**
+ * Extract FAQ items from Elementor custom HTML widget (faq-container pattern).
+ * Returns parsed question/answer pairs so we can render a React accordion.
+ */
+export function extractFaqItems(html: string): { question: string; answer: string }[] {
+  if (!html.includes('class="faq-container"')) return [];
+
+  const items: { question: string; answer: string }[] = [];
+  const parts = html.split('<div class="faq-item">');
+
+  for (let i = 1; i < parts.length; i++) {
+    const part = parts[i];
+    const qMatch = part.match(/class="faq-question"[^>]*>\s*([\s\S]*?)\s*<\/div>/);
+    const aMatch = part.match(/class="faq-answer"[^>]*>\s*([\s\S]*?)\s*<\/div>/);
+    if (qMatch && aMatch) {
+      items.push({ question: qMatch[1].trim(), answer: aMatch[1].trim() });
+    }
+  }
+  return items;
+}
+
+/**
+ * Remove the FAQ custom HTML widget block from Elementor content.
+ * Strips from the <style>.faq-container definition through the </script> toggle function.
+ */
+export function stripFaqBlock(html: string): string {
+  const faqCssIdx = html.indexOf('.faq-container');
+  if (faqCssIdx === -1) return html;
+
+  const styleStart = html.lastIndexOf('<style>', faqCssIdx);
+  const scriptEnd = html.indexOf('</script>', html.indexOf('toggleFAQ'));
+
+  if (styleStart === -1 || scriptEnd === -1) return html;
+  return html.slice(0, styleStart) + html.slice(scriptEnd + 9);
+}
+
+/**
  * Strip the first Elementor hero section from page content.
  * Elementor pages start with a full-width hero container (e-con e-parent)
  * that duplicates our custom hero. We remove it and only keep the body content.
