@@ -3,12 +3,14 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPageBySlug, getZippersByIds, extractYoastMeta } from '@/lib/wordpress';
-import { stripElementorHero, extractFaqItems, stripFaqBlock } from '@/lib/utils';
+import { extractFaqItems, stripFaqBlock } from '@/lib/utils';
 import { CATEGORY_POPUP_IDS } from '@/lib/popup-ids';
 import type { Locale } from '@/lib/types';
 import ZipperGrid from '@/components/zipper/ZipperGrid';
 import FaqAccordion from '@/components/sections/FaqAccordion';
 import PlasticZippersContent from '@/components/sections/PlasticZippersContent';
+import NylonZippersContent from '@/components/sections/NylonZippersContent';
+import MetalZippersContent from '@/components/sections/MetalZippersContent';
 
 const TYPE_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string }> = {
   'nylon-zippers': { wpSlugEn: 'nylon-zippers', wpSlugPl: 'zamki-nylonowe', labelEn: 'Nylon Zippers', labelPl: 'Zamki nylonowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg' },
@@ -148,19 +150,9 @@ export default async function TypePage({ params }: Props) {
       </div>
 
       {/* Hardcoded content sections (above product grid) */}
-      {enSlug === 'plastic-zippers' && (
-        <PlasticZippersContent locale={locale} position="above" />
-      )}
-
-      {/* WP content for non-plastic types */}
-      {enSlug !== 'plastic-zippers' && cleanContent && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div
-            className="elementor-content prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl prose-img:shadow-md"
-            dangerouslySetInnerHTML={{ __html: stripElementorHero(cleanContent) }}
-          />
-        </section>
-      )}
+      {enSlug === 'plastic-zippers' && <PlasticZippersContent locale={locale} position="above" />}
+      {enSlug === 'nylon-zippers' && <NylonZippersContent locale={locale} position="above" />}
+      {enSlug === 'metal-zippers' && <MetalZippersContent locale={locale} position="above" />}
 
       {/* Product grid */}
       {zippers.length > 0 && (
@@ -178,9 +170,9 @@ export default async function TypePage({ params }: Props) {
       )}
 
       {/* Hardcoded content sections (below product grid) */}
-      {enSlug === 'plastic-zippers' && (
-        <PlasticZippersContent locale={locale} position="below" />
-      )}
+      {enSlug === 'plastic-zippers' && <PlasticZippersContent locale={locale} position="below" />}
+      {enSlug === 'nylon-zippers' && <NylonZippersContent locale={locale} position="below" />}
+      {enSlug === 'metal-zippers' && <MetalZippersContent locale={locale} position="below" />}
 
       {/* Nylon size chart link (only for nylon page) */}
       {enSlug === 'nylon-zippers' && (
