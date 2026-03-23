@@ -225,7 +225,8 @@ export default function Header({ menu, translations }: HeaderProps) {
         </div>
       </div>
 
-      {/* Main nav row */}
+      {/* Main nav row — relative wrapper so mega menus are positioned from here */}
+      <div className="relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -250,121 +251,25 @@ export default function Header({ menu, translations }: HeaderProps) {
               {locale === 'en' ? 'Start' : 'Start'}
             </Link>
 
-            {/* Type of Zippers */}
-            <div className="relative">
-              <button
-                className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
-                onClick={() => setOpenDropdown(openDropdown === 'type' ? null : 'type')}
-                onMouseEnter={() => setOpenDropdown('type')}
-              >
-                {locale === 'en' ? 'Type of zippers' : 'Rodzaje zamków'}
-                <ChevronDown size={13} className={`transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
-              </button>
+            {/* Type of Zippers — button only, no relative wrapper */}
+            <button
+              className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
+              onClick={() => setOpenDropdown(openDropdown === 'type' ? null : 'type')}
+              onMouseEnter={() => setOpenDropdown('type')}
+            >
+              {locale === 'en' ? 'Type of zippers' : 'Rodzaje zamków'}
+              <ChevronDown size={13} className={`transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
+            </button>
 
-              {openDropdown === 'type' && (
-                <div
-                  className="absolute top-full left-0 mt-0 bg-white shadow-xl border-0 z-50 flex"
-                  style={{ minWidth: '820px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
-                  onMouseLeave={() => setOpenDropdown(null)}
-                >
-                  {/* Left: list */}
-                  <div className="py-4 flex-1">
-                    {typeItems.map((item, i) => (
-                      <div key={item.href}>
-                        <Link
-                          href={item.href}
-                          className={`block px-6 py-3 text-sm font-[Jost] transition-colors ${
-                            hoveredTypeCat === i
-                              ? 'text-black bg-gray-50'
-                              : 'text-gray-600 hover:text-black hover:bg-gray-50'
-                          }`}
-                          onMouseEnter={() => setHoveredTypeCat(i)}
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          {item.label}
-                        </Link>
-                        {item.sub && (
-                          <Link
-                            href={item.sub.href}
-                            className="block pl-10 pr-6 py-2 text-xs text-gray-400 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
-                            onMouseEnter={() => setHoveredTypeCat(i)}
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            {item.sub.label}
-                          </Link>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  {/* Right: hover image — 16:9 aspect ratio */}
-                  <div className="flex-shrink-0 relative overflow-hidden bg-gray-100 self-stretch" style={{ width: '430px' }}>
-                    <Image
-                      src={typeItems[hoveredTypeCat]?.img || typeItems[0].img}
-                      alt={typeItems[hoveredTypeCat]?.label || ''}
-                      fill
-                      className="object-cover transition-all duration-300"
-                      sizes="430px"
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Use of Zippers — mega menu with hover image */}
-            <div className="relative">
-              <button
-                className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
-                onClick={() => setOpenDropdown(openDropdown === 'use' ? null : 'use')}
-                onMouseEnter={() => setOpenDropdown('use')}
-              >
-                {locale === 'en' ? 'Use of zippers' : 'Zastosowanie zamków'}
-                <ChevronDown size={13} className={`transition-transform ${openDropdown === 'use' ? 'rotate-180' : ''}`} />
-              </button>
-
-              {openDropdown === 'use' && (
-                <div
-                  className="absolute top-full left-0 mt-0 bg-white z-50 flex"
-                  style={{ minWidth: '960px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
-                  onMouseLeave={() => setOpenDropdown(null)}
-                >
-                  {/* Left: category list */}
-                  <div className="py-4 flex-1">
-                    {useCats.map((cat, i) => (
-                      <Link
-                        key={cat.href}
-                        href={cat.href}
-                        className={`block px-6 py-3 text-sm font-[Jost] transition-colors ${
-                          hoveredUseCat === i
-                            ? 'text-black bg-gray-50'
-                            : 'text-gray-600 hover:text-black hover:bg-gray-50'
-                        }`}
-                        onMouseEnter={() => setHoveredUseCat(i)}
-                        onClick={() => setOpenDropdown(null)}
-                      >
-                        {cat.label}
-                      </Link>
-                    ))}
-                  </div>
-
-                  {/* Right: hover image — 16:9 aspect ratio */}
-                  <div className="flex-shrink-0 relative overflow-hidden bg-gray-100 self-stretch" style={{ width: '520px' }}>
-                    <Image
-                      src={useCats[hoveredUseCat]?.img || useCats[0].img}
-                      alt={useCats[hoveredUseCat]?.label || ''}
-                      fill
-                      className="object-cover transition-all duration-300"
-                      sizes="520px"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <p className="text-white text-sm font-[Jost] font-light leading-tight">
-                        {useCats[hoveredUseCat]?.label}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* Use of Zippers — button only, no relative wrapper */}
+            <button
+              className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
+              onClick={() => setOpenDropdown(openDropdown === 'use' ? null : 'use')}
+              onMouseEnter={() => setOpenDropdown('use')}
+            >
+              {locale === 'en' ? 'Use of zippers' : 'Zastosowanie zamków'}
+              <ChevronDown size={13} className={`transition-transform ${openDropdown === 'use' ? 'rotate-180' : ''}`} />
+            </button>
 
             {/* Simple items */}
             {simpleItems.map(item => (
@@ -376,7 +281,6 @@ export default function Header({ menu, translations }: HeaderProps) {
                 {item.label}
               </Link>
             ))}
-
           </nav>
 
           {/* Right: search icon + lang flags + mobile toggle */}
@@ -417,6 +321,93 @@ export default function Header({ menu, translations }: HeaderProps) {
           </div>
         </div>
       </div>
+
+      {/* Mega menu: Type of Zippers — positioned from left edge of nav container */}
+      {openDropdown === 'type' && (
+        <div
+          className="absolute top-full left-0 z-50 flex bg-white"
+          style={{ marginTop: '10px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)', width: '860px' }}
+          onMouseLeave={() => setOpenDropdown(null)}
+        >
+          <div className="py-4 flex-1">
+            {typeItems.map((item, i) => (
+              <div key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`block px-6 py-3 text-sm font-[Jost] transition-colors ${
+                    hoveredTypeCat === i ? 'text-black bg-gray-50' : 'text-gray-600 hover:text-black hover:bg-gray-50'
+                  }`}
+                  onMouseEnter={() => setHoveredTypeCat(i)}
+                  onClick={() => setOpenDropdown(null)}
+                >
+                  {item.label}
+                </Link>
+                {item.sub && (
+                  <Link
+                    href={item.sub.href}
+                    className="block pl-10 pr-6 py-2 text-xs text-gray-400 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
+                    onMouseEnter={() => setHoveredTypeCat(i)}
+                    onClick={() => setOpenDropdown(null)}
+                  >
+                    {item.sub.label}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="flex-shrink-0 relative overflow-hidden bg-gray-100 self-stretch" style={{ width: '480px' }}>
+            <Image
+              src={typeItems[hoveredTypeCat]?.img || typeItems[0].img}
+              alt={typeItems[hoveredTypeCat]?.label || ''}
+              fill
+              className="object-cover transition-all duration-300"
+              sizes="480px"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Mega menu: Use of Zippers — same dimensions as Type */}
+      {openDropdown === 'use' && (
+        <div
+          className="absolute top-full left-0 z-50 flex bg-white"
+          style={{ marginTop: '10px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)', width: '860px' }}
+          onMouseLeave={() => setOpenDropdown(null)}
+        >
+          <div className="py-4 flex-1">
+            {useCats.map((cat, i) => (
+              <Link
+                key={cat.href}
+                href={cat.href}
+                className={`block px-6 py-3 text-sm font-[Jost] transition-colors ${
+                  hoveredUseCat === i ? 'text-black bg-gray-50' : 'text-gray-600 hover:text-black hover:bg-gray-50'
+                }`}
+                onMouseEnter={() => setHoveredUseCat(i)}
+                onClick={() => setOpenDropdown(null)}
+              >
+                {cat.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex-shrink-0 relative overflow-hidden bg-gray-100 self-stretch" style={{ width: '480px' }}>
+            <Image
+              src={useCats[hoveredUseCat]?.img || useCats[0].img}
+              alt={useCats[hoveredUseCat]?.label || ''}
+              fill
+              className="object-cover transition-all duration-300"
+              sizes="480px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <p className="text-white text-sm font-[Jost] font-light leading-tight">
+                {useCats[hoveredUseCat]?.label}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      </div>{/* end relative nav wrapper */}
 
       {/* AJAX Search overlay */}
       {searchOpen && (
