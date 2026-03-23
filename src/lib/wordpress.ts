@@ -1,4 +1,5 @@
 import type { Locale, WPPage, WPPost, WPProduct, ZipperCard, ZipperDetails, MenuItem, WPMedia } from './types';
+import { cleanZipperName } from './utils';
 
 const WP_API = 'https://trimsandfasteners.com/wp-json';
 
@@ -111,7 +112,8 @@ export async function getZippersByIds(ids: number[], locale: Locale): Promise<Zi
       { next: { revalidate: 3600 } }
     );
     if (!res.ok) return [];
-    return res.json();
+    const data: ZipperCard[] = await res.json();
+    return data.map(z => ({ ...z, name: cleanZipperName(z.name) }));
   } catch {
     return [];
   }

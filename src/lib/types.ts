@@ -55,6 +55,7 @@ export interface ZipperCard {
 export interface ZipperDetails extends ZipperCard {
   description: string;
   specs: ZipperSpec[];
+  features?: string[];
   additionalImages?: string[];
   translations: Record<string, number>;
 }

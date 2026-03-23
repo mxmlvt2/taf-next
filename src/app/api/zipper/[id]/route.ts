@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cleanZipperName } from '@/lib/utils';
 
 const WP_API = 'https://trimsandfasteners.com/wp-json';
 
@@ -18,10 +19,11 @@ export async function GET(
       { next: { revalidate: 3600 } }
     );
     if (!res.ok) {
-      // Fallback: try to get popup data directly from elementor_library post
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
     const data = await res.json();
+    // Clean eng/en suffix from EN popup post titles
+    data.name = cleanZipperName(data.name);
     return NextResponse.json(data, {
       headers: {
         'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',

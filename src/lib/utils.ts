@@ -101,6 +101,15 @@ export function stripElementorHero(html: string): string {
   return html;
 }
 
+/**
+ * Strip language suffixes added to EN popup post titles in WP
+ * e.g. "CFOR-39 DS5YG eng" → "CFOR-39 DS5YG"
+ *      "VSOR-36 DA-3-eng"  → "VSOR-36 DA-3"
+ */
+export function cleanZipperName(name: string): string {
+  return name.replace(/[\s-]+en(g)?$/i, '').trim();
+}
+
 // Category slug mapping EN <-> PL
 export const CATEGORY_MAP: Record<string, { en: string; pl: string; enParent: string; plParent: string }> = {
   fashion: { en: 'fashion', pl: 'moda', enParent: 'use-of-zippers', plParent: 'zastosowanie-zamkow' },
