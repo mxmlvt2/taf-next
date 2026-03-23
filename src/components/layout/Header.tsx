@@ -1,7 +1,8 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { Menu, X, ChevronDown, Search, Phone } from 'lucide-react';
 import type { MenuItem } from '@/lib/types';
@@ -89,15 +90,76 @@ const USE_CATS_PL = [
   },
 ];
 
+interface SearchResult {
+  id: number;
+  title: { rendered: string };
+  slug: string;
+  link: string;
+  type: string;
+}
+
 export default function Header({ menu, translations }: HeaderProps) {
   const locale = useLocale() as Locale;
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [hoveredUseCat, setHoveredUseCat] = useState(0);
   const [hoveredTypeCat, setHoveredTypeCat] = useState(0);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [searchLoading, setSearchLoading] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const searchDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const useCats = locale === 'en' ? USE_CATS_EN : USE_CATS_PL;
+
+  // AJAX search
+  const doSearch = useCallback(async (q: string) => {
+    if (q.trim().length < 2) { setSearchResults([]); return; }
+    setSearchLoading(true);
+    try {
+      const lang = locale === 'pl' ? '&lang=pl' : '';
+      const res = await fetch(
+        `https://trimsandfasteners.com/wp-json/wp/v2/pages?search=${encodeURIComponent(q)}&per_page=6&_fields=id,title,slug,link,type${lang}`
+      );
+      const pages: SearchResult[] = await res.json();
+      // Also search posts
+      const res2 = await fetch(
+        `https://trimsandfasteners.com/wp-json/wp/v2/posts?search=${encodeURIComponent(q)}&per_page=4&_fields=id,title,slug,link,type${lang}`
+      );
+      const posts: SearchResult[] = await res2.json();
+      setSearchResults([...pages, ...posts].slice(0, 8));
+    } catch { setSearchResults([]); }
+    setSearchLoading(false);
+  }, [locale]);
+
+  const handleSearchInput = (q: string) => {
+    setSearchQuery(q);
+    if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    searchDebounceRef.current = setTimeout(() => doSearch(q), 300);
+  };
+
+  const openSearch = () => {
+    setSearchOpen(true);
+    setOpenDropdown(null);
+    setTimeout(() => searchInputRef.current?.focus(), 50);
+  };
+
+  const closeSearch = () => {
+    setSearchOpen(false);
+    setSearchQuery('');
+    setSearchResults([]);
+  };
+
+  // Convert WP link to Next.js path
+  const wpLinkToPath = (link: string) => {
+    try {
+      const url = new URL(link);
+      return url.pathname;
+    } catch { return '/'; }
+  };
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -315,13 +377,6 @@ export default function Header({ menu, translations }: HeaderProps) {
               </Link>
             ))}
 
-            {/* Search */}
-            <button
-              className="px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost] flex items-center gap-1"
-              aria-label="Search"
-            >
-              {locale === 'en' ? 'Search...' : 'Szukaj...'}
-            </button>
           </nav>
 
           {/* Right: search icon + lang flags + mobile toggle */}
@@ -330,6 +385,7 @@ export default function Header({ menu, translations }: HeaderProps) {
             <button
               className="hidden lg:flex items-center justify-center w-8 h-8 bg-black text-white hover:bg-gray-800 transition-colors"
               aria-label="Search"
+              onClick={openSearch}
             >
               <Search size={14} />
             </button>
@@ -361,6 +417,57 @@ export default function Header({ menu, translations }: HeaderProps) {
           </div>
         </div>
       </div>
+
+      {/* AJAX Search overlay */}
+      {searchOpen && (
+        <div className="absolute top-full left-0 right-0 bg-white shadow-2xl z-50 border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex items-center gap-3">
+              <Search size={18} className="text-gray-400 flex-shrink-0" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={e => handleSearchInput(e.target.value)}
+                placeholder={locale === 'en' ? 'Search pages and articles...' : 'Szukaj stron i artykułów...'}
+                className="flex-1 font-[Jost] text-sm text-gray-800 outline-none placeholder:text-gray-400 bg-transparent"
+                onKeyDown={e => { if (e.key === 'Escape') closeSearch(); }}
+              />
+              <button onClick={closeSearch} className="text-gray-400 hover:text-black transition-colors">
+                <X size={18} />
+              </button>
+            </div>
+            {searchQuery.length >= 2 && (
+              <div className="mt-3 border-t border-gray-100 pt-3">
+                {searchLoading ? (
+                  <p className="font-[Jost] text-sm text-gray-400 py-2">{locale === 'en' ? 'Searching...' : 'Szukam...'}</p>
+                ) : searchResults.length === 0 ? (
+                  <p className="font-[Jost] text-sm text-gray-400 py-2">{locale === 'en' ? 'No results found.' : 'Brak wyników.'}</p>
+                ) : (
+                  <ul className="space-y-0.5">
+                    {searchResults.map(r => (
+                      <li key={r.id}>
+                        <Link
+                          href={wpLinkToPath(r.link)}
+                          className="flex items-center gap-2 px-2 py-2.5 rounded hover:bg-gray-50 transition-colors group"
+                          onClick={closeSearch}
+                        >
+                          <Search size={12} className="text-gray-300 flex-shrink-0" />
+                          <span
+                            className="font-[Jost] text-sm text-gray-700 group-hover:text-black transition-colors"
+                            dangerouslySetInnerHTML={{ __html: r.title.rendered }}
+                          />
+                          <span className="ml-auto text-xs text-gray-300 font-[Jost]">{r.type}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Mobile menu */}
       {mobileOpen && (

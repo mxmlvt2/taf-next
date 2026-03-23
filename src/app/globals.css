@@ -18,15 +18,18 @@ body {
   line-height: 1.6;
 }
 
-/* Prose overrides to match WP body text */
-p, li {
-  color: #444;
-}
+/* Base defaults — inside @layer base so Tailwind utility classes (text-white etc.)
+   always override these when used directly on elements */
+@layer base {
+  p, li {
+    color: #444;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 300;
-  color: #111;
-  font-family: 'Jost', Arial, sans-serif;
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+    color: #111;
+    font-family: 'Jost', Arial, sans-serif;
+  }
 }
 
 @keyframes fadeIn {

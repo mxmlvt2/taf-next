@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CookieBanner from '@/components/layout/CookieBanner';
 import { getMenuItems } from '@/lib/wordpress';
 import type { Locale } from '@/lib/types';
 import '../globals.css';
@@ -48,6 +49,7 @@ export default async function LocaleLayout({
           <Header menu={menu} translations={{}} />
           <main>{children}</main>
           <Footer />
+          <CookieBanner />
         </NextIntlClientProvider>
       </body>
     </html>
