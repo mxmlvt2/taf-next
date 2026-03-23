@@ -199,20 +199,20 @@ export default function Header({ menu, translations }: HeaderProps) {
 
               {openDropdown === 'type' && (
                 <div
-                  className="absolute top-full left-0 mt-0 bg-white shadow-lg border border-gray-100 z-50 flex"
-                  style={{ minWidth: '480px' }}
+                  className="absolute top-full left-0 mt-0 bg-white shadow-xl border-0 z-50 flex"
+                  style={{ minWidth: '520px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {/* Left: list */}
-                  <div className="py-3 flex-1">
+                  <div className="py-4 flex-1">
                     {typeItems.map((item, i) => (
                       <div key={item.href}>
                         <Link
                           href={item.href}
-                          className={`block px-5 py-2.5 text-sm font-[Jost] transition-colors ${
+                          className={`block px-6 py-3 text-sm font-[Jost] transition-colors ${
                             hoveredTypeCat === i
                               ? 'text-black bg-gray-50'
-                              : 'text-gray-700 hover:text-black hover:bg-gray-50'
+                              : 'text-gray-600 hover:text-black hover:bg-gray-50'
                           }`}
                           onMouseEnter={() => setHoveredTypeCat(i)}
                           onClick={() => setOpenDropdown(null)}
@@ -222,7 +222,7 @@ export default function Header({ menu, translations }: HeaderProps) {
                         {item.sub && (
                           <Link
                             href={item.sub.href}
-                            className="block pl-9 pr-5 py-2 text-xs text-gray-500 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
+                            className="block pl-10 pr-6 py-2 text-xs text-gray-400 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
                             onMouseEnter={() => setHoveredTypeCat(i)}
                             onClick={() => setOpenDropdown(null)}
                           >
@@ -232,14 +232,14 @@ export default function Header({ menu, translations }: HeaderProps) {
                       </div>
                     ))}
                   </div>
-                  {/* Right: hover image */}
-                  <div className="w-48 flex-shrink-0 relative overflow-hidden bg-gray-100">
+                  {/* Right: hover image — fills full height */}
+                  <div className="w-56 flex-shrink-0 relative overflow-hidden bg-gray-200 self-stretch">
                     <Image
                       src={typeItems[hoveredTypeCat]?.img || typeItems[0].img}
                       alt={typeItems[hoveredTypeCat]?.label || ''}
                       fill
                       className="object-cover transition-all duration-300"
-                      sizes="192px"
+                      sizes="224px"
                     />
                   </div>
                 </div>
@@ -259,20 +259,20 @@ export default function Header({ menu, translations }: HeaderProps) {
 
               {openDropdown === 'use' && (
                 <div
-                  className="absolute top-full left-0 mt-0 bg-white shadow-lg border border-gray-100 z-50 flex"
-                  style={{ minWidth: '560px' }}
+                  className="absolute top-full left-0 mt-0 bg-white z-50 flex"
+                  style={{ minWidth: '580px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {/* Left: category list */}
-                  <div className="py-3 flex-1">
+                  <div className="py-4 flex-1">
                     {useCats.map((cat, i) => (
                       <Link
                         key={cat.href}
                         href={cat.href}
-                        className={`block px-5 py-2.5 text-sm font-[Jost] transition-colors ${
+                        className={`block px-6 py-3 text-sm font-[Jost] transition-colors ${
                           hoveredUseCat === i
                             ? 'text-black bg-gray-50'
-                            : 'text-gray-700 hover:text-black hover:bg-gray-50'
+                            : 'text-gray-600 hover:text-black hover:bg-gray-50'
                         }`}
                         onMouseEnter={() => setHoveredUseCat(i)}
                         onClick={() => setOpenDropdown(null)}
@@ -282,16 +282,16 @@ export default function Header({ menu, translations }: HeaderProps) {
                     ))}
                   </div>
 
-                  {/* Right: hover image */}
-                  <div className="w-48 flex-shrink-0 relative overflow-hidden bg-gray-100">
+                  {/* Right: hover image — fills full height */}
+                  <div className="w-60 flex-shrink-0 relative overflow-hidden bg-gray-200 self-stretch">
                     <Image
                       src={useCats[hoveredUseCat]?.img || useCats[0].img}
                       alt={useCats[hoveredUseCat]?.label || ''}
                       fill
                       className="object-cover transition-all duration-300"
-                      sizes="192px"
+                      sizes="240px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
                     <div className="absolute bottom-3 left-3 right-3">
                       <p className="text-white text-xs font-[Jost] leading-tight">
                         {useCats[hoveredUseCat]?.label}
