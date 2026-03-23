@@ -264,7 +264,7 @@ export default function Header({ menu, translations }: HeaderProps) {
               {openDropdown === 'type' && (
                 <div
                   className="absolute top-full left-0 mt-0 bg-white shadow-xl border-0 z-50 flex"
-                  style={{ minWidth: '680px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
+                  style={{ minWidth: '820px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {/* Left: list */}
@@ -296,14 +296,14 @@ export default function Header({ menu, translations }: HeaderProps) {
                       </div>
                     ))}
                   </div>
-                  {/* Right: hover image — fills full height */}
-                  <div className="w-72 flex-shrink-0 relative overflow-hidden bg-gray-200 self-stretch">
+                  {/* Right: hover image — 16:9 aspect ratio */}
+                  <div className="flex-shrink-0 relative overflow-hidden bg-gray-100 self-stretch" style={{ width: '430px' }}>
                     <Image
                       src={typeItems[hoveredTypeCat]?.img || typeItems[0].img}
                       alt={typeItems[hoveredTypeCat]?.label || ''}
                       fill
                       className="object-cover transition-all duration-300"
-                      sizes="288px"
+                      sizes="430px"
                     />
                   </div>
                 </div>
@@ -324,7 +324,7 @@ export default function Header({ menu, translations }: HeaderProps) {
               {openDropdown === 'use' && (
                 <div
                   className="absolute top-full left-0 mt-0 bg-white z-50 flex"
-                  style={{ minWidth: '760px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
+                  style={{ minWidth: '960px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {/* Left: category list */}
@@ -346,18 +346,18 @@ export default function Header({ menu, translations }: HeaderProps) {
                     ))}
                   </div>
 
-                  {/* Right: hover image — fills full height */}
-                  <div className="w-80 flex-shrink-0 relative overflow-hidden bg-gray-200 self-stretch">
+                  {/* Right: hover image — 16:9 aspect ratio */}
+                  <div className="flex-shrink-0 relative overflow-hidden bg-gray-100 self-stretch" style={{ width: '520px' }}>
                     <Image
                       src={useCats[hoveredUseCat]?.img || useCats[0].img}
                       alt={useCats[hoveredUseCat]?.label || ''}
                       fill
                       className="object-cover transition-all duration-300"
-                      sizes="320px"
+                      sizes="520px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <p className="text-white text-xs font-[Jost] leading-tight">
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <p className="text-white text-sm font-[Jost] font-light leading-tight">
                         {useCats[hoveredUseCat]?.label}
                       </p>
                     </div>

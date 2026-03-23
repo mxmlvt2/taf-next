@@ -5,24 +5,56 @@ import { useLocale } from 'next-intl';
 import type { Locale } from '@/lib/types';
 
 const STORAGE_KEY = 'taf_cookie_consent';
+const GA_ID = 'G-1WQEEEEQ4B';
+
+// Push gtag commands safely (gtag may not be loaded yet)
+function gtagConsent(granted: boolean) {
+  if (typeof window === 'undefined') return;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const win = window as any;
+  win.dataLayer = win.dataLayer || [];
+  function gtag(...args: unknown[]) { win.dataLayer.push(args); }
+
+  if (granted) {
+    gtag('consent', 'update', {
+      analytics_storage: 'granted',
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+    });
+  } else {
+    gtag('consent', 'update', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+  }
+}
 
 export default function CookieBanner() {
   const locale = useLocale() as Locale;
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!localStorage.getItem(STORAGE_KEY)) {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) {
       setVisible(true);
+    } else {
+      // Re-apply stored consent on every page load so GA respects it
+      gtagConsent(saved === 'accepted');
     }
   }, []);
 
   const accept = () => {
     localStorage.setItem(STORAGE_KEY, 'accepted');
+    gtagConsent(true);
     setVisible(false);
   };
 
   const decline = () => {
     localStorage.setItem(STORAGE_KEY, 'declined');
+    gtagConsent(false);
     setVisible(false);
   };
 
@@ -36,8 +68,8 @@ export default function CookieBanner() {
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <p className="font-[Jost] text-sm text-white/80 leading-relaxed flex-1">
           {isEn
-            ? 'We use cookies to improve your browsing experience and analyse site traffic. By clicking "Accept", you consent to our use of cookies.'
-            : 'Używamy plików cookie w celu poprawy komfortu przeglądania i analizy ruchu na stronie. Klikając „Akceptuj", wyrażasz zgodę na ich użycie.'}{' '}
+            ? 'We use cookies to improve your browsing experience and analyse site traffic. By clicking "Accept", you consent to our use of analytics and advertising cookies.'
+            : 'Używamy plików cookie w celu poprawy komfortu przeglądania i analizy ruchu na stronie. Klikając „Akceptuj", wyrażasz zgodę na używanie plików cookie analitycznych i reklamowych.'}{' '}
           <Link href={privacyHref} className="underline text-white/60 hover:text-white transition-colors">
             {isEn ? 'Privacy Policy' : 'Polityka prywatności'}
           </Link>
@@ -60,3 +92,6 @@ export default function CookieBanner() {
     </div>
   );
 }
+
+// GA4 ID export so layout can use it
+export { GA_ID };
