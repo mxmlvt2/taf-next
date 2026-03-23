@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPageBySlug, getZippersByIds, extractYoastMeta } from '@/lib/wordpress';
+import { stripElementorHero } from '@/lib/utils';
 import type { Locale } from '@/lib/types';
 import ZipperGrid from '@/components/zipper/ZipperGrid';
 import { CATEGORY_POPUP_IDS } from '@/lib/popup-ids';
@@ -159,8 +160,8 @@ export default async function CategoryPage({ params }: Props) {
       {page?.content.rendered && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div
-            className="prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl prose-img:shadow-md"
-            dangerouslySetInnerHTML={{ __html: page.content.rendered }}
+            className="elementor-content prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl prose-img:shadow-md"
+            dangerouslySetInnerHTML={{ __html: stripElementorHero(page.content.rendered) }}
           />
         </section>
       )}

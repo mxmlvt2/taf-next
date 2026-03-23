@@ -21,6 +21,45 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
+/**
+ * Strip the first Elementor hero section from page content.
+ * Elementor pages start with a full-width hero container (e-con e-parent)
+ * that duplicates our custom hero. We remove it and only keep the body content.
+ */
+export function stripElementorHero(html: string): string {
+  const marker = 'e-con e-parent';
+  const firstIdx = html.indexOf(marker);
+  if (firstIdx === -1) return html;
+
+  // Walk back to the opening <div
+  let start = firstIdx;
+  while (start > 0 && !(html[start] === '<' && html[start + 1] === 'd')) {
+    start--;
+  }
+
+  // Count div depth to find matching </div>
+  let depth = 0;
+  let i = start;
+  while (i < html.length) {
+    if (html[i] === '<' && html[i + 1] === 'd' && html[i + 2] === 'i' && html[i + 3] === 'v') {
+      depth++;
+      // skip to end of opening tag
+      while (i < html.length && html[i] !== '>') i++;
+      i++;
+    } else if (html[i] === '<' && html[i + 1] === '/' && html[i + 2] === 'd' && html[i + 3] === 'i' && html[i + 4] === 'v' && html[i + 5] === '>') {
+      depth--;
+      if (depth === 0) {
+        return html.slice(0, start) + html.slice(i + 6);
+      }
+      i += 6;
+    } else {
+      i++;
+    }
+  }
+
+  return html;
+}
+
 // Category slug mapping EN <-> PL
 export const CATEGORY_MAP: Record<string, { en: string; pl: string; enParent: string; plParent: string }> = {
   fashion: { en: 'fashion', pl: 'moda', enParent: 'use-of-zippers', plParent: 'zastosowanie-zamkow' },

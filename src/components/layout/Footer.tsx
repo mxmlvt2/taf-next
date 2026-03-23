@@ -49,10 +49,10 @@ export default function Footer() {
               {locale === 'en' ? 'Contact' : 'Kontakt'}
             </h3>
             <address className="not-italic space-y-1 text-sm font-[Jost] text-gray-400 leading-relaxed">
-              <p>EHKA Maria Kulicka</p>
+              <p>EMKA Marta Kubicka</p>
               <p>ul. Grzybowska 87</p>
               <p>00-844 Warszawa</p>
-              <p className="text-gray-500 text-xs">NIP: 118-173-51-65</p>
+              <p className="text-gray-500 text-xs">NIP: 118-171-51-85</p>
               <p className="text-gray-500 text-xs mb-3">REGON: 147429516</p>
               <a href="tel:+48221101101" className="flex items-center gap-1.5 hover:text-white transition-colors mt-3 text-sm">
                 <Phone size={11} />

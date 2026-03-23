@@ -131,10 +131,12 @@ export default function Header({ menu, translations }: HeaderProps) {
   const simpleItems = locale === 'en'
     ? [
         { label: 'About Us', href: '/about-us/' },
+        { label: 'Blog', href: '/blog/' },
         { label: 'Contact', href: '/contact/' },
       ]
     : [
         { label: 'O nas', href: '/pl/o-nas/' },
+        { label: 'Blog', href: '/pl/blog/' },
         { label: 'Kontakt', href: '/pl/kontakt/' },
       ];
 
@@ -200,7 +202,7 @@ export default function Header({ menu, translations }: HeaderProps) {
               {openDropdown === 'type' && (
                 <div
                   className="absolute top-full left-0 mt-0 bg-white shadow-xl border-0 z-50 flex"
-                  style={{ minWidth: '520px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
+                  style={{ minWidth: '680px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {/* Left: list */}
@@ -233,13 +235,13 @@ export default function Header({ menu, translations }: HeaderProps) {
                     ))}
                   </div>
                   {/* Right: hover image — fills full height */}
-                  <div className="w-56 flex-shrink-0 relative overflow-hidden bg-gray-200 self-stretch">
+                  <div className="w-72 flex-shrink-0 relative overflow-hidden bg-gray-200 self-stretch">
                     <Image
                       src={typeItems[hoveredTypeCat]?.img || typeItems[0].img}
                       alt={typeItems[hoveredTypeCat]?.label || ''}
                       fill
                       className="object-cover transition-all duration-300"
-                      sizes="224px"
+                      sizes="288px"
                     />
                   </div>
                 </div>
@@ -260,7 +262,7 @@ export default function Header({ menu, translations }: HeaderProps) {
               {openDropdown === 'use' && (
                 <div
                   className="absolute top-full left-0 mt-0 bg-white z-50 flex"
-                  style={{ minWidth: '580px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
+                  style={{ minWidth: '760px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {/* Left: category list */}
@@ -283,13 +285,13 @@ export default function Header({ menu, translations }: HeaderProps) {
                   </div>
 
                   {/* Right: hover image — fills full height */}
-                  <div className="w-60 flex-shrink-0 relative overflow-hidden bg-gray-200 self-stretch">
+                  <div className="w-80 flex-shrink-0 relative overflow-hidden bg-gray-200 self-stretch">
                     <Image
                       src={useCats[hoveredUseCat]?.img || useCats[0].img}
                       alt={useCats[hoveredUseCat]?.label || ''}
                       fill
                       className="object-cover transition-all duration-300"
-                      sizes="240px"
+                      sizes="320px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
                     <div className="absolute bottom-3 left-3 right-3">

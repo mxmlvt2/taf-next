@@ -95,7 +95,7 @@ export default async function ContactPage({ params }: Props) {
               className="h-12 w-auto"
             />
             <div className="font-[Jost] text-sm text-gray-700 space-y-1">
-              <p className="font-medium">EHKA Maria Kulicka</p>
+              <p className="font-medium">EMKA Marta Kubicka</p>
               <p>ul. Grzybowska 87</p>
               <p>00-844 Warszawa</p>
               <p>NIP: 118-173-51-65</p>

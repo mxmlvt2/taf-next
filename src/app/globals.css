@@ -48,28 +48,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .elementor { width: 100%; }
 
-/* Flex containers */
-.e-con {
+/* All Elementor containers default to block (stacking) */
+.e-con { display: block; width: 100%; }
+
+/* The .e-con-inner inside a boxed container IS a two-column flex row */
+.e-con-inner {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 2.5rem;
+  align-items: flex-start;
   width: 100%;
 }
-.e-con-boxed > .e-con-inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  width: 100%;
-  max-width: 100%;
-}
-/* Full-width child (takes all available space in flex parent) */
-.e-con-full {
-  flex: 1 0 calc(50% - 1rem);
-  min-width: 280px;
-}
-.e-child {
+
+/* Direct children of e-con-inner: side-by-side columns */
+.e-con-inner > .e-con {
   flex: 1;
-  min-width: 280px;
+  min-width: min(300px, 100%);
+  display: block;
 }
 
 /* Widget containers */
