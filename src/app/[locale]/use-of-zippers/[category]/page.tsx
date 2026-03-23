@@ -3,11 +3,14 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPageBySlug, getZippersByIds, extractYoastMeta } from '@/lib/wordpress';
-import { stripElementorHero, extractFaqItems, stripFaqBlock } from '@/lib/utils';
+import { extractFaqItems, stripFaqBlock } from '@/lib/utils';
 import type { Locale } from '@/lib/types';
 import ZipperGrid from '@/components/zipper/ZipperGrid';
 import { CATEGORY_POPUP_IDS } from '@/lib/popup-ids';
 import FaqAccordion from '@/components/sections/FaqAccordion';
+import FireProtectionContent from '@/components/sections/FireProtectionContent';
+import MilitaryContent from '@/components/sections/MilitaryContent';
+import CyclingSportswearContent from '@/components/sections/CyclingSportswearContent';
 
 // EN slug → WP slug mapping (both EN and PL)
 const CATEGORY_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string }> = {
@@ -162,15 +165,10 @@ export default async function CategoryPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Page content from WP (editorial sections with alternating image+text) */}
-      {cleanContent && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div
-            className="elementor-content prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl prose-img:shadow-md"
-            dangerouslySetInnerHTML={{ __html: stripElementorHero(cleanContent) }}
-          />
-        </section>
-      )}
+      {/* Hardcoded content sections (above product grid) */}
+      {enSlug === 'fire-protection' && <FireProtectionContent locale={locale} position="above" />}
+      {enSlug === 'military' && <MilitaryContent locale={locale} position="above" />}
+      {enSlug === 'cycling-sportswear' && <CyclingSportswearContent locale={locale} position="above" />}
 
       {/* Our products section */}
       {zippers.length > 0 && (
@@ -186,6 +184,11 @@ export default async function CategoryPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      {/* Hardcoded content sections (below product grid) */}
+      {enSlug === 'fire-protection' && <FireProtectionContent locale={locale} position="below" />}
+      {enSlug === 'military' && <MilitaryContent locale={locale} position="below" />}
+      {enSlug === 'cycling-sportswear' && <CyclingSportswearContent locale={locale} position="below" />}
 
       {/* FAQ accordion (extracted from Elementor HTML widget) */}
       <FaqAccordion items={faqItems} locale={locale} />
