@@ -36,7 +36,7 @@ export default async function AboutPage({ params }: Props) {
   return (
     <div className="bg-[#f5f3ef] min-h-screen">
       {/* Dark hero */}
-      <div className="relative bg-[#111111] text-white py-20 overflow-hidden">
+      <div className="subpage-hero relative bg-[#111111] text-white min-h-[90vh] flex items-center overflow-hidden">
         <Image
           src="https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg"
           alt=""
@@ -54,7 +54,7 @@ export default async function AboutPage({ params }: Props) {
             <span>›</span>
             <span className="text-white/70">{locale === 'en' ? 'About Us' : 'O nas'}</span>
           </nav>
-          <h1 className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl">
+          <h1 className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl text-white">
             {locale === 'en' ? 'About TAF' : 'O nas'}
           </h1>
           <p className="font-[Jost] text-white/60 mb-8 max-w-2xl text-sm leading-relaxed">

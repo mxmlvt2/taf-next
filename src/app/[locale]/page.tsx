@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
 import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
+import { stripElementorHero } from '@/lib/utils';
 import type { Locale } from '@/lib/types';
 import Hero from '@/components/sections/Hero';
 import HomeSections from '@/components/sections/HomeSections';
@@ -39,16 +39,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
+  const lang = locale as Locale;
 
   const HERO_SLIDES = [
     'https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg',
     'https://trimsandfasteners.com/wp-content/uploads/2025/06/metalslider2-scaled.jpg',
   ];
 
+  // Fetch WP 'start' page content to display below the hero
+  const page = await getPageBySlug('start', lang);
+  const wpContent = page?.content.rendered
+    ? stripElementorHero(page.content.rendered)
+    : null;
+
   return (
     <>
       <Hero slides={HERO_SLIDES} />
-      <HomeSections locale={locale as Locale} />
+      {wpContent ? (
+        <div
+          className="elementor-content"
+          dangerouslySetInnerHTML={{ __html: wpContent }}
+        />
+      ) : (
+        <HomeSections locale={lang} />
+      )}
     </>
   );
 }

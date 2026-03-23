@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article>
       {/* Dark hero with post title */}
-      <div className="bg-[#111111] text-white py-16 sm:py-20">
+      <div className="subpage-hero bg-[#111111] text-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href={backHref}

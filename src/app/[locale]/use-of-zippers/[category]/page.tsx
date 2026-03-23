@@ -111,7 +111,7 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <div>
       {/* Dark hero with background image */}
-      <div className="relative bg-[#111111] text-white py-20 overflow-hidden">
+      <div className="subpage-hero relative bg-[#111111] text-white min-h-[90vh] flex items-center overflow-hidden">
         {meta.heroImg && (
           <>
             <Image
@@ -142,7 +142,7 @@ export default async function CategoryPage({ params }: Props) {
           </nav>
 
           <h1
-            className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl"
+            className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl text-white"
             dangerouslySetInnerHTML={{ __html: title }}
           />
 

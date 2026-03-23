@@ -136,17 +136,23 @@ function stripNestedDiv(html: string, startPattern: RegExp): string {
  */
 export function cleanBlogContent(html: string): string {
   let result = html;
-  // TOC plugins
-  result = stripNestedDiv(result, /<div[^>]*id=["']ez-toc-container["']/i);
+  // TOC plugins — div-based
+  result = stripNestedDiv(result, /<div[^>]*id=["']?ez-toc-container["']?/i);
   result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*\bez-toc\b[^"']*["']/i);
   result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*wp-block-rank-math-toc-block[^"']*["']/i);
   result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*luckywp-toc[^"']*["']/i);
   result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*wp-block-table-of-contents[^"']*["']/i);
-  // Related / other posts
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*\btoc\b[^"']*["']/i);
+  // Related / other posts — by class or id
+  result = stripNestedDiv(result, /<div[^>]*id=["']?jp-relatedposts["']?/i);
   result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*jp-relatedposts[^"']*["']/i);
   result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*yarpp-related[^"']*["']/i);
   result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*related-posts[^"']*["']/i);
   result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*elementor-widget-posts[^"']*["']/i);
+  // Strip SVG spinner/progress circles (loading state from TOC plugins)
+  result = result.replace(/<svg[\s\S]*?<\/svg>/gi, '');
+  // Strip standalone "table of contents" links/text left by some plugins
+  result = result.replace(/<[a-z][^>]*>\s*[Tt]able [Oo]f [Cc]ontents\s*<\/[a-z]+>/g, '');
   return result;
 }
 
