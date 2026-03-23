@@ -127,6 +127,25 @@ footer address {
   height: auto;
   display: block;
   border-radius: 0.5rem;
+  transition: transform 0.5s ease;
+}
+
+/* Image hover zoom — zoom within the container frame */
+.elementor-widget-image {
+  overflow: hidden;
+}
+.elementor-widget-image:hover img,
+.elementor-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Prose content images */
+.prose img {
+  transition: transform 0.5s ease;
+}
+.prose figure:hover img,
+.prose a:hover img {
+  transform: scale(1.05);
 }
 
 /* Buttons */
