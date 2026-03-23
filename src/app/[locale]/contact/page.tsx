@@ -98,7 +98,7 @@ export default async function ContactPage({ params }: Props) {
               <p className="font-medium">EMKA Marta Kubicka</p>
               <p>ul. Grzybowska 87</p>
               <p>00-844 Warszawa</p>
-              <p>NIP: 118-173-51-65</p>
+              <p>NIP: 118-171-51-85</p>
               <p>REGON: 147429516</p>
             </div>
             <div className="font-[Jost] text-sm text-gray-700 space-y-2">

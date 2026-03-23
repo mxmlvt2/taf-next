@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
+import { stripElementorHero } from '@/lib/utils';
 import type { Locale } from '@/lib/types';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -42,8 +43,8 @@ export default async function SizeChartPage({ params }: Props) {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 overflow-x-auto">
         {page?.content.rendered ? (
           <div
-            className="prose prose-gray max-w-none font-[Jost]"
-            dangerouslySetInnerHTML={{ __html: page.content.rendered }}
+            className="elementor-content prose prose-gray max-w-none font-[Jost]"
+            dangerouslySetInnerHTML={{ __html: stripElementorHero(page.content.rendered) }}
           />
         ) : (
           <p className="font-[Jost] text-gray-400">Content loading...</p>
