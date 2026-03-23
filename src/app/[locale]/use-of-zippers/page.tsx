@@ -53,7 +53,7 @@ const CATEGORIES = [
     labelEn: 'Buckles & Plastic Hardware',
     labelPl: 'Zapięcia & elementy plastikowe',
     hrefEn: '/use-of-zippers/buckles-plastic-hardware/',
-    hrefPl: '/pl/zapiecia-elementy-plastikowe/',
+    hrefPl: '/pl/zastosowanie-zamkow/zapiecia-elementy-plastikowe/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png',
   },
 ];
@@ -92,8 +92,17 @@ export default async function UseOfZippersPage({ params }: Props) {
   return (
     <div>
       {/* Dark hero */}
-      <div className="bg-[#111111] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#111111] text-white py-20 overflow-hidden">
+        <Image
+          src="https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png"
+          alt=""
+          fill
+          className="object-cover opacity-30"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={isEn ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {isEn ? 'Home' : 'Start'}
@@ -122,6 +131,7 @@ export default async function UseOfZippersPage({ params }: Props) {
           </Link>
         </div>
       </div>
+
 
       {/* Sub-category cards */}
       <section className="bg-[#f5f3ef] py-16">

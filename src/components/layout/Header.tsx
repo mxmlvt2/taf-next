@@ -84,7 +84,7 @@ const USE_CATS_PL = [
   },
   {
     label: 'Zapięcia i elementy plastikowe',
-    href: '/pl/zapiecia-elementy-plastikowe/',
+    href: '/pl/zastosowanie-zamkow/zapiecia-elementy-plastikowe/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png',
   },
 ];
@@ -147,7 +147,7 @@ export default function Header({ menu, translations }: HeaderProps) {
             <div className="flex items-center gap-5">
               <a href="tel:+48221101101" className="flex items-center gap-1.5 hover:text-black transition-colors">
                 <Phone size={11} />
-                +48 22 1101 01
+                +48 22 1101101
               </a>
               <a href="tel:+48723331331" className="flex items-center gap-1.5 hover:text-black transition-colors">
                 <Phone size={11} />

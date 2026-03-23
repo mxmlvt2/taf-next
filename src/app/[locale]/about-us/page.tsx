@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
 import type { Locale } from '@/lib/types';
 
@@ -29,8 +30,46 @@ export default async function AboutPage({ params }: Props) {
   const slug = locale === 'en' ? 'about-us' : 'o-nas';
   const page = await getPageBySlug(slug, locale as Locale);
 
+  const contactHref = locale === 'en' ? '/contact/' : '/pl/kontakt/';
+
   return (
     <div className="bg-[#f5f3ef] min-h-screen">
+      {/* Dark hero */}
+      <div className="relative bg-[#111111] text-white py-20 overflow-hidden">
+        <Image
+          src="https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-30"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+            <Link href={locale === 'en' ? '/' : '/pl/'} className="hover:text-white transition-colors">
+              {locale === 'en' ? 'Home' : 'Start'}
+            </Link>
+            <span>›</span>
+            <span className="text-white/70">{locale === 'en' ? 'About Us' : 'O nas'}</span>
+          </nav>
+          <h1 className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl">
+            {locale === 'en' ? 'About TAF' : 'O nas'}
+          </h1>
+          <p className="font-[Jost] text-white/60 mb-8 max-w-2xl text-sm leading-relaxed">
+            {locale === 'en'
+              ? 'Professional distributor of YKK zippers and fasteners serving European manufacturers.'
+              : 'Profesjonalny dystrybutor zamków YKK obsługujący europejskich producentów.'}
+          </p>
+          <Link
+            href={contactHref}
+            className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+          >
+            {locale === 'en' ? 'Contact us' : 'Skontaktuj się'}
+          </Link>
+        </div>
+      </div>
+
       {/* Main about section — cream background, two-column */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

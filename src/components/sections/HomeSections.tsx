@@ -76,7 +76,7 @@ export default async function HomeSections({ locale }: HomeSectionsProps) {
       slug: isEn ? 'buckles-plastic-hardware' : 'zapiecia-elementy-plastikowe',
       label: isEn ? 'Buckles & Plastic Hardware' : 'Zapięcia & elementy plastikowe',
       img: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png',
-      href: isEn ? `${base}/use-of-zippers/buckles-plastic-hardware/` : '/pl/zapiecia-elementy-plastikowe/',
+      href: isEn ? `${base}/use-of-zippers/buckles-plastic-hardware/` : '/pl/zastosowanie-zamkow/zapiecia-elementy-plastikowe/',
     },
   ];
 
