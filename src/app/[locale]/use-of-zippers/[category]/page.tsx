@@ -1,20 +1,21 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getPageBySlug, getZippersByIds, extractYoastMeta } from '@/lib/wordpress';
 import type { Locale } from '@/lib/types';
 import ZipperGrid from '@/components/zipper/ZipperGrid';
 import { CATEGORY_POPUP_IDS } from '@/lib/popup-ids';
 
 // EN slug → WP slug mapping (both EN and PL)
-const CATEGORY_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string }> = {
-  fashion: { wpSlugEn: 'fashion', wpSlugPl: 'moda', labelEn: 'Fashion', labelPl: 'Moda' },
-  'cycling-sportswear': { wpSlugEn: 'cycling-sportswear', wpSlugPl: 'odziez-sportowa', labelEn: 'Cycling & Sportswear', labelPl: 'Kolarstwo & odzież sportowa' },
-  baby: { wpSlugEn: 'baby', wpSlugPl: 'dzieci', labelEn: 'Baby', labelPl: 'Dzieci' },
-  military: { wpSlugEn: 'military', wpSlugPl: 'wojsko', labelEn: 'Military', labelPl: 'Wojsko' },
-  furniture: { wpSlugEn: 'furniture', wpSlugPl: 'meble', labelEn: 'Furniture', labelPl: 'Meble' },
-  'fire-protection': { wpSlugEn: 'fire-protection', wpSlugPl: 'odziez-ognioodporna', labelEn: 'Fire-Resistant Clothing', labelPl: 'Odzież ognioodporna' },
-  'buckles-plastic-hardware': { wpSlugEn: 'buckles-plastic-hardware', wpSlugPl: 'zapiecia-elementy-plastikowe', labelEn: 'Buckles & Plastic Hardware', labelPl: 'Zapięcia & elementy plastikowe' },
+const CATEGORY_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string }> = {
+  fashion: { wpSlugEn: 'fashion', wpSlugPl: 'moda', labelEn: 'Fashion', labelPl: 'Moda', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png' },
+  'cycling-sportswear': { wpSlugEn: 'cycling-sportswear', wpSlugPl: 'odziez-sportowa', labelEn: 'Cycling & Sportswear', labelPl: 'Kolarstwo & odzież sportowa', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png' },
+  baby: { wpSlugEn: 'baby', wpSlugPl: 'dzieci', labelEn: 'Baby', labelPl: 'Dzieci', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png' },
+  military: { wpSlugEn: 'military', wpSlugPl: 'wojsko', labelEn: 'Military', labelPl: 'Wojsko', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png' },
+  furniture: { wpSlugEn: 'furniture', wpSlugPl: 'meble', labelEn: 'Furniture', labelPl: 'Meble', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png' },
+  'fire-protection': { wpSlugEn: 'fire-protection', wpSlugPl: 'odziez-ognioodporna', labelEn: 'Fire-Resistant Clothing', labelPl: 'Odzież ognioodporna', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png' },
+  'buckles-plastic-hardware': { wpSlugEn: 'buckles-plastic-hardware', wpSlugPl: 'zapiecia-elementy-plastikowe', labelEn: 'Buckles & Plastic Hardware', labelPl: 'Zapięcia & elementy plastikowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png' },
 };
 
 // PL slug → EN slug (for Polish routes)
@@ -102,9 +103,22 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <div>
-      {/* Dark hero */}
-      <div className="bg-[#111111] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Dark hero with background image */}
+      <div className="relative bg-[#111111] text-white py-20 overflow-hidden">
+        {meta.heroImg && (
+          <>
+            <Image
+              src={meta.heroImg}
+              alt=""
+              fill
+              className="object-cover opacity-40"
+              priority
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+          </>
+        )}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={locale === 'en' ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {locale === 'en' ? 'Home' : 'Start'}
