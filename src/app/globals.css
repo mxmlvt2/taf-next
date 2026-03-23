@@ -196,6 +196,20 @@ footer address {
   display: none !important;
 }
 
+/* Hide Elementor TOC widgets in blog content */
+.blog-article-content .elementor-widget-table-of-contents,
+.blog-article-content .elementor-toc__header,
+.blog-article-content .elementor-toc__body,
+.blog-article-content .elementor-toc__spinner-container,
+.blog-article-content [class*="elementor-toc"] {
+  display: none !important;
+}
+
+/* Hide any container that becomes empty after stripping (e.g. elementor-widget-heading with no visible text) */
+.blog-article-content .elementor-widget-container:empty {
+  display: none !important;
+}
+
 /* Spacing / margin */
 .elementor-widget {
   margin-bottom: 1.5rem;

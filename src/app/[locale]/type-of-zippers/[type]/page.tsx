@@ -8,6 +8,7 @@ import { CATEGORY_POPUP_IDS } from '@/lib/popup-ids';
 import type { Locale } from '@/lib/types';
 import ZipperGrid from '@/components/zipper/ZipperGrid';
 import FaqAccordion from '@/components/sections/FaqAccordion';
+import PlasticZippersContent from '@/components/sections/PlasticZippersContent';
 
 const TYPE_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string }> = {
   'nylon-zippers': { wpSlugEn: 'nylon-zippers', wpSlugPl: 'zamki-nylonowe', labelEn: 'Nylon Zippers', labelPl: 'Zamki nylonowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg' },
@@ -146,8 +147,13 @@ export default async function TypePage({ params }: Props) {
         </div>
       </div>
 
-      {/* Page content from WP (alternating image/text sections) */}
-      {cleanContent && (
+      {/* Hardcoded content sections (above product grid) */}
+      {enSlug === 'plastic-zippers' && (
+        <PlasticZippersContent locale={locale} position="above" />
+      )}
+
+      {/* WP content for non-plastic types */}
+      {enSlug !== 'plastic-zippers' && cleanContent && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div
             className="elementor-content prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl prose-img:shadow-md"
@@ -169,6 +175,11 @@ export default async function TypePage({ params }: Props) {
             <ZipperGrid zippers={zippers} />
           </div>
         </section>
+      )}
+
+      {/* Hardcoded content sections (below product grid) */}
+      {enSlug === 'plastic-zippers' && (
+        <PlasticZippersContent locale={locale} position="below" />
       )}
 
       {/* Nylon size chart link (only for nylon page) */}

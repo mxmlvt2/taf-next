@@ -153,6 +153,41 @@ export function cleanBlogContent(html: string): string {
   result = result.replace(/<svg[\s\S]*?<\/svg>/gi, '');
   // Strip standalone "table of contents" links/text left by some plugins
   result = result.replace(/<[a-z][^>]*>\s*[Tt]able [Oo]f [Cc]ontents\s*<\/[a-z]+>/g, '');
+  // Strip "table of contents" anchor links (case-insensitive)
+  result = result.replace(/<a[^>]*>[^<]*(?:table\s+of\s+contents|spis\s+tre[sś]ci)[^<]*<\/a>/gi, '');
+  // Strip Elementor TOC widget containers
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*elementor-widget-table-of-contents[^"']*["']/i);
+  result = stripNestedDiv(result, /<div[^>]*class=["'][^"']*elementor-toc[^"']*["']/i);
+  // Strip "Other posts" / "Inne artykuły" heading elements left after posts widget is stripped
+  result = result.replace(/<h[1-6][^>]*>[^<]*Other\s+posts[^<]*<\/h[1-6]>/gi, '');
+  result = result.replace(/<h[1-6][^>]*>[^<]*Inne\s+artyku[^<]*<\/h[1-6]>/gi, '');
+  result = result.replace(/<h[1-6][^>]*>[^<]*Inne\s+wpisy[^<]*<\/h[1-6]>/gi, '');
+  // Strip the entire e-con section that contains "Other posts" (Elementor section wrapping heading+posts)
+  // Find sections containing "Other posts" text and strip them
+  const otherPostsMarkers = ['Other posts', 'Inne artykuły', 'Inne wpisy'];
+  for (const marker of otherPostsMarkers) {
+    const markerIdx = result.indexOf(marker);
+    if (markerIdx === -1) continue;
+    // Walk back to find the nearest e-con e-parent opening
+    const sectionStart = result.lastIndexOf('e-con e-parent', markerIdx);
+    if (sectionStart === -1) continue;
+    const divStart = result.lastIndexOf('<div', sectionStart);
+    if (divStart === -1) continue;
+    // Use depth counting to find matching </div>
+    let depth = 0;
+    let i = divStart;
+    while (i < result.length) {
+      if (result[i] === '<' && result[i+1] === 'd' && result[i+2] === 'i' && result[i+3] === 'v') {
+        depth++;
+        while (i < result.length && result[i] !== '>') i++;
+        i++;
+      } else if (result[i] === '<' && result[i+1] === '/' && result[i+2] === 'd' && result[i+3] === 'i' && result[i+4] === 'v' && result[i+5] === '>') {
+        depth--;
+        if (depth === 0) { result = result.slice(0, divStart) + result.slice(i + 6); break; }
+        i += 6;
+      } else { i++; }
+    }
+  }
   return result;
 }
 

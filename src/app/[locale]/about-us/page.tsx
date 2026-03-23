@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
-import { stripElementorHero } from '@/lib/utils';
 import type { Locale } from '@/lib/types';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -28,8 +27,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
-  const slug = locale === 'en' ? 'about-us' : 'o-nas';
-  const page = await getPageBySlug(slug, locale as Locale);
 
   const contactHref = locale === 'en' ? '/contact/' : '/pl/kontakt/';
 
@@ -71,56 +68,57 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </div>
 
-      {/* WP content (full-width, Elementor layout) or fallback two-column */}
-      {page?.content.rendered ? (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div
-            className="elementor-content prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-light prose-headings:text-[#111] prose-p:text-gray-500 prose-p:text-sm prose-p:leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: stripElementorHero(page.content.rendered) }}
-          />
-        </section>
-      ) : (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="font-[Jost] text-xs font-normal text-gray-500 uppercase tracking-widest mb-4">
-                {locale === 'en' ? 'Trims and Fasteners Company' : 'Firma Trims and Fasteners'}
+      {/* Main content — hardcoded from WP, two-column with TAF watermark */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="font-[Jost] text-xs font-normal text-gray-500 uppercase tracking-widest mb-4">
+              {locale === 'en' ? 'Trims and Fasteners Company' : 'Firma Trims and Fasteners'}
+            </p>
+            <h2 className="font-[Jost] text-4xl sm:text-5xl font-light text-[#111] leading-tight mb-8">
+              {locale === 'en' ? 'Proven supplier of zip fasteners' : 'Sprawdzony dostawca zamków błyskawicznych'}
+            </h2>
+            <div className="space-y-4 font-[Jost] text-gray-500 text-sm leading-relaxed">
+              <p>
+                {locale === 'en'
+                  ? 'TAF – nearly two decades of experience in the global zip fastener market, we are able to offer complete solutions for all industries related to sewing. We always approach our work with passion and creativity, striving to provide solutions for all branches of the sewing industry.'
+                  : 'TAF – prawie dwie dekady doświadczenia na globalnym rynku zamków błyskawicznych. Oferujemy kompleksowe rozwiązania dla wszystkich gałęzi przemysłu związanych z szyciem. Zawsze podchodzimy do pracy z pasją i kreatywnością.'}
               </p>
-              <h2 className="font-[Jost] text-4xl sm:text-5xl font-light text-[#111] leading-tight mb-8">
-                {locale === 'en' ? 'Proven supplier of zip fasteners' : 'Sprawdzony dostawca zamków błyskawicznych'}
-              </h2>
-              <div className="space-y-4 font-[Jost] text-gray-500 text-sm leading-relaxed">
-                <p>
-                  {locale === 'en'
-                    ? 'TAF – Trims and Fasteners is a professional distributor of YKK zippers and fasteners, serving fashion, military, sportswear, furniture, and industrial clients across Europe.'
-                    : 'TAF – Trims and Fasteners to profesjonalny dystrybutor zamków YKK i akcesoriów, obsługujący klientów z branży modowej, wojskowej, sportowej, meblowej i przemysłowej w całej Europie.'}
-                </p>
-                <p>
-                  {locale === 'en'
-                    ? 'As an authorized YKK distributor, we offer the full range of nylon, plastic, and metal zippers with custom options for color, finish, and branding.'
-                    : 'Jako autoryzowany dystrybutor YKK oferujemy pełną gamę zamków nylonowych, plastikowych i metalowych z opcjami personalizacji koloru, wykończenia i brandingu.'}
-                </p>
-              </div>
+              <p>
+                {locale === 'en'
+                  ? 'We specialise in harsh environments, such as military and uniformed services, firefighter suits and specialized workwear, PPE/EOD, automotive, furniture, outdoor/cycling apparel, but we also supply products for mid-range and high-end fashion brands. We offer a comprehensive range of services and work with the best globally recognised brand — the Japanese company YKK.'
+                  : 'Specjalizujemy się w trudnych środowiskach: wojsko, służby mundurowe, kombinezony strażackie, odzież BHP, PPE/EOD, motoryzacja, meble, odzież outdoorowa i rowerowa. Dostarczamy również produkty dla marek modowych. Współpracujemy z YKK — uznanym globalnie japońskim producentem.'}
+              </p>
+              <p>
+                {locale === 'en'
+                  ? 'TAF zippers are always reliable, and our product and logistics expertise can easily simplify your supply chain. Excellent product knowledge, quick stats, and excellent customer service – that\'s what you can expect from our company.'
+                  : 'Zamki TAF są zawsze niezawodne, a nasza wiedza produktowa i logistyczna może z łatwością uprościć Twój łańcuch dostaw. Doskonała znajomość produktu, szybkie statystyki i znakomita obsługa — tego możesz oczekiwać od naszej firmy.'}
+              </p>
+              <p className="italic text-gray-400">
+                {locale === 'en'
+                  ? 'Passion, commitment, dedication, honesty and innovation – these are the values we hold dear. Tell us what you need, and we will take care of the rest!'
+                  : 'Pasja, zaangażowanie, poświęcenie, uczciwość i innowacja — to wartości, które cenimy. Powiedz nam, czego potrzebujesz — my zajmiemy się resztą!'}
+              </p>
             </div>
-            <div className="flex items-center justify-center lg:justify-end">
-              <div className="relative">
-                <div className="text-[12rem] sm:text-[16rem] font-[Jost] font-bold text-[#111]/8 leading-none select-none pointer-events-none">
-                  TAF
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Image
-                    src="https://trimsandfasteners.com/wp-content/uploads/2025/08/Projekt-bez-nazwy-75.png"
-                    alt="TAF - Trims and Fasteners"
-                    width={200}
-                    height={80}
-                    className="w-40 sm:w-52 h-auto"
-                  />
-                </div>
+          </div>
+          <div className="flex items-center justify-center lg:justify-end">
+            <div className="relative">
+              <div className="text-[12rem] sm:text-[16rem] font-[Jost] font-bold text-[#111]/8 leading-none select-none pointer-events-none">
+                TAF
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Image
+                  src="https://trimsandfasteners.com/wp-content/uploads/2025/08/Projekt-bez-nazwy-75.png"
+                  alt="TAF - Trims and Fasteners"
+                  width={200}
+                  height={80}
+                  className="w-40 sm:w-52 h-auto"
+                />
               </div>
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
     </div>
   );
 }
