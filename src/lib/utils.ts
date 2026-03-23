@@ -67,6 +67,11 @@ export function stripElementorHero(html: string): string {
   const firstIdx = html.indexOf(marker);
   if (firstIdx === -1) return html;
 
+  // If there's only one e-con e-parent section, don't strip —
+  // the entire page content would be removed (e.g. privacy-policy, simple pages)
+  const secondIdx = html.indexOf(marker, firstIdx + marker.length);
+  if (secondIdx === -1) return html;
+
   // Walk back to the opening <div
   let start = firstIdx;
   while (start > 0 && !(html[start] === '<' && html[start + 1] === 'd')) {

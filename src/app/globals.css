@@ -45,6 +45,14 @@ body {
 ::-webkit-scrollbar-track { background: #f1f1f1; }
 ::-webkit-scrollbar-thumb { background: #999; border-radius: 3px; }
 
+/* Footer: let p/li inherit color from their parent (address, div with text-gray-* classes)
+   instead of being overridden by the @layer base p { color: #444 } rule */
+footer p,
+footer li,
+footer address {
+  color: inherit;
+}
+
 /* ── Elementor content compatibility ─────────────────────────────────────── */
 /* Makes dangerouslySetInnerHTML Elementor output render correctly without
    Elementor's full stylesheet. Targets the structural layout classes only. */
