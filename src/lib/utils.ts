@@ -192,6 +192,41 @@ export function cleanBlogContent(html: string): string {
 }
 
 /**
+ * Split cleaned blog HTML into [beforeFaq, faqAndAfter].
+ * Looks for common FAQ section markers (Elementor accordion, custom faq-container, FAQ heading).
+ * If no FAQ found, returns [html, ''].
+ */
+export function splitContentAtFaq(html: string): [string, string] {
+  const markers = [
+    'elementor-widget-accordion',
+    'wp-block-faq',
+    'faq-container',
+    // Elementor section with FAQ heading — find <h2/h3 containing FAQ/Często
+    //<h[23][^>]*>[^<]*(FAQ|Często zadawane|Frequently asked)/i — handled below
+  ];
+
+  for (const marker of markers) {
+    const idx = html.indexOf(marker);
+    if (idx === -1) continue;
+    // Walk back to find the opening <div of this block
+    let start = idx;
+    while (start > 0 && !(html[start] === '<' && html[start + 1] === 'd')) {
+      start--;
+    }
+    return [html.slice(0, start), html.slice(start)];
+  }
+
+  // Fallback: look for a heading that contains FAQ text
+  const faqHeadingMatch = html.match(/<h[2-4][^>]*>[^<]*(FAQ|Często zadawane|Frequently asked)/i);
+  if (faqHeadingMatch && faqHeadingMatch.index !== undefined) {
+    const idx = faqHeadingMatch.index;
+    return [html.slice(0, idx), html.slice(idx)];
+  }
+
+  return [html, ''];
+}
+
+/**
  * Strip language suffixes added to EN popup post titles in WP
  * e.g. "CFOR-39 DS5YG eng" → "CFOR-39 DS5YG"
  *      "VSOR-36 DA-3-eng"  → "VSOR-36 DA-3"

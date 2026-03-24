@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getPostBySlug, getAllPostSlugs, extractYoastMeta, getRecentPosts } from '@/lib/wordpress';
 import type { Locale } from '@/lib/types';
-import { formatDate, cleanBlogContent } from '@/lib/utils';
+import { formatDate, cleanBlogContent, splitContentAtFaq } from '@/lib/utils';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -54,10 +54,11 @@ export default async function BlogPostPage({ params }: Props) {
   const backHref = locale === 'en' ? '/blog/' : '/pl/blog/';
   const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
 
-  // Other posts: recent posts excluding current
   const otherPosts = recentPosts.filter(p => p.slug !== slug).slice(0, 4);
 
-  // JSON-LD Article schema
+  const cleaned = cleanBlogContent(post.content.rendered);
+  const [beforeFaq, faqAndAfter] = splitContentAtFaq(cleaned);
+
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -74,17 +75,30 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.excerpt?.rendered?.replace(/<[^>]*>/g, '').trim().slice(0, 160),
   };
 
-  // FAQ schema from Yoast if available
   const faqSchema = post.yoast_head_json?.schema;
+
+  const FALLBACK_IMG = 'https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg';
+  const heroImg = featuredImage?.source_url || FALLBACK_IMG;
 
   return (
     <article>
-      {/* Dark hero with post title */}
-      <div className="subpage-hero bg-[#111111] text-white py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── Hero: featured image + dark overlay + title ── */}
+      <div className="subpage-hero relative min-h-[60vh] flex flex-col justify-end overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={heroImg}
+            alt=""
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/65" />
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-16">
           <Link
             href={backHref}
-            className="text-xs text-white/50 hover:text-white font-[Jost] mb-6 inline-block transition-colors"
+            className="text-xs text-white/60 hover:text-white font-[Jost] mb-6 inline-block transition-colors"
           >
             ← {locale === 'en' ? 'Back to blog' : 'Powrót do bloga'}
           </Link>
@@ -92,94 +106,79 @@ export default async function BlogPostPage({ params }: Props) {
             {formatDate(post.date, locale as Locale)}
           </time>
           <h1
-            className="font-[Jost] text-3xl sm:text-5xl font-light leading-snug max-w-4xl"
+            className="font-[Jost] text-3xl sm:text-5xl font-light leading-snug max-w-4xl text-white"
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
         </div>
       </div>
 
-      {/* Featured image (full-width below hero) */}
-      {featuredImage && (
-        <div className="relative w-full h-64 sm:h-96 overflow-hidden bg-gray-200">
-          <Image
-            src={featuredImage.source_url}
-            alt={featuredImage.alt_text || post.title.rendered}
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-        </div>
-      )}
-
-      {/* 2-column layout: article content + sidebar */}
+      {/* ── 2-column layout: article content + sidebar ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col lg:flex-row gap-12">
+
           {/* Left: main article content */}
           <div className="flex-1 min-w-0">
+
+            {/* Article body (before FAQ) */}
             <div
               className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl blog-article-content"
-              dangerouslySetInnerHTML={{ __html: cleanBlogContent(post.content.rendered) }}
+              dangerouslySetInnerHTML={{ __html: beforeFaq }}
             />
 
-            {/* CTA box */}
-            <div className="mt-12 bg-[#111111] text-white p-8 sm:p-10">
+            {/* ── CTA — above FAQ ── */}
+            <div className="my-12 bg-white border border-gray-100 shadow-sm p-8 sm:p-10">
+              {/* Centered heading + subtitle */}
+              <div className="text-center mb-8">
+                <h3 className="font-[Jost] text-2xl sm:text-3xl font-bold text-[#111] leading-snug mb-3">
+                  {locale === 'en'
+                    ? 'Need the perfect zippers? Contact us.'
+                    : 'Potrzebujesz idealnych zamków? Skontaktuj się.'}
+                </h3>
+                <p className="font-[Jost] text-[#b05050] text-base leading-relaxed max-w-2xl mx-auto">
+                  {locale === 'en'
+                    ? 'Choosing the right zipper is key to the success of any project — from clothing and bags to furniture upholstery.'
+                    : 'Wybór odpowiedniego zamka to klucz do sukcesu każdego projektu — od odzieży i toreb po tapicerkę meblową.'}
+                </p>
+              </div>
+
+              {/* 2-col: description | contact info */}
               <div className="flex flex-col sm:flex-row gap-8 items-start">
-                {/* Left: heading + text + button */}
                 <div className="flex-1">
-                  <h3 className="font-[Jost] text-2xl sm:text-3xl font-light leading-snug mb-2">
+                  <p className="font-[Jost] text-gray-600 text-sm leading-relaxed">
                     {locale === 'en'
-                      ? 'Need the perfect zippers?'
-                      : 'Potrzebujesz idealnych zamków?'}
-                  </h3>
-                  <p className="font-[Jost] text-xl sm:text-2xl font-light text-white/80 mb-4">
-                    {locale === 'en' ? 'Contact us.' : 'Skontaktuj się z nami.'}
+                      ? 'At TAF, we understand the importance of quality, durability, and a precise fit. As an experienced zipper distributor, we offer a wide range of metal, plastic, and nylon zippers, available in various sizes and colors.'
+                      : 'W TAF rozumiemy znaczenie jakości, trwałości i precyzyjnego dopasowania. Jako doświadczony dystrybutor zamków oferujemy szeroki asortyment zamków metalowych, plastikowych i nylonowych, dostępnych w różnych rozmiarach i kolorach.'}
                   </p>
-                  <p className="font-[Jost] text-white/60 text-sm leading-relaxed mb-6">
-                    {locale === 'en'
-                      ? 'Our team will help you find the right solution for your project — from selection to delivery.'
-                      : 'Nasz zespół pomoże Ci znaleźć odpowiednie rozwiązanie dla Twojego projektu — od doboru po dostawę.'}
-                  </p>
-                  <Link
-                    href={contactHref}
-                    className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
-                  >
-                    {locale === 'en' ? 'Contact us' : 'Skontaktuj się'}
-                  </Link>
                 </div>
-                {/* Right: contact details */}
-                <div className="sm:w-56 flex-shrink-0 space-y-4 font-[Jost] text-sm">
-                  <div>
-                    <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
-                      {locale === 'en' ? 'Phone' : 'Telefon'}
-                    </p>
-                    <a href="tel:+48221101101" className="text-white hover:text-white/80 transition-colors block">
-                      +48 22 1101101
-                    </a>
-                    <a href="tel:+48723331331" className="text-white hover:text-white/80 transition-colors block mt-0.5">
-                      +48 723 331 331
-                    </a>
+                <div className="sm:w-56 flex-shrink-0 space-y-3 font-[Jost] text-sm text-gray-700">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400">📞</span>
+                    <a href="tel:+48221101101" className="hover:text-black transition-colors">+48 22 1101101</a>
                   </div>
-                  <div>
-                    <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
-                      {locale === 'en' ? 'Email' : 'E-mail'}
-                    </p>
-                    <a href="mailto:contact@trimsandfasteners.com" className="text-white hover:text-white/80 transition-colors break-all">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400">📞</span>
+                    <a href="tel:+48723331331" className="hover:text-black transition-colors">+48 723 331 331</a>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400">✉</span>
+                    <a href="mailto:contact@trimsandfasteners.com" className="hover:text-black transition-colors break-all">
                       contact@trimsandfasteners.com
                     </a>
-                  </div>
-                  <div>
-                    <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
-                      {locale === 'en' ? 'Location' : 'Lokalizacja'}
-                    </p>
-                    <p className="text-white/80">Warszawa, Poland</p>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* FAQ section (if any) */}
+            {faqAndAfter && (
+              <div
+                className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal blog-article-content"
+                dangerouslySetInnerHTML={{ __html: faqAndAfter }}
+              />
+            )}
           </div>
 
-          {/* Right: "Other posts" sidebar */}
+          {/* Right: sidebar */}
           {otherPosts.length > 0 && (
             <aside className="lg:w-72 flex-shrink-0">
               <h2 className="font-[Jost] text-sm font-semibold uppercase tracking-wider text-gray-400 mb-6">
@@ -192,11 +191,7 @@ export default async function BlogPostPage({ params }: Props) {
                     ? `/blog/${other.slug}/`
                     : `/pl/blog/${other.slug}/`;
                   return (
-                    <Link
-                      key={other.id}
-                      href={otherHref}
-                      className="group flex gap-3 items-start"
-                    >
+                    <Link key={other.id} href={otherHref} className="group flex gap-3 items-start">
                       {otherImg && (
                         <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
                           <Image
@@ -221,7 +216,6 @@ export default async function BlogPostPage({ params }: Props) {
                   );
                 })}
               </div>
-
               <Link
                 href={backHref}
                 className="mt-8 inline-block text-sm text-gray-500 hover:text-black font-[Jost] transition-colors"
