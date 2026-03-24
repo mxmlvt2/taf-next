@@ -30,7 +30,7 @@ export default function Hero({ slides = DEFAULT_SLIDES, title, subtitle, descrip
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  const contactUrl = locale === 'en' ? '/contact/' : '/pl/kontakt/';
+  const contactUrl = locale === 'en' ? '/contact/' : '/pl/contact/';
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -77,7 +77,7 @@ export default function Hero({ slides = DEFAULT_SLIDES, title, subtitle, descrip
               {t('cta')}
             </Link>
             <Link
-              href={locale === 'en' ? '/use-of-zippers/' : '/pl/zastosowanie-zamkow/'}
+              href={locale === 'en' ? '/use-of-zippers/' : '/pl/use-of-zippers/'}
               className="inline-block border border-white/50 text-white font-[Jost] font-medium text-sm px-7 py-3 hover:bg-white/10 transition-colors"
             >
               {t('ctaSub')}

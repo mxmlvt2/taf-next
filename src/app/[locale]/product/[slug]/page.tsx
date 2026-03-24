@@ -64,7 +64,7 @@ export default async function ProductPage({ params }: Props) {
 
   const name = product.title?.rendered || slug;
   const featuredImg = product._embedded?.['wp:featuredmedia']?.[0];
-  const backHref = locale === 'en' ? '/use-of-zippers/' : '/pl/zastosowanie-zamkow/';
+  const backHref = locale === 'en' ? '/use-of-zippers/' : '/pl/use-of-zippers/';
 
   // Get related products (by category)
   const categoryId = product._embedded?.['wp:term']?.[0]?.[0]?.id;
@@ -160,7 +160,7 @@ export default async function ProductPage({ params }: Props) {
 
             <div className="mt-auto pt-6 border-t border-gray-100">
               <Link
-                href={locale === 'en' ? '/contact/' : '/pl/kontakt/'}
+                href={locale === 'en' ? '/contact/' : '/pl/contact/'}
                 className="inline-block bg-black text-white font-[Jost] font-medium text-sm px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors"
               >
                 {locale === 'en' ? 'Contact us' : 'Skontaktuj się'}

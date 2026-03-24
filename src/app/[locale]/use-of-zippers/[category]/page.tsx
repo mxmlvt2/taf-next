@@ -44,6 +44,7 @@ export async function generateStaticParams() {
   const entries = Object.entries(CATEGORY_SLUGS);
   return [
     ...entries.map(([slug]) => ({ locale: 'en', category: slug })),
+    ...entries.map(([slug]) => ({ locale: 'pl', category: slug })),
     ...entries.map(([, v]) => ({ locale: 'pl', category: v.wpSlugPl })),
   ];
 }
@@ -105,7 +106,7 @@ export default async function CategoryPage({ params }: Props) {
   ]);
 
   const title = page?.title.rendered || (locale === 'en' ? meta.labelEn : meta.labelPl);
-  const contactHref = locale === 'en' ? '/contact/' : '/pl/kontakt/';
+  const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
 
   // FAQ schema from Yoast if available
   const faqSchema = page?.yoast_head_json?.schema;
@@ -139,7 +140,7 @@ export default async function CategoryPage({ params }: Props) {
             </Link>
             <span>›</span>
             <Link
-              href={locale === 'en' ? '/use-of-zippers/' : '/pl/zastosowanie-zamkow/'}
+              href={locale === 'en' ? '/use-of-zippers/' : '/pl/use-of-zippers/'}
               className="hover:text-white transition-colors"
             >
               {locale === 'en' ? 'Use of Zippers' : 'Zastosowanie zamków'}

@@ -12,49 +12,49 @@ const CATEGORIES = [
     labelEn: 'Fire-Resistant Clothing',
     labelPl: 'Odzież ognioodporna',
     hrefEn: '/use-of-zippers/fire-protection/',
-    hrefPl: '/pl/zastosowanie-zamkow/odziez-ognioodporna/',
+    hrefPl: '/pl/use-of-zippers/fire-protection/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png',
   },
   {
     labelEn: 'Military',
     labelPl: 'Wojsko',
     hrefEn: '/use-of-zippers/military/',
-    hrefPl: '/pl/zastosowanie-zamkow/wojsko/',
+    hrefPl: '/pl/use-of-zippers/military/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png',
   },
   {
     labelEn: 'Cycling & Sportswear',
     labelPl: 'Kolarstwo & odzież sportowa',
     hrefEn: '/use-of-zippers/cycling-sportswear/',
-    hrefPl: '/pl/zastosowanie-zamkow/odziez-sportowa/',
+    hrefPl: '/pl/use-of-zippers/cycling-sportswear/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png',
   },
   {
     labelEn: 'Baby',
     labelPl: 'Odzież dziecięca',
     hrefEn: '/use-of-zippers/baby/',
-    hrefPl: '/pl/zastosowanie-zamkow/dzieci/',
+    hrefPl: '/pl/use-of-zippers/baby/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png',
   },
   {
     labelEn: 'Fashion',
     labelPl: 'Moda',
     hrefEn: '/use-of-zippers/fashion/',
-    hrefPl: '/pl/zastosowanie-zamkow/moda/',
+    hrefPl: '/pl/use-of-zippers/fashion/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png',
   },
   {
     labelEn: 'Furniture',
     labelPl: 'Meble',
     hrefEn: '/use-of-zippers/furniture/',
-    hrefPl: '/pl/zastosowanie-zamkow/meble/',
+    hrefPl: '/pl/use-of-zippers/furniture/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png',
   },
   {
     labelEn: 'Buckles & Plastic Hardware',
     labelPl: 'Zapięcia & elementy plastikowe',
     hrefEn: '/use-of-zippers/buckles-plastic-hardware/',
-    hrefPl: '/pl/zastosowanie-zamkow/zapiecia-elementy-plastikowe/',
+    hrefPl: '/pl/use-of-zippers/buckles-plastic-hardware/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png',
   },
 ];
@@ -88,7 +88,7 @@ export default async function UseOfZippersPage({ params }: Props) {
 
   const title = page?.title.rendered || (isEn ? 'Use of Zippers' : 'Zastosowanie zamków');
   const faqSchema = page?.yoast_head_json?.schema;
-  const contactHref = isEn ? '/contact/' : '/pl/kontakt/';
+  const contactHref = isEn ? '/contact/' : '/pl/contact/';
 
   return (
     <div>

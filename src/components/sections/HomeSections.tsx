@@ -18,28 +18,28 @@ export default async function HomeSections({ locale }: HomeSectionsProps) {
     {
       label: isEn ? 'Plastic Zippers' : 'Zamki plastikowe',
       img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/plastikowyzielony-1.jpg',
-      href: isEn ? `${base}/type-of-zippers/plastic-zippers/` : '/pl/rodzaje-zamkow/zamki-plastikowe/',
+      href: isEn ? `${base}/type-of-zippers/plastic-zippers/` : '/pl/type-of-zippers/plastic-zippers/',
     },
     {
       label: isEn ? 'Nylon Zippers' : 'Zamki nylonowe',
       img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg',
-      href: isEn ? `${base}/type-of-zippers/nylon-zippers/` : '/pl/rodzaje-zamkow/zamki-nylonowe/',
+      href: isEn ? `${base}/type-of-zippers/nylon-zippers/` : '/pl/type-of-zippers/nylon-zippers/',
     },
     {
       label: isEn ? 'Metal Zippers' : 'Zamki metalowe',
       img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/metalslider34-scaled.jpg',
-      href: isEn ? `${base}/type-of-zippers/metal-zippers/` : '/pl/rodzaje-zamkow/zamki-metalowe/',
+      href: isEn ? `${base}/type-of-zippers/metal-zippers/` : '/pl/type-of-zippers/metal-zippers/',
     },
   ];
 
   const usageCategories = [
-    { slug: isEn ? 'fire-protection' : 'odziez-ognioodporna', label: isEn ? 'Fire-Resistant Clothing' : 'Odzież ognioodporna', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png', href: isEn ? `${base}/use-of-zippers/fire-protection/` : '/pl/zastosowanie-zamkow/odziez-ognioodporna/' },
-    { slug: isEn ? 'military' : 'wojsko', label: isEn ? 'Military' : 'Wojsko', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png', href: isEn ? `${base}/use-of-zippers/military/` : '/pl/zastosowanie-zamkow/wojsko/' },
-    { slug: isEn ? 'cycling-sportswear' : 'odziez-sportowa', label: isEn ? 'Cycling & Sportswear' : 'Kolarstwo & odzież sportowa', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png', href: isEn ? `${base}/use-of-zippers/cycling-sportswear/` : '/pl/zastosowanie-zamkow/odziez-sportowa/' },
-    { slug: isEn ? 'baby' : 'dzieci', label: isEn ? 'Baby' : 'Dzieci', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png', href: isEn ? `${base}/use-of-zippers/baby/` : '/pl/zastosowanie-zamkow/dzieci/' },
-    { slug: isEn ? 'fashion' : 'moda', label: isEn ? 'Fashion' : 'Moda', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png', href: isEn ? `${base}/use-of-zippers/fashion/` : '/pl/zastosowanie-zamkow/moda/' },
-    { slug: isEn ? 'furniture' : 'meble', label: isEn ? 'Furniture' : 'Meble', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png', href: isEn ? `${base}/use-of-zippers/furniture/` : '/pl/zastosowanie-zamkow/meble/' },
-    { slug: isEn ? 'buckles-plastic-hardware' : 'zapiecia-elementy-plastikowe', label: isEn ? 'Buckles & Plastic Hardware' : 'Zapięcia & elementy plastikowe', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png', href: isEn ? `${base}/use-of-zippers/buckles-plastic-hardware/` : '/pl/zastosowanie-zamkow/zapiecia-elementy-plastikowe/' },
+    { slug: 'fire-protection', label: isEn ? 'Fire-Resistant Clothing' : 'Odzież ognioodporna', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png', href: `${base}/use-of-zippers/fire-protection/` },
+    { slug: 'military', label: isEn ? 'Military' : 'Wojsko', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png', href: `${base}/use-of-zippers/military/` },
+    { slug: 'cycling-sportswear', label: isEn ? 'Cycling & Sportswear' : 'Kolarstwo & odzież sportowa', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png', href: `${base}/use-of-zippers/cycling-sportswear/` },
+    { slug: 'baby', label: isEn ? 'Baby' : 'Dzieci', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png', href: `${base}/use-of-zippers/baby/` },
+    { slug: 'fashion', label: isEn ? 'Fashion' : 'Moda', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png', href: `${base}/use-of-zippers/fashion/` },
+    { slug: 'furniture', label: isEn ? 'Furniture' : 'Meble', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png', href: `${base}/use-of-zippers/furniture/` },
+    { slug: 'buckles-plastic-hardware', label: isEn ? 'Buckles & Plastic Hardware' : 'Zapięcia & elementy plastikowe', img: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png', href: `${base}/use-of-zippers/buckles-plastic-hardware/` },
   ];
 
   return (
@@ -159,7 +159,7 @@ export default async function HomeSections({ locale }: HomeSectionsProps) {
                 : 'Dzięki szerokiej i elastycznej ofercie jesteśmy w stanie zaspokoić potrzeby różnorodnych klientów. Realizujemy zarówno zamówienia wymagające wysokiej powtarzalności, jak i niszowe projekty wymagające indywidualnego podejścia.'}
             </p>
             <Link
-              href={isEn ? '/use-of-zippers/' : '/pl/zastosowanie-zamkow/'}
+              href={isEn ? '/use-of-zippers/' : '/pl/use-of-zippers/'}
               className="inline-block font-[Jost] text-sm text-[#111] border border-[#111] px-6 py-2.5 hover:bg-[#111] hover:text-white transition-colors"
             >
               {isEn ? 'See more' : 'Zobacz więcej'}
@@ -201,7 +201,7 @@ export default async function HomeSections({ locale }: HomeSectionsProps) {
                 </p>
               </div>
               <Link
-                href={isEn ? '/contact/' : '/pl/kontakt/'}
+                href={isEn ? '/contact/' : '/pl/contact/'}
                 className="inline-block mt-8 bg-[#111111] text-white font-[Jost] font-normal text-sm px-8 py-3 hover:bg-black transition-colors"
               >
                 {isEn ? 'Contact' : 'Kontakt'}

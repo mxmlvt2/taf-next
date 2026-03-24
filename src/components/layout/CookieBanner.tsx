@@ -61,7 +61,7 @@ export default function CookieBanner() {
   if (!visible) return null;
 
   const isEn = locale === 'en';
-  const privacyHref = isEn ? '/privacy-policy/' : '/pl/polityka-prywatnosci/';
+  const privacyHref = isEn ? '/privacy-policy/' : '/pl/privacy-policy/';
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[100] bg-[#111111] text-white px-4 py-4 shadow-2xl">

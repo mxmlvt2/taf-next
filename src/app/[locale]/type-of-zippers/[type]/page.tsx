@@ -29,6 +29,7 @@ type Props = { params: Promise<{ locale: string; type: string }> };
 export async function generateStaticParams() {
   return [
     ...Object.keys(TYPE_SLUGS).map(slug => ({ locale: 'en', type: slug })),
+    ...Object.keys(TYPE_SLUGS).map(slug => ({ locale: 'pl', type: slug })),
     ...Object.values(TYPE_SLUGS).map(v => ({ locale: 'pl', type: v.wpSlugPl })),
   ];
 }
@@ -85,7 +86,7 @@ export default async function TypePage({ params }: Props) {
   ]);
 
   const title = page?.title.rendered || (locale === 'en' ? meta.labelEn : meta.labelPl);
-  const contactHref = locale === 'en' ? '/contact/' : '/pl/kontakt/';
+  const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
 
   // FAQ schema from Yoast if available
   const faqSchema = page?.yoast_head_json?.schema;
@@ -119,7 +120,7 @@ export default async function TypePage({ params }: Props) {
             </Link>
             <span>›</span>
             <Link
-              href={locale === 'en' ? '/type-of-zippers/' : '/pl/rodzaje-zamkow/'}
+              href={locale === 'en' ? '/type-of-zippers/' : '/pl/type-of-zippers/'}
               className="hover:text-white transition-colors"
             >
               {locale === 'en' ? 'Type of Zippers' : 'Rodzaje zamków'}
@@ -178,7 +179,7 @@ export default async function TypePage({ params }: Props) {
       {enSlug === 'nylon-zippers' && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Link
-            href={locale === 'en' ? '/nylon-zipper-chain-size-chart/' : '/pl/tasmy-spiralne-zestawienie-rozmiarow/'}
+            href={locale === 'en' ? '/nylon-zipper-chain-size-chart/' : '/pl/nylon-zipper-chain-size-chart/'}
             className="inline-flex items-center gap-2 text-sm font-[Jost] text-gray-600 hover:text-black border border-gray-200 hover:border-gray-400 rounded-lg px-5 py-3 transition-colors"
           >
             {locale === 'en' ? 'View Nylon Zipper Chain Size Chart →' : 'Zobacz tabelę rozmiarów taśm nylonowych →'}

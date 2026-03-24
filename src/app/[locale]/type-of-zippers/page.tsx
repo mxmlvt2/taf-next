@@ -12,21 +12,21 @@ const TYPES = [
     labelEn: 'Plastic Zippers',
     labelPl: 'Zamki plastikowe',
     hrefEn: '/type-of-zippers/plastic-zippers/',
-    hrefPl: '/pl/rodzaje-zamkow/zamki-plastikowe/',
+    hrefPl: '/pl/type-of-zippers/plastic-zippers/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/plastikowyzielony-1.jpg',
   },
   {
     labelEn: 'Nylon Zippers',
     labelPl: 'Zamki nylonowe',
     hrefEn: '/type-of-zippers/nylon-zippers/',
-    hrefPl: '/pl/rodzaje-zamkow/zamki-nylonowe/',
+    hrefPl: '/pl/type-of-zippers/nylon-zippers/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg',
   },
   {
     labelEn: 'Metal Zippers',
     labelPl: 'Zamki metalowe',
     hrefEn: '/type-of-zippers/metal-zippers/',
-    hrefPl: '/pl/rodzaje-zamkow/zamki-metalowe/',
+    hrefPl: '/pl/type-of-zippers/metal-zippers/',
     img: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/metalslider34-scaled.jpg',
   },
 ];
@@ -60,7 +60,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
 
   const title = page?.title.rendered || (isEn ? 'Type of Zippers' : 'Rodzaje zamków');
   const faqSchema = page?.yoast_head_json?.schema;
-  const contactHref = isEn ? '/contact/' : '/pl/kontakt/';
+  const contactHref = isEn ? '/contact/' : '/pl/contact/';
 
   return (
     <div>

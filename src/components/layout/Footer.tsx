@@ -15,9 +15,9 @@ export default function Footer() {
         { label: 'Nylon zippers', href: '/type-of-zippers/nylon-zippers/' },
       ]
     : [
-        { label: 'Zamki metalowe', href: '/pl/rodzaje-zamkow/zamki-metalowe/' },
-        { label: 'Zamki plastikowe', href: '/pl/rodzaje-zamkow/zamki-plastikowe/' },
-        { label: 'Zamki nylonowe', href: '/pl/rodzaje-zamkow/zamki-nylonowe/' },
+        { label: 'Zamki metalowe', href: '/pl/type-of-zippers/metal-zippers/' },
+        { label: 'Zamki plastikowe', href: '/pl/type-of-zippers/plastic-zippers/' },
+        { label: 'Zamki nylonowe', href: '/pl/type-of-zippers/nylon-zippers/' },
       ];
 
   const usageLinks = locale === 'en'
@@ -30,12 +30,12 @@ export default function Footer() {
         { label: 'Buckles & plastic hardware', href: '/use-of-zippers/buckles-plastic-hardware/' },
       ]
     : [
-        { label: 'Zips for fire-resistant clothing', href: '/pl/zastosowanie-zamkow/odziez-ognioodporna/' },
-        { label: 'Zips for Military clothing', href: '/pl/zastosowanie-zamkow/wojsko/' },
-        { label: 'Zips for furniture', href: '/pl/zastosowanie-zamkow/meble/' },
-        { label: 'Zips for baby clothing', href: '/pl/zastosowanie-zamkow/dzieci/' },
-        { label: 'Zips for Fashion', href: '/pl/zastosowanie-zamkow/moda/' },
-        { label: 'Buckles & plastic hardware', href: '/pl/zastosowanie-zamkow/zapiecia-elementy-plastikowe/' },
+        { label: 'Zips for fire-resistant clothing', href: '/pl/use-of-zippers/fire-protection/' },
+        { label: 'Zips for Military clothing', href: '/pl/use-of-zippers/military/' },
+        { label: 'Zips for furniture', href: '/pl/use-of-zippers/furniture/' },
+        { label: 'Zips for baby clothing', href: '/pl/use-of-zippers/baby/' },
+        { label: 'Zips for Fashion', href: '/pl/use-of-zippers/fashion/' },
+        { label: 'Buckles & plastic hardware', href: '/pl/use-of-zippers/buckles-plastic-hardware/' },
       ];
 
   return (
@@ -134,7 +134,7 @@ export default function Footer() {
             © {new Date().getFullYear()} – Trims and fasteners – {locale === 'en' ? 'Distributor of zippers and clothing accessories' : 'Dystrybutor zamków i akcesoriów odzieżowych'} – {locale === 'en' ? 'All rights reserved' : 'Wszelkie prawa zastrzeżone'}
           </p>
           <p className="text-xs text-gray-600 font-[Jost]">
-            <Link href={locale === 'en' ? '/privacy-policy/' : '/pl/polityka-prywatnosci/'} className="hover:text-white transition-colors">
+            <Link href={locale === 'en' ? '/privacy-policy/' : '/pl/privacy-policy/'} className="hover:text-white transition-colors">
               {locale === 'en' ? 'Privacy policy' : 'Polityka prywatności'}
             </Link>
           </p>

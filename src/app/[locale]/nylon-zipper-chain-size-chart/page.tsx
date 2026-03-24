@@ -63,7 +63,7 @@ export default async function SizeChartPage({ params }: Props) {
               {isEn ? 'Home' : 'Start'}
             </Link>
             <span>›</span>
-            <Link href={isEn ? '/type-of-zippers/nylon-zippers/' : '/pl/rodzaje-zamkow/zamki-nylonowe/'} className="hover:text-white transition-colors">
+            <Link href={isEn ? '/type-of-zippers/nylon-zippers/' : '/pl/type-of-zippers/nylon-zippers/'} className="hover:text-white transition-colors">
               {isEn ? 'Nylon Zippers' : 'Zamki nylonowe'}
             </Link>
             <span>›</span>

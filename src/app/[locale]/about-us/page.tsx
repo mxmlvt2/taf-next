@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
 
-  const contactHref = locale === 'en' ? '/contact/' : '/pl/kontakt/';
+  const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
 
   return (
     <div className="bg-[#f5f3ef] min-h-screen">

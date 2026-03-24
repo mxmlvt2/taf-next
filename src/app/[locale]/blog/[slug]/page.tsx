@@ -52,7 +52,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   const featuredImage = post._embedded?.['wp:featuredmedia']?.[0];
   const backHref = locale === 'en' ? '/blog/' : '/pl/blog/';
-  const contactHref = locale === 'en' ? '/contact/' : '/pl/kontakt/';
+  const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
 
   // Other posts: recent posts excluding current
   const otherPosts = recentPosts.filter(p => p.slug !== slug).slice(0, 4);

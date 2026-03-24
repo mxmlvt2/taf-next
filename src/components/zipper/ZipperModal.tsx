@@ -19,7 +19,7 @@ export default function ZipperModal({ id, name, cache, onClose }: ZipperModalPro
   const [data, setData] = useState<ZipperDetails | null>(cache.get(id) || null);
   const [loading, setLoading] = useState(!cache.has(id));
 
-  const contactHref = locale === 'en' ? '/contact/' : '/pl/kontakt/';
+  const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
 
   useEffect(() => {
     if (!cache.has(id)) {
