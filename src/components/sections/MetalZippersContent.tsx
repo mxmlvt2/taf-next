@@ -25,12 +25,12 @@ export default function MetalZippersContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'Metal zippers are a traditional fastener requiring precision craftsmanship and offering exceptional durability. Teeth are typically made of brass (Y-type), European/Swiss style, or stainless steel.'
-                      : 'Zamki metalowe to tradycyjne zapięcie wymagające precyzyjnego wykonania, oferujące wyjątkową trwałość. Zęby są zazwyczaj wykonane z mosiądzu (typ Y), europejskiego/szwajcarskiego stylu lub ze stali nierdzewnej.'}
+                      : 'Zamki metalowe to tradycyjny typ zamków, który wymaga dużej precyzji pod względem jakości, szczególnie w zastosowaniach wymagających dużej wytrzymałości.'}
                   </p>
                   <p>
                     {isEn
                       ? 'The smoothness of the teeth is a key quality indicator. High-quality metal zippers glide effortlessly and maintain their appearance even after years of intensive use — making them the preferred choice for premium fashion and heritage products.'
-                      : 'Gładkość zębów jest kluczowym wskaźnikiem jakości. Wysokiej jakości zamki metalowe przesuwają się bez wysiłku i zachowują swój wygląd nawet po latach intensywnego użytkowania — co czyni je preferowanym wyborem dla premium mody i produktów z tradycją.'}
+                      : 'Zęby wykonane są zazwyczaj z mosiądzu z specjalnie profilowanego drutu (zęby typu Y) lub przyłączane jeden po drugim – tzw. zęby europejskie/szwajcarskie lub ząbki polerowane. Oferowane są także zamki z zębami ze stali nierdzewnej.'}
                   </p>
                 </div>
               </div>
@@ -96,12 +96,12 @@ export default function MetalZippersContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'Stainless steel offers an alternative to brass for industrial laundering applications. Its corrosion resistance makes it ideal for the workwear rental industry where garments undergo frequent, intensive washing cycles.'
-                      : 'Stal nierdzewna stanowi alternatywę dla mosiądzu w przemysłowych zastosowaniach prania. Jej odporność na korozję czyni ją idealną dla branży wynajmu odzieży roboczej, gdzie odzież przechodzi częste, intensywne cykle prania.'}
+                      : 'Zamki z ząbkami ze stali nierdzewnej są bardziej wytrzymałą alternatywą dla ząbków mosiężnych do zastosowania w branżach wymagających prania przemysłowego, np. w odzieży roboczej na wynajem.'}
                   </p>
                   <p>
                     {isEn
                       ? 'Additionally, stainless steel zippers are fully recyclable, making them an environmentally conscious choice aligned with modern sustainability requirements in workwear supply chains.'
-                      : 'Ponadto zamki ze stali nierdzewnej są w pełni recyclowalne, co czyni je ekologicznym wyborem zgodnym z nowoczesnymi wymaganiami zrównoważonego rozwoju w łańcuchach dostaw odzieży roboczej.'}
+                      : 'Stal nierdzewna jest odporna na pranie przemysłowe, umożliwiając użycie w ubraniach wymagających takiego procesu. Materiał jest w pełni recyclingowalny, wspierając prosty proces odzyskiwania materiałów.'}
                   </p>
                 </div>
               </div>

@@ -27,12 +27,12 @@ export default function MilitaryContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'We supply all military-grade zipper types with emphasis on reduced Near-Infrared (NIR) signature capabilities. NIR-compliant zippers match the light reflection properties of the surrounding fabric — critical for camouflage effectiveness in the field.'
-                      : 'Dostarczamy wszystkie typy zamków klasy wojskowej, ze szczególnym naciskiem na możliwości zredukowanej sygnatury bliskiej podczerwieni (NIR). Zamki zgodne z NIR dopasowują właściwości odbicia światła do otaczającej tkaniny — kluczowe dla skuteczności kamuflażu w terenie.'}
+                      : 'Dostarczamy wszystkie typy zamków błyskawicznych używanych w zastosowaniach wojskowych. Zamki błyskawiczne dla wojska muszą charakteryzować się zmniejszoną sygnaturą w bliskiej podczerwieni (NIR), tzn. zamek musi odbijać światło w podobny sposób jak baza tkaniny.'}
                   </p>
                   <p>
                     {isEn
                       ? 'We develop custom colors based on fabric swatches and NATO specification requirements. Our extensive experience in fulfilling military tenders means we understand exactly what documentation, testing, and compliance is required.'
-                      : 'Opracowujemy kolory na zamówienie na podstawie próbek tkanin i wymagań specyfikacji NATO. Nasze bogate doświadczenie w realizacji przetargów wojskowych oznacza, że doskonale rozumiemy wymaganą dokumentację, testy i zgodność.'}
+                      : 'Wytwarzamy produkty w różnych kolorach, z możliwością opracowania dedykowanych odcieni według próbek klienta. Nasze doświadczenie w realizacji przetargów wojskowych oznacza, że doskonale rozumiemy wymaganą dokumentację, testy i wymogi zgodności.'}
                   </p>
                 </div>
               </div>
@@ -67,7 +67,7 @@ export default function MilitaryContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'Molded zippers are a preferred choice for bulletproof vests, tactical jackets, and PPE — where the ease of cleaning from dirt and debris is as important as structural reliability.'
-                      : 'Zamki formowane to preferowany wybór do kamizelek kuloodpornych, kurtek taktycznych i PPE — gdzie łatwość czyszczenia z brudu i zanieczyszczeń jest równie ważna jak niezawodność strukturalna.'}
+                      : 'Zamki formowane to preferowany wybór do kamizelek kuloodpornych, kurtek taktycznych i PPE — gdzie łatwość czyszczenia z brudu i zanieczyszczeń jest równie ważna jak niezawodność.'}
                   </p>
                 </div>
               </div>

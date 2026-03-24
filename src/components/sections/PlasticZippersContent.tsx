@@ -25,27 +25,27 @@ export default function PlasticZippersContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'Commonly known as Delrin or molded zippers, they are widely used in children\'s products, outdoor clothing, and marine sailing applications.'
-                      : 'Popularnie znane jako zamki Delrin lub formowane, szeroko stosowane w produktach dla dzieci, odzieży outdoorowej i aplikacjach żeglarskich.'}
+                      : 'Zamki plastikowe formowane mają zastosowanie w produktach dla dzieci, odzieży outdoorowej i żeglarstwie. Różnią się od zamków nylonowych kształtem ząbków formowanych w procesie wtryskowym.'}
                   </p>
                   <p>
                     {isEn
                       ? 'The main difference compared to a nylon zipper is the shape of the elements, which are formed in an injection molding process. Like any zipper, they have their advantages and disadvantages, and understanding them is crucial for proper application.'
-                      : 'Główna różnica w stosunku do zamka nylonowego to kształt elementów, formowanych w procesie wtrysku. Jak każdy zamek, mają swoje zalety i wady — ich znajomość jest kluczowa dla właściwego zastosowania.'}
+                      : 'Plastikowe zamki formowane gorzej sprawdzają się na zakrzywionych i falistych powierzchniach, powodując większe marszczenie niż nylonowe. Nie nadają się do mocno obciążonych toreb i kieszeni.'}
                   </p>
                   <p>
                     {isEn
                       ? 'Plastic molded zippers perform worse on curved and wavy surfaces, causing more puckering than nylon zippers. They are not recommended for applications with high lateral stress, such as heavily loaded bags and pockets.'
-                      : 'Zamki plastikowe gorzej sprawdzają się na zakrzywionych i falistych powierzchniach, powodując większe marszczenie niż zamki nylonowe. Nie są zalecane do zastosowań z dużym naprężeniem bocznym.'}
+                      : 'Główną zaletą kształtu ząbków jest łatwość usuwania zabrudzeń i zanieczyszczeń, co czyni je idealnymi dla wojska i intensywnego użytku terenowego.'}
                   </p>
                   <p>
                     {isEn
                       ? 'The biggest advantage of the tooth shape is the ease of removing dirt and debris from the zipper elements, which is essential in applications requiring resistance to dirt, such as for the military or heavy outdoor use.'
-                      : 'Największą zaletą kształtu zębów jest łatwość usuwania brudu i zanieczyszczeń — niezbędna w aplikacjach wymagających odporności na brud, takich jak zastosowania militarne czy ciężki outdoor.'}
+                      : 'Zamki plastikowe są popularne w odzieży dziecięcej, gdyż ich elementy są miękkie i przyjemne w dotyku. Dostępne w licznych wariantach kolorystycznych oraz funkcjonalnych.'}
                   </p>
                   <p>
                     {isEn
                       ? 'Plastic zippers are popular in children\'s clothing because their elements are soft and pleasant to the touch for a child. Molded zippers allow for many color combinations and are also available in many functional variants such as water-resistance, waterproofness, and flame retardancy.'
-                      : 'Zamki plastikowe są popularne w odzieży dziecięcej, gdyż ich elementy są miękkie i przyjemne w dotyku. Zamki formowane pozwalają na wiele kombinacji kolorystycznych i są dostępne w wariantach funkcjonalnych takich jak wodoodporność i ognioodporność.'}
+                      : 'Oferujemy szeroki wybór zamków do profesjonalnej odzieży roboczej na wynajem. Dostępne warianty: trudnopalne, antystatyczne, w kolorach wysokiej widoczności, dwusuwakowe z łatwym wpinaniem, wodoszczelne, wodoodporne oraz odporne na promieniowanie UV.'}
                   </p>
                 </div>
               </div>
@@ -74,7 +74,7 @@ export default function PlasticZippersContent({ locale, position }: Props) {
                 <p className="font-[Jost] text-gray-400 text-sm leading-relaxed mb-6">
                   {isEn
                     ? 'We offer a wide selection of plastic zippers for professional workwear rental, available with special finishes including:'
-                    : 'Oferujemy szeroki wybór zamków plastikowych do profesjonalnego wynajmu odzieży roboczej, dostępnych ze specjalnymi wykończeniami:'}
+                    : 'Oferujemy szeroki wybór zamków do profesjonalnej odzieży roboczej na wynajem. Dostępne warianty:'}
                 </p>
                 <ul className="space-y-2 font-[Jost] text-gray-400 text-sm mb-8">
                   {(isEn ? [
@@ -84,11 +84,13 @@ export default function PlasticZippersContent({ locale, position }: Props) {
                     'Two-way zippers with easy-insertion functionality',
                     'And many more!',
                   ] : [
-                    'Ognioodporne',
+                    'Trudnopalne',
                     'Antystatyczne',
-                    'Kolory o wysokiej widoczności',
-                    'Zamki dwusuwakowe z łatwym wkładaniem',
-                    'I wiele więcej!',
+                    'Kolory wysokiej widoczności',
+                    'Dwusuwakowe z łatwym wpinaniem',
+                    'Wodoszczelne',
+                    'Wodoodporne',
+                    'Odporne na promieniowanie UV',
                   ]).map((item, i) => (
                     <li key={i} className="flex gap-2 items-start">
                       <span className="text-gray-600 mt-0.5 flex-shrink-0">›</span>
@@ -134,12 +136,12 @@ export default function PlasticZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'Whether you prefer matte finish teeth or shiny teeth, these are incredibly trendy, especially in black. They\'re perfect for streetwear, men\'s ready-to-wear, and general apparel.'
-                    : 'Niezależnie czy preferujesz matowe czy błyszczące zęby — oba warianty są bardzo modne, szczególnie w czerni. Idealne do streetwearu, odzieży męskiej i ubrań codziennych.'}
+                    : 'Ząbki z matowym lub błyszczącym wykończeniem są modne szczególnie w kolorze czarnym. Doskonale sprawdzają się w odzieży streetwearowej, męskiej i młodzieżowej.'}
                 </p>
                 <p>
                   {isEn
                     ? 'When paired with a high-gloss slider and puller or a fully matte finish, they create a fantastic overall look. Minimalistic and refined. These zippers also offer decent wash resistance.'
-                    : 'W połączeniu z błyszczącym suwakiem i uchwytem lub w pełni matowym wykończeniem tworzą fantastyczny wygląd. Minimalistyczne i eleganckie. Zamki te oferują również dobrą odporność na pranie.'}
+                    : 'W połączeniu z błyszczącym suwakiem lub w pełni matowym wykończeniem tworzą fantastyczny efekt. Zamki te oferują również dobrą odporność na pranie.'}
                 </p>
               </div>
             </div>
@@ -216,12 +218,12 @@ export default function PlasticZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'Our specially crafted zippers, featuring modified materials for both teeth and tape, deliver exceptional performance in marine and yachting applications. They achieve high UV resistance, classified as B7 class according to ISO 105 B02, and class 5 according to ISO 105 B04.'
-                    : 'Nasze specjalnie opracowane zamki z modyfikowanymi materiałami dla zębów i taśmy zapewniają wyjątkową wydajność w zastosowaniach morskich i żeglarskich. Osiągają wysoką odporność na UV — klasa B7 wg ISO 105 B02 i klasa 5 wg ISO 105 B04.'}
+                    : 'Specjalna modyfikacja materiału ząbków i taśmy zapewnia wydajność w zastosowaniach morskich i jachtowych. Osiągają wysoką odporność na promieniowanie UV — klasa B7 wg ISO 105 B02 i klasa 5 wg ISO 105 B04.'}
                 </p>
                 <p>
                   {isEn
                     ? 'UV radiation is the most destructive environmental factor for fabrics and components exposed to sunlight. Standard plastic teeth become brittle over time, leading to zipper failure. Thanks to our UV-R zippers, your zippers will last significantly longer — our exclusive element warranty is 10 years!'
-                    : 'Promieniowanie UV jest najbardziej destrukcyjnym czynnikiem środowiskowym dla tkanin i komponentów narażonych na słońce. Dzięki naszym zamkom UV-R, Twoje zamki będą działać znacznie dłużej — nasza ekskluzywna gwarancja na elementy to 10 lat!'}
+                    : 'Standardowy plastik staje się kruchy pod wpływem UV, co prowadzi do uszkodzeń zamka. Dzięki naszym zamkom UV-R Twoje zamki będą działać znacznie dłużej — nasza ekskluzywna gwarancja na elementy to 10 lat!'}
                 </p>
                 <p>
                   {isEn
@@ -256,7 +258,7 @@ export default function PlasticZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'Zippers used in individual tactical equipment, uniforms, or personal protective gear are subjected to extremely intensive use. The functionality of the entire product, which cannot fail, depends on their reliability. Molded zippers are a frequent choice for bulletproof vests as well as for military jackets.'
-                    : 'Zamki stosowane w indywidualnym wyposażeniu taktycznym, mundurach lub środkach ochrony osobistej poddawane są niezwykle intensywnemu użytkowaniu. Ich niezawodność decyduje o funkcjonalności całego produktu. Zamki formowane są częstym wyborem do kamizelek kuloodpornych i kurtek wojskowych.'}
+                    : 'Zamki intensywnie używane w wyposażeniu taktycznym, mundurach i środkach ochrony osobistej. Zastosowanie w kamizelkach kuloodpornych i kurtkach wojskowych.'}
                 </p>
                 <p>
                   {isEn
@@ -298,7 +300,7 @@ export default function PlasticZippersContent({ locale, position }: Props) {
               <p>
                 {isEn
                   ? 'The zippers feature a special tooth design that provides additional water protection in the zipper chain area. The zippers have a laminated tape and sealed teeth, providing an IPX4 water protection class.'
-                  : 'Zamki posiadają specjalny kształt zębów zapewniający dodatkową ochronę przed wodą w obszarze łańcucha zamka. Taśma laminowana i uszczelnione zęby zapewniają klasę ochrony przed wodą IPX4.'}
+                  : 'Zamki posiadają specjalny kształt ząbków zapewniający dodatkową ochronę przed wodą. Laminowana taśma i uszczelnione ząbki zapewniają klasę ochrony IPX4.'}
               </p>
               <p>
                 {isEn

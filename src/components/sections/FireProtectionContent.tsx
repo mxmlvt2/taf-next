@@ -19,7 +19,7 @@ export default function FireProtectionContent({ locale, position }: Props) {
             <p className="font-[Jost] text-gray-500 text-sm leading-relaxed">
               {isEn
                 ? 'Protective clothing must meet strict safety standards with different protection levels. All materials — including zippers — must be self-extinguishing with no afterglow and no heat accumulation. Maintaining full zipper functionality for emergency removal is critical.'
-                : 'Odzież ochronna musi spełniać rygorystyczne normy bezpieczeństwa na różnych poziomach ochrony. Wszystkie materiały — w tym zamki — muszą być samogasnące, bez tlenia i bez kumulacji ciepła. Kluczowe jest zachowanie pełnej funkcjonalności zamka umożliwiającej awaryjne zdjęcie odzieży.'}
+                : 'Odzież chroniąca przed ogniem musi spełniać określone normy bezpieczeństwa. Różne branże wymagają różnych poziomów ochrony, ale cel pozostaje stały: ochrona pracownika w niebezpiecznym środowisku. Wielość norm oznacza różne produkty dla różnych zastosowań, jednak założenia jakościowe są zbliżone.'}
             </p>
           </div>
         </section>
@@ -36,7 +36,7 @@ export default function FireProtectionContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'Constructed with brass teeth and meta-aramid tape. Brass has a melting point of approximately 900–940°C, while the aramid fiber chars rather than burns — creating a protective barrier that maintains the zipper\'s structural integrity under extreme heat.'
-                      : 'Wykonane z zębami mosiężnymi i taśmą meta-aramidową. Mosiądz ma temperaturę topnienia ok. 900–940°C, a włókno aramidowe zwęgla się zamiast spalać — tworząc barierę ochronną zachowującą integralność strukturalną zamka w ekstremalnym cieple.'}
+                      : 'Najpopularniejszym wariantem są zamki z metalowymi, mosiężnymi zębami oraz taśmie nośnej z włókien meta-aramidowych. Mosiądz zapewnia integralność strukturalną dzięki wysokiej temperaturze topnienia. Meta-aramidowa taśma nie topi się, nie kapie i nie podtrzymuje palenia, lecz ulega zwęgleniu, tworząc barierę ochronną.'}
                   </p>
                   <div className="grid grid-cols-2 gap-4 mt-6">
                     <div>
@@ -94,7 +94,7 @@ export default function FireProtectionContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'An innovative plastic molded alternative to metal fire-retardant zippers, maintaining full aramid tape functionality. The plastic teeth are injection-molded from flame-retardant compounds certified to international standards.'
-                      : 'Innowacyjna alternatywa z tworzywa sztucznego dla metalowych zamków ognioodpornych, zachowująca pełną funkcjonalność taśmy aramidowej. Zęby plastikowe są formowane wtryskiwaniem ze związków trudnopalnych certyfikowanych według norm międzynarodowych.'}
+                      : 'Innowacyjny odpowiednik z specjalnie modyfikowanym tworzywem, umożliwiającym uzyskanie parametrów trudnopalności na zbliżonym do zamków metalowych poziomie. Taśma aramidowa gwarantuje, że podstawa nie stopi się.'}
                   </p>
                   <div className="grid grid-cols-2 gap-4 mt-6">
                     <div>
@@ -102,7 +102,7 @@ export default function FireProtectionContent({ locale, position }: Props) {
                       <ul className="space-y-1 text-xs text-gray-500">
                         {(isEn
                           ? ['Self-extinguishing', 'Lightweight', 'Easy to clean', "Doesn't accumulate heat"]
-                          : ['Samogasnące', 'Lekkie', 'Łatwe do czyszczenia', 'Nie kumuluje ciepła']
+                          : ['Samogasnące', 'Lekkie', 'Łatwe do czyszczenia', 'Nie kumulują ciepła']
                         ).map(i => (
                           <li key={i} className="flex gap-1"><span className="text-green-600">›</span>{i}</li>
                         ))}

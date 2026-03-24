@@ -27,17 +27,17 @@ export default function CyclingSportswearContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'We have extensive experience in supplying a variety of zippers to sportswear manufacturers. Sportswear, especially cycling apparel, is an incredibly demanding market — zippers must be lightweight, aerodynamic, durable, and reliable across thousands of open-close cycles.'
-                      : 'Posiadamy bogate doświadczenie w dostarczaniu różnorodnych zamków producentom odzieży sportowej. Odzież sportowa, szczególnie kolarska, to niezwykle wymagający rynek — zamki muszą być lekkie, aerodynamiczne, trwałe i niezawodne przez tysiące cykli otwierania i zamykania.'}
+                      : 'Mamy długie doświadczenie w dostarczaniu różnego rodzaju zamków błyskawicznych dla producentów odzieży kolarskiej. Branża ubioru kolarskiego wymaga funkcjonalności, niskiej wagi, aerodynamiki i niezawodności każdego komponentu.'}
                   </p>
                   <p>
                     {isEn
                       ? 'Regardless of whether you are creating professional apparel for competitive athletes or enthusiast cycling collections, we offer both innovative solutions and the best deals on standard zippers — with full technical support at every stage.'
-                      : 'Niezależnie od tego, czy tworzysz profesjonalną odzież dla zawodowych sportowców, czy kolekcje dla entuzjastów kolarstwa, oferujemy zarówno innowacyjne rozwiązania, jak i najlepsze ceny na standardowe zamki — z pełnym wsparciem technicznym na każdym etapie.'}
+                      : 'Doskonale znamy tę branżę i możemy zaoferować zarówno innowacyjne rozwiązania, jak i najlepsze oferty na standardowe zamki błyskawiczne — z pełnym wsparciem technicznym na każdym etapie współpracy.'}
                   </p>
                   <p>
                     {isEn
                       ? 'Key requirements we address: smooth glide at high speed, minimal wind resistance profile, corrosion resistance from sweat exposure, and compatibility with stretch fabrics.'
-                      : 'Kluczowe wymagania, które spełniamy: płynne działanie z dużą prędkością, minimalny profil oporu wiatru, odporność na korozję od potu oraz kompatybilność z tkaninami elastycznymi.'}
+                      : 'Kluczowe wymagania, które spełniamy: płynne działanie, minimalny profil oporu wiatru, odporność na korozję od potu oraz kompatybilność z tkaninami elastycznymi.'}
                   </p>
                 </div>
               </div>

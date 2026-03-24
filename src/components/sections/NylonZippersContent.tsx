@@ -25,12 +25,12 @@ export default function NylonZippersContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'Coil zippers, also known as nylon zippers, are the most common and versatile type of fastener. They work across so many everyday applications thanks to their flexibility and strength.'
-                      : 'Zamki spiralne, znane również jako nylonowe, to najpopularniejszy i najbardziej wszechstronny typ zapięcia. Sprawdzają się w wielu codziennych zastosowaniach dzięki swojej elastyczności i wytrzymałości.'}
+                      : 'Najczęściej spotykanym i najbardziej wszechstronnym rodzajem zamków są zamki nylonowe. Działają w tak wielu zastosowaniach, które używamy na co dzień, dzięki swojej elastyczności i wytrzymałości. Są to najtrwalsze zamki dzięki konstrukcji, w której elementy zamka są szyte lub wplecione w taśmę.'}
                   </p>
                   <p>
                     {isEn
                       ? 'Their uses span sportswear, cycling apparel, PPE, backpacks, footwear, and the yachting industry — wherever a reliable, lightweight fastener is required.'
-                      : 'Stosowane są w odzieży sportowej, kolarskiej, środkach ochrony osobistej, plecakach, obuwiu i branży żeglarskiej — wszędzie tam, gdzie potrzebne jest niezawodne, lekkie zapięcie.'}
+                      : 'Są to zamki najczęściej wykorzystywane w odzieży sportowej, w odzieży rowerowej jak i w ochronach osobistych, plecakach i obuwiu. Są to również zamki wykorzystywane w branży jachtowej.'}
                   </p>
                 </div>
               </div>
@@ -60,7 +60,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'Commonly used across the apparel industry, from footwear to furniture and car seats, these zippers are primarily utilized in outdoor and sports applications.'
-                      : 'Powszechnie stosowane w całym przemyśle odzieżowym — od obuwia po meble i fotele samochodowe. Przede wszystkim wykorzystywane w zastosowaniach outdoorowych i sportowych.'}
+                      : 'Powszechnie stosowane w przemyśle odzieżowym, od obuwia po meble i siedzenia samochodowe. Są to głównie zamki używane w odzieży outdoor i w sporcie.'}
                   </p>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                   <p>
                     {isEn
                       ? 'This is the same type of zipper (coil zipper), but the slider operates on the tape side, which keeps the zipper elements hidden. Ideal for garments where a clean, concealed finish is desired.'
-                      : 'To ten sam typ zamka spiralnego, ale suwak porusza się po stronie taśmy, dzięki czemu elementy zamka pozostają ukryte. Idealny do ubrań wymagających czystego, ukrytego wykończenia.'}
+                      : 'Ten sam typ zamka, ale suwak działa po stronie taśmy, dzięki czemu elementy zamka pozostają ukryte.'}
                   </p>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
             <p className="font-[Jost] text-gray-500 text-sm leading-relaxed max-w-3xl">
               {isEn
                 ? 'Coil zippers can be vulnerable to contaminants and thread damage if not properly protected. For demanding environments, we recommend water-resistant variants with additional protective coatings.'
-                : 'Zamki spiralne mogą być podatne na zabrudzenia i uszkodzenia nici, jeśli nie są odpowiednio chronione. W wymagających warunkach zalecamy warianty wodoodporne z dodatkowymi powłokami ochronnymi.'}
+                : 'Zamki spiralne mogą być podatne na zabrudzenia i uszkodzenia nici. W wymagających warunkach zalecamy warianty wodoodporne z dodatkowymi powłokami ochronnymi.'}
             </p>
           </div>
         </section>
@@ -137,7 +137,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'Two-way separating zippers present design challenges that are recognized globally. We source and offer only the highest quality two-way zippers, ensuring the user doesn\'t have to struggle to close them.'
-                    : 'Zamki dwusuwakowe rozdzielne to uznane globalnie wyzwanie projektowe. Pozyskujemy i oferujemy wyłącznie zamki dwusuwakowe najwyższej jakości, zapewniając użytkownikowi łatwe zapinanie.'}
+                    : 'Zamki nylonowe z dwukierunkowym otwarciem są dość trudne do zaprojektowania. Dostarczamy tylko najwyższej jakości zamki dwukierunkowe, w których użytkownik nie musi walczyć z zamkiem, aby go zamknąć.'}
                 </p>
               </div>
             </div>
@@ -167,7 +167,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'We are a supplier of military-grade zippers with reduced Near-Infrared (NIR) signature, matching the light reflection properties of the surrounding fabric. We offer custom colors to meet precise specification requirements.'
-                    : 'Jesteśmy dostawcą zamków klasy militarnej z obniżoną sygnaturą bliskiej podczerwieni (NIR), dopasowaną do właściwości odbicia światła otaczającej tkaniny. Oferujemy kolory na zamówienie spełniające dokładne wymagania specyfikacji.'}
+                    : 'Dostarczamy wszystkie typy zamków błyskawicznych używanych w zastosowaniach wojskowych. Zamki błyskawiczne dla wojska muszą charakteryzować się zmniejszoną sygnaturą w bliskiej podczerwieni (NIR). Opracowujemy kolory na zamówienie na podstawie próbek tkanin i wymagań specyfikacji NATO.'}
                 </p>
               </div>
             </div>
@@ -197,7 +197,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'We have extensive experience supplying cycling manufacturers. We offer both innovative solutions and the best deals on standard zippers — everything needed to keep your sportswear production running smoothly.'
-                    : 'Posiadamy szerokie doświadczenie w dostawach dla producentów odzieży kolarskiej. Oferujemy zarówno innowacyjne rozwiązania, jak i najlepsze ceny na standardowe zamki — wszystko, czego potrzebujesz, by produkcja odzieży sportowej przebiegała sprawnie.'}
+                    : 'Mamy długie doświadczenie w dostarczaniu różnego rodzaju zamków błyskawicznych dla producentów odzieży kolarskiej. Doskonale znamy tę branżę i możemy zaoferować zarówno innowacyjne rozwiązania, jak i najlepsze oferty na standardowe zamki błyskawiczne.'}
                 </p>
               </div>
             </div>
@@ -227,7 +227,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'Concealed coil zippers have a broad application range across apparel. They are categorized by tape type and teeth size. The lightweight CHC-26 concealed zippers use a lace-style tape, creating a mesh-like zipper ideal for very lightweight garments.'
-                    : 'Zamki spiralne kryte mają szerokie zastosowanie w odzieży. Kategoryzuje się je według rodzaju taśmy i rozmiaru zębów. Lekkie zamki kryte CHC-26 używają taśmy koronkowej, tworząc zamek o strukturze siatki — idealny do bardzo lekkich tkanin.'}
+                    : 'Zamki nylonowe kryte to szeroka kategoria zamków nylonowych, stosowana w wielu różnych dziedzinach – od konfekcji, przez odzież outdoorową, po przemysł motoryzacyjny i meblarski. Główne różnice pomiędzy poszczególnymi typami to rodzaj taśmy i rozmiar ząbków.'}
                 </p>
               </div>
             </div>
@@ -267,7 +267,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'These offer exceptional flexibility, allowing the zipper to move with the fabric. Suitable for elastane blends and thin knits. Note: the lace tape version is suitable for lightweight fabrics where no lateral forces act on the zipper.'
-                    : 'Oferują wyjątkową elastyczność, pozwalając zamkowi poruszać się razem z tkaniną. Odpowiednie do mieszanek z elastanem i cienkich dzianin. Uwaga: wersja z taśmą koronkową nadaje się do lekkich tkanin, na które nie działają siły boczne.'}
+                    : 'Zamki kryte na taśmie dzianinowej charakteryzują się wyjątkową elastycznością, pozwalając zamkowi poruszać się razem z tkaniną. Taśma koronkowa jest odpowiednia do lekkich tkanin, gdzie na zamek nie działają siły poprzeczne, głównie w przypadku lekkich sukienek.'}
                 </p>
               </div>
             </div>
@@ -287,7 +287,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'A replacement for a plastic profile creating an aesthetic, invisible closure. We provide equipment and staff training to ensure perfect installation results.'
-                    : 'Zamiennik plastikowego profilu tworzący estetyczne, niewidoczne zamknięcie. Zapewniamy wyposażenie i szkolenie personelu w celu uzyskania doskonałych wyników montażu.'}
+                    : 'Zastępstwo dla plastikowego profilu do zamknięcia poszycia fotela lub sofy. Dostarczamy wszystkie niezbędne urządzenia oraz koordynację procesu i szkolenie personelu w zakładzie klienta.'}
                 </p>
                 <ul className="space-y-2 mt-4">
                   {(isEn ? [
@@ -295,7 +295,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                     '45 ECH – flexible, furniture-suitable, woven elements',
                   ] : [
                     '5 CC – ciężki, sztywny, duże siły zamykania',
-                    '45 ECH – elastyczny, odpowiedni do mebli, tkane elementy',
+                    '45 ECH – elastyczny, odpowiedni do mebli, elementy tkane',
                   ]).map((item, i) => (
                     <li key={i} className="flex gap-2 items-start">
                       <span className="text-gray-600 flex-shrink-0">›</span>
@@ -331,7 +331,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'Popular for splash protection and a basic level of water resistance in sportswear. The film appearance ranges from fully glossy to matte. Available in clear and solid-color versions.'
-                    : 'Popularne do ochrony przed zachlapaniem i podstawowego poziomu wodoodporności w odzieży sportowej. Wygląd folii waha się od w pełni błyszczącego do matowego. Dostępne w wersjach przezroczystych i pełnokolorowych.'}
+                    : 'Popularny zamek ze względu na ładny wygląd i ochronę przed zachlapaniem wodą. Zapewniają podstawowy poziom wodoodporności i są powszechnie stosowane w różnego rodzaju odzieży sportowej i outdoorowej.'}
                 </p>
                 <p className="font-medium text-gray-600">
                   {isEn ? 'Available sizes: N3, N4, N5, N7, N8, N10' : 'Dostępne rozmiary: N3, N4, N5, N7, N8, N10'}
@@ -372,12 +372,12 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'The evolution toward enhanced durability has produced the woven-in S-Tape zipper, where tooth elements are integrally woven into the tape\'s structure. This eliminates the thread degradation weak point found in standard sewn coil zippers.'
-                    : 'Ewolucja ku zwiększonej trwałości dała zamek z taśmą tkaną S-Tape, gdzie elementy zębów są integralnie wplecione w strukturę taśmy. Eliminuje to słaby punkt degradacji nici w standardowych zamkach szytych.'}
+                    : 'W tej zaawansowanej konstrukcji, elementy ząbkowe są integralnie wplecione w strukturę taśmy, a nie tylko przyszyte. Eliminuje to potencjalny słaby punkt związany z degradacją nici.'}
                 </p>
                 <p>
                   {isEn
                     ? 'Standard sewn coil zippers have teeth sewn onto the side tape with polyester thread — these threads degrade from UV exposure over time. The woven-in type offers extended lifespan with greater tape resistance.'
-                    : 'Standardowe zamki szyte mają zęby przyszyte do bocznej taśmy nicią poliestrową — nici te degradują się pod wpływem promieniowania UV. Typ tkany oferuje wydłużoną żywotność i większą odporność taśmy.'}
+                    : 'Standardowa spirala szyta ma ząbki przyszywane do taśmy bocznej nicią poliestrową. Nici mogą ulegać degradacji UV, a ząbki mogą się oddzielać od taśmy. Taśma tkana oferuje znacznie dłuższą żywotność.'}
                 </p>
               </div>
             </div>
