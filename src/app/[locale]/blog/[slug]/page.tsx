@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getPostBySlug, getAllPostSlugs, extractYoastMeta, getRecentPosts } from '@/lib/wordpress';
 import type { Locale } from '@/lib/types';
-import { formatDate, cleanBlogContent, splitContentAtFaq } from '@/lib/utils';
+import { formatDate, cleanBlogContent, splitContentAtFaq, processHeadings } from '@/lib/utils';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -52,12 +52,18 @@ export default async function BlogPostPage({ params }: Props) {
 
   const featuredImage = post._embedded?.['wp:featuredmedia']?.[0];
   const backHref = locale === 'en' ? '/blog/' : '/pl/blog/';
+  const homeHref = locale === 'en' ? '/' : '/pl/';
   const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
 
   const otherPosts = recentPosts.filter(p => p.slug !== slug).slice(0, 4);
 
+  // Process content: clean → extract headings with IDs → split at FAQ
   const cleaned = cleanBlogContent(post.content.rendered);
-  const [beforeFaq, faqAndAfter] = splitContentAtFaq(cleaned);
+  const { html: withIds, headings } = processHeadings(cleaned);
+  const [beforeFaq, faqAndAfter] = splitContentAtFaq(withIds);
+
+  const FALLBACK_IMG = 'https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg';
+  const heroImg = featuredImage?.source_url || FALLBACK_IMG;
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -77,13 +83,10 @@ export default async function BlogPostPage({ params }: Props) {
 
   const faqSchema = post.yoast_head_json?.schema;
 
-  const FALLBACK_IMG = 'https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg';
-  const heroImg = featuredImage?.source_url || FALLBACK_IMG;
-
   return (
     <article>
-      {/* ── Hero: featured image + dark overlay + title ── */}
-      <div className="subpage-hero relative min-h-[60vh] flex flex-col justify-end overflow-hidden">
+      {/* ── Hero: featured image + overlay + title — shorter ── */}
+      <div className="subpage-hero relative min-h-[40vh] flex flex-col justify-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={heroImg}
@@ -95,13 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
           />
         </div>
         <div className="absolute inset-0 bg-black/65" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-16">
-          <Link
-            href={backHref}
-            className="text-xs text-white/60 hover:text-white font-[Jost] mb-6 inline-block transition-colors"
-          >
-            ← {locale === 'en' ? 'Back to blog' : 'Powrót do bloga'}
-          </Link>
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
           <time className="text-xs text-white/40 font-[Jost] block mb-3">
             {formatDate(post.date, locale as Locale)}
           </time>
@@ -112,12 +109,50 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </div>
 
-      {/* ── 2-column layout: article content + sidebar ── */}
+      {/* ── 2-column layout ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col lg:flex-row gap-12">
 
-          {/* Left: main article content */}
+          {/* Left: content */}
           <div className="flex-1 min-w-0">
+
+            {/* Breadcrumbs */}
+            <nav className="flex items-center gap-2 text-xs font-[Jost] text-gray-400 mb-6">
+              <Link href={homeHref} className="hover:text-gray-700 transition-colors">
+                {locale === 'en' ? 'Home' : 'Strona główna'}
+              </Link>
+              <span>/</span>
+              <Link href={backHref} className="hover:text-gray-700 transition-colors">
+                Blog
+              </Link>
+              <span>/</span>
+              <span
+                className="text-gray-600 line-clamp-1"
+                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+              />
+            </nav>
+
+            {/* Table of Contents */}
+            {headings.length > 1 && (
+              <div className="mb-10 border border-gray-200 p-5 bg-gray-50">
+                <p className="font-[Jost] text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">
+                  {locale === 'en' ? 'Table of contents' : 'Spis treści'}
+                </p>
+                <ol className="space-y-1.5">
+                  {headings.map((h, i) => (
+                    <li key={h.id} className="flex gap-2 items-baseline">
+                      <span className="text-xs text-gray-400 font-[Jost] flex-shrink-0">{i + 1}.</span>
+                      <a
+                        href={`#${h.id}`}
+                        className="font-[Jost] text-sm text-gray-700 hover:text-black transition-colors leading-snug"
+                      >
+                        {h.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
 
             {/* Article body (before FAQ) */}
             <div
@@ -127,7 +162,6 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* ── CTA — above FAQ ── */}
             <div className="my-12 bg-white border border-gray-100 shadow-sm p-8 sm:p-10">
-              {/* Centered heading + subtitle */}
               <div className="text-center mb-8">
                 <h3 className="font-[Jost] text-2xl sm:text-3xl font-bold text-[#111] leading-snug mb-3">
                   {locale === 'en'
@@ -140,8 +174,6 @@ export default async function BlogPostPage({ params }: Props) {
                     : 'Wybór odpowiedniego zamka to klucz do sukcesu każdego projektu — od odzieży i toreb po tapicerkę meblową.'}
                 </p>
               </div>
-
-              {/* 2-col: description | contact info */}
               <div className="flex flex-col sm:flex-row gap-8 items-start">
                 <div className="flex-1">
                   <p className="font-[Jost] text-gray-600 text-sm leading-relaxed">
@@ -169,7 +201,7 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             </div>
 
-            {/* FAQ section (if any) */}
+            {/* FAQ section */}
             {faqAndAfter && (
               <div
                 className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal blog-article-content"

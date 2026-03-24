@@ -192,6 +192,46 @@ export function cleanBlogContent(html: string): string {
 }
 
 /**
+ * Extract h2 headings from HTML, add id attributes to each, return modified HTML + heading list.
+ * Generates URL-safe IDs from heading text (handles PL characters too).
+ */
+export function processHeadings(html: string): {
+  html: string;
+  headings: { id: string; text: string }[];
+} {
+  const headings: { id: string; text: string }[] = [];
+  const seen = new Map<string, number>();
+
+  const processed = html.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/gi, (_match, attrs, inner) => {
+    // Strip inner HTML tags to get plain text
+    const text = inner.replace(/<[^>]*>/g, '').trim();
+    // Build slug: lowercase, replace PL chars, keep alphanumeric + hyphens
+    const base = text
+      .toLowerCase()
+      .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e')
+      .replace(/ł/g, 'l').replace(/ń/g, 'n').replace(/ó/g, 'o')
+      .replace(/ś/g, 's').replace(/ź/g, 'z').replace(/ż/g, 'z')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+      .slice(0, 60);
+    // Deduplicate IDs
+    const count = seen.get(base) ?? 0;
+    const id = count === 0 ? base : `${base}-${count}`;
+    seen.set(base, count + 1);
+    headings.push({ id, text });
+    // If attrs already has an id, replace it; otherwise add
+    const newAttrs = /\bid=/.test(attrs)
+      ? attrs.replace(/\bid="[^"]*"/, `id="${id}"`)
+      : ` id="${id}"${attrs}`;
+    return `<h2${newAttrs}>${inner}</h2>`;
+  });
+
+  return { html: processed, headings };
+}
+
+/**
  * Split cleaned blog HTML into [beforeFaq, faqAndAfter].
  * Looks for common FAQ section markers (Elementor accordion, custom faq-container, FAQ heading).
  * If no FAQ found, returns [html, ''].
