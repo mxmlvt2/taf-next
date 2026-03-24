@@ -188,6 +188,30 @@ export function cleanBlogContent(html: string): string {
       } else { i++; }
     }
   }
+  // Strip TAF CTA block embedded in WP content (we render our own hardcoded CTA)
+  const ctaMarkers = ['Need the perfect zippers', 'Potrzebujesz idealnych zamk'];
+  for (const ctaMarker of ctaMarkers) {
+    const markerIdx = result.indexOf(ctaMarker);
+    if (markerIdx === -1) continue;
+    const sectionStart = result.lastIndexOf('e-con e-parent', markerIdx);
+    if (sectionStart === -1) continue;
+    const divStart = result.lastIndexOf('<div', sectionStart);
+    if (divStart === -1) continue;
+    let depth = 0;
+    let i = divStart;
+    while (i < result.length) {
+      if (result[i] === '<' && result[i+1] === 'd' && result[i+2] === 'i' && result[i+3] === 'v') {
+        depth++;
+        while (i < result.length && result[i] !== '>') i++;
+        i++;
+      } else if (result[i] === '<' && result[i+1] === '/' && result[i+2] === 'd' && result[i+3] === 'i' && result[i+4] === 'v' && result[i+5] === '>') {
+        depth--;
+        if (depth === 0) { result = result.slice(0, divStart) + result.slice(i + 6); break; }
+        i += 6;
+      } else { i++; }
+    }
+    break;
+  }
   return result;
 }
 
@@ -202,10 +226,10 @@ export function processHeadings(html: string): {
   const headings: { id: string; text: string }[] = [];
   const seen = new Map<string, number>();
 
-  const processed = html.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/gi, (_match, attrs, inner) => {
-    // Strip inner HTML tags to get plain text
+  // Match both h2 and h3 — Elementor may render section headings as either
+  const processed = html.replace(/<(h[23])([^>]*)>([\s\S]*?)<\/\1>/gi, (_match, tag, attrs, inner) => {
     const text = inner.replace(/<[^>]*>/g, '').trim();
-    // Build slug: lowercase, replace PL chars, keep alphanumeric + hyphens
+    if (!text) return _match;
     const base = text
       .toLowerCase()
       .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e')
@@ -216,16 +240,14 @@ export function processHeadings(html: string): {
       .replace(/-+/g, '-')
       .replace(/^-|-$/g, '')
       .slice(0, 60);
-    // Deduplicate IDs
     const count = seen.get(base) ?? 0;
     const id = count === 0 ? base : `${base}-${count}`;
     seen.set(base, count + 1);
     headings.push({ id, text });
-    // If attrs already has an id, replace it; otherwise add
     const newAttrs = /\bid=/.test(attrs)
       ? attrs.replace(/\bid="[^"]*"/, `id="${id}"`)
       : ` id="${id}"${attrs}`;
-    return `<h2${newAttrs}>${inner}</h2>`;
+    return `<${tag}${newAttrs}>${inner}</${tag}>`;
   });
 
   return { html: processed, headings };
@@ -248,7 +270,17 @@ export function splitContentAtFaq(html: string): [string, string] {
   for (const marker of markers) {
     const idx = html.indexOf(marker);
     if (idx === -1) continue;
-    // Walk back to find the opening <div of this block
+    // Walk back to the nearest e-con e-parent section boundary so the FAQ heading
+    // (which is a sibling widget in the same section) is also captured in faqAndAfter
+    const sectionMarker = 'e-con e-parent';
+    const sectionIdx = html.lastIndexOf(sectionMarker, idx);
+    if (sectionIdx !== -1) {
+      const divStart = html.lastIndexOf('<div', sectionIdx);
+      if (divStart !== -1) {
+        return [html.slice(0, divStart), html.slice(divStart)];
+      }
+    }
+    // Fallback: find the immediate opening <div before the marker
     let start = idx;
     while (start > 0 && !(html[start] === '<' && html[start + 1] === 'd')) {
       start--;
@@ -259,7 +291,13 @@ export function splitContentAtFaq(html: string): [string, string] {
   // Fallback: look for a heading that contains FAQ text
   const faqHeadingMatch = html.match(/<h[2-4][^>]*>[^<]*(FAQ|Często zadawane|Frequently asked)/i);
   if (faqHeadingMatch && faqHeadingMatch.index !== undefined) {
+    // Walk back to nearest e-con section from this heading
     const idx = faqHeadingMatch.index;
+    const sectionIdx = html.lastIndexOf('e-con e-parent', idx);
+    if (sectionIdx !== -1) {
+      const divStart = html.lastIndexOf('<div', sectionIdx);
+      if (divStart !== -1) return [html.slice(0, divStart), html.slice(divStart)];
+    }
     return [html.slice(0, idx), html.slice(idx)];
   }
 

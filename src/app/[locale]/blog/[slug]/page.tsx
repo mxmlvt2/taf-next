@@ -133,7 +133,7 @@ export default async function BlogPostPage({ params }: Props) {
             </nav>
 
             {/* Table of Contents */}
-            {headings.length > 1 && (
+            {headings.length >= 1 && (
               <div className="mb-10 border border-gray-200 p-5 bg-gray-50">
                 <p className="font-[Jost] text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">
                   {locale === 'en' ? 'Table of contents' : 'Spis treści'}
