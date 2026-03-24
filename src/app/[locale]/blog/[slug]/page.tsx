@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article>
       {/* ── Hero: featured image + overlay + title — shorter ── */}
-      <div className="subpage-hero relative min-h-[40vh] flex flex-col justify-end overflow-hidden">
+      <div className="subpage-hero relative min-h-[30vh] flex flex-col justify-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={heroImg}
