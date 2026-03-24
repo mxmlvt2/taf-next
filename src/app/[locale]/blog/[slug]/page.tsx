@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getPostBySlug, getAllPostSlugs, extractYoastMeta, getRecentPosts } from '@/lib/wordpress';
 import type { Locale } from '@/lib/types';
 import { formatDate, cleanBlogContent, splitContentAtFaq, processHeadings } from '@/lib/utils';
+import CustomPostBody, { getCustomHeadings } from '@/components/blog/CustomPostBody';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -24,11 +25,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(slug, locale as Locale);
   if (!post) return {};
   const seo = extractYoastMeta(post);
-
   const canonical = locale === 'en'
     ? `https://trimsandfasteners.com/blog/${slug}/`
     : `https://trimsandfasteners.com/pl/blog/${slug}/`;
-
   return {
     title: seo.title || post.title.rendered,
     description: seo.description,
@@ -54,13 +53,19 @@ export default async function BlogPostPage({ params }: Props) {
   const backHref = locale === 'en' ? '/blog/' : '/pl/blog/';
   const homeHref = locale === 'en' ? '/' : '/pl/';
   const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
-
   const otherPosts = recentPosts.filter(p => p.slug !== slug).slice(0, 4);
 
-  // Process content: clean → extract headings with IDs → split at FAQ
+  // Determine if we have a custom hardcoded body for this post
+  const customHeadings = getCustomHeadings(slug, locale);
+  const hasCustomBody = customHeadings !== null;
+
+  // Always process WP content for FAQ section (even for custom posts)
   const cleaned = cleanBlogContent(post.content.rendered);
-  const { html: withIds, headings } = processHeadings(cleaned);
+  const { html: withIds, headings: wpHeadings } = processHeadings(cleaned);
   const [beforeFaq, faqAndAfter] = splitContentAtFaq(withIds);
+
+  // Use custom headings for custom posts, WP-extracted ones otherwise
+  const headings = hasCustomBody ? customHeadings : wpHeadings;
 
   const FALLBACK_IMG = 'https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg';
   const heroImg = featuredImage?.source_url || FALLBACK_IMG;
@@ -85,17 +90,10 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article>
-      {/* ── Hero: featured image + overlay + title — shorter ── */}
+      {/* ── Hero: featured image + overlay ── */}
       <div className="subpage-hero relative min-h-[30vh] flex flex-col justify-end overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={heroImg}
-            alt=""
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
+          <Image src={heroImg} alt="" fill className="object-cover" priority sizes="100vw" />
         </div>
         <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
@@ -117,14 +115,12 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="flex-1 min-w-0">
 
             {/* Breadcrumbs */}
-            <nav className="flex items-center gap-2 text-xs font-[Jost] text-gray-400 mb-6">
+            <nav className="flex items-center gap-2 text-xs font-[Jost] text-gray-400 mb-6 flex-wrap">
               <Link href={homeHref} className="hover:text-gray-700 transition-colors">
                 {locale === 'en' ? 'Home' : 'Strona główna'}
               </Link>
               <span>/</span>
-              <Link href={backHref} className="hover:text-gray-700 transition-colors">
-                Blog
-              </Link>
+              <Link href={backHref} className="hover:text-gray-700 transition-colors">Blog</Link>
               <span>/</span>
               <span
                 className="text-gray-600 line-clamp-1"
@@ -154,13 +150,17 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             )}
 
-            {/* Article body (before FAQ) */}
-            <div
-              className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl blog-article-content"
-              dangerouslySetInnerHTML={{ __html: beforeFaq }}
-            />
+            {/* Article body */}
+            {hasCustomBody ? (
+              <CustomPostBody slug={slug} locale={locale} />
+            ) : (
+              <div
+                className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl blog-article-content"
+                dangerouslySetInnerHTML={{ __html: beforeFaq }}
+              />
+            )}
 
-            {/* ── CTA — above FAQ ── */}
+            {/* ── CTA ── */}
             <div className="my-12 bg-white border border-gray-100 shadow-sm p-8 sm:p-10">
               <div className="text-center mb-8">
                 <h3 className="font-[Jost] text-2xl sm:text-3xl font-bold text-[#111] leading-snug mb-3">
@@ -201,7 +201,7 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             </div>
 
-            {/* FAQ section */}
+            {/* FAQ (from WP HTML) */}
             {faqAndAfter && (
               <div
                 className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal blog-article-content"
@@ -219,9 +219,7 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="space-y-6">
                 {otherPosts.map(other => {
                   const otherImg = other._embedded?.['wp:featuredmedia']?.[0];
-                  const otherHref = locale === 'en'
-                    ? `/blog/${other.slug}/`
-                    : `/pl/blog/${other.slug}/`;
+                  const otherHref = locale === 'en' ? `/blog/${other.slug}/` : `/pl/blog/${other.slug}/`;
                   return (
                     <Link key={other.id} href={otherHref} className="group flex gap-3 items-start">
                       {otherImg && (
@@ -248,10 +246,7 @@ export default async function BlogPostPage({ params }: Props) {
                   );
                 })}
               </div>
-              <Link
-                href={backHref}
-                className="mt-8 inline-block text-sm text-gray-500 hover:text-black font-[Jost] transition-colors"
-              >
+              <Link href={backHref} className="mt-8 inline-block text-sm text-gray-500 hover:text-black font-[Jost] transition-colors">
                 {locale === 'en' ? 'View all posts →' : 'Wszystkie artykuły →'}
               </Link>
             </aside>
@@ -259,17 +254,8 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </div>
 
-      {/* JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
     </article>
   );
 }
