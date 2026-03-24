@@ -22,7 +22,7 @@ export default function FashionContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? "We offer a wide range of die-cast Zamak products for the fashion industry, available in a variety of platings and finishes. We can give you all accessories tone-in-tone — no matter where your production is made globally."
-                    : 'Oferujemy szeroki asortyment produktów Zamak odlewanych ciśnieniowo dla branży mody, dostępnych w różnych powłokach i wykończeniach. Możemy dostarczyć wszystkie akcesoria w tym samym tonie — niezależnie od tego, gdzie odbywa się Twoja produkcja.'}
+                    : 'Oferujemy odlewane ciśnieniowo produkty ze stopu cynku w licznych wariantach powłok. Dostępne w różnych kolorach, w tym modnym różowym złocie. Możemy dopasować akcesoria ton w ton — niezależnie od tego, gdzie na świecie odbywa się Twoja produkcja.'}
                 </p>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function FashionContent({ locale, position }: Props) {
               <p className="font-[Jost] text-gray-500 text-sm leading-relaxed">
                 {isEn
                   ? "Advanced snap solutions covering military-grade (NIR-compliant), marine (UV/saltwater resistant), children's clothing, and fire-resistant workwear applications. A single source for all your snap fastening needs."
-                  : 'Zaawansowane rozwiązania napowe obejmujące zastosowania militarne (zgodność z NIR), morskie (odporność na UV/słoną wodę), odzież dziecięcą i odzież roboczą ognioodporną. Jedno źródło dla wszystkich potrzeb związanych z napami.'}
+                  : 'Zatrzaski to kluczowe komponenty techniczne dla branży mody. Dostępne: zatrzaski metalowe i plastikowe do odzieży dziecięcej, klasy wojskowej ze zgodnością NIR, do zastosowań morskich (UV/sól), ognioodporne i antystatyczne — jedno źródło dla wszystkich potrzeb.'}
               </p>
             </div>
             <div className="overflow-hidden group">
@@ -75,7 +75,7 @@ export default function FashionContent({ locale, position }: Props) {
           <p className="font-[Jost] text-gray-500 text-sm leading-relaxed mb-10 max-w-2xl">
             {isEn
               ? "Used extensively in women's ready-to-wear. European-made #3 and #4 sizes available, with customization options including fancy pullers and logo integration."
-              : 'Szeroko stosowane w damskiej odzieży gotowej. Dostępne rozmiary #3 i #4 europejskiej produkcji, z opcjami personalizacji obejmującymi ozdobne suwaki i integrację logo.'}
+              : 'Najczęściej stosowane w branży mody. Zamki w różnych rozmiarach spirali. Dostępne: taśmy tkane i koronkowe, standardowe uchwyty suwaka, wersje z ozdobną galwaniką i logiem klienta.'}
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
@@ -106,7 +106,7 @@ export default function FashionContent({ locale, position }: Props) {
           <p className="font-[Jost] text-gray-500 text-sm leading-relaxed mb-10 max-w-2xl">
             {isEn
               ? 'Sport use of zippers is a combination of unique function and design. Invisible zippers with staydown puller — autolock / non-lock — optimized for performance and aerodynamics.'
-              : 'Zastosowanie sportowe zamków to połączenie unikalnej funkcji i wzornictwa. Zamki kryte z suwakiem staydown — autolock / non-lock — zoptymalizowane pod kątem wydajności i aerodynamiki.'}
+              : 'Specjalistyczne rozwiązania dla odzieży sportowej z uchwytem suwaka typu stay-down (autolock / non-lock). Dostępne wersje: rozdzielne, wodoodporne z laminacją, minimalizujące ruch suwaka podczas aktywności.'}
           </p>
           <div className="grid grid-cols-3 gap-4 max-w-xl">
             {[
@@ -134,7 +134,7 @@ export default function FashionContent({ locale, position }: Props) {
           <p className="font-[Jost] text-gray-400 text-sm leading-relaxed mb-10 max-w-2xl">
             {isEn
               ? 'Traditional in the fashion business, used widely across all fashion segments. Metal teeth can have different finishes and colors — antique brass, antique silver, nickel, black oxide, and more. Metal zippers are our core product.'
-              : 'Tradycyjne w branży mody, szeroko stosowane we wszystkich segmentach. Zęby metalowe mogą mieć różne wykończenia i kolory — mosiądz antyczny, srebro antyczne, nikiel, czarna oksyda i inne. Zamki metalowe to nasz podstawowy produkt.'}
+              : 'Tradycyjny element w branży modowej. Ząbki typu Y z różnymi wykończeniami i kolorami: antyczne, jasne złoto, różowe złoto, tytanowe, nikiel, aluminiowe. Zamki metalowe to nasz podstawowy produkt — dostarczamy je do producentów z całego świata.'}
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[

@@ -20,17 +20,17 @@ export default function FurnitureContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'A concealed zipper by YKK with flat elements and a coil woven into the tape. An excellent choice for applications requiring more flexibility than the 5-CC zipper offers.'
-                    : 'Zamek kryty YKK z płaskimi elementami i spiralą wplecioną w taśmę. Doskonały wybór do zastosowań wymagających większej elastyczności niż oferuje zamek 5-CC.'}
+                    : 'Zamek kryty produkcji YKK o płaskich elementach oraz spirali wtkanej w taśmę.'}
                 </p>
                 <p>
                   {isEn
                     ? 'Performs perfectly in concealed applications within the furniture, upholstery, and automotive industries. Provides great flexibility and an excellent concealed connection for a wide variety of materials.'
-                    : 'Doskonale sprawdza się w krytych zastosowaniach w branży meblarskiej, tapicerskiej i motoryzacyjnej. Zapewnia dużą elastyczność i doskonałe kryte połączenie dla szerokiej gamy materiałów.'}
+                    : 'Doskonały wybór do aplikacji wymagających większej elastyczności niż oferowana przez zamek 5-CC. Zamek świetnie sprawdza się w krytych aplikacjach w branży meblowej, tapicerskiej i automotive. Świetna elastyczność i doskonałe kryte połączenie bardzo wielu materiałów.'}
                 </p>
                 <p className="text-gray-400 text-xs">
                   {isEn
                     ? 'Available as non-separating (closed-end), or as chain tape and sliders sold separately.'
-                    : 'Dostępny jako nierozdzielny (stały koniec) lub jako taśma łańcuchowa i suwaki sprzedawane osobno.'}
+                    : 'Oferujemy ten zamek w wersji nierozdzielnej jak również jako taśma i suwaki.'}
                 </p>
               </div>
             </div>
@@ -57,12 +57,12 @@ export default function FurnitureContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'The strongest concealed zipper for heavy-duty applications. Used in automotive seating and furniture where high closing forces and dimensional stability are required.'
-                    : 'Najmocniejszy zamek kryty do zastosowań ciężkich. Stosowany w siedzeniach samochodowych i meblach, gdzie wymagane są duże siły zamykania i stabilność wymiarowa.'}
+                    : 'Najmocniejszy kryty zamek, do wysoko obciążanych aplikacji. Zastosowanie w siedzeniach samochodowych oraz w meblarstwie.'}
                 </p>
                 <p className="text-gray-400 text-xs">
                   {isEn
                     ? 'Available as non-separating (closed-end), or as zipper chain and sliders.'
-                    : 'Dostępny jako nierozdzielny (stały koniec) lub jako łańcuch zamka i suwaki.'}
+                    : 'Oferujemy zamek w postaci zamka nierozdzielnego lub taśmy zamkowej i suwaków.'}
                 </p>
               </div>
             </div>
@@ -91,12 +91,12 @@ export default function FurnitureContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? 'Zipper chain that allows for sewing on a curve — excellent for curved applications as well as in places where the construction requires vertical flexibility.'
-                    : 'Łańcuch zamkowy umożliwiający szycie na krzywej — doskonały do zakrzywionych zastosowań oraz miejsc, gdzie konstrukcja wymaga pionowej elastyczności.'}
+                    : 'Taśma zamkowa umożliwiająca wszywanie po łuku, doskonała do zakrzywionych aplikacji jak również w miejscach wymagających elastyczności pionowej, wynikających z konstrukcji.'}
                 </p>
                 <p className="text-gray-500 text-xs">
                   {isEn
                     ? 'We offer it as chain tape and sliders sold separately.'
-                    : 'Oferujemy jako taśmę łańcuchową i suwaki sprzedawane osobno.'}
+                    : 'Oferujemy jako taśmę i suwaki.'}
                 </p>
               </div>
             </div>

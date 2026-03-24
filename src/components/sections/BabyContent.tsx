@@ -22,22 +22,22 @@ export default function BabyContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? "The children's apparel industry demands the highest standards in quality, safety, and functionality. Comfort, material durability, and compliance with health and environmental standards are non-negotiable."
-                    : 'Branża odzieży dziecięcej wymaga najwyższych standardów jakości, bezpieczeństwa i funkcjonalności. Komfort, trwałość materiałów oraz zgodność z normami zdrowotnymi i środowiskowymi są absolutnie konieczne.'}
+                    : 'Branża odzieży dziecięcej obejmuje projektowanie, produkcję i sprzedaż ubrań przeznaczonych dla niemowląt, dzieci i młodzieży. Charakteryzuje się dużą dynamiką oraz wysokimi wymaganiami dotyczącymi jakości, bezpieczeństwa i funkcjonalności produktów. Kluczowe znaczenie mają wygoda, trwałość materiałów oraz zgodność z normami zdrowotnymi i ekologicznymi.'}
                 </p>
                 <p>
                   {isEn
                     ? 'Crucially, compliance with norms regarding the detachment of small parts is vital, as these can pose a choking hazard for young children. All zipper components must be securely attached and tested accordingly.'
-                    : 'Kluczowe jest spełnienie norm dotyczących oderwania małych części, ponieważ mogą one stanowić zagrożenie uduszenia dla małych dzieci. Wszystkie elementy zamka muszą być bezpiecznie przymocowane i odpowiednio przetestowane.'}
+                    : 'Bardzo ważną rzeczą jest zgodność z normami dotyczącymi odrywania się małych przedmiotów, gdyż stanowi to niebezpieczeństwo dla małych dzieci.'}
                 </p>
                 <p>
                   {isEn
                     ? "Children's fashion prioritizes joyful colors. With molded zippers, changing tooth color creates beautiful contrasts. Molded zippers can even have a different color on each side — offering unlimited possibilities for unique designs."
-                    : 'Moda dziecięca stawia na radosne kolory. Dzięki zamkom formowanym zmiana koloru zębów tworzy piękne kontrasty. Zamki formowane mogą mieć nawet inny kolor po każdej stronie — oferując nieograniczone możliwości tworzenia unikalnych wzorów.'}
+                    : 'Moda dziecięca stawia na radosne kolory. Zamki formowane mogą mieć nawet inny kolor po każdej stronie, co daje nieograniczone możliwości tworzenia unikalnych wzorów.'}
                 </p>
                 <p>
                   {isEn
                     ? 'Plastic and coil zippers are the most commonly used types. We also offer zippers specifically designed for sleeping bags and strollers. Magnetic auto-lock closures help preschool children dress independently — solving the challenge of inserting zipper ends into the box.'
-                    : 'Zamki plastikowe i spiralne są najczęściej używanymi typami. Oferujemy również zamki specjalnie zaprojektowane do śpiworów i wózków. Magnetyczne zamknięcia auto-lock pomagają dzieciom w wieku przedszkolnym samodzielnie się ubierać — rozwiązując problem wkładania końcówki zamka do pudełka.'}
+                    : 'Zamki plastikowe i spiralne to najczęściej stosowane typy. Posiadamy w ofercie również zamki do śpiworów oraz wózków. Magnetyczne zamknięcia auto-lock pomagają dzieciom przedszkolnym samodzielnie się ubierać.'}
                 </p>
               </div>
             </div>
@@ -67,15 +67,15 @@ export default function BabyContent({ locale, position }: Props) {
                 <p>
                   {isEn
                     ? "Zipper elements injection-molded from a special glow-in-the-dark material — perfect for children's clothing. Just shine a flashlight on the zipper for a moment, and the teeth will start to glow beautifully. Kids love it!"
-                    : 'Elementy zamka formowane z materiału świecącego w ciemności — idealne do odzieży dziecięcej. Wystarczy przez chwilę oświetlić zamek latarką, a zęby zaczną pięknie świecić. Dzieci to uwielbiają!'}
+                    : 'Elementy zamka wtryskiwane ze specjalnego materiału świecącego w ciemnościach, idealne do odzieży dziecięcej. Wystarczy na chwilę oświetlić zamek latarką, a ząbki zaczną ładnie świecić – dzieci to uwielbiają!'}
                 </p>
                 <h3 className="font-[Jost] text-base font-medium text-white mt-4">
-                  {isEn ? 'How does the magic work? Photoluminescence' : 'Jak działa magia? Fotoluminescencja'}
+                  {isEn ? 'How does the magic work? Photoluminescence' : 'Jak działa magia? Technologia fotoluminescencji'}
                 </h3>
                 <p>
                   {isEn
                     ? 'The secret lies in the material: specialized plastic enriched with photoluminescent pigments that absorb and store light energy, then slowly release it as visible greenish or bluish light. The longer the exposure to light, the brighter and longer-lasting the glow — children can "charge" their own clothes and enjoy the effect after the lights go out.'
-                    : 'Tajemnica tkwi w materiale: specjalistyczny plastik wzbogacony o pigmenty fotoluminescencyjne pochłania i przechowuje energię świetlną, a następnie powoli uwalnia ją w postaci widzialnego, zielonkawego lub niebieskawego światła. Im dłuższa ekspozycja na światło, tym jaśniejszy i dłuższy efekt — dzieci mogą samodzielnie "ładować" swoje ubrania.'}
+                    : 'Sekret tych wyjątkowych zamków tkwi w materiale, z którego formowane są ich elementy, takie jak ząbki i suwak. Jest to specjalistyczne tworzywo sztuczne, wzbogacone o pigmenty fotoluminescencyjne. Pigmenty te mają zdolność do absorbowania i magazynowania energii świetlnej, a następnie powolnego jej uwalniania w postaci widzialnego, zielonkawego lub niebieskiego światła. Proces jest niezwykle prosty: wystarczy na chwilę oświetlić zamek latarką lub wystawić na działanie słońca, a ząbki zaczną ładnie świecić w ciemności.'}
                 </p>
               </div>
             </div>
