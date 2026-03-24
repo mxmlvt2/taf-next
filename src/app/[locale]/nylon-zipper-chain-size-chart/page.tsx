@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
-import { extractFaqItems } from '@/lib/utils';
-import type { Locale } from '@/lib/types';
-import FaqAccordion from '@/components/sections/FaqAccordion';
 
 const WP = 'https://trimsandfasteners.com/wp-content/uploads/2025/10/';
 
@@ -12,16 +8,13 @@ type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const slug = locale === 'en' ? 'nylon-zipper-chain-size-chart' : 'tasmy-spiralne-zestawienie-rozmiarow';
-  const page = await getPageBySlug(slug, locale as Locale);
-  const seo = extractYoastMeta(page);
   return {
-    title: seo.title || 'Nylon Zipper Size Chart | TAF',
-    description: seo.description,
+    title: locale === 'en' ? 'Nylon Zipper Chain Size Chart | TAF' : 'Zestawienie rozmiarów taśm spiralnych | TAF',
+    description: locale === 'en'
+      ? 'Complete size chart for YKK nylon zipper chains: N3 through N10, including reverse coil options.'
+      : 'Kompletne zestawienie rozmiarów taśm spiralnych YKK: N3 do N10, w tym wersje rewersowe.',
     alternates: {
-      canonical: locale === 'en'
-        ? 'https://trimsandfasteners.com/nylon-zipper-chain-size-chart/'
-        : 'https://trimsandfasteners.com/pl/tasmy-spiralne-zestawienie-rozmiarow/',
+      canonical: locale === 'en' ? 'https://trimsandfasteners.com/nylon-zipper-chain-size-chart/' : 'https://trimsandfasteners.com/pl/tasmy-spiralne-zestawienie-rozmiarow/',
       languages: {
         en: 'https://trimsandfasteners.com/nylon-zipper-chain-size-chart/',
         pl: 'https://trimsandfasteners.com/pl/tasmy-spiralne-zestawienie-rozmiarow/',
@@ -48,9 +41,6 @@ const SIZES = [
 
 export default async function SizeChartPage({ params }: Props) {
   const { locale } = await params;
-  const slug = locale === 'en' ? 'nylon-zipper-chain-size-chart' : 'tasmy-spiralne-zestawienie-rozmiarow';
-  const page = await getPageBySlug(slug, locale as Locale);
-  const faqItems = extractFaqItems(page?.content.rendered ?? '');
   const isEn = locale === 'en';
 
   return (
@@ -236,8 +226,6 @@ export default async function SizeChartPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
-      <FaqAccordion items={faqItems} locale={locale} />
     </div>
   );
 }

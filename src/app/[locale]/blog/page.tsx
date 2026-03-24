@@ -30,9 +30,28 @@ export default async function BlogPage({ params }: Props) {
 
   return (
     <div>
-      <div className="bg-[#111111] text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-[Jost] text-3xl sm:text-5xl font-light">Blog</h1>
+      <div className="subpage-hero relative min-h-[50vh] flex items-center overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/65" />
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <h1 className="font-[Jost] text-3xl sm:text-5xl font-light text-white">Blog</h1>
+          <p className="font-[Jost] text-white/70 mt-4 text-base max-w-xl leading-relaxed">
+            {locale === 'en'
+              ? 'News, guides and insights about zippers and fasteners.'
+              : 'Aktualności, poradniki i informacje o zamkach błyskawicznych.'}
+          </p>
         </div>
       </div>
 

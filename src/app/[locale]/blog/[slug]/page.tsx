@@ -123,23 +123,59 @@ export default async function BlogPostPage({ params }: Props) {
             />
 
             {/* CTA box */}
-            <div className="mt-12 bg-[#111111] text-white p-8 text-center">
-              <h3 className="font-[Jost] text-2xl font-light mb-3">
-                {locale === 'en'
-                  ? 'Need the perfect zipper?'
-                  : 'Potrzebujesz idealnego zamka?'}
-              </h3>
-              <p className="font-[Jost] text-white/70 mb-6 text-sm">
-                {locale === 'en'
-                  ? 'Contact our team for expert advice and custom solutions.'
-                  : 'Skontaktuj się z naszym zespołem po fachową poradę i rozwiązania na zamówienie.'}
-              </p>
-              <Link
-                href={contactHref}
-                className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                {locale === 'en' ? 'Contact us' : 'Skontaktuj się'}
-              </Link>
+            <div className="mt-12 bg-[#111111] text-white p-8 sm:p-10">
+              <div className="flex flex-col sm:flex-row gap-8 items-start">
+                {/* Left: heading + text + button */}
+                <div className="flex-1">
+                  <h3 className="font-[Jost] text-2xl sm:text-3xl font-light leading-snug mb-2">
+                    {locale === 'en'
+                      ? 'Need the perfect zippers?'
+                      : 'Potrzebujesz idealnych zamków?'}
+                  </h3>
+                  <p className="font-[Jost] text-xl sm:text-2xl font-light text-white/80 mb-4">
+                    {locale === 'en' ? 'Contact us.' : 'Skontaktuj się z nami.'}
+                  </p>
+                  <p className="font-[Jost] text-white/60 text-sm leading-relaxed mb-6">
+                    {locale === 'en'
+                      ? 'Our team will help you find the right solution for your project — from selection to delivery.'
+                      : 'Nasz zespół pomoże Ci znaleźć odpowiednie rozwiązanie dla Twojego projektu — od doboru po dostawę.'}
+                  </p>
+                  <Link
+                    href={contactHref}
+                    className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+                  >
+                    {locale === 'en' ? 'Contact us' : 'Skontaktuj się'}
+                  </Link>
+                </div>
+                {/* Right: contact details */}
+                <div className="sm:w-56 flex-shrink-0 space-y-4 font-[Jost] text-sm">
+                  <div>
+                    <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
+                      {locale === 'en' ? 'Phone' : 'Telefon'}
+                    </p>
+                    <a href="tel:+48221101101" className="text-white hover:text-white/80 transition-colors block">
+                      +48 22 1101101
+                    </a>
+                    <a href="tel:+48723331331" className="text-white hover:text-white/80 transition-colors block mt-0.5">
+                      +48 723 331 331
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
+                      {locale === 'en' ? 'Email' : 'E-mail'}
+                    </p>
+                    <a href="mailto:contact@trimsandfasteners.com" className="text-white hover:text-white/80 transition-colors break-all">
+                      contact@trimsandfasteners.com
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-white/40 text-xs uppercase tracking-wider mb-1">
+                      {locale === 'en' ? 'Location' : 'Lokalizacja'}
+                    </p>
+                    <p className="text-white/80">Warszawa, Poland</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

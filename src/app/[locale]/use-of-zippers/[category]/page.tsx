@@ -2,12 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPageBySlug, getZippersByIds, extractYoastMeta } from '@/lib/wordpress';
-import { extractFaqItems, stripFaqBlock } from '@/lib/utils';
+import { getZippersByIds } from '@/lib/wordpress';
 import type { Locale } from '@/lib/types';
 import ZipperGrid from '@/components/zipper/ZipperGrid';
 import { CATEGORY_POPUP_IDS } from '@/lib/popup-ids';
-import FaqAccordion from '@/components/sections/FaqAccordion';
 import FireProtectionContent from '@/components/sections/FireProtectionContent';
 import MilitaryContent from '@/components/sections/MilitaryContent';
 import CyclingSportswearContent from '@/components/sections/CyclingSportswearContent';
@@ -58,30 +56,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, category } = await params;
   const enSlug = resolveEnSlug(category);
   if (!enSlug) return {};
-
   const meta = CATEGORY_SLUGS[enSlug];
-  const wpSlug = locale === 'en' ? meta.wpSlugEn : meta.wpSlugPl;
-  const page = await getPageBySlug(wpSlug, locale as Locale);
-  const seo = extractYoastMeta(page);
-
-  const canonical = locale === 'en'
-    ? `https://trimsandfasteners.com/use-of-zippers/${enSlug}/`
-    : `https://trimsandfasteners.com/pl/zastosowanie-zamkow/${meta.wpSlugPl}/`;
-
   return {
-    title: seo.title || `${locale === 'en' ? meta.labelEn : meta.labelPl} | TAF`,
-    description: seo.description,
+    title: `${locale === 'en' ? meta.labelEn : meta.labelPl} | TAF`,
+    description: locale === 'en'
+      ? `Zippers for ${meta.labelEn}. Professional YKK zipper supplier TAF.`
+      : `Zamki dla: ${meta.labelPl}. Profesjonalny dostawca zamków YKK TAF.`,
     alternates: {
-      canonical,
+      canonical: locale === 'en'
+        ? `https://trimsandfasteners.com/use-of-zippers/${enSlug}/`
+        : `https://trimsandfasteners.com/pl/zastosowanie-zamkow/${meta.wpSlugPl}/`,
       languages: {
         en: `https://trimsandfasteners.com/use-of-zippers/${enSlug}/`,
         pl: `https://trimsandfasteners.com/pl/zastosowanie-zamkow/${meta.wpSlugPl}/`,
       },
-    },
-    openGraph: {
-      title: seo.ogTitle,
-      description: seo.ogDescription,
-      images: seo.ogImage ? [seo.ogImage] : [],
     },
   };
 }
@@ -92,7 +80,6 @@ export default async function CategoryPage({ params }: Props) {
   if (!enSlug) notFound();
 
   const meta = CATEGORY_SLUGS[enSlug!];
-  const wpSlug = locale === 'en' ? meta.wpSlugEn : meta.wpSlugPl;
 
   const lang = locale as Locale;
   // Get popup IDs for this category in this language
@@ -100,21 +87,10 @@ export default async function CategoryPage({ params }: Props) {
   const popupKey = lang === 'en' ? enSlug! : plSlug;
   const popupIds = CATEGORY_POPUP_IDS[lang]?.[popupKey] ?? [];
 
-  const [page, zippers] = await Promise.all([
-    getPageBySlug(wpSlug, lang),
-    getZippersByIds(popupIds, lang),
-  ]);
+  const zippers = await getZippersByIds(popupIds, lang);
 
-  const title = page?.title.rendered || (locale === 'en' ? meta.labelEn : meta.labelPl);
+  const title = locale === 'en' ? meta.labelEn : meta.labelPl;
   const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
-
-  // FAQ schema from Yoast if available
-  const faqSchema = page?.yoast_head_json?.schema;
-
-  // Extract FAQ items from Elementor HTML widget and strip from content
-  const rawContent = page?.content.rendered ?? '';
-  const faqItems = extractFaqItems(rawContent);
-  const cleanContent = faqItems.length > 0 ? stripFaqBlock(rawContent) : rawContent;
 
   return (
     <div>
@@ -153,13 +129,6 @@ export default async function CategoryPage({ params }: Props) {
             className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl text-white"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-
-          {page?.excerpt.rendered && (
-            <div
-              className="font-[Jost] text-white/60 mb-8 max-w-2xl text-sm leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: page.excerpt.rendered }}
-            />
-          )}
 
           <Link
             href={contactHref}
@@ -203,16 +172,6 @@ export default async function CategoryPage({ params }: Props) {
       {enSlug === 'furniture' && <FurnitureContent locale={locale} position="below" />}
       {enSlug === 'buckles-plastic-hardware' && <BucklesContent locale={locale} position="below" />}
 
-      {/* FAQ accordion (extracted from Elementor HTML widget) */}
-      <FaqAccordion items={faqItems} locale={locale} />
-
-      {/* JSON-LD FAQ schema if available from Yoast */}
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
     </div>
   );
 }

@@ -104,6 +104,15 @@ footer address {
   display: block;
 }
 
+/* Inside blog posts — force all Elementor sections to stack vertically */
+.blog-article-content .e-con-inner {
+  display: block;
+}
+.blog-article-content .e-con-inner > .e-con {
+  width: 100%;
+  flex: none;
+}
+
 /* Widget containers */
 .elementor-widget-container {
   width: 100%;

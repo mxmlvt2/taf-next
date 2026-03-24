@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
 import type { Locale } from '@/lib/types';
 import ContactForm from '@/components/sections/ContactForm';
 
@@ -8,18 +7,14 @@ type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const slug = locale === 'en' ? 'contact' : 'kontakt';
-  const page = await getPageBySlug(slug, locale as Locale);
-  const seo = extractYoastMeta(page);
   return {
-    title: seo.title || (locale === 'en' ? 'Contact TAF | Zipper Supplier' : 'Kontakt TAF | Dostawca zamków'),
-    description: seo.description,
+    title: locale === 'en' ? 'Contact TAF | Zipper Supplier' : 'Kontakt TAF | Dostawca zamków',
+    description: locale === 'en'
+      ? 'Contact TAF for professional zipper supply. YKK distributor serving European manufacturers.'
+      : 'Skontaktuj się z TAF w sprawie profesjonalnych zamków. Dystrybutor YKK.',
     alternates: {
       canonical: locale === 'en' ? 'https://trimsandfasteners.com/contact/' : 'https://trimsandfasteners.com/pl/kontakt/',
-      languages: {
-        en: 'https://trimsandfasteners.com/contact/',
-        pl: 'https://trimsandfasteners.com/pl/kontakt/',
-      },
+      languages: { en: 'https://trimsandfasteners.com/contact/', pl: 'https://trimsandfasteners.com/pl/kontakt/' },
     },
   };
 }

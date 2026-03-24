@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
-import { stripElementorHero } from '@/lib/utils';
-import type { Locale } from '@/lib/types';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -61,12 +58,11 @@ const CATEGORIES = [
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const slug = locale === 'en' ? 'use-of-zippers' : 'zastosowanie-zamkow';
-  const page = await getPageBySlug(slug, locale as Locale);
-  const seo = extractYoastMeta(page);
   return {
-    title: seo.title || (locale === 'en' ? 'Use of Zippers | TAF' : 'Zastosowanie zamków | TAF'),
-    description: seo.description,
+    title: locale === 'en' ? 'Use of Zippers | TAF' : 'Zastosowanie zamków | TAF',
+    description: locale === 'en'
+      ? 'Zippers for fire-resistant clothing, military, cycling, fashion, furniture and more. Professional YKK zipper supplier TAF.'
+      : 'Zamki do odzieży ognioodpornej, wojska, kolarstwa, mody, mebli i więcej. Profesjonalny dostawca zamków YKK TAF.',
     alternates: {
       canonical: locale === 'en'
         ? 'https://trimsandfasteners.com/use-of-zippers/'
@@ -76,18 +72,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         pl: 'https://trimsandfasteners.com/pl/zastosowanie-zamkow/',
       },
     },
-    openGraph: { title: seo.ogTitle, description: seo.ogDescription, images: seo.ogImage ? [seo.ogImage] : [] },
   };
 }
 
 export default async function UseOfZippersPage({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
-  const slug = isEn ? 'use-of-zippers' : 'zastosowanie-zamkow';
-  const page = await getPageBySlug(slug, locale as Locale);
-
-  const title = page?.title.rendered || (isEn ? 'Use of Zippers' : 'Zastosowanie zamków');
-  const faqSchema = page?.yoast_head_json?.schema;
+  const title = isEn ? 'Use of Zippers' : 'Zastosowanie zamków';
   const contactHref = isEn ? '/contact/' : '/pl/contact/';
 
   return (
@@ -116,13 +107,6 @@ export default async function UseOfZippersPage({ params }: Props) {
             className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-
-          {page?.excerpt.rendered && (
-            <div
-              className="font-[Jost] text-white/60 mb-8 max-w-2xl text-sm leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: page.excerpt.rendered }}
-            />
-          )}
 
           <Link
             href={contactHref}
@@ -163,23 +147,6 @@ export default async function UseOfZippersPage({ params }: Props) {
         </div>
       </section>
 
-      {/* WP page content */}
-      {page?.content.rendered && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div
-            className="elementor-content prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl prose-img:shadow-md"
-            dangerouslySetInnerHTML={{ __html: stripElementorHero(page.content.rendered) }}
-          />
-        </section>
-      )}
-
-      {/* JSON-LD FAQ schema */}
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
     </div>
   );
 }

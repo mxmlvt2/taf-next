@@ -2,12 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPageBySlug, getZippersByIds, extractYoastMeta } from '@/lib/wordpress';
-import { extractFaqItems, stripFaqBlock } from '@/lib/utils';
+import { getZippersByIds } from '@/lib/wordpress';
 import { CATEGORY_POPUP_IDS } from '@/lib/popup-ids';
 import type { Locale } from '@/lib/types';
 import ZipperGrid from '@/components/zipper/ZipperGrid';
-import FaqAccordion from '@/components/sections/FaqAccordion';
 import PlasticZippersContent from '@/components/sections/PlasticZippersContent';
 import NylonZippersContent from '@/components/sections/NylonZippersContent';
 import MetalZippersContent from '@/components/sections/MetalZippersContent';
@@ -42,15 +40,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, type } = await params;
   const enSlug = resolveEnSlug(type);
   if (!enSlug) return {};
-
   const meta = TYPE_SLUGS[enSlug];
-  const wpSlug = locale === 'en' ? meta.wpSlugEn : meta.wpSlugPl;
-  const page = await getPageBySlug(wpSlug, locale as Locale);
-  const seo = extractYoastMeta(page);
-
   return {
-    title: seo.title || `${locale === 'en' ? meta.labelEn : meta.labelPl} | TAF`,
-    description: seo.description,
+    title: `${locale === 'en' ? meta.labelEn : meta.labelPl} | TAF`,
+    description: locale === 'en'
+      ? `Premium ${meta.labelEn} from YKK. Professional zipper supplier TAF.`
+      : `Zamki ${meta.labelPl} YKK. Profesjonalny dostawca zamków TAF.`,
     alternates: {
       canonical: locale === 'en'
         ? `https://trimsandfasteners.com/type-of-zippers/${enSlug}/`
@@ -59,11 +54,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         en: `https://trimsandfasteners.com/type-of-zippers/${enSlug}/`,
         pl: `https://trimsandfasteners.com/pl/rodzaje-zamkow/${meta.wpSlugPl}/`,
       },
-    },
-    openGraph: {
-      title: seo.ogTitle,
-      description: seo.ogDescription,
-      images: seo.ogImage ? [seo.ogImage] : [],
     },
   };
 }
@@ -74,27 +64,15 @@ export default async function TypePage({ params }: Props) {
   if (!enSlug) notFound();
 
   const meta = TYPE_SLUGS[enSlug!];
-  const wpSlug = locale === 'en' ? meta.wpSlugEn : meta.wpSlugPl;
 
   const lang = locale as Locale;
   const popupKey = lang === 'en' ? enSlug! : meta.wpSlugPl;
   const popupIds = CATEGORY_POPUP_IDS[lang]?.[popupKey] ?? [];
 
-  const [page, zippers] = await Promise.all([
-    getPageBySlug(wpSlug, lang),
-    getZippersByIds(popupIds, lang),
-  ]);
+  const zippers = await getZippersByIds(popupIds, lang);
 
-  const title = page?.title.rendered || (locale === 'en' ? meta.labelEn : meta.labelPl);
+  const title = locale === 'en' ? meta.labelEn : meta.labelPl;
   const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
-
-  // FAQ schema from Yoast if available
-  const faqSchema = page?.yoast_head_json?.schema;
-
-  // Extract FAQ items from Elementor HTML widget and strip from content
-  const rawContent = page?.content.rendered ?? '';
-  const faqItems = extractFaqItems(rawContent);
-  const cleanContent = faqItems.length > 0 ? stripFaqBlock(rawContent) : rawContent;
 
   return (
     <div>
@@ -133,13 +111,6 @@ export default async function TypePage({ params }: Props) {
             className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl text-white"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-
-          {page?.excerpt.rendered && (
-            <div
-              className="font-[Jost] text-white/60 mb-8 max-w-2xl text-sm leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: page.excerpt.rendered }}
-            />
-          )}
 
           <Link
             href={contactHref}
@@ -187,16 +158,6 @@ export default async function TypePage({ params }: Props) {
         </section>
       )}
 
-      {/* FAQ accordion (extracted from Elementor HTML widget) */}
-      <FaqAccordion items={faqItems} locale={locale} />
-
-      {/* JSON-LD FAQ schema if available from Yoast */}
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
     </div>
   );
 }

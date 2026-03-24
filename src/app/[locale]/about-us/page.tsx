@@ -1,27 +1,20 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
-import type { Locale } from '@/lib/types';
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const slug = locale === 'en' ? 'about-us' : 'o-nas';
-  const page = await getPageBySlug(slug, locale as Locale);
-  const seo = extractYoastMeta(page);
   return {
-    title: seo.title || (locale === 'en' ? 'About TAF | Premium Zipper Supplier' : 'O TAF | Dystrybutor YKK'),
-    description: seo.description,
+    title: locale === 'en' ? 'About TAF | Premium Zipper Supplier' : 'O TAF | Dystrybutor YKK',
+    description: locale === 'en'
+      ? 'Nearly two decades of experience in the global zipper market. Professional YKK distributor serving European manufacturers.'
+      : 'Prawie dwie dekady doświadczenia na globalnym rynku zamków. Profesjonalny dystrybutor YKK obsługujący europejskich producentów.',
     alternates: {
       canonical: locale === 'en' ? 'https://trimsandfasteners.com/about-us/' : 'https://trimsandfasteners.com/pl/o-nas/',
-      languages: {
-        en: 'https://trimsandfasteners.com/about-us/',
-        pl: 'https://trimsandfasteners.com/pl/o-nas/',
-      },
+      languages: { en: 'https://trimsandfasteners.com/about-us/', pl: 'https://trimsandfasteners.com/pl/o-nas/' },
     },
-    openGraph: { title: seo.ogTitle, description: seo.ogDescription, images: seo.ogImage ? [seo.ogImage] : [] },
   };
 }
 

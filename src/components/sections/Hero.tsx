@@ -63,25 +63,20 @@ export default function Hero({ slides = DEFAULT_SLIDES, title, subtitle, descrip
           <h1 className="font-[Jost] text-4xl sm:text-6xl font-light text-white leading-tight mb-5 animate-fade-in">
             {subtitle || t('tagline')}
           </h1>
-          {description && (
-            <p
-              className="font-[Jost] text-white/70 text-base font-light mb-8 max-w-lg leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: description }}
-            />
-          )}
+          <p className="font-[Jost] text-white/70 text-base font-light mb-8 max-w-lg leading-relaxed">
+            {description || t('description')}
+          </p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href={ctaUrl || contactUrl}
-              className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-7 py-3 hover:bg-gray-100 transition-colors"
+            <a
+              href={ctaUrl || '#homepage-content'}
+              className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-7 py-3 hover:bg-gray-100 transition-colors cursor-pointer"
+              onClick={ctaUrl ? undefined : (e) => {
+                e.preventDefault();
+                document.getElementById('homepage-content')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               {t('cta')}
-            </Link>
-            <Link
-              href={locale === 'en' ? '/use-of-zippers/' : '/pl/use-of-zippers/'}
-              className="inline-block border border-white/50 text-white font-[Jost] font-medium text-sm px-7 py-3 hover:bg-white/10 transition-colors"
-            >
-              {t('ctaSub')}
-            </Link>
+            </a>
           </div>
         </div>
       </div>

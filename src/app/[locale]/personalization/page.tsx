@@ -1,18 +1,17 @@
 import type { Metadata } from 'next';
-import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
-import { stripElementorHero } from '@/lib/utils';
-import type { Locale } from '@/lib/types';
+import Image from 'next/image';
+import Link from 'next/link';
+import PersonalizationContent from '@/components/sections/PersonalizationContent';
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const slug = locale === 'en' ? 'personalization' : 'personalizacja';
-  const page = await getPageBySlug(slug, locale as Locale);
-  const seo = extractYoastMeta(page);
   return {
-    title: seo.title || (locale === 'en' ? 'Personalization | TAF' : 'Personalizacja | TAF'),
-    description: seo.description,
+    title: locale === 'en' ? 'Custom Logo Zippers | Personalization | TAF' : 'Zamki z Logo | Personalizacja | TAF',
+    description: locale === 'en'
+      ? 'Personalize your zipper pullers with laser engraving, logo printing, or molding technology. Professional branding from TAF.'
+      : 'Spersonalizuj uchwyty zamków poprzez grawer laserowy, nadruk logotypu lub przygotowanie formy. Profesjonalne usługi brandingu od TAF.',
     alternates: {
       canonical: locale === 'en' ? 'https://trimsandfasteners.com/personalization/' : 'https://trimsandfasteners.com/pl/personalizacja/',
       languages: {
@@ -20,44 +19,50 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         pl: 'https://trimsandfasteners.com/pl/personalizacja/',
       },
     },
-    openGraph: { title: seo.ogTitle, description: seo.ogDescription, images: seo.ogImage ? [seo.ogImage] : [] },
   };
 }
 
 export default async function PersonalizationPage({ params }: Props) {
   const { locale } = await params;
-  const slug = locale === 'en' ? 'personalization' : 'personalizacja';
-  const page = await getPageBySlug(slug, locale as Locale);
+  const isEn = locale === 'en';
 
   return (
     <div>
-      {/* Dark hero with background image — matches WP personalization page */}
-      <div className="relative bg-[#111111] text-white overflow-hidden" style={{ minHeight: '280px' }}>
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-50"
-          style={{ backgroundImage: 'url(https://trimsandfasteners.com/wp-content/uploads/2025/06/ykkmetal-scaled.jpg)' }}
+      {/* Dark hero */}
+      <div className="subpage-hero relative bg-[#111111] text-white min-h-[90vh] flex items-center overflow-hidden">
+        <Image
+          src="https://trimsandfasteners.com/wp-content/uploads/2025/06/logobymoulding-scaled.png"
+          alt=""
+          fill
+          className="object-cover opacity-40"
+          priority
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 flex flex-col justify-end" style={{ minHeight: '280px' }}>
-          <h1
-            className="font-[Jost] text-4xl sm:text-6xl font-light"
-            dangerouslySetInnerHTML={{ __html: page?.title.rendered || (locale === 'en' ? 'Personalization' : 'Personalizacja') }}
-          />
-          {locale === 'en' && (
-            <p className="font-[Jost] text-white/60 text-base font-light mt-2">Your vision, our mission</p>
-          )}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+            <Link href={isEn ? '/' : '/pl/'} className="hover:text-white transition-colors">
+              {isEn ? 'Home' : 'Start'}
+            </Link>
+            <span>›</span>
+            <span className="text-white/70">{isEn ? 'Personalization' : 'Personalizacja'}</span>
+          </nav>
+          <h1 className="font-[Jost] text-3xl sm:text-5xl font-light mb-3 max-w-3xl text-white">
+            {isEn ? 'Personalization' : 'Personalizacja'}
+          </h1>
+          <p className="font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+            {isEn ? 'Your vision, our execution' : 'Twoja wizja, nasze wykonanie'}
+          </p>
+          <Link
+            href={isEn ? '/contact/' : '/pl/contact/'}
+            className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+          >
+            {isEn ? 'Contact us' : 'Skontaktuj się'}
+          </Link>
         </div>
       </div>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {page?.content.rendered ? (
-          <div
-            className="elementor-content prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-light prose-headings:text-[#111] prose-p:text-gray-500 prose-p:text-sm"
-            dangerouslySetInnerHTML={{ __html: stripElementorHero(page.content.rendered) }}
-          />
-        ) : (
-          <p className="font-[Jost] text-gray-400">Content loading...</p>
-        )}
-      </div>
+
+      <PersonalizationContent locale={locale} />
     </div>
   );
 }

@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPageBySlug, extractYoastMeta } from '@/lib/wordpress';
-import { stripElementorHero } from '@/lib/utils';
-import type { Locale } from '@/lib/types';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -33,12 +30,11 @@ const TYPES = [
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const slug = locale === 'en' ? 'type-of-zippers' : 'rodzaje-zamkow';
-  const page = await getPageBySlug(slug, locale as Locale);
-  const seo = extractYoastMeta(page);
   return {
-    title: seo.title || (locale === 'en' ? 'Types of Zippers | TAF' : 'Rodzaje zamków | TAF'),
-    description: seo.description,
+    title: locale === 'en' ? 'Types of Zippers | TAF' : 'Rodzaje zamków | TAF',
+    description: locale === 'en'
+      ? 'Plastic, nylon and metal zippers from YKK. Professional zipper supplier TAF.'
+      : 'Zamki plastikowe, nylonowe i metalowe YKK. Profesjonalny dostawca zamków TAF.',
     alternates: {
       canonical: locale === 'en'
         ? 'https://trimsandfasteners.com/type-of-zippers/'
@@ -48,18 +44,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         pl: 'https://trimsandfasteners.com/pl/rodzaje-zamkow/',
       },
     },
-    openGraph: { title: seo.ogTitle, description: seo.ogDescription, images: seo.ogImage ? [seo.ogImage] : [] },
   };
 }
 
 export default async function TypeOfZippersPage({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
-  const slug = isEn ? 'type-of-zippers' : 'rodzaje-zamkow';
-  const page = await getPageBySlug(slug, locale as Locale);
-
-  const title = page?.title.rendered || (isEn ? 'Type of Zippers' : 'Rodzaje zamków');
-  const faqSchema = page?.yoast_head_json?.schema;
+  const title = isEn ? 'Type of Zippers' : 'Rodzaje zamków';
   const contactHref = isEn ? '/contact/' : '/pl/contact/';
 
   return (
@@ -89,13 +80,6 @@ export default async function TypeOfZippersPage({ params }: Props) {
             dangerouslySetInnerHTML={{ __html: title }}
           />
 
-          {page?.excerpt.rendered && (
-            <div
-              className="font-[Jost] text-white/60 mb-8 max-w-2xl text-sm leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: page.excerpt.rendered }}
-            />
-          )}
-
           <Link
             href={contactHref}
             className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
@@ -104,16 +88,6 @@ export default async function TypeOfZippersPage({ params }: Props) {
           </Link>
         </div>
       </div>
-
-      {/* WP page content (alternating image/text sections) */}
-      {page?.content.rendered && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div
-            className="elementor-content prose prose-gray prose-lg max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl prose-img:shadow-md"
-            dangerouslySetInnerHTML={{ __html: stripElementorHero(page.content.rendered) }}
-          />
-        </section>
-      )}
 
       {/* Sub-category cards */}
       <section className="bg-[#f5f3ef] py-16">
@@ -147,13 +121,6 @@ export default async function TypeOfZippersPage({ params }: Props) {
         </div>
       </section>
 
-      {/* JSON-LD FAQ schema */}
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
     </div>
   );
 }

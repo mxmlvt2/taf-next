@@ -21,7 +21,8 @@
   "hero": {
     "brand": "Trims and fasteners",
     "tagline": "Łączymy innowacje i pasję z najnowszą wiedzą technologiczną",
-    "cta": "Kontakt",
+    "description": "Biznes naszych klientów jest dla nas ważny. Daje nam to możliwość wspólnego rozwoju i usprawniania procesów logistycznych. To nasze zobowiązanie wobec klientów. B2B to nasz ojczysty język.",
+    "cta": "Nasze produkty",
     "ctaSub": "Zobacz ofertę"
   },
   "zipper": {

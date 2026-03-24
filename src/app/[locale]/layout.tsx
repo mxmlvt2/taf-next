@@ -7,8 +7,6 @@ import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CookieBanner from '@/components/layout/CookieBanner';
-import { getMenuItems } from '@/lib/wordpress';
-import type { Locale } from '@/lib/types';
 import '../globals.css';
 
 const GA_ID = 'G-1WQEEEEQ4B';
@@ -35,7 +33,6 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
-  const menu = await getMenuItems('primary', locale as Locale);
 
   return (
     <html lang={locale} className="scroll-smooth">
@@ -72,7 +69,7 @@ export default async function LocaleLayout({
       </head>
       <body className="bg-white text-[#111111] antialiased">
         <NextIntlClientProvider messages={messages}>
-          <Header menu={menu} translations={{}} />
+          <Header menu={[]} translations={{}} />
           <main>{children}</main>
           <Footer />
           <CookieBanner />
