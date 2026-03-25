@@ -16,14 +16,14 @@ const HEADINGS: Record<string, Record<string, Heading[]>> = {
     pl: [
       { id: 'characteristics', text: 'Charakterystyka, zalety i zastosowania' },
       { id: 'comparison', text: 'Porównanie materiałów zamków' },
-      { id: 'disadvantages', text: 'Najczęstsze wady' },
+      { id: 'disadvantages', text: 'Najpopularniejsze wady' },
     ],
   },
-  'porownanie-zamkow-blyskawiacznych-metalowe-plastikowe-i-nylonowe': {
+  'porownanie-zamkow-blyskawicznych-metalowe-plastikowe-i-nylonowe': {
     pl: [
       { id: 'characteristics', text: 'Charakterystyka, zalety i zastosowania' },
       { id: 'comparison', text: 'Porównanie materiałów zamków' },
-      { id: 'disadvantages', text: 'Najczęstsze wady' },
+      { id: 'disadvantages', text: 'Najpopularniejsze wady' },
     ],
     en: [
       { id: 'characteristics', text: 'Characteristics, Advantages, and Applications' },
@@ -41,19 +41,19 @@ const HEADINGS: Record<string, Record<string, Heading[]>> = {
     ],
     pl: [
       { id: 'general', text: 'Ogólna charakterystyka zamków spiralnych' },
-      { id: 'concealed', text: 'Zamek kryty' },
+      { id: 'concealed', text: 'Zamki kryte' },
       { id: 'see-difference', text: 'Zobacz różnicę' },
-      { id: 'woven-vs-standard', text: 'Zamki z taśmą S-Type wplataną vs. standardowa spirala szyta' },
-      { id: 'advantage', text: 'Zalety i zastosowania konstrukcji wplatanej' },
+      { id: 'woven-vs-standard', text: 'Zamki na taśmie S tkanej (Woven-in S-Tape) vs. standardowa spirala szyta' },
+      { id: 'advantage', text: 'Przewaga i zastosowania tkanej konstrukcji' },
     ],
   },
   'zamki-spiralne-charakterystyka-i-podtypy': {
     pl: [
       { id: 'general', text: 'Ogólna charakterystyka zamków spiralnych' },
-      { id: 'concealed', text: 'Zamek kryty' },
+      { id: 'concealed', text: 'Zamki kryte' },
       { id: 'see-difference', text: 'Zobacz różnicę' },
-      { id: 'woven-vs-standard', text: 'Zamki z taśmą S-Type wplataną vs. standardowa spirala szyta' },
-      { id: 'advantage', text: 'Zalety i zastosowania konstrukcji wplatanej' },
+      { id: 'woven-vs-standard', text: 'Zamki na taśmie S tkanej (Woven-in S-Tape) vs. standardowa spirala szyta' },
+      { id: 'advantage', text: 'Przewaga i zastosowania tkanej konstrukcji' },
     ],
     en: [
       { id: 'general', text: 'General characteristics of coil zippers' },
@@ -75,11 +75,11 @@ const HEADINGS: Record<string, Record<string, Heading[]>> = {
       { id: 'process', text: 'Uproszczony proces zamawiania hurtowego' },
     ],
   },
-  'gdzie-kupic-zamki-blyskawiaczne-hurtem': {
+  'gdzie-kupic-zamki-blyskawiczne-hurtem': {
     pl: [
-      { id: 'key-aspects', text: 'Kluczowe aspekty zakupu hurtowego' },
-      { id: 'why-taf', text: 'Dlaczego Trims and Fasteners to Twój idealny partner?' },
-      { id: 'process', text: 'Uproszczony proces zamawiania hurtowego' },
+      { id: 'key-aspects', text: 'Kluczowe aspekty zakupu hurtowego z Trims and Fasteners' },
+      { id: 'why-taf', text: 'Dlaczego TAF to Twój idealny partner hurtowy?' },
+      { id: 'process', text: 'Uproszczony proces zamawiania hurtowego z Trims and Fasteners' },
     ],
     en: [
       { id: 'key-aspects', text: 'Key Aspects of Wholesale Purchasing' },
@@ -101,11 +101,11 @@ const HEADINGS: Record<string, Record<string, Heading[]>> = {
       { id: 'summary', text: 'Podsumowanie' },
     ],
   },
-  'zamki-blyskawiaczne-do-toreb-i-plecakow': {
+  'zamki-blyskawiczne-do-toreb-i-plecakow': {
     pl: [
-      { id: 'choosing', text: 'Dobór zamków do toreb i plecaków' },
-      { id: 's-type', text: 'Zalety taśm S-Type nad standardową spiralą' },
-      { id: 'advantages', text: 'Zalety zamków S-Type (wplatanych)' },
+      { id: 'choosing', text: 'Wybór zamków do toreb i plecaków' },
+      { id: 's-type', text: 'Przewaga taśm typu S nad zwykłą spiralą' },
+      { id: 'advantages', text: 'Zalety taśmy S (Woven-in) dla toreb i plecaków' },
       { id: 'summary', text: 'Podsumowanie' },
     ],
     en: [
@@ -128,7 +128,7 @@ interface Props { slug: string; locale: string }
 export default function CustomPostBody({ slug, locale }: Props) {
   // Map both EN and PL slugs to the correct component
   if (slug === 'zippers-comparison-metal-plastic-and-nylon' ||
-      slug === 'porownanie-zamkow-blyskawiacznych-metalowe-plastikowe-i-nylonowe') {
+      slug === 'porownanie-zamkow-blyskawicznych-metalowe-plastikowe-i-nylonowe') {
     return <ComparisonPost locale={locale} />;
   }
   if (slug === 'coil-zippers-characteristics-and-subtypes' ||
@@ -136,11 +136,11 @@ export default function CustomPostBody({ slug, locale }: Props) {
     return <CoilZippersPost locale={locale} />;
   }
   if (slug === 'where-to-buy-zippers-wholesale' ||
-      slug === 'gdzie-kupic-zamki-blyskawiaczne-hurtem') {
+      slug === 'gdzie-kupic-zamki-blyskawiczne-hurtem') {
     return <WhereToBuyPost locale={locale} />;
   }
   if (slug === 'zippers-for-bags-and-backpacks' ||
-      slug === 'zamki-blyskawiaczne-do-toreb-i-plecakow') {
+      slug === 'zamki-blyskawiczne-do-toreb-i-plecakow') {
     return <BagsPost locale={locale} />;
   }
   return null;
