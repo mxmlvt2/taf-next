@@ -251,25 +251,25 @@ export default function Header({ menu, translations }: HeaderProps) {
               {locale === 'en' ? 'Start' : 'Start'}
             </Link>
 
-            {/* Type of Zippers — button only, no relative wrapper */}
-            <button
+            {/* Type of Zippers — link navigates, hover shows mega menu */}
+            <Link
+              href={locale === 'en' ? '/type-of-zippers/' : '/pl/type-of-zippers/'}
               className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
-              onClick={() => router.push(locale === 'en' ? '/type-of-zippers/' : '/pl/type-of-zippers/')}
               onMouseEnter={() => setOpenDropdown('type')}
             >
               {locale === 'en' ? 'Type of zippers' : 'Rodzaje zamków'}
               <ChevronDown size={13} className={`transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
-            </button>
+            </Link>
 
-            {/* Use of Zippers — button only, no relative wrapper */}
-            <button
+            {/* Use of Zippers — link navigates, hover shows mega menu */}
+            <Link
+              href={locale === 'en' ? '/use-of-zippers/' : '/pl/use-of-zippers/'}
               className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
-              onClick={() => router.push(locale === 'en' ? '/use-of-zippers/' : '/pl/use-of-zippers/')}
               onMouseEnter={() => setOpenDropdown('use')}
             >
               {locale === 'en' ? 'Use of zippers' : 'Zastosowanie zamków'}
               <ChevronDown size={13} className={`transition-transform ${openDropdown === 'use' ? 'rotate-180' : ''}`} />
-            </button>
+            </Link>
 
             {/* Simple items */}
             {simpleItems.map(item => (
