@@ -15,14 +15,14 @@ import FurnitureContent from '@/components/sections/FurnitureContent';
 import BucklesContent from '@/components/sections/BucklesContent';
 
 // EN slug → WP slug mapping (both EN and PL)
-const CATEGORY_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string }> = {
-  fashion: { wpSlugEn: 'fashion', wpSlugPl: 'moda', labelEn: 'Fashion', labelPl: 'Moda', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png' },
-  'cycling-sportswear': { wpSlugEn: 'cycling-sportswear', wpSlugPl: 'odziez-sportowa', labelEn: 'Cycling & Sportswear', labelPl: 'Kolarstwo & odzież sportowa', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png' },
-  baby: { wpSlugEn: 'baby', wpSlugPl: 'dzieci', labelEn: 'Baby', labelPl: 'Dzieci', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png' },
-  military: { wpSlugEn: 'military', wpSlugPl: 'wojsko', labelEn: 'Military', labelPl: 'Wojsko', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png' },
-  furniture: { wpSlugEn: 'furniture', wpSlugPl: 'meble', labelEn: 'Furniture', labelPl: 'Meble', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png' },
-  'fire-protection': { wpSlugEn: 'fire-protection', wpSlugPl: 'odziez-ognioodporna', labelEn: 'Fire-Resistant Clothing', labelPl: 'Odzież ognioodporna', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png' },
-  'buckles-plastic-hardware': { wpSlugEn: 'buckles-plastic-hardware', wpSlugPl: 'zapiecia-elementy-plastikowe', labelEn: 'Buckles & Plastic Hardware', labelPl: 'Zapięcia & elementy plastikowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png' },
+const CATEGORY_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string; subtitleEn: string; subtitlePl: string }> = {
+  fashion: { wpSlugEn: 'fashion', wpSlugPl: 'moda', labelEn: 'Zippers for the Fashion Industry', labelPl: 'Zamki dla branży modowej', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png', subtitleEn: 'Tailored to the project', subtitlePl: 'Dopasowane do projektu' },
+  'cycling-sportswear': { wpSlugEn: 'cycling-sportswear', wpSlugPl: 'odziez-sportowa', labelEn: 'Zippers for Cycling & Sportswear', labelPl: 'Zamki dla kolarstwa i odzieży sportowej', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png', subtitleEn: 'Supporting performance', subtitlePl: 'Wspieramy wydajność' },
+  baby: { wpSlugEn: 'baby', wpSlugPl: 'dzieci', labelEn: "Zippers for Children's Clothing", labelPl: 'Zamki dla odzieży dziecięcej', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png', subtitleEn: 'Optimal products for the youngest', subtitlePl: 'Optymalne produkty dla najmłodszych' },
+  military: { wpSlugEn: 'military', wpSlugPl: 'wojsko', labelEn: 'Military zippers', labelPl: 'Zamki wojskowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-8.png', subtitleEn: 'Highest quality', subtitlePl: 'Najwyższa jakość' },
+  furniture: { wpSlugEn: 'furniture', wpSlugPl: 'meble', labelEn: 'Zippers for furniture', labelPl: 'Zamki dla mebli', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png', subtitleEn: 'Aesthetics, fit, and functionality', subtitlePl: 'Estetyka, dopasowanie i funkcjonalność' },
+  'fire-protection': { wpSlugEn: 'fire-protection', wpSlugPl: 'odziez-ognioodporna', labelEn: 'Fire Retardant Zippers', labelPl: 'Zamki ognioodporne', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/04/NZIP-HEADER-9.png', subtitleEn: 'Designed to withstand the harshest working conditions, ensuring safety and user comfort.', subtitlePl: 'Zaprojektowane, aby wytrzymać najtrudniejsze warunki pracy, zapewniając bezpieczeństwo i komfort użytkownika.' },
+  'buckles-plastic-hardware': { wpSlugEn: 'buckles-plastic-hardware', wpSlugPl: 'zapiecia-elementy-plastikowe', labelEn: 'Buckles & Plastic Hardware', labelPl: 'Zapięcia & elementy plastikowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/09/Projekt-bez-nazwy-79.png', subtitleEn: 'For a wide range of applications', subtitlePl: 'Do szerokiego zakresu zastosowań' },
 };
 
 // PL slug → EN slug (for Polish routes)
@@ -90,7 +90,6 @@ export default async function CategoryPage({ params }: Props) {
   const zippers = await getZippersByIds(popupIds, lang);
 
   const title = locale === 'en' ? meta.labelEn : meta.labelPl;
-  const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
 
   return (
     <div>
@@ -126,18 +125,29 @@ export default async function CategoryPage({ params }: Props) {
           </nav>
 
           <h1
-            className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl text-white"
+            className="font-[Jost] text-3xl sm:text-5xl font-light mb-3 max-w-3xl text-white"
             dangerouslySetInnerHTML={{ __html: title }}
           />
+          <p className="font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+            {locale === 'en' ? meta.subtitleEn : meta.subtitlePl}
+          </p>
 
-          <Link
-            href={contactHref}
+          <a
+            href="#products"
             className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
-            {locale === 'en' ? 'Contact us' : 'Skontaktuj się'}
-          </Link>
+            {locale === 'en' ? 'Explore our products' : 'Odkryj produkty'}
+          </a>
+        </div>
+
+        {/* Mouse scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+          <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
+            <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
+          </div>
         </div>
       </div>
+      <div id="products" />
 
       {/* Hardcoded content sections (above product grid) */}
       {enSlug === 'fire-protection' && <FireProtectionContent locale={locale} position="above" />}

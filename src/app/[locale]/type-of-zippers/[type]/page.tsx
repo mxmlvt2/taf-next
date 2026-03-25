@@ -10,10 +10,10 @@ import PlasticZippersContent from '@/components/sections/PlasticZippersContent';
 import NylonZippersContent from '@/components/sections/NylonZippersContent';
 import MetalZippersContent from '@/components/sections/MetalZippersContent';
 
-const TYPE_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string }> = {
-  'nylon-zippers': { wpSlugEn: 'nylon-zippers', wpSlugPl: 'zamki-nylonowe', labelEn: 'Nylon Zippers', labelPl: 'Zamki nylonowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg' },
-  'plastic-zippers': { wpSlugEn: 'plastic-zippers', wpSlugPl: 'zamki-plastikowe', labelEn: 'Plastic Zippers', labelPl: 'Zamki plastikowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/plastikowyzielony-1.jpg' },
-  'metal-zippers': { wpSlugEn: 'metal-zippers', wpSlugPl: 'zamki-metalowe', labelEn: 'Metal Zippers', labelPl: 'Zamki metalowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/metalslider34-scaled.jpg' },
+const TYPE_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string; subtitleEn: string; subtitlePl: string }> = {
+  'nylon-zippers': { wpSlugEn: 'nylon-zippers', wpSlugPl: 'zamki-nylonowe', labelEn: 'Nylon Zippers', labelPl: 'Zamki nylonowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg', subtitleEn: 'Flexible and durable', subtitlePl: 'Elastyczne i trwałe' },
+  'plastic-zippers': { wpSlugEn: 'plastic-zippers', wpSlugPl: 'zamki-plastikowe', labelEn: 'Plastic Zippers', labelPl: 'Zamki plastikowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/plastikowyzielony-1.jpg', subtitleEn: 'Tailored to your needs', subtitlePl: 'Dopasowane do Twoich potrzeb' },
+  'metal-zippers': { wpSlugEn: 'metal-zippers', wpSlugPl: 'zamki-metalowe', labelEn: 'Metal Zippers', labelPl: 'Zamki metalowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/metalslider34-scaled.jpg', subtitleEn: 'Highest quality, durability, and aesthetics', subtitlePl: 'Najwyższa jakość, trwałość i estetyka' },
 };
 
 const PL_TO_EN: Record<string, string> = {
@@ -72,7 +72,6 @@ export default async function TypePage({ params }: Props) {
   const zippers = await getZippersByIds(popupIds, lang);
 
   const title = locale === 'en' ? meta.labelEn : meta.labelPl;
-  const contactHref = locale === 'en' ? '/contact/' : '/pl/contact/';
 
   return (
     <div>
@@ -108,18 +107,29 @@ export default async function TypePage({ params }: Props) {
           </nav>
 
           <h1
-            className="font-[Jost] text-3xl sm:text-5xl font-light mb-5 max-w-3xl text-white"
+            className="font-[Jost] text-3xl sm:text-5xl font-light mb-3 max-w-3xl text-white"
             dangerouslySetInnerHTML={{ __html: title }}
           />
+          <p className="font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+            {locale === 'en' ? meta.subtitleEn : meta.subtitlePl}
+          </p>
 
-          <Link
-            href={contactHref}
+          <a
+            href="#products"
             className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
-            {locale === 'en' ? 'Contact us' : 'Skontaktuj się'}
-          </Link>
+            {locale === 'en' ? 'Explore our products' : 'Odkryj produkty'}
+          </a>
+        </div>
+
+        {/* Mouse scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+          <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
+            <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
+          </div>
         </div>
       </div>
+      <div id="products" />
 
       {/* Hardcoded content sections (above product grid) */}
       {enSlug === 'plastic-zippers' && <PlasticZippersContent locale={locale} position="above" />}

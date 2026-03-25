@@ -62,11 +62,11 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
     <>
       {/* ── Section 1: Company intro ── */}
       <section id="homepage-content" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-[Jost] text-3xl sm:text-4xl font-light mb-8 text-[#111]">
             {isEn ? 'Trims and Fasteners' : 'Trims and Fasteners'}
           </h2>
-          <div className="space-y-5 max-w-4xl">
+          <div className="space-y-5">
             <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
               {isEn
                 ? 'For years, we have been supporting customers in the production of clothing and accessories by providing reliable zippers. As a distributor of zippers, we offer solutions tailored to the needs of the clothing, technical, furniture and outdoor markets. Our range mainly includes products from the renowned YKK company, which is why we are confident in the quality of the products offered by trimsandfasteners.com.'
@@ -89,16 +89,16 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
           </h2>
 
           {/* Intro text + bullets ABOVE the grid */}
-          <div className="max-w-4xl mx-auto space-y-4 mb-12">
+          <div className="space-y-4 mb-12">
             <p className="font-[Jost] text-gray-400 text-base leading-relaxed">
               {isEn
                 ? 'Every project requires precise and proven components. That is why our range of zippers includes products that combine quality with functionality. A zipper may be a small detail, but there is no room for compromise in a good design. At TAF, we offer clothing and accessory manufacturers the following zippers:'
                 : 'Każdy projekt wymaga precyzyjnych i sprawdzonych komponentów. Dlatego nasza oferta suwaków obejmuje produkty, które łączą jakość z funkcjonalnością. Zamek może być małym detalem, ale w dobrej konstrukcji nie ma miejsca na kompromisy. Producentom odzieży i akcesoriów oferujemy w TAF:'}
             </p>
             <ul className="space-y-2 font-[Jost] text-gray-400 text-base">
-              <li className="flex gap-2"><span className="text-gray-600 flex-shrink-0">—</span>{isEn ? 'Spiral – lightweight, flexible, ideal for sportswear and children\'s clothing, and industrial applications.' : 'Spiralne – lekkie, elastyczne, idealne do odzieży sportowej i dziecięcej, plecaków, obuwia.'}</li>
-              <li className="flex gap-2"><span className="text-gray-600 flex-shrink-0">—</span>{isEn ? 'Plastic – durable and versatile, suitable for jackets and accessories, but also for heavy duty applications.' : 'Kostkowe – trwałe i uniwersalne, sprawdzające się w kurtkach, bluzach, odzieży dziecięcej.'}</li>
-              <li className="flex gap-2"><span className="text-gray-600 flex-shrink-0">—</span>{isEn ? 'Metal – solid, with an elegant appearance, used in premium fashion. Traditional type of zipper.' : 'Metalowe – solidne, o eleganckim wyglądzie, stosowane m.in. w modzie premium.'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Spiral – lightweight, flexible, ideal for sportswear and children\'s clothing, and industrial applications.' : 'Spiralne – lekkie, elastyczne, idealne do odzieży sportowej i dziecięcej, plecaków, obuwia.'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Plastic – durable and versatile, suitable for jackets and accessories, but also for heavy duty applications.' : 'Kostkowe – trwałe i uniwersalne, sprawdzające się w kurtkach, bluzach, odzieży dziecięcej.'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Metal – solid, with an elegant appearance, used in premium fashion. Traditional type of zipper.' : 'Metalowe – solidne, o eleganckim wyglądzie, stosowane m.in. w modzie premium.'}</li>
             </ul>
             <p className="font-[Jost] text-gray-400 text-base leading-relaxed">
               {isEn
@@ -121,7 +121,7 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
           </div>
 
           {/* Text below grid */}
-          <div className="max-w-4xl mx-auto space-y-4">
+          <div className="space-y-4">
             <p className="font-[Jost] text-gray-400 text-base leading-relaxed">
               {isEn
                 ? 'We offer a wide range of colours, customized options and technical support for each product group. Our specialists will advise you on how to choose the right type of zipper for your specific application. We work mainly on large scale projects, however also supply small local businesses.'
@@ -144,7 +144,7 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
           </h2>
 
           {/* Full text ABOVE grid */}
-          <div className="max-w-4xl mx-auto space-y-4 mb-12">
+          <div className="space-y-4 mb-12">
             <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
               {isEn
                 ? 'The solutions offered by our company are used by customers from various market sectors who value quality and reliability.'
@@ -191,7 +191,7 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
           </div>
 
           {/* YKK paragraph below */}
-          <div className="max-w-4xl mx-auto">
+          <div>
             <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
               {isEn
                 ? 'In our business, we focus on quality at every stage of cooperation. That is why we work exclusively with proven component manufacturers from whom we demand equally reliable solutions. One of the most respected and globally recognised brands we work with is the Japanese company YKK – a benchmark for reliability and precision. Use our knowledge and save your time and money.'

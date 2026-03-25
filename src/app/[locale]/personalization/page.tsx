@@ -53,14 +53,22 @@ export default async function PersonalizationPage({ params }: Props) {
           <p className="font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {isEn ? 'Your vision, our execution' : 'Twoja wizja, nasze wykonanie'}
           </p>
-          <Link
-            href={isEn ? '/contact/' : '/pl/contact/'}
+          <a
+            href="#products"
             className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
-            {isEn ? 'Contact us' : 'Skontaktuj się'}
-          </Link>
+            {isEn ? 'Explore our products' : 'Odkryj produkty'}
+          </a>
+        </div>
+
+        {/* Mouse scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+          <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
+            <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
+          </div>
         </div>
       </div>
+      <div id="products" />
 
       <PersonalizationContent locale={locale} />
     </div>
