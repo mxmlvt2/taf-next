@@ -4,6 +4,7 @@ import Image from 'next/image';
 import FaqAccordion from '@/components/sections/FaqAccordion';
 import FadeIn from '@/components/ui/FadeIn';
 import HeroAnimator from '@/components/ui/HeroAnimator';
+import SmoothAnchor from '@/components/ui/SmoothAnchor';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -34,23 +35,23 @@ const TYPES = [
 const FAQ_EN = [
   {
     question: 'What are the main differences between plastic, nylon, and metal zippers?',
-    answer: 'Plastic zippers have rigid injection-moulded teeth arranged in even rows, nylon (spiral) zippers use a coil of polyamide teeth sewn into the tape for maximum flexibility, and metal zippers have individually mounted brass teeth that provide exceptional strength and a distinctive look. Each type differs in flexibility, weight, durability and intended use.',
+    answer: 'Plastic zippers feature injection-molded teeth arranged in rigid rows, ideal for flat surfaces but less flexible on curves. Nylon (spiral) zippers have a spirally twisted polyamide chain that adapts well to curved surfaces and movement, making them the most versatile option. Metal zippers offer maximum durability with brass teeth in Y-shaped profiles, providing exceptional strength and a distinctive aesthetic. Each type serves different functional and design needs.',
   },
   {
     question: 'Which type of zipper is best for curved surfaces and flexible materials?',
-    answer: 'Nylon (spiral) zippers are the best choice for curved surfaces and flexible materials. Their spirally twisted chain adapts naturally to curves without causing puckering or wrinkles, unlike the more rigid plastic or metal variants.',
+    answer: 'Spiral (nylon) zippers are the best choice for curved surfaces and flexible materials. Their spirally twisted polyamide chain is sewn or woven directly into the carrier tape, allowing them to fit well on curves without causing wrinkles or puckering. They offer quiet operation, low weight, and high comfort of use, making them ideal wherever flexibility and adaptability to movement are important. They\'re available in standard, reversible, invisible, and two-way versions.',
   },
   {
     question: 'What makes metal zippers more durable than other types?',
-    answer: 'Metal zippers feature individually mounted teeth made from brass or other metals with a Y-shaped or European profile. This construction provides exceptional resistance to mechanical stress, strong closure force and long-term durability — even under heavy, daily use.',
+    answer: 'Metal zippers are exceptionally durable due to their metal teeth, usually made of brass with a Y-shaped profile or mounted individually as European, Swiss, or polished teeth. This construction ensures exceptional precision of fit and high resistance to mechanical stress and long-term use. While less flexible than plastic or nylon options, metal zippers make up for this with their strength, locking power, and resistance to intensive use. They\'re perfect for leather jackets, jeans, bags, and shoes where maximum durability is required.',
   },
   {
     question: 'Why are plastic zippers popular for children\'s clothing and outdoor gear?',
-    answer: 'Plastic zippers have a soft, safe structure that does not irritate skin, making them ideal for children\'s clothing. Their regularly shaped teeth are easy to clean and do not trap dirt — a major advantage in harsh outdoor environments. Available in UV-resistant and glow-in-the-dark variants for extra functionality.',
+    answer: 'Plastic zippers are popular for children\'s clothing because their soft plastic structure is safe and pleasant to the touch. For outdoor gear and harsh environmental conditions, they offer a unique advantage: their regularly shaped teeth don\'t trap dirt, making them easy to clean. They\'re ideal for flat surfaces and provide stable fastening. Additional features like UV resistance, glow-in-the-dark versions, and matt or glossy finishes make them both practical and aesthetic for various applications.',
   },
   {
     question: 'How do you choose the right zipper type for a specific project?',
-    answer: 'Consider the material\'s flexibility, the environment of use, aesthetic requirements and expected load. For flexible or curved surfaces choose nylon, for heavy-duty applications choose metal, and for easy cleaning or children\'s wear choose plastic. The TAF team is happy to help you select the perfect zipper for your project.',
+    answer: 'Choosing the right zipper depends on your project\'s functional, aesthetic, and technological requirements. Consider: the surface type (flat vs. curved), usage intensity, environmental conditions, desired flexibility, and design aesthetic. Plastic zippers work best for flat surfaces and harsh conditions; nylon zippers excel in flexibility and curved applications; metal zippers provide maximum durability and distinctive style. Working with trusted suppliers like YKK ensures you get premium products that meet your brand\'s technical and aesthetic needs.',
   },
 ];
 
@@ -127,40 +128,28 @@ export default async function TypeOfZippersPage({ params }: Props) {
           <p className="hero-animate font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {isEn ? 'Quality in every detail' : 'Jakość w każdym detalu'}
           </p>
-          <a
+          <SmoothAnchor
             href="#categories"
             className="hero-animate inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {isEn ? 'Explore our products' : 'Odkryj produkty'}
-          </a>
+          </SmoothAnchor>
         </div>
-        <a href="#categories" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+        <SmoothAnchor href="#categories" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
           <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
           </div>
-        </a>
+        </SmoothAnchor>
         <HeroAnimator />
       </div>
-      <div id="categories" style={{ scrollMarginTop: '80px' }} />
-
-      {/* Intro text */}
-      <section className="py-16 bg-white">
+      {/* Intro text — paragraph 1 */}
+      <section id="categories" className="py-16 bg-white" style={{ scrollMarginTop: '80px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <p className="font-[Jost] text-gray-500 text-base leading-relaxed mb-6">
+            <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
               {isEn
                 ? 'Every project, regardless of the industry, has different functional, aesthetic and technological requirements. That is why it is so important to consider aspects that directly affect the quality and durability of the finished product at the design stage. One of these aspects is the type of zip fastener and the selection of the most suitable one. Although these elements are often treated as details, they actually play an important functional role. At first glance, they may seem similar to many people, but they differ in their construction, mechanism of operation and purpose. It is these differences that mean that the choice of the right model should never be left to chance.'
                 : 'Każdy projekt, niezależnie od branży stawia inne wymagania funkcjonalne, estetyczne i technologiczne. Dlatego tak istotne jest, by już na etapie planowania konstrukcji uwzględnić aspekty, które w bezpośredni sposób wpływają na jakość i trwałość gotowego produktu. Jednym z nich są rodzaje zamków błyskawicznych i wybór najodpowiedniejszego z nich. Choć elementy te często traktowane są jako detal, to w rzeczywistości odgrywają istotną rolę użytkową. Dla wielu osób na pierwszy rzut oka wydają się do siebie podobne, lecz różnią się budową, mechanizmem działania i przeznaczeniem. To właśnie te różnice sprawiają, że wybór odpowiedniego modelu nigdy nie powinien być przypadkowy.'}
-            </p>
-            <ul className="space-y-2 font-[Jost] text-gray-500 text-base mb-6">
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Plastic zippers' : 'Zamki kostkowe'}</li>
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Nylon zippers' : 'Zamki spiralne'}</li>
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Metal zippers' : 'Zamki metalowe'}</li>
-            </ul>
-            <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
-              {isEn
-                ? 'A properly selected fastener ensures comfort in everyday use and contributes to the durability and reliability of the product, especially in cases of intensive use. Knowledge of the characteristics of different types of fasteners facilitates informed design decisions, regardless of whether they concern clothing, accessories or technical components.'
-                : 'Właściwie dobrany zamek zapewnia wygodę codziennego użytkowania oraz wpływa na trwałość i niezawodność produktu – szczególnie w przypadku intensywnej eksploatacji. Znajomość cech charakterystycznych, jakie posiadają różne rodzaje zamków, ułatwia świadome podejmowanie decyzji projektowych, bez względu na to czy dotyczą one odzieży, akcesoriów, czy elementów technicznych.'}
             </p>
           </FadeIn>
         </div>
@@ -193,6 +182,19 @@ export default async function TypeOfZippersPage({ params }: Props) {
               </FadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Intro text — paragraph 2 */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
+              {isEn
+                ? 'A properly selected fastener ensures comfort in everyday use and contributes to the durability and reliability of the product, especially in cases of intensive use. Knowledge of the characteristics of different types of fasteners facilitates informed design decisions, regardless of whether they concern clothing, accessories or technical components.'
+                : 'Właściwie dobrany zamek zapewnia wygodę codziennego użytkowania oraz wpływa na trwałość i niezawodność produktu – szczególnie w przypadku intensywnej eksploatacji. Znajomość cech charakterystycznych, jakie posiadają różne rodzaje zamków, ułatwia świadome podejmowanie decyzji projektowych, bez względu na to czy dotyczą one odzieży, akcesoriów, czy elementów technicznych.'}
+            </p>
+          </FadeIn>
         </div>
       </section>
 
