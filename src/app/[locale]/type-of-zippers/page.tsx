@@ -142,23 +142,18 @@ export default async function TypeOfZippersPage({ params }: Props) {
         </SmoothAnchor>
         <HeroAnimator />
       </div>
-      {/* Intro text — paragraph 1 */}
+      {/* ── Section 1: intro (one unified white section) ── */}
       <section id="categories" className="py-16 bg-white" style={{ scrollMarginTop: '80px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
+            <p className="font-[Jost] text-gray-500 text-base leading-relaxed mb-10">
               {isEn
                 ? 'Every project, regardless of the industry, has different functional, aesthetic and technological requirements. That is why it is so important to consider aspects that directly affect the quality and durability of the finished product at the design stage. One of these aspects is the type of zip fastener and the selection of the most suitable one. Although these elements are often treated as details, they actually play an important functional role. At first glance, they may seem similar to many people, but they differ in their construction, mechanism of operation and purpose. It is these differences that mean that the choice of the right model should never be left to chance.'
                 : 'Każdy projekt, niezależnie od branży stawia inne wymagania funkcjonalne, estetyczne i technologiczne. Dlatego tak istotne jest, by już na etapie planowania konstrukcji uwzględnić aspekty, które w bezpośredni sposób wpływają na jakość i trwałość gotowego produktu. Jednym z nich są rodzaje zamków błyskawicznych i wybór najodpowiedniejszego z nich. Choć elementy te często traktowane są jako detal, to w rzeczywistości odgrywają istotną rolę użytkową. Dla wielu osób na pierwszy rzut oka wydają się do siebie podobne, lecz różnią się budową, mechanizmem działania i przeznaczeniem. To właśnie te różnice sprawiają, że wybór odpowiedniego modelu nigdy nie powinien być przypadkowy.'}
             </p>
           </FadeIn>
-        </div>
-      </section>
 
-      {/* Category grid */}
-      <section className="bg-[#f5f3ef] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
             {TYPES.map((t, i) => (
               <FadeIn key={t.hrefEn} delay={i * 0.12} className="relative overflow-hidden aspect-[4/3]">
                 <Link
@@ -182,12 +177,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
               </FadeIn>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Intro text — paragraph 2 */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
               {isEn
@@ -199,7 +189,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
       </section>
 
       {/* Plastic zippers section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right">
@@ -237,7 +227,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
       </section>
 
       {/* Nylon zippers section */}
-      <section className="py-16 bg-[#f5f3ef]">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right" delay={0.1} className="order-2 lg:order-1 relative aspect-[4/3] overflow-hidden">
@@ -275,7 +265,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
       </section>
 
       {/* Metal zippers section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right">
