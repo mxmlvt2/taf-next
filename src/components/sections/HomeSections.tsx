@@ -103,10 +103,10 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
                 ? 'Every project requires precise and proven components. That is why our range of zippers includes products that combine quality with functionality. A zipper may be a small detail, but there is no room for compromise in a good design. At TAF, we offer clothing and accessory manufacturers the following zippers:'
                 : 'Każdy projekt wymaga precyzyjnych i sprawdzonych komponentów. Dlatego nasza oferta suwaków obejmuje produkty, które łączą jakość z funkcjonalnością. Zamek może być małym detalem, ale w dobrej konstrukcji nie ma miejsca na kompromisy. Producentom odzieży i akcesoriów oferujemy w TAF:'}
             </p>
-            <ul className="space-y-2 font-[Jost] text-gray-400 text-base">
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Spiral – lightweight, flexible, ideal for sportswear and children\'s clothing, and industrial applications.' : 'Spiralne – lekkie, elastyczne, idealne do odzieży sportowej i dziecięcej, plecaków, obuwia.'}</li>
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Plastic – durable and versatile, suitable for jackets and accessories, but also for heavy duty applications.' : 'Kostkowe – trwałe i uniwersalne, sprawdzające się w kurtkach, bluzach, odzieży dziecięcej.'}</li>
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Metal – solid, with an elegant appearance, used in premium fashion. Traditional type of zipper.' : 'Metalowe – solidne, o eleganckim wyglądzie, stosowane m.in. w modzie premium.'}</li>
+            <ul className="space-y-2 font-[Jost] text-base">
+              <li className="flex gap-2 text-gray-400"><span className="flex-shrink-0">—</span>{isEn ? 'Spiral – lightweight, flexible, ideal for sportswear and children\'s clothing, and industrial applications.' : 'Spiralne – lekkie, elastyczne, idealne do odzieży sportowej i dziecięcej, plecaków, obuwia.'}</li>
+              <li className="flex gap-2 text-gray-400"><span className="flex-shrink-0">—</span>{isEn ? 'Plastic – durable and versatile, suitable for jackets and accessories, but also for heavy duty applications.' : 'Kostkowe – trwałe i uniwersalne, sprawdzające się w kurtkach, bluzach, odzieży dziecięcej.'}</li>
+              <li className="flex gap-2 text-gray-400"><span className="flex-shrink-0">—</span>{isEn ? 'Metal – solid, with an elegant appearance, used in premium fashion. Traditional type of zipper.' : 'Metalowe – solidne, o eleganckim wyglądzie, stosowane m.in. w modzie premium.'}</li>
             </ul>
             <p className="font-[Jost] text-gray-400 text-base leading-relaxed">
               {isEn
@@ -187,7 +187,7 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
 
           {/* Grid */}
           <FadeIn delay={0.15}>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-10">
             {usageCategories.map(cat => (
               <Link key={cat.slug} href={cat.href} className="group relative overflow-hidden aspect-[4/3] block">
                 <Image src={cat.img} alt={cat.label} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
