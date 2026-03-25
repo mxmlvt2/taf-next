@@ -133,10 +133,17 @@ export default function Footer() {
           <p className="text-xs text-gray-500 font-[Jost]">
             © {new Date().getFullYear()} – Trims and fasteners – {locale === 'en' ? 'Distributor of zippers and clothing accessories' : 'Dystrybutor zamków i akcesoriów odzieżowych'} – {locale === 'en' ? 'All rights reserved' : 'Wszelkie prawa zastrzeżone'}
           </p>
-          <p className="text-xs text-gray-600 font-[Jost]">
+          <p className="text-xs text-gray-600 font-[Jost] flex items-center justify-center gap-3 flex-wrap">
             <Link href={locale === 'en' ? '/privacy-policy/' : '/pl/privacy-policy/'} className="hover:text-white transition-colors">
               {locale === 'en' ? 'Privacy policy' : 'Polityka prywatności'}
             </Link>
+            <span className="text-gray-700">·</span>
+            <button
+              onClick={() => window.dispatchEvent(new Event('taf-open-cookie-settings'))}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              {locale === 'en' ? 'Cookie settings' : 'Ustawienia cookies'}
+            </button>
           </p>
           <p className="text-xs text-gray-700 font-[Jost]">
             {locale === 'en'
