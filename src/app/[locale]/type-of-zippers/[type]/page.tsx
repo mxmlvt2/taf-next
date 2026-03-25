@@ -9,6 +9,7 @@ import ZipperGrid from '@/components/zipper/ZipperGrid';
 import PlasticZippersContent from '@/components/sections/PlasticZippersContent';
 import NylonZippersContent from '@/components/sections/NylonZippersContent';
 import MetalZippersContent from '@/components/sections/MetalZippersContent';
+import HeroAnimator from '@/components/ui/HeroAnimator';
 
 const TYPE_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string; subtitleEn: string; subtitlePl: string }> = {
   'nylon-zippers': { wpSlugEn: 'nylon-zippers', wpSlugPl: 'zamki-nylonowe', labelEn: 'Nylon Zippers', labelPl: 'Zamki nylonowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg', subtitleEn: 'Flexible and durable', subtitlePl: 'Elastyczne i trwałe' },
@@ -91,7 +92,7 @@ export default async function TypePage({ params }: Props) {
           </>
         )}
         <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-          <nav className="animate-hero-1 text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+          <nav className="hero-animate text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={locale === 'en' ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {locale === 'en' ? 'Home' : 'Start'}
             </Link>
@@ -107,16 +108,16 @@ export default async function TypePage({ params }: Props) {
           </nav>
 
           <h1
-            className="animate-hero-2 font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white"
+            className="hero-animate font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-          <p className="animate-hero-3 font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+          <p className="hero-animate font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {locale === 'en' ? meta.subtitleEn : meta.subtitlePl}
           </p>
 
           <a
             href="#products"
-            className="animate-hero-4 inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+            className="hero-animate inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {locale === 'en' ? 'Explore our products' : 'Odkryj produkty'}
           </a>
@@ -128,6 +129,7 @@ export default async function TypePage({ params }: Props) {
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
           </div>
         </a>
+        <HeroAnimator />
       </div>
       <div id="products" style={{ scrollMarginTop: '80px' }} />
 

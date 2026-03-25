@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import PersonalizationContent from '@/components/sections/PersonalizationContent';
+import HeroAnimator from '@/components/ui/HeroAnimator';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -40,22 +41,22 @@ export default async function PersonalizationPage({ params }: Props) {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
         <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-          <nav className="animate-hero-1 text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+          <nav className="hero-animate text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={isEn ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {isEn ? 'Home' : 'Start'}
             </Link>
             <span>›</span>
             <span className="text-white/70">{isEn ? 'Personalization' : 'Personalizacja'}</span>
           </nav>
-          <h1 className="animate-hero-2 font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
+          <h1 className="hero-animate font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
             {isEn ? 'Personalization' : 'Personalizacja'}
           </h1>
-          <p className="animate-hero-3 font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+          <p className="hero-animate font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {isEn ? 'Your vision, our execution' : 'Twoja wizja, nasze wykonanie'}
           </p>
           <a
             href="#products"
-            className="animate-hero-4 inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+            className="hero-animate inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {isEn ? 'Explore our products' : 'Odkryj produkty'}
           </a>
@@ -67,6 +68,7 @@ export default async function PersonalizationPage({ params }: Props) {
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
           </div>
         </a>
+        <HeroAnimator />
       </div>
       <div id="products" style={{ scrollMarginTop: '80px' }} />
 

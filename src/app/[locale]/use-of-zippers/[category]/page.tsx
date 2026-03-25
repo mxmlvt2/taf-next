@@ -13,6 +13,7 @@ import BabyContent from '@/components/sections/BabyContent';
 import FashionContent from '@/components/sections/FashionContent';
 import FurnitureContent from '@/components/sections/FurnitureContent';
 import BucklesContent from '@/components/sections/BucklesContent';
+import HeroAnimator from '@/components/ui/HeroAnimator';
 
 // EN slug → WP slug mapping (both EN and PL)
 const CATEGORY_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string; subtitleEn: string; subtitlePl: string }> = {
@@ -109,7 +110,7 @@ export default async function CategoryPage({ params }: Props) {
           </>
         )}
         <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-          <nav className="animate-hero-1 text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+          <nav className="hero-animate text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={locale === 'en' ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {locale === 'en' ? 'Home' : 'Start'}
             </Link>
@@ -125,16 +126,16 @@ export default async function CategoryPage({ params }: Props) {
           </nav>
 
           <h1
-            className="animate-hero-2 font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white"
+            className="hero-animate font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-          <p className="animate-hero-3 font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+          <p className="hero-animate font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {locale === 'en' ? meta.subtitleEn : meta.subtitlePl}
           </p>
 
           <a
             href="#products"
-            className="animate-hero-4 inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+            className="hero-animate inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {locale === 'en' ? 'Explore our products' : 'Odkryj produkty'}
           </a>
@@ -146,6 +147,7 @@ export default async function CategoryPage({ params }: Props) {
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
           </div>
         </a>
+        <HeroAnimator />
       </div>
       <div id="products" style={{ scrollMarginTop: '80px' }} />
 
