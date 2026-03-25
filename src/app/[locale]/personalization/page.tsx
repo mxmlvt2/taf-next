@@ -39,23 +39,23 @@ export default async function PersonalizationPage({ params }: Props) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+        <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8">
+          <nav className="animate-hero-1 text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={isEn ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {isEn ? 'Home' : 'Start'}
             </Link>
             <span>›</span>
             <span className="text-white/70">{isEn ? 'Personalization' : 'Personalizacja'}</span>
           </nav>
-          <h1 className="font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
+          <h1 className="animate-hero-2 font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
             {isEn ? 'Personalization' : 'Personalizacja'}
           </h1>
-          <p className="font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+          <p className="animate-hero-3 font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {isEn ? 'Your vision, our execution' : 'Twoja wizja, nasze wykonanie'}
           </p>
           <a
             href="#products"
-            className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+            className="animate-hero-4 inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {isEn ? 'Explore our products' : 'Odkryj produkty'}
           </a>

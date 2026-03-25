@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import FaqAccordion from '@/components/sections/FaqAccordion';
+import FadeIn from '@/components/ui/FadeIn';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -111,31 +112,27 @@ export default async function TypeOfZippersPage({ params }: Props) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+        <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8">
+          <nav className="animate-hero-1 text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={isEn ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {isEn ? 'Home' : 'Start'}
             </Link>
             <span>›</span>
             <span className="text-white/70">{isEn ? 'Type of Zippers' : 'Rodzaje zamków'}</span>
           </nav>
-
-          <h1 className="font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
+          <h1 className="animate-hero-2 font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
             {isEn ? 'Type of Zippers' : 'Rodzaje zamków'}
           </h1>
-          <p className="font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+          <p className="animate-hero-3 font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {isEn ? 'Quality in every detail' : 'Jakość w każdym detalu'}
           </p>
-
           <a
             href="#categories"
-            className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+            className="animate-hero-4 inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {isEn ? 'Explore our products' : 'Odkryj produkty'}
           </a>
         </div>
-
-        {/* Mouse scroll indicator */}
         <a href="#categories" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
           <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
@@ -147,21 +144,23 @@ export default async function TypeOfZippersPage({ params }: Props) {
       {/* Intro text */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-[Jost] text-gray-500 text-base leading-relaxed mb-6">
-            {isEn
-              ? 'Every project, regardless of the industry, has different functional, aesthetic and technological requirements. That is why it is so important to consider aspects that directly affect the quality and durability of the finished product at the design stage. One of these aspects is the type of zip fastener and the selection of the most suitable one. Although these elements are often treated as details, they actually play an important functional role. At first glance, they may seem similar to many people, but they differ in their construction, mechanism of operation and purpose. It is these differences that mean that the choice of the right model should never be left to chance.'
-              : 'Każdy projekt, niezależnie od branży stawia inne wymagania funkcjonalne, estetyczne i technologiczne. Dlatego tak istotne jest, by już na etapie planowania konstrukcji uwzględnić aspekty, które w bezpośredni sposób wpływają na jakość i trwałość gotowego produktu. Jednym z nich są rodzaje zamków błyskawicznych i wybór najodpowiedniejszego z nich. Choć elementy te często traktowane są jako detal, to w rzeczywistości odgrywają istotną rolę użytkową. Dla wielu osób na pierwszy rzut oka wydają się do siebie podobne, lecz różnią się budową, mechanizmem działania i przeznaczeniem. To właśnie te różnice sprawiają, że wybór odpowiedniego modelu nigdy nie powinien być przypadkowy.'}
-          </p>
-          <ul className="space-y-2 font-[Jost] text-gray-500 text-base mb-6">
-            <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Plastic zippers' : 'Zamki kostkowe'}</li>
-            <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Nylon zippers' : 'Zamki spiralne'}</li>
-            <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Metal zippers' : 'Zamki metalowe'}</li>
-          </ul>
-          <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
-            {isEn
-              ? 'A properly selected fastener ensures comfort in everyday use and contributes to the durability and reliability of the product, especially in cases of intensive use. Knowledge of the characteristics of different types of fasteners facilitates informed design decisions, regardless of whether they concern clothing, accessories or technical components.'
-              : 'Właściwie dobrany zamek zapewnia wygodę codziennego użytkowania oraz wpływa na trwałość i niezawodność produktu – szczególnie w przypadku intensywnej eksploatacji. Znajomość cech charakterystycznych, jakie posiadają różne rodzaje zamków, ułatwia świadome podejmowanie decyzji projektowych, bez względu na to czy dotyczą one odzieży, akcesoriów, czy elementów technicznych.'}
-          </p>
+          <FadeIn>
+            <p className="font-[Jost] text-gray-500 text-base leading-relaxed mb-6">
+              {isEn
+                ? 'Every project, regardless of the industry, has different functional, aesthetic and technological requirements. That is why it is so important to consider aspects that directly affect the quality and durability of the finished product at the design stage. One of these aspects is the type of zip fastener and the selection of the most suitable one. Although these elements are often treated as details, they actually play an important functional role. At first glance, they may seem similar to many people, but they differ in their construction, mechanism of operation and purpose. It is these differences that mean that the choice of the right model should never be left to chance.'
+                : 'Każdy projekt, niezależnie od branży stawia inne wymagania funkcjonalne, estetyczne i technologiczne. Dlatego tak istotne jest, by już na etapie planowania konstrukcji uwzględnić aspekty, które w bezpośredni sposób wpływają na jakość i trwałość gotowego produktu. Jednym z nich są rodzaje zamków błyskawicznych i wybór najodpowiedniejszego z nich. Choć elementy te często traktowane są jako detal, to w rzeczywistości odgrywają istotną rolę użytkową. Dla wielu osób na pierwszy rzut oka wydają się do siebie podobne, lecz różnią się budową, mechanizmem działania i przeznaczeniem. To właśnie te różnice sprawiają, że wybór odpowiedniego modelu nigdy nie powinien być przypadkowy.'}
+            </p>
+            <ul className="space-y-2 font-[Jost] text-gray-500 text-base mb-6">
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Plastic zippers' : 'Zamki kostkowe'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Nylon zippers' : 'Zamki spiralne'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Metal zippers' : 'Zamki metalowe'}</li>
+            </ul>
+            <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
+              {isEn
+                ? 'A properly selected fastener ensures comfort in everyday use and contributes to the durability and reliability of the product, especially in cases of intensive use. Knowledge of the characteristics of different types of fasteners facilitates informed design decisions, regardless of whether they concern clothing, accessories or technical components.'
+                : 'Właściwie dobrany zamek zapewnia wygodę codziennego użytkowania oraz wpływa na trwałość i niezawodność produktu – szczególnie w przypadku intensywnej eksploatacji. Znajomość cech charakterystycznych, jakie posiadają różne rodzaje zamków, ułatwia świadome podejmowanie decyzji projektowych, bez względu na to czy dotyczą one odzieży, akcesoriów, czy elementów technicznych.'}
+            </p>
+          </FadeIn>
         </div>
       </section>
 
@@ -169,26 +168,27 @@ export default async function TypeOfZippersPage({ params }: Props) {
       <section className="bg-[#f5f3ef] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {TYPES.map(t => (
-              <Link
-                key={t.hrefEn}
-                href={isEn ? t.hrefEn : t.hrefPl}
-                className="group relative overflow-hidden aspect-[4/3] block"
-              >
-                <Image
-                  src={t.img}
-                  alt={isEn ? t.labelEn : t.labelPl}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <h2 className="font-[Jost] text-white text-lg font-light">
-                    {isEn ? t.labelEn : t.labelPl}
-                  </h2>
-                </div>
-              </Link>
+            {TYPES.map((t, i) => (
+              <FadeIn key={t.hrefEn} delay={i * 0.12} className="relative overflow-hidden aspect-[4/3]">
+                <Link
+                  href={isEn ? t.hrefEn : t.hrefPl}
+                  className="absolute inset-0 group block"
+                >
+                  <Image
+                    src={t.img}
+                    alt={isEn ? t.labelEn : t.labelPl}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <h2 className="font-[Jost] text-white text-lg font-light">
+                      {isEn ? t.labelEn : t.labelPl}
+                    </h2>
+                  </div>
+                </Link>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -198,7 +198,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <FadeIn direction="right">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
                 {isEn ? 'Plastic zippers – discover the perfect combination of form and lightness' : 'Zamki kostkowe (plastikowe) – poznaj precyzyjne połączenie formy i lekkości'}
               </h2>
@@ -218,8 +218,8 @@ export default async function TypeOfZippersPage({ params }: Props) {
               >
                 {isEn ? 'See plastic zippers' : 'Zobacz zamki kostkowe'}
               </Link>
-            </div>
-            <div className="relative aspect-[4/3] overflow-hidden">
+            </FadeIn>
+            <FadeIn direction="left" delay={0.1} className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="https://trimsandfasteners.com/wp-content/uploads/2025/06/plastikowyzielony-1.jpg"
                 alt={isEn ? 'Plastic Zippers' : 'Zamki plastikowe'}
@@ -227,7 +227,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -236,7 +236,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
       <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1 relative aspect-[4/3] overflow-hidden">
+            <FadeIn direction="right" delay={0.1} className="order-2 lg:order-1 relative aspect-[4/3] overflow-hidden">
               <Image
                 src="https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg"
                 alt={isEn ? 'Nylon Zippers' : 'Zamki nylonowe'}
@@ -244,8 +244,8 @@ export default async function TypeOfZippersPage({ params }: Props) {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
-            <div className="order-1 lg:order-2">
+            </FadeIn>
+            <FadeIn direction="left" className="order-1 lg:order-2">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
                 {isEn ? 'Flexibility that follows every movement, i.e. spiral (nylon) zippers' : 'Elastyczność, która podąża za każdym ruchem, czyli zamki spiralne (nylonowe)'}
               </h2>
@@ -265,7 +265,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
               >
                 {isEn ? 'See nylon zippers' : 'Zobacz zamki spiralne'}
               </Link>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -274,7 +274,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <FadeIn direction="right">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
                 {isEn ? 'Metal zippers – elegance and durability encapsulated in detail' : 'Zamki metalowe, czyli elegancja i wytrzymałość zamknięte w detalu'}
               </h2>
@@ -294,8 +294,8 @@ export default async function TypeOfZippersPage({ params }: Props) {
               >
                 {isEn ? 'See metal zippers' : 'Zobacz zamki metalowe'}
               </Link>
-            </div>
-            <div className="relative aspect-[4/3] overflow-hidden">
+            </FadeIn>
+            <FadeIn direction="left" delay={0.1} className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="https://trimsandfasteners.com/wp-content/uploads/2025/06/metalslider34-scaled.jpg"
                 alt={isEn ? 'Metal Zippers' : 'Zamki metalowe'}
@@ -303,7 +303,7 @@ export default async function TypeOfZippersPage({ params }: Props) {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -311,27 +311,29 @@ export default async function TypeOfZippersPage({ params }: Props) {
       {/* CTA section */}
       <section className="py-16 bg-[#111111] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-white mb-5">
-            {isEn
-              ? 'Tailored zippers for your product – discover how we can support your brand'
-              : 'Niezawodne zamki błyskawiczne dla Twojego produktu – sprawdź, jak możemy wspierać Twoją markę'}
-          </h2>
-          <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-4">
-            {isEn
-              ? 'Every project has its own rules. Different working environments, different usage dynamics, different expectations for details. That is why we offer different types of zippers that meet the real needs of many market sectors. Whether you are creating a sports collection, clothing for the services industry or product lines for the interior design industry, we will provide your business with a zipper that meets your brand\'s technical, aesthetic and logistical needs.'
-              : 'Każdy projekt rządzi się własnymi prawami. Inne środowisko pracy, inna dynamika użytkowania, inne oczekiwania wobec detalu. Dlatego właśnie oferujemy różne rodzaje zamków błyskawicznych, które odpowiadają na realne potrzeby wielu sektorów rynku. Niezależnie od tego, czy tworzysz kolekcję sportową, odzież dla służb, czy linie produktowe dla branży wnętrzarskiej – zapewnimy dla Twojego biznesu zamek odpowiadający potrzebom marki pod względem technicznym, estetycznym i logistycznym.'}
-          </p>
-          <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-8">
-            {isEn
-              ? 'We work exclusively with trusted suppliers, primarily the Japanese brand YKK, recognised as a global benchmark for quality and reliability. If you are looking for a partner who understands the pace of the market, precision of workmanship and the importance of detail, we are ready to help. Tell us what you are working on and we will take care of the details.'
-              : 'Współpracujemy wyłącznie ze sprawdzonymi dostawcami, przede wszystkim z japońską marką YKK, uznawaną za światowy wzór jakości i niezawodności. Jeśli szukasz partnera rozumiejącego tempo rynku, precyzję wykonania i wagę detalu – jesteśmy gotowi. Opowiedz, nad czym pracujesz – my zadbamy o szczegóły.'}
-          </p>
-          <Link
-            href={isEn ? '/contact/' : '/pl/contact/'}
-            className="inline-block bg-white text-black font-[Jost] text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
-          >
-            {isEn ? 'Contact us' : 'Skontaktuj się'}
-          </Link>
+          <FadeIn>
+            <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-white mb-5">
+              {isEn
+                ? 'Tailored zippers for your product – discover how we can support your brand'
+                : 'Niezawodne zamki błyskawiczne dla Twojego produktu – sprawdź, jak możemy wspierać Twoją markę'}
+            </h2>
+            <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-4">
+              {isEn
+                ? 'Every project has its own rules. Different working environments, different usage dynamics, different expectations for details. That is why we offer different types of zippers that meet the real needs of many market sectors. Whether you are creating a sports collection, clothing for the services industry or product lines for the interior design industry, we will provide your business with a zipper that meets your brand\'s technical, aesthetic and logistical needs.'
+                : 'Każdy projekt rządzi się własnymi prawami. Inne środowisko pracy, inna dynamika użytkowania, inne oczekiwania wobec detalu. Dlatego właśnie oferujemy różne rodzaje zamków błyskawicznych, które odpowiadają na realne potrzeby wielu sektorów rynku. Niezależnie od tego, czy tworzysz kolekcję sportową, odzież dla służb, czy linie produktowe dla branży wnętrzarskiej – zapewnimy dla Twojego biznesu zamek odpowiadający potrzebom marki pod względem technicznym, estetycznym i logistycznym.'}
+            </p>
+            <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-8">
+              {isEn
+                ? 'We work exclusively with trusted suppliers, primarily the Japanese brand YKK, recognised as a global benchmark for quality and reliability. If you are looking for a partner who understands the pace of the market, precision of workmanship and the importance of detail, we are ready to help. Tell us what you are working on and we will take care of the details.'
+                : 'Współpracujemy wyłącznie ze sprawdzonymi dostawcami, przede wszystkim z japońską marką YKK, uznawaną za światowy wzór jakości i niezawodności. Jeśli szukasz partnera rozumiejącego tempo rynku, precyzję wykonania i wagę detalu – jesteśmy gotowi. Opowiedz, nad czym pracujesz – my zadbamy o szczegóły.'}
+            </p>
+            <Link
+              href={isEn ? '/contact/' : '/pl/contact/'}
+              className="inline-block bg-white text-black font-[Jost] text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+            >
+              {isEn ? 'Contact us' : 'Skontaktuj się'}
+            </Link>
+          </FadeIn>
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import FaqAccordion from '@/components/sections/FaqAccordion';
+import FadeIn from '@/components/ui/FadeIn';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -139,31 +140,27 @@ export default async function UseOfZippersPage({ params }: Props) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+        <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8">
+          <nav className="animate-hero-1 text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={isEn ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {isEn ? 'Home' : 'Start'}
             </Link>
             <span>›</span>
             <span className="text-white/70">{isEn ? 'Use of Zippers' : 'Zastosowanie zamków'}</span>
           </nav>
-
-          <h1 className="font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
+          <h1 className="animate-hero-2 font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
             {isEn ? 'Use of Zippers' : 'Zastosowanie zamków'}
           </h1>
-          <p className="font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+          <p className="animate-hero-3 font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {isEn ? 'Precision for every industry' : 'Precyzja dla każdej branży'}
           </p>
-
           <a
             href="#categories"
-            className="inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+            className="animate-hero-4 inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {isEn ? 'Explore our products' : 'Odkryj produkty'}
           </a>
         </div>
-
-        {/* Mouse scroll indicator */}
         <a href="#categories" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
           <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
@@ -175,19 +172,21 @@ export default async function UseOfZippersPage({ params }: Props) {
       {/* Intro text */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-[Jost] text-gray-500 text-base leading-relaxed mb-6">
-            {isEn
-              ? 'Even at the design stage, it is clear that zippers determine the functionality of the entire product. At our store, we believe that a properly selected fastener is not just a finishing touch – it is a component that contributes to quality, safety and ease of use. That is why we focus on what is most important: precisely matching fasteners to the specific needs of the industry, material and working environment. Each solution we offer is designed with a specific task in mind, ensuring that it works reliably where others may fail. Specialised zippers are the answer to technical challenges and the expectations of professionals.'
-              : 'Już na etapie projektu wiadomo, że zamki błyskawiczne decydują o funkcjonalności całego produktu. W naszym sklepie wierzymy, że odpowiednio dobrany zamek nie jest wyłącznie elementem wykończeniowym – jest komponentem współtworzącym jakość, bezpieczeństwo i wygodę użytkowania. Właśnie dlatego skupiamy się na tym, co najważniejsze: precyzyjnym dopasowaniu zamków do konkretnych potrzeb branży, materiału i środowiska pracy. Każde rozwiązanie, które oferujemy, powstaje z myślą o konkretnym zadaniu, jakie ma spełniać – dzięki czemu działa niezawodnie tam, gdzie inne mogą nie dać rady. Specjalistyczne zamki błyskawiczne stanowią odpowiedź na wyzwania techniczne i oczekiwania profesjonalistów.'}
-          </p>
-          <ul className="space-y-2 font-[Jost] text-gray-500 text-base mb-6">
-            <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Fire retardant zippers' : 'Zamki dla odzieży ognioodpornej'}</li>
-            <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Military zippers' : 'Zamki wojskowe'}</li>
-            <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Zips for sportswear' : 'Zamki dla odzieży sportowej'}</li>
-            <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? "Safe zips for children's clothing" : 'Bezpieczne zamki dla odzieży dziecięcej'}</li>
-            <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Zippers for the fashion industry' : 'Zamki błyskawiczne dla branży modowej'}</li>
-            <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Zip fasteners for use in furniture manufacturing' : 'Zamki błyskawiczne do zastosowania w meblarstwie'}</li>
-          </ul>
+          <FadeIn>
+            <p className="font-[Jost] text-gray-500 text-base leading-relaxed mb-6">
+              {isEn
+                ? 'Even at the design stage, it is clear that zippers determine the functionality of the entire product. At our store, we believe that a properly selected fastener is not just a finishing touch – it is a component that contributes to quality, safety and ease of use. That is why we focus on what is most important: precisely matching fasteners to the specific needs of the industry, material and working environment. Each solution we offer is designed with a specific task in mind, ensuring that it works reliably where others may fail. Specialised zippers are the answer to technical challenges and the expectations of professionals.'
+                : 'Już na etapie projektu wiadomo, że zamki błyskawiczne decydują o funkcjonalności całego produktu. W naszym sklepie wierzymy, że odpowiednio dobrany zamek nie jest wyłącznie elementem wykończeniowym – jest komponentem współtworzącym jakość, bezpieczeństwo i wygodę użytkowania. Właśnie dlatego skupiamy się na tym, co najważniejsze: precyzyjnym dopasowaniu zamków do konkretnych potrzeb branży, materiału i środowiska pracy. Każde rozwiązanie, które oferujemy, powstaje z myślą o konkretnym zadaniu, jakie ma spełniać – dzięki czemu działa niezawodnie tam, gdzie inne mogą nie dać rady. Specjalistyczne zamki błyskawiczne stanowią odpowiedź na wyzwania techniczne i oczekiwania profesjonalistów.'}
+            </p>
+            <ul className="space-y-2 font-[Jost] text-gray-500 text-base mb-6">
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Fire retardant zippers' : 'Zamki dla odzieży ognioodpornej'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Military zippers' : 'Zamki wojskowe'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Zips for sportswear' : 'Zamki dla odzieży sportowej'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? "Safe zips for children's clothing" : 'Bezpieczne zamki dla odzieży dziecięcej'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Zippers for the fashion industry' : 'Zamki błyskawiczne dla branży modowej'}</li>
+              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Zip fasteners for use in furniture manufacturing' : 'Zamki błyskawiczne do zastosowania w meblarstwie'}</li>
+            </ul>
+          </FadeIn>
         </div>
       </section>
 
@@ -195,26 +194,27 @@ export default async function UseOfZippersPage({ params }: Props) {
       <section className="bg-[#f5f3ef] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            {CATEGORIES.map(cat => (
-              <Link
-                key={cat.hrefEn}
-                href={isEn ? cat.hrefEn : cat.hrefPl}
-                className="group relative overflow-hidden aspect-[4/3] block"
-              >
-                <Image
-                  src={cat.img}
-                  alt={isEn ? cat.labelEn : cat.labelPl}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-3">
-                  <h2 className="font-[Jost] text-white text-sm font-normal leading-tight">
-                    {isEn ? cat.labelEn : cat.labelPl}
-                  </h2>
-                </div>
-              </Link>
+            {CATEGORIES.map((cat, i) => (
+              <FadeIn key={cat.hrefEn} delay={i * 0.08} className="relative overflow-hidden aspect-[4/3]">
+                <Link
+                  href={isEn ? cat.hrefEn : cat.hrefPl}
+                  className="absolute inset-0 group block"
+                >
+                  <Image
+                    src={cat.img}
+                    alt={isEn ? cat.labelEn : cat.labelPl}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <h2 className="font-[Jost] text-white text-sm font-normal leading-tight">
+                      {isEn ? cat.labelEn : cat.labelPl}
+                    </h2>
+                  </div>
+                </Link>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -224,7 +224,7 @@ export default async function UseOfZippersPage({ params }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <FadeIn direction="right">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
                 {isEn ? 'Sports locks – designed to keep up with movement' : 'Zamki sportowe – zaprojektowane, by nadążać za ruchem'}
               </h2>
@@ -239,8 +239,8 @@ export default async function UseOfZippersPage({ params }: Props) {
               >
                 {isEn ? 'See sports zippers' : 'Zobacz zamki sportowe'}
               </Link>
-            </div>
-            <div className="relative aspect-[4/3] overflow-hidden">
+            </FadeIn>
+            <FadeIn direction="left" delay={0.1} className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png"
                 alt={isEn ? 'Zippers for Cycling & Sportswear' : 'Zamki dla odzieży sportowej'}
@@ -248,7 +248,7 @@ export default async function UseOfZippersPage({ params }: Props) {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -257,7 +257,7 @@ export default async function UseOfZippersPage({ params }: Props) {
       <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1 relative aspect-[4/3] overflow-hidden">
+            <FadeIn direction="right" delay={0.1} className="order-2 lg:order-1 relative aspect-[4/3] overflow-hidden">
               <Image
                 src="https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png"
                 alt={isEn ? "Zippers for Children's Clothing" : 'Zamki do odzieży dziecięcej'}
@@ -265,8 +265,8 @@ export default async function UseOfZippersPage({ params }: Props) {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
-            <div className="order-1 lg:order-2">
+            </FadeIn>
+            <FadeIn direction="left" className="order-1 lg:order-2">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
                 {isEn ? "Locks for children's clothing, tailored to small users" : 'Dopasowane do małych użytkowników zamki do odzieży dziecięcej'}
               </h2>
@@ -281,7 +281,7 @@ export default async function UseOfZippersPage({ params }: Props) {
               >
                 {isEn ? "See children's zippers" : 'Zobacz zamki dziecięce'}
               </Link>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -290,7 +290,7 @@ export default async function UseOfZippersPage({ params }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <FadeIn direction="right">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
                 {isEn ? 'Locks for the fashion industry – a detail that builds a collection' : 'Zamki dla branży modowej – detal budujący kolekcję'}
               </h2>
@@ -305,8 +305,8 @@ export default async function UseOfZippersPage({ params }: Props) {
               >
                 {isEn ? 'See fashion zippers' : 'Zobacz zamki dla mody'}
               </Link>
-            </div>
-            <div className="relative aspect-[4/3] overflow-hidden">
+            </FadeIn>
+            <FadeIn direction="left" delay={0.1} className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png"
                 alt={isEn ? 'Zippers for Fashion' : 'Zamki dla branży modowej'}
@@ -314,7 +314,7 @@ export default async function UseOfZippersPage({ params }: Props) {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -323,7 +323,7 @@ export default async function UseOfZippersPage({ params }: Props) {
       <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1 relative aspect-[4/3] overflow-hidden">
+            <FadeIn direction="right" delay={0.1} className="order-2 lg:order-1 relative aspect-[4/3] overflow-hidden">
               <Image
                 src="https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png"
                 alt={isEn ? 'Zippers for Furniture' : 'Zamki do mebli'}
@@ -331,8 +331,8 @@ export default async function UseOfZippersPage({ params }: Props) {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
-            <div className="order-1 lg:order-2">
+            </FadeIn>
+            <FadeIn direction="left" className="order-1 lg:order-2">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
                 {isEn ? 'Locks for the furniture industry that contribute to modern interiors' : 'Zamki dla branży meblarskiej, które współtworzą nowoczesne wnętrza'}
               </h2>
@@ -347,7 +347,7 @@ export default async function UseOfZippersPage({ params }: Props) {
               >
                 {isEn ? 'See furniture zippers' : 'Zobacz zamki meblowe'}
               </Link>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -355,39 +355,43 @@ export default async function UseOfZippersPage({ params }: Props) {
       {/* Accessories section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
-            {isEn ? 'Accessories and fastening components for a successful design' : 'Akcesoria i komponenty zapinające projekt na sukces'}
-          </h2>
-          <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
-            {isEn
-              ? 'A comprehensive approach to design requires both solid locks and accessories that complement the whole. That is why we offer sliders and tags that can be personalised to give the product a unique character and brand identity. Our offer also includes slider tapes and special components, created for non-standard projects. These solutions are for those who value not only quality, but also the possibility of full adaptation to the production process.'
-              : 'Kompleksowe podejście do projektowania wymaga zarówno solidnych zamków, jak i akcesoriów dopełniających całość. Dlatego oferujemy suwaki i przywieszki, które można spersonalizować, nadając produktowi unikalny charakter i zgodność z identyfikacją marki. W naszej ofercie znajdują się również taśmy suwakowe i komponenty specjalne, tworzone na potrzeby niestandardowych realizacji. To rozwiązania dla ceniących nie tylko jakość, ale i możliwość pełnego dopasowania do procesu produkcyjnego.'}
-          </p>
+          <FadeIn>
+            <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
+              {isEn ? 'Accessories and fastening components for a successful design' : 'Akcesoria i komponenty zapinające projekt na sukces'}
+            </h2>
+            <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
+              {isEn
+                ? 'A comprehensive approach to design requires both solid locks and accessories that complement the whole. That is why we offer sliders and tags that can be personalised to give the product a unique character and brand identity. Our offer also includes slider tapes and special components, created for non-standard projects. These solutions are for those who value not only quality, but also the possibility of full adaptation to the production process.'
+                : 'Kompleksowe podejście do projektowania wymaga zarówno solidnych zamków, jak i akcesoriów dopełniających całość. Dlatego oferujemy suwaki i przywieszki, które można spersonalizować, nadając produktowi unikalny charakter i zgodność z identyfikacją marki. W naszej ofercie znajdują się również taśmy suwakowe i komponenty specjalne, tworzone na potrzeby niestandardowych realizacji. To rozwiązania dla ceniących nie tylko jakość, ale i możliwość pełnego dopasowania do procesu produkcyjnego.'}
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* CTA section */}
       <section className="py-16 bg-[#111111] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-white mb-5">
-            {isEn ? 'Specialised zippers – start working with professionals' : 'Specjalistyczne zamki błyskawiczne – zacznij współpracę z profesjonalistami'}
-          </h2>
-          <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-4">
-            {isEn
-              ? 'In business, what counts is both the idea and the quality of workmanship, as well as the certainty that every element will work exactly as it should. That is why our store offers specialised zippers grouped according to their application. They are designed with specific technological challenges in mind – from flame-retardant clothing and sportswear, through the children\'s and furniture industries, to unique fashion designs.'
-              : 'W biznesie liczy się zarówno pomysł, jak i jakość wykonania oraz pewność, że każdy element zadziała dokładnie tak, jak powinien. Dlatego w naszym sklepie oferujemy specjalistyczne zamki błyskawiczne pogrupowane wg zastosowania. Powstają one z myślą o konkretnych wyzwaniach technologicznych – od odzieży trudnopalnej i ubrań sportowych, przez branżę dziecięcą i meblarską, aż po wyjątkowe projekty modowe. Znamy różne wymagania rynków i wiemy, w jaki sposób dobrać surowiec czy typ taśmy do zamka o konkretnym zastosowaniu.'}
-          </p>
-          <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-8">
-            {isEn
-              ? 'We provide not only ready-made solutions, but also real support in adapting them to your design specifications. For almost two decades, we have been valued by our customers for our flexibility, punctuality and full commitment. Zippers are our speciality – start a solid partnership with us and see what we can create together.'
-              : 'Dostarczamy nie tylko gotowe rozwiązania, ale też realne wsparcie w dopasowaniu ich do założeń projektowych. Od niespełna dwóch dekad jesteśmy cenieni przez klientów za elastyczność, terminowość i pełne zaangażowanie. Zamki błyskawiczne to nasza specjalność – zacznij z nami solidne partnerstwo i zobacz, co możemy stworzyć razem.'}
-          </p>
-          <Link
-            href={isEn ? '/contact/' : '/pl/contact/'}
-            className="inline-block bg-white text-black font-[Jost] text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
-          >
-            {isEn ? 'Contact us' : 'Skontaktuj się'}
-          </Link>
+          <FadeIn>
+            <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-white mb-5">
+              {isEn ? 'Specialised zippers – start working with professionals' : 'Specjalistyczne zamki błyskawiczne – zacznij współpracę z profesjonalistami'}
+            </h2>
+            <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-4">
+              {isEn
+                ? 'In business, what counts is both the idea and the quality of workmanship, as well as the certainty that every element will work exactly as it should. That is why our store offers specialised zippers grouped according to their application. They are designed with specific technological challenges in mind – from flame-retardant clothing and sportswear, through the children\'s and furniture industries, to unique fashion designs.'
+                : 'W biznesie liczy się zarówno pomysł, jak i jakość wykonania oraz pewność, że każdy element zadziała dokładnie tak, jak powinien. Dlatego w naszym sklepie oferujemy specjalistyczne zamki błyskawiczne pogrupowane wg zastosowania. Powstają one z myślą o konkretnych wyzwaniach technologicznych – od odzieży trudnopalnej i ubrań sportowych, przez branżę dziecięcą i meblarską, aż po wyjątkowe projekty modowe. Znamy różne wymagania rynków i wiemy, w jaki sposób dobrać surowiec czy typ taśmy do zamka o konkretnym zastosowaniu.'}
+            </p>
+            <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-8">
+              {isEn
+                ? 'We provide not only ready-made solutions, but also real support in adapting them to your design specifications. For almost two decades, we have been valued by our customers for our flexibility, punctuality and full commitment. Zippers are our speciality – start a solid partnership with us and see what we can create together.'
+                : 'Dostarczamy nie tylko gotowe rozwiązania, ale też realne wsparcie w dopasowaniu ich do założeń projektowych. Od niespełna dwóch dekad jesteśmy cenieni przez klientów za elastyczność, terminowość i pełne zaangażowanie. Zamki błyskawiczne to nasza specjalność – zacznij z nami solidne partnerstwo i zobacz, co możemy stworzyć razem.'}
+            </p>
+            <Link
+              href={isEn ? '/contact/' : '/pl/contact/'}
+              className="inline-block bg-white text-black font-[Jost] text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
+            >
+              {isEn ? 'Contact us' : 'Skontaktuj się'}
+            </Link>
+          </FadeIn>
         </div>
       </section>
 

@@ -46,6 +46,17 @@ body {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
+/* Hero staggered entrance animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-hero-1 { opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.05s forwards; }
+.animate-hero-2 { opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s  forwards; }
+.animate-hero-3 { opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.35s forwards; }
+.animate-hero-4 { opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.5s  forwards; }
+
 @keyframes scrollDot {
   0%, 100% { transform: translateY(0); opacity: 1; }
   70% { transform: translateY(7px); opacity: 0; }
