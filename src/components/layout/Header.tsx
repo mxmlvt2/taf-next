@@ -329,12 +329,12 @@ export default function Header({ menu, translations }: HeaderProps) {
           style={{ left: '50%', transform: 'translateX(-50%)', boxShadow: '0 8px 30px rgba(0,0,0,0.12)', width: '1000px' }}
           onMouseLeave={() => setOpenDropdown(null)}
         >
-          <div className="py-4 flex-1">
+          <div className="py-8 flex-1">
             {typeItems.map((item, i) => (
               <div key={item.href}>
                 <Link
                   href={item.href}
-                  className={`block px-6 py-3 text-sm font-[Jost] transition-colors ${
+                  className={`block px-6 py-5 text-sm font-[Jost] transition-colors ${
                     hoveredTypeCat === i ? 'text-black bg-gray-50' : 'text-gray-600 hover:text-black hover:bg-gray-50'
                   }`}
                   onMouseEnter={() => setHoveredTypeCat(i)}
@@ -345,7 +345,7 @@ export default function Header({ menu, translations }: HeaderProps) {
                 {item.sub && (
                   <Link
                     href={item.sub.href}
-                    className="block pl-10 pr-6 py-2 text-xs text-gray-400 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
+                    className="block pl-10 pr-6 py-3 text-xs text-gray-400 hover:text-black hover:bg-gray-50 font-[Jost] transition-colors"
                     onMouseEnter={() => setHoveredTypeCat(i)}
                     onClick={() => setOpenDropdown(null)}
                   >
