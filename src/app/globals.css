@@ -10,9 +10,6 @@
   --taf-text-light: #666666;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   background: var(--background);

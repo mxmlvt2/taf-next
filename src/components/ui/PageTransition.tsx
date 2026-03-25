@@ -10,18 +10,24 @@ export default function PageTransition({ children }: { children: React.ReactNode
     const el = ref.current;
     if (!el) return;
 
-    // Reset: remove transition temporarily to snap to 0
+    // Scroll to top instantly (before transition starts)
+    window.scrollTo(0, 0);
+
+    // Snap to hidden — no transition yet
     el.style.transition = 'none';
     el.style.opacity = '0';
-    el.style.transform = 'translateY(10px)';
+    el.style.transform = 'translateY(12px)';
 
-    // Force reflow so browser commits the hidden state
+    // Force reflow so the browser commits opacity:0
     void el.offsetHeight;
 
-    // Fade in
-    el.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-    el.style.opacity = '1';
-    el.style.transform = 'none';
+    // rAF: browser paints the opacity:0 frame, THEN we set the transition
+    // so it has a real "from" state to animate from
+    requestAnimationFrame(() => {
+      el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
   }, [pathname]);
 
   return (

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/lib/types';
+import HeroAnimator from '@/components/ui/HeroAnimator';
 
 interface HeroProps {
   slides: string[];
@@ -57,16 +58,16 @@ export default function Hero({ slides = DEFAULT_SLIDES, title, subtitle, descrip
       {/* Content — left-aligned */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="max-w-2xl">
-          <span className="block font-[Jost] text-white/70 text-sm sm:text-base font-light mb-4 tracking-widest uppercase animate-fade-in">
+          <span className="hero-animate block font-[Jost] text-white/70 text-sm sm:text-base font-light mb-4 tracking-widest uppercase">
             {title || t('brand')}
           </span>
-          <h1 className="font-[Jost] text-4xl sm:text-6xl font-light text-white leading-tight mb-5 animate-fade-in">
+          <h1 className="hero-animate font-[Jost] text-4xl sm:text-6xl font-light text-white leading-tight mb-5">
             {subtitle || t('tagline')}
           </h1>
-          <p className="font-[Jost] text-white/70 text-base font-light mb-8 max-w-lg leading-relaxed">
+          <p className="hero-animate font-[Jost] text-white/70 text-base font-light mb-8 max-w-lg leading-relaxed">
             {description || t('description')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="hero-animate flex flex-col sm:flex-row gap-3">
             <a
               href={ctaUrl || '#homepage-content'}
               className="inline-block bg-white text-black font-[Jost] font-medium text-sm px-7 py-3 hover:bg-gray-100 transition-colors cursor-pointer"
@@ -80,6 +81,8 @@ export default function Hero({ slides = DEFAULT_SLIDES, title, subtitle, descrip
           </div>
         </div>
       </div>
+
+      <HeroAnimator />
 
       {/* Mouse scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">

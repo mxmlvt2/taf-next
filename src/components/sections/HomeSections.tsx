@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Locale } from '@/lib/types';
+import FadeIn from '@/components/ui/FadeIn';
 
 interface HomeSectionsProps {
   locale: Locale;
@@ -63,9 +64,12 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
       {/* ── Section 1: Company intro ── */}
       <section id="homepage-content" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <FadeIn>
           <h2 className="font-[Jost] text-3xl sm:text-4xl font-light mb-8 text-[#111]">
             {isEn ? 'Trims and Fasteners' : 'Trims and Fasteners'}
           </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
           <div className="space-y-5">
             <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
               {isEn
@@ -78,17 +82,21 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
                 : 'Upraszczamy każdy proces zamawiania, oszczędzamy czas i pieniądze firm. Wykorzystaj naszą wiedzę i usprawnij swoje projekty. Posiadamy duże doświadczenie w realizacji dużych projektów i we współpracy z klientami. Zawsze pomocni, zawsze słuchamy. Relacje biznesowe z klientami traktujemy jako kluczową wartość.'}
             </p>
           </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* ── Section 2: Type of Zippers ── */}
       <section className="py-20 bg-[#111111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
           <h2 className="font-[Jost] text-3xl sm:text-4xl font-light text-center text-white mb-8">
             {isEn ? 'Types of zippers' : 'Rodzaje zamków'}
           </h2>
+          </FadeIn>
 
           {/* Intro text + bullets ABOVE the grid */}
+          <FadeIn delay={0.1}>
           <div className="space-y-4 mb-12">
             <p className="font-[Jost] text-gray-400 text-base leading-relaxed">
               {isEn
@@ -107,7 +115,10 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
             </p>
           </div>
 
+          </FadeIn>
+
           {/* Grid */}
+          <FadeIn delay={0.15}>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
             {typeCategories.map(cat => (
               <Link key={cat.label} href={cat.href} className="group relative overflow-hidden aspect-[4/3] block">
@@ -119,8 +130,10 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
               </Link>
             ))}
           </div>
+          </FadeIn>
 
           {/* Text below grid */}
+          <FadeIn delay={0.1}>
           <div className="space-y-4">
             <p className="font-[Jost] text-gray-400 text-base leading-relaxed">
               {isEn
@@ -133,17 +146,21 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
                 : 'Z praktycznym podejściem dbamy o klientów wyjątkowo, upraszczając cały proces zakupu. Po prostu powiedz nam, czego potrzebujesz — znajdziemy najlepsze rozwiązanie!'}
             </p>
           </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* ── Section 3: Use of Zippers ── */}
       <section className="py-20 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
           <h2 className="font-[Jost] text-3xl sm:text-4xl font-light text-center mb-8 text-[#111]">
             {isEn ? 'Use of zip fasteners' : 'Zastosowanie zamków'}
           </h2>
+          </FadeIn>
 
           {/* Full text ABOVE grid */}
+          <FadeIn delay={0.1}>
           <div className="space-y-4 mb-12">
             <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
               {isEn
@@ -166,8 +183,10 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
                 : 'Dzięki szerokiej i elastycznej ofercie jesteśmy w stanie zaspokoić potrzeby różnorodnych klientów. Realizujemy zarówno zamówienia wymagające wysokiej powtarzalności, jak i niszowe projekty wymagające indywidualnego podejścia.'}
             </p>
           </div>
+          </FadeIn>
 
           {/* Grid */}
+          <FadeIn delay={0.15}>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
             {usageCategories.map(cat => (
               <Link key={cat.slug} href={cat.href} className="group relative overflow-hidden aspect-[4/3] block">
@@ -189,8 +208,10 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
               {isEn ? 'See more' : 'Zobacz więcej'}
             </Link>
           </div>
+          </FadeIn>
 
           {/* YKK paragraph below */}
+          <FadeIn delay={0.1}>
           <div>
             <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
               {isEn
@@ -198,12 +219,14 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
                 : 'W naszej działalności skupiamy się na jakości na każdym etapie współpracy. Dlatego pracujemy wyłącznie ze sprawdzonymi producentami komponentów. Jedną z najbardziej szanowanych marek, z którymi współpracujemy, jest japońska firma YKK – wzorzec niezawodności i precyzji. Skorzystaj z naszej wiedzy i zaoszczędź czas i pieniądze.'}
             </p>
           </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* ── Section 4: Combining Innovation ── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="font-[Jost] text-3xl sm:text-4xl font-light mb-6 leading-snug text-[#111]">
@@ -245,6 +268,7 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
               />
             </div>
           </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -252,9 +276,12 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
       {recentPosts.length > 0 && (
         <section className="py-20 bg-[#f5f3ef]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FadeIn>
             <h2 className="font-[Jost] text-3xl sm:text-4xl font-light text-center mb-12 text-[#111]">
               Blog
             </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {recentPosts.map(post => {
                 const postHref = isEn ? `/blog/${post.slug}/` : `/pl/blog/${post.slug}/`;
@@ -292,6 +319,7 @@ export default function HomeSections({ locale }: HomeSectionsProps) {
                 );
               })}
             </div>
+            </FadeIn>
             <div className="text-center mt-10">
               <Link
                 href={isEn ? '/blog/' : '/pl/blog/'}
