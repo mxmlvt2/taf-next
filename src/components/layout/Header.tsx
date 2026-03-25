@@ -254,7 +254,7 @@ export default function Header({ menu, translations }: HeaderProps) {
             {/* Type of Zippers — button only, no relative wrapper */}
             <button
               className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
-              onClick={() => setOpenDropdown(openDropdown === 'type' ? null : 'type')}
+              onClick={() => router.push(locale === 'en' ? '/type-of-zippers/' : '/pl/type-of-zippers/')}
               onMouseEnter={() => setOpenDropdown('type')}
             >
               {locale === 'en' ? 'Type of zippers' : 'Rodzaje zamków'}
@@ -264,7 +264,7 @@ export default function Header({ menu, translations }: HeaderProps) {
             {/* Use of Zippers — button only, no relative wrapper */}
             <button
               className="flex items-center gap-1 px-3 py-2 text-sm font-normal text-gray-700 hover:text-black transition-colors font-[Jost]"
-              onClick={() => setOpenDropdown(openDropdown === 'use' ? null : 'use')}
+              onClick={() => router.push(locale === 'en' ? '/use-of-zippers/' : '/pl/use-of-zippers/')}
               onMouseEnter={() => setOpenDropdown('use')}
             >
               {locale === 'en' ? 'Use of zippers' : 'Zastosowanie zamków'}

@@ -47,7 +47,7 @@ export default async function PersonalizationPage({ params }: Props) {
             <span>›</span>
             <span className="text-white/70">{isEn ? 'Personalization' : 'Personalizacja'}</span>
           </nav>
-          <h1 className="font-[Jost] text-3xl sm:text-5xl font-light mb-3 max-w-3xl text-white">
+          <h1 className="font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
             {isEn ? 'Personalization' : 'Personalizacja'}
           </h1>
           <p className="font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
@@ -62,13 +62,13 @@ export default async function PersonalizationPage({ params }: Props) {
         </div>
 
         {/* Mouse scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+        <a href="#products" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
           <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
           </div>
-        </div>
+        </a>
       </div>
-      <div id="products" />
+      <div id="products" style={{ scrollMarginTop: '80px' }} />
 
       <PersonalizationContent locale={locale} />
     </div>
