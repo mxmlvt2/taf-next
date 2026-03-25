@@ -23,7 +23,7 @@ body {
 /* Base defaults — inside @layer base so Tailwind utility classes (text-white etc.)
    always override these when used directly on elements */
 @layer base {
-  p, li {
+  p {
     color: #444;
   }
 

@@ -111,7 +111,7 @@ export default function PersonalizationContent({ locale }: Props) {
                 <p className="font-medium text-[#111]">
                   {isEn ? 'The technology we offer provides protection against daily wear and tear:' : 'Technologia zapewnia ochronę przed codziennym zużyciem:'}
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-3 text-gray-500">
                   <li className="flex gap-2">
                     <span className="text-gray-400 flex-shrink-0">—</span>
                     <span>
