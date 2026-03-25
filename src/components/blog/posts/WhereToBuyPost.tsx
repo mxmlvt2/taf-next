@@ -84,7 +84,7 @@ export default function WhereToBuyPost({ locale }: Props) {
   const steps = isEn ? STEPS_EN : STEPS_PL;
 
   return (
-    <div className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal">
+    <div className="prose prose-gray max-w-none font-[Jost]">
       <p>{isEn
         ? 'We at Trims and Fasteners understand that buying zippers wholesale requires a precise understanding of your needs and a trustworthy partner. We provide comprehensive support to optimize your costs and processes.'
         : 'W TAF rozumiemy, że zakup hurtowy zamków błyskawicznych wymaga precyzyjnego określenia potrzeb i zaufanego partnera. Zapewniamy kompleksowe wsparcie, aby zoptymalizować Twoje koszty i procesy.'

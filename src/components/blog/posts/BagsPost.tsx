@@ -34,7 +34,7 @@ export default function BagsPost({ locale }: Props) {
   const comparison = isEn ? COMPARISON_EN : COMPARISON_PL;
 
   return (
-    <div className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal">
+    <div className="prose prose-gray max-w-none font-[Jost]">
       <p>{isEn
         ? 'Choosing the right zipper for bags and backpacks is crucial for their functionality and durability, given their frequent use and potential loads.'
         : 'Wybór odpowiedniego zamka do toreb i plecaków jest kluczowy dla ich funkcjonalności i trwałości, biorąc pod uwagę częste użytkowanie i potencjalne obciążenia.'

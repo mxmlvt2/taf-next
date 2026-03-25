@@ -67,7 +67,7 @@ export default function ComparisonPost({ locale }: Props) {
   const tabs = isEn ? TABS_EN : TABS_PL;
 
   return (
-    <div className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal">
+    <div className="prose prose-gray max-w-none font-[Jost]">
       <p>{isEn
         ? "The zipper's mechanism is a relatively simple concept, yet it's a complex component because its performance depends on the material it's made from. The three main types of zippers—metal, plastic (molded), and nylon (coil)—differ in their construction, performance, and application."
         : 'Z założenia dosyć prosty mechanizm zamka błyskawicznego, jest komponentem o tyle złożonym że zależnym od materiału z którego został wykonany. Trzy główne typy zamków – metalowe, plastikowe (kostkowe) oraz nylonowe (spiralne) różnią się konstrukcją, wydajnością oraz zastosowaniem.'

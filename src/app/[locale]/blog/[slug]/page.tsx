@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params }: Props) {
               <CustomPostBody slug={slug} locale={locale} />
             ) : (
               <div
-                className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal prose-img:rounded-xl blog-article-content"
+                className="prose prose-gray max-w-none font-[Jost] prose-img:rounded-xl blog-article-content"
                 dangerouslySetInnerHTML={{ __html: beforeFaq }}
               />
             )}
@@ -204,7 +204,7 @@ export default async function BlogPostPage({ params }: Props) {
             {/* FAQ (from WP HTML) */}
             {faqAndAfter && (
               <div
-                className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal blog-article-content"
+                className="prose prose-gray max-w-none font-[Jost] blog-article-content"
                 dangerouslySetInnerHTML={{ __html: faqAndAfter }}
               />
             )}

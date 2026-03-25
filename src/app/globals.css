@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
@@ -224,3 +225,49 @@ footer address {
   margin-bottom: 1.5rem;
 }
 /* ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Prose headings: override typography plugin to match site design ──────── */
+/* The @tailwindcss/typography plugin sets headings bold — we want Jost 300   */
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #111;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Jost', Arial, sans-serif;
+}
+.prose h3 {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #111;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Jost', Arial, sans-serif;
+}
+.prose h4 {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #111;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Jost', Arial, sans-serif;
+}
+.prose p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: #444;
+}
+.prose ul, .prose ol {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  color: #444;
+}
+.prose li {
+  margin-bottom: 0.4rem;
+}
+.prose strong {
+  font-weight: 600;
+  color: #111;
+}

@@ -61,7 +61,7 @@ export default function CoilZippersPost({ locale }: Props) {
   const comparison = isEn ? COMPARISON_EN : COMPARISON_PL;
 
   return (
-    <div className="prose prose-gray max-w-none font-[Jost] prose-headings:font-[Jost] prose-headings:font-normal">
+    <div className="prose prose-gray max-w-none font-[Jost]">
       <p>{isEn
         ? 'Coil zippers, widely used for their flexibility and versatility, have specific features and subtypes that affect their application.'
         : 'Zamki spiralne, powszechnie stosowane ze względu na ich elastyczność i wszechstronność, posiadają specyficzne cechy i podtypy, które wpływają na ich zastosowanie.'
