@@ -61,7 +61,7 @@ export default function FixZipperPost({ locale }: Props) {
       }</p>
       <p>{isEn
         ? 'We offer fire-resistant and waterproof zippers as well as specialized solutions for the outdoor, apparel, and technical industries. If you are a designer, manufacturer, or simply looking for zippers for a demanding project, talk to us. We will help you choose a solution that will work reliably for a long time, even in difficult conditions.'
-        : 'Oferujemy ognioodporne i wodoodporne zamki błyskawiczne oraz rozwiązania specjalistyczne dla branży outdoorowej, odzieżowej i technicznej. Jeśli jesteś projektantem, producentem lub po prostu szukasz zamków do wymagającego projektu – porozmawiaj z nami. Pomożemy dobrać takie rozwiązanie, które będzie działać niezawodnie przez długi czas, nawet w trudnych warunkach. Masz pytania? Chcesz skonsultować projekt lub potrzebujesz próbki? Skontaktuj się z nami. N-ZIP to nie tylko zamki – to doświadczenie, doradztwo i wsparcie.'
+        : 'Oferujemy ognioodporne i wodoodporne zamki błyskawiczne oraz rozwiązania specjalistyczne dla branży outdoorowej, odzieżowej i technicznej. Jeśli jesteś projektantem, producentem lub po prostu szukasz zamków do wymagającego projektu – porozmawiaj z nami. Pomożemy dobrać takie rozwiązanie, które będzie działać niezawodnie przez długi czas, nawet w trudnych warunkach. Masz pytania? Chcesz skonsultować projekt lub potrzebujesz próbki? Skontaktuj się z nami. TAF to nie tylko zamki – to doświadczenie, doradztwo i wsparcie.'
       }</p>
     </div>
   );
