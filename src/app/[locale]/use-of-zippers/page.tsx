@@ -63,23 +63,23 @@ const CATEGORIES = [
 const FAQ_EN = [
   {
     question: 'Why is proper zipper selection so important for product functionality?',
-    answer: 'A zipper is not just a finishing touch — it is a component that directly affects quality, safety and ease of use. An incorrectly chosen zipper can fail under real-world conditions, cause discomfort for the user or damage the product material over time.',
+    answer: 'Even at the design stage, it\'s clear that zippers determine the functionality of the entire product. A properly selected fastener is not just a finishing touch – it\'s a component that contributes to quality, safety, and ease of use. That\'s why we focus on precisely matching fasteners to the specific needs of the industry, material, and working environment. Each solution we offer is designed with a specific task in mind, ensuring it works reliably where others may fail. Specialized zippers are the answer to technical challenges and the expectations of professionals, making them essential for product success.',
   },
   {
     question: 'What makes sports zippers ideal for active wear and equipment?',
-    answer: 'Sports zippers are lightweight, resistant to moisture, dust and dynamic stress, ensuring smooth and silent operation even during intense physical activity. They are used in technical jackets, softshells, outdoor clothing, backpacks and cycling accessories, and come in various colours to match any design.',
+    answer: 'Sports zippers are designed to keep up with movement and perform reliably in extreme conditions. They\'re used in technical jackets, softshells, outdoor clothing, backpacks, covers, and cycling and running accessories. Their key features include lightweight construction, resistance to moisture and dust, and ability to withstand dynamic stress. They ensure smooth, silent operation even during intense movement. We also offer a variety of colors to match the zipper to your design\'s aesthetic qualities, making them perfect for both functional performance and visual appeal in sportswear applications.',
   },
   {
     question: 'What safety features do zippers for children\'s clothing have?',
-    answer: 'Zippers for children\'s clothing are designed to meet the highest safety and comfort standards. They feature a soft construction that does not irritate delicate skin, operate quietly and smoothly, and are built to handle the dynamic movement typical of active children.',
+    answer: 'Zippers for children\'s clothing meet the highest standards of safety and comfort, tailored specifically for small users. They\'re perfect for jackets, sweatshirts, sleeping bags, and baby clothes where the zipper comes into contact with delicate skin and dynamic movement. Specialized children\'s zippers guarantee quiet, smooth, and reliable operation, which builds trust among parents and provides comfort for the youngest users. The soft materials and safe construction prevent pinching or irritation, making them ideal for everyday use in children\'s garments.',
   },
   {
     question: 'How are zippers used in the furniture industry?',
-    answer: 'In furniture manufacturing, zippers are used in upholstered covers, seats, backrests, headrests and modular furniture elements that require easy assembly and disassembly. Their flat design, uniform colours and precise guidance allow them to integrate discreetly with the fabric surface without affecting the overall aesthetic.',
+    answer: 'In the furniture industry, zippers are primarily used in upholstered furniture production – covers, seats, backrests, headrests, and modules requiring easy assembly and disassembly. Their main task is ensuring a durable but discreet connection of fabric elements without interfering with design aesthetics. We offer zippers that, thanks to their flat design, uniform colors, and precise guidance, integrate perfectly with the fabric surface. These specialized furniture zippers contribute to modern interiors by providing functional solutions that remain virtually invisible while maintaining structural integrity.',
   },
   {
     question: 'What support do you provide for selecting specialized zippers?',
-    answer: 'We provide expert guidance in selecting the right zipper type, material and size for your specific project. We work with trusted suppliers including YKK and offer both ready-made solutions and support in adapting products to your precise design specifications. Contact us to discuss your project.',
+    answer: 'We provide not only ready-made solutions but real support in adapting them to your design specifications. Our specialized zippers are grouped according to application, designed with specific technological challenges in mind – from flame-retardant clothing and sportswear, through children\'s and furniture industries, to unique fashion designs. We\'re familiar with various market requirements and know how to select the right raw material or tape type for specific applications. For almost two decades, we\'ve been valued by customers for flexibility, punctuality, and full commitment. We work with renowned manufacturers like YKK and offer comprehensive accessories including personalized sliders, tags, and special components for non-standard projects.',
   },
 ];
 
@@ -170,33 +170,18 @@ export default async function UseOfZippersPage({ params }: Props) {
         </SmoothAnchor>
         <HeroAnimator />
       </div>
-      <div id="categories" style={{ scrollMarginTop: '80px' }} />
-
-      {/* Intro text */}
-      <section className="py-16 bg-white">
+      {/* ── Section 1: intro (one unified white section) ── */}
+      <section id="categories" className="py-16 bg-white" style={{ scrollMarginTop: '80px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <p className="font-[Jost] text-gray-500 text-base leading-relaxed mb-6">
+            <p className="font-[Jost] text-gray-500 text-base leading-relaxed mb-10">
               {isEn
                 ? 'Even at the design stage, it is clear that zippers determine the functionality of the entire product. At our store, we believe that a properly selected fastener is not just a finishing touch – it is a component that contributes to quality, safety and ease of use. That is why we focus on what is most important: precisely matching fasteners to the specific needs of the industry, material and working environment. Each solution we offer is designed with a specific task in mind, ensuring that it works reliably where others may fail. Specialised zippers are the answer to technical challenges and the expectations of professionals.'
                 : 'Już na etapie projektu wiadomo, że zamki błyskawiczne decydują o funkcjonalności całego produktu. W naszym sklepie wierzymy, że odpowiednio dobrany zamek nie jest wyłącznie elementem wykończeniowym – jest komponentem współtworzącym jakość, bezpieczeństwo i wygodę użytkowania. Właśnie dlatego skupiamy się na tym, co najważniejsze: precyzyjnym dopasowaniu zamków do konkretnych potrzeb branży, materiału i środowiska pracy. Każde rozwiązanie, które oferujemy, powstaje z myślą o konkretnym zadaniu, jakie ma spełniać – dzięki czemu działa niezawodnie tam, gdzie inne mogą nie dać rady. Specjalistyczne zamki błyskawiczne stanowią odpowiedź na wyzwania techniczne i oczekiwania profesjonalistów.'}
             </p>
-            <ul className="space-y-2 font-[Jost] text-gray-500 text-base mb-6">
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Fire retardant zippers' : 'Zamki dla odzieży ognioodpornej'}</li>
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Military zippers' : 'Zamki wojskowe'}</li>
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Zips for sportswear' : 'Zamki dla odzieży sportowej'}</li>
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? "Safe zips for children's clothing" : 'Bezpieczne zamki dla odzieży dziecięcej'}</li>
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Zippers for the fashion industry' : 'Zamki błyskawiczne dla branży modowej'}</li>
-              <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">—</span>{isEn ? 'Zip fasteners for use in furniture manufacturing' : 'Zamki błyskawiczne do zastosowania w meblarstwie'}</li>
-            </ul>
           </FadeIn>
-        </div>
-      </section>
 
-      {/* Category grid */}
-      <section className="bg-[#f5f3ef] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {CATEGORIES.map((cat, i) => (
               <FadeIn key={cat.hrefEn} delay={i * 0.08} className="relative overflow-hidden aspect-[4/3]">
                 <Link
@@ -208,7 +193,7 @@ export default async function UseOfZippersPage({ params }: Props) {
                     alt={isEn ? cat.labelEn : cat.labelPl}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -224,7 +209,7 @@ export default async function UseOfZippersPage({ params }: Props) {
       </section>
 
       {/* Sports section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right">
@@ -245,7 +230,7 @@ export default async function UseOfZippersPage({ params }: Props) {
             </FadeIn>
             <FadeIn direction="left" delay={0.1} className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src="https://trimsandfasteners.com/wp-content/uploads/2025/06/zamki-dla-odziezy-sportowej.png"
+                src="https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6-1024x1024.jpg"
                 alt={isEn ? 'Zippers for Cycling & Sportswear' : 'Zamki dla odzieży sportowej'}
                 fill
                 className="object-cover"
@@ -257,12 +242,12 @@ export default async function UseOfZippersPage({ params }: Props) {
       </section>
 
       {/* Baby section */}
-      <section className="py-16 bg-[#f5f3ef]">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right" delay={0.1} className="order-2 lg:order-1 relative aspect-[4/3] overflow-hidden">
               <Image
-                src="https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-42.png"
+                src="https://trimsandfasteners.com/wp-content/uploads/2025/06/zamekswiecacywciemnosci-1-e1751275851765-782x1024.jpg"
                 alt={isEn ? "Zippers for Children's Clothing" : 'Zamki do odzieży dziecięcej'}
                 fill
                 className="object-cover"
@@ -290,7 +275,7 @@ export default async function UseOfZippersPage({ params }: Props) {
       </section>
 
       {/* Fashion section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right">
@@ -311,7 +296,7 @@ export default async function UseOfZippersPage({ params }: Props) {
             </FadeIn>
             <FadeIn direction="left" delay={0.1} className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src="https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-43.png"
+                src="https://trimsandfasteners.com/wp-content/uploads/2025/06/metaloweakcesoriadlamody-scaled-e1751275748542-870x1024.png"
                 alt={isEn ? 'Zippers for Fashion' : 'Zamki dla branży modowej'}
                 fill
                 className="object-cover"
@@ -323,12 +308,12 @@ export default async function UseOfZippersPage({ params }: Props) {
       </section>
 
       {/* Furniture section */}
-      <section className="py-16 bg-[#f5f3ef]">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right" delay={0.1} className="order-2 lg:order-1 relative aspect-[4/3] overflow-hidden">
               <Image
-                src="https://trimsandfasteners.com/wp-content/uploads/2025/06/Projekt-bez-nazwy-44.png"
+                src="https://trimsandfasteners.com/wp-content/uploads/2025/06/i7-1024x1024.png"
                 alt={isEn ? 'Zippers for Furniture' : 'Zamki do mebli'}
                 fill
                 className="object-cover"
@@ -355,32 +340,25 @@ export default async function UseOfZippersPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Accessories section */}
-      <section className="py-16 bg-white">
+      {/* Accessories + Specialized zippers — one dark section */}
+      <section className="py-16 bg-[#111111] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-[#111] mb-5">
+            <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-white mb-5">
               {isEn ? 'Accessories and fastening components for a successful design' : 'Akcesoria i komponenty zapinające projekt na sukces'}
             </h2>
-            <p className="font-[Jost] text-gray-500 text-base leading-relaxed">
+            <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-10">
               {isEn
                 ? 'A comprehensive approach to design requires both solid locks and accessories that complement the whole. That is why we offer sliders and tags that can be personalised to give the product a unique character and brand identity. Our offer also includes slider tapes and special components, created for non-standard projects. These solutions are for those who value not only quality, but also the possibility of full adaptation to the production process.'
                 : 'Kompleksowe podejście do projektowania wymaga zarówno solidnych zamków, jak i akcesoriów dopełniających całość. Dlatego oferujemy suwaki i przywieszki, które można spersonalizować, nadając produktowi unikalny charakter i zgodność z identyfikacją marki. W naszej ofercie znajdują się również taśmy suwakowe i komponenty specjalne, tworzone na potrzeby niestandardowych realizacji. To rozwiązania dla ceniących nie tylko jakość, ale i możliwość pełnego dopasowania do procesu produkcyjnego.'}
             </p>
-          </FadeIn>
-        </div>
-      </section>
 
-      {/* CTA section */}
-      <section className="py-16 bg-[#111111] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
             <h2 className="font-[Jost] text-2xl sm:text-3xl font-light text-white mb-5">
               {isEn ? 'Specialised zippers – start working with professionals' : 'Specjalistyczne zamki błyskawiczne – zacznij współpracę z profesjonalistami'}
             </h2>
             <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-4">
               {isEn
-                ? 'In business, what counts is both the idea and the quality of workmanship, as well as the certainty that every element will work exactly as it should. That is why our store offers specialised zippers grouped according to their application. They are designed with specific technological challenges in mind – from flame-retardant clothing and sportswear, through the children\'s and furniture industries, to unique fashion designs.'
+                ? 'In business, what counts is both the idea and the quality of workmanship, as well as the certainty that every element will work exactly as it should. That is why our store offers specialised zippers grouped according to their application. They are designed with specific technological challenges in mind – from flame-retardant clothing and sportswear, through the children\'s and furniture industries, to unique fashion designs. We are familiar with the various market requirements and know how to select the right raw material or tape type for a specific application.'
                 : 'W biznesie liczy się zarówno pomysł, jak i jakość wykonania oraz pewność, że każdy element zadziała dokładnie tak, jak powinien. Dlatego w naszym sklepie oferujemy specjalistyczne zamki błyskawiczne pogrupowane wg zastosowania. Powstają one z myślą o konkretnych wyzwaniach technologicznych – od odzieży trudnopalnej i ubrań sportowych, przez branżę dziecięcą i meblarską, aż po wyjątkowe projekty modowe. Znamy różne wymagania rynków i wiemy, w jaki sposób dobrać surowiec czy typ taśmy do zamka o konkretnym zastosowaniu.'}
             </p>
             <p className="font-[Jost] text-white/70 text-base leading-relaxed mb-8">
