@@ -10,6 +10,7 @@ import PlasticZippersContent from '@/components/sections/PlasticZippersContent';
 import NylonZippersContent from '@/components/sections/NylonZippersContent';
 import MetalZippersContent from '@/components/sections/MetalZippersContent';
 import HeroAnimator from '@/components/ui/HeroAnimator';
+import SmoothAnchor from '@/components/ui/SmoothAnchor';
 
 const TYPE_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string; subtitleEn: string; subtitlePl: string }> = {
   'nylon-zippers': { wpSlugEn: 'nylon-zippers', wpSlugPl: 'zamki-nylonowe', labelEn: 'Nylon Zippers', labelPl: 'Zamki nylonowe', heroImg: 'https://trimsandfasteners.com/wp-content/uploads/2025/06/nylonzippers6.jpg', subtitleEn: 'Flexible and durable', subtitlePl: 'Elastyczne i trwałe' },
@@ -115,20 +116,20 @@ export default async function TypePage({ params }: Props) {
             {locale === 'en' ? meta.subtitleEn : meta.subtitlePl}
           </p>
 
-          <a
+          <SmoothAnchor
             href="#products"
             className="hero-animate inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {locale === 'en' ? 'Explore our products' : 'Odkryj produkty'}
-          </a>
+          </SmoothAnchor>
         </div>
 
         {/* Mouse scroll indicator */}
-        <a href="#products" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+        <SmoothAnchor href="#products" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
           <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
           </div>
-        </a>
+        </SmoothAnchor>
         <HeroAnimator />
       </div>
       <div id="products" style={{ scrollMarginTop: '80px' }} />

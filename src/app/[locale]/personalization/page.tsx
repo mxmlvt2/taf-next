@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PersonalizationContent from '@/components/sections/PersonalizationContent';
 import HeroAnimator from '@/components/ui/HeroAnimator';
+import SmoothAnchor from '@/components/ui/SmoothAnchor';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -54,20 +55,20 @@ export default async function PersonalizationPage({ params }: Props) {
           <p className="hero-animate font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {isEn ? 'Your vision, our execution' : 'Twoja wizja, nasze wykonanie'}
           </p>
-          <a
+          <SmoothAnchor
             href="#products"
             className="hero-animate inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {isEn ? 'Explore our products' : 'Odkryj produkty'}
-          </a>
+          </SmoothAnchor>
         </div>
 
         {/* Mouse scroll indicator */}
-        <a href="#products" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+        <SmoothAnchor href="#products" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
           <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
           </div>
-        </a>
+        </SmoothAnchor>
         <HeroAnimator />
       </div>
       <div id="products" style={{ scrollMarginTop: '80px' }} />

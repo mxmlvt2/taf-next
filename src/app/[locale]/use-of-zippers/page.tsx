@@ -4,6 +4,7 @@ import Image from 'next/image';
 import FaqAccordion from '@/components/sections/FaqAccordion';
 import FadeIn from '@/components/ui/FadeIn';
 import HeroAnimator from '@/components/ui/HeroAnimator';
+import SmoothAnchor from '@/components/ui/SmoothAnchor';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -155,18 +156,18 @@ export default async function UseOfZippersPage({ params }: Props) {
           <p className="hero-animate font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
             {isEn ? 'Precision for every industry' : 'Precyzja dla każdej branży'}
           </p>
-          <a
+          <SmoothAnchor
             href="#categories"
             className="hero-animate inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {isEn ? 'Explore our products' : 'Odkryj produkty'}
-          </a>
+          </SmoothAnchor>
         </div>
-        <a href="#categories" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+        <SmoothAnchor href="#categories" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
           <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
           </div>
-        </a>
+        </SmoothAnchor>
         <HeroAnimator />
       </div>
       <div id="categories" style={{ scrollMarginTop: '80px' }} />

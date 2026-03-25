@@ -14,6 +14,7 @@ import FashionContent from '@/components/sections/FashionContent';
 import FurnitureContent from '@/components/sections/FurnitureContent';
 import BucklesContent from '@/components/sections/BucklesContent';
 import HeroAnimator from '@/components/ui/HeroAnimator';
+import SmoothAnchor from '@/components/ui/SmoothAnchor';
 
 // EN slug → WP slug mapping (both EN and PL)
 const CATEGORY_SLUGS: Record<string, { wpSlugEn: string; wpSlugPl: string; labelEn: string; labelPl: string; heroImg: string; subtitleEn: string; subtitlePl: string }> = {
@@ -133,20 +134,20 @@ export default async function CategoryPage({ params }: Props) {
             {locale === 'en' ? meta.subtitleEn : meta.subtitlePl}
           </p>
 
-          <a
+          <SmoothAnchor
             href="#products"
             className="hero-animate inline-block bg-white text-black font-[Jost] font-normal text-sm px-8 py-3 hover:bg-gray-100 transition-colors"
           >
             {locale === 'en' ? 'Explore our products' : 'Odkryj produkty'}
-          </a>
+          </SmoothAnchor>
         </div>
 
         {/* Mouse scroll indicator */}
-        <a href="#products" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
+        <SmoothAnchor href="#products" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5">
           <div className="w-5 h-8 rounded-full border-2 border-white/50 flex justify-center pt-1.5">
             <div className="w-0.5 h-2 bg-white/70 rounded-full animate-scroll-dot" />
           </div>
-        </a>
+        </SmoothAnchor>
         <HeroAnimator />
       </div>
       <div id="products" style={{ scrollMarginTop: '80px' }} />
