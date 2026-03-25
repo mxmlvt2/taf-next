@@ -46,35 +46,7 @@ body {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* Hero entrance: JS adds .hero-ready to the section which triggers transitions */
-.hero-animate {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
-}
-.hero-animate[data-will-animate] {
-  opacity: 0;
-  transform: translateY(28px);
-}
-.hero-animate[data-ready] {
-  opacity: 1;
-  transform: none;
-}
-
-/* Scroll reveal: JS adds data-ready via IntersectionObserver */
-.scroll-reveal {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
-}
-.scroll-reveal[data-will-animate] {
-  opacity: 0;
-  transform: translateY(32px);
-}
-.scroll-reveal[data-ready] {
-  opacity: 1;
-  transform: none;
-}
+/* hero-animate and scroll elements: styles managed entirely by JS (HeroAnimator / FadeIn) */
 
 @keyframes scrollDot {
   0%, 100% { transform: translateY(0); opacity: 1; }

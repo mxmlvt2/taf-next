@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CookieBanner from '@/components/layout/CookieBanner';
+import PageTransition from '@/components/ui/PageTransition';
 import '../globals.css';
 
 const GA_ID = 'G-1WQEEEEQ4B';
@@ -70,7 +71,7 @@ export default async function LocaleLayout({
       <body className="bg-white text-[#111111] antialiased">
         <NextIntlClientProvider messages={messages}>
           <Header menu={[]} translations={{}} />
-          <main>{children}</main>
+          <main><PageTransition>{children}</PageTransition></main>
           <Footer />
           <CookieBanner />
         </NextIntlClientProvider>

@@ -40,7 +40,7 @@ export default async function PersonalizationPage({ params }: Props) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-        <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-3/4 pl-4 sm:pl-8 lg:pl-16 xl:pl-24">
           <nav className="hero-animate text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
             <Link href={isEn ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {isEn ? 'Home' : 'Start'}
