@@ -2,6 +2,9 @@ import ComparisonPost from './posts/ComparisonPost';
 import CoilZippersPost from './posts/CoilZippersPost';
 import WhereToBuyPost from './posts/WhereToBuyPost';
 import BagsPost from './posts/BagsPost';
+import FurniturePost from './posts/FurniturePost';
+import FixZipperPost from './posts/FixZipperPost';
+import QualityZipperPost from './posts/QualityZipperPost';
 
 export interface Heading { id: string; text: string }
 
@@ -95,9 +98,9 @@ const HEADINGS: Record<string, Record<string, Heading[]>> = {
       { id: 'summary', text: 'Summary' },
     ],
     pl: [
-      { id: 'choosing', text: 'Dobór zamków do toreb i plecaków' },
-      { id: 's-type', text: 'Zalety taśm S-Type nad standardową spiralą' },
-      { id: 'advantages', text: 'Zalety zamków S-Type (wplatanych)' },
+      { id: 'choosing', text: 'Wybór zamków do toreb i plecaków' },
+      { id: 's-type', text: 'Przewaga taśm typu S nad zwykłą spiralą' },
+      { id: 'advantages', text: 'Zalety taśmy S (Woven-in) dla toreb i plecaków' },
       { id: 'summary', text: 'Podsumowanie' },
     ],
   },
@@ -115,6 +118,98 @@ const HEADINGS: Record<string, Record<string, Heading[]>> = {
       { id: 'summary', text: 'Summary' },
     ],
   },
+  'zippers-in-the-furniture-industry': {
+    en: [
+      { id: 'zippers-in-the-furniture-industry', text: 'Zippers in the Furniture Industry' },
+      { id: '5cc-zipper', text: '5CC (5mm) Zipper' },
+      { id: '45ech-zipper', text: '45ECH (4.5mm) Zipper' },
+    ],
+    pl: [
+      { id: 'zippers-in-the-furniture-industry', text: 'Zamki w branży meblarskiej' },
+      { id: '5cc-zipper', text: 'Zamek YKK 5CC' },
+      { id: '45ech-zipper', text: 'Zamek YKK 45ECH' },
+    ],
+  },
+  'zamki-blyskawiczne-w-branzy-meblarskiej': {
+    pl: [
+      { id: 'zippers-in-the-furniture-industry', text: 'Zamki w branży meblarskiej' },
+      { id: '5cc-zipper', text: 'Zamek YKK 5CC' },
+      { id: '45ech-zipper', text: 'Zamek YKK 45ECH' },
+    ],
+    en: [
+      { id: 'zippers-in-the-furniture-industry', text: 'Zippers in the Furniture Industry' },
+      { id: '5cc-zipper', text: '5CC (5mm) Zipper' },
+      { id: '45ech-zipper', text: '45ECH (4.5mm) Zipper' },
+    ],
+  },
+  'how-to-fix-zipper-problems': {
+    en: [
+      { id: 'most-common-problems', text: 'Most Common Zipper Problems' },
+      { id: 'stuck-zipper', text: 'A Stuck Zipper' },
+      { id: 'zipper-separating', text: 'Zipper Separating After Being Closed' },
+      { id: 'slider-coming-off', text: 'Slider Coming Off the Zipper' },
+      { id: 'broken-tooth', text: 'A Broken Tooth' },
+      { id: 'repair-warranty', text: 'Zipper Repair and Product Warranty' },
+      { id: 'choose-reputable', text: 'Choose Zippers from a Reputable Distributor!' },
+    ],
+    pl: [
+      { id: 'most-common-problems', text: 'Najczęstsze problemy z zamkiem błyskawicznym' },
+      { id: 'stuck-zipper', text: 'Zacinający się suwak' },
+      { id: 'zipper-separating', text: 'Rozchodzący się zamek po zamknięciu' },
+      { id: 'slider-coming-off', text: 'Wypadający suwak z zamka' },
+      { id: 'broken-tooth', text: 'Wyłamany ząbek' },
+      { id: 'repair-warranty', text: 'Naprawa zamka a gwarancja na produkt' },
+      { id: 'choose-reputable', text: 'Postaw na zamki od renomowanego dystrybutora!' },
+    ],
+  },
+  'jak-rozwiazac-problemy-z-zamkiem-blyskawicznym': {
+    pl: [
+      { id: 'most-common-problems', text: 'Najczęstsze problemy z zamkiem błyskawicznym' },
+      { id: 'stuck-zipper', text: 'Zacinający się suwak' },
+      { id: 'zipper-separating', text: 'Rozchodzący się zamek po zamknięciu' },
+      { id: 'slider-coming-off', text: 'Wypadający suwak z zamka' },
+      { id: 'broken-tooth', text: 'Wyłamany ząbek' },
+      { id: 'repair-warranty', text: 'Naprawa zamka a gwarancja na produkt' },
+      { id: 'choose-reputable', text: 'Postaw na zamki od renomowanego dystrybutora!' },
+    ],
+    en: [
+      { id: 'most-common-problems', text: 'Most Common Zipper Problems' },
+      { id: 'stuck-zipper', text: 'A Stuck Zipper' },
+      { id: 'zipper-separating', text: 'Zipper Separating After Being Closed' },
+      { id: 'slider-coming-off', text: 'Slider Coming Off the Zipper' },
+      { id: 'broken-tooth', text: 'A Broken Tooth' },
+      { id: 'repair-warranty', text: 'Zipper Repair and Product Warranty' },
+      { id: 'choose-reputable', text: 'Choose Zippers from a Reputable Distributor!' },
+    ],
+  },
+  'how-to-recognize-a-high-quality-zipper': {
+    en: [
+      { id: 'premium-zippers', text: 'Premium Zippers—Do They Even Exist?' },
+      { id: 'characteristics', text: 'What Characterizes a Well-Made Zipper?' },
+      { id: 'customer-satisfaction', text: 'The Connection Between Zipper Quality and Customer Satisfaction' },
+      { id: 'talk-to-us', text: 'Looking for Reliable Zippers? Talk to Us!' },
+    ],
+    pl: [
+      { id: 'premium-zippers', text: 'Zamek błyskawiczny premium – czy coś takiego w ogóle występuje?' },
+      { id: 'characteristics', text: 'Czym charakteryzuje się dobrze wykonany zamek błyskawiczny?' },
+      { id: 'customer-satisfaction', text: 'Wybór zamków odpowiedniej jakości a zadowolenie klientów' },
+      { id: 'talk-to-us', text: 'Szukasz niezawodnych zamków? Porozmawiaj z nami!' },
+    ],
+  },
+  'zamek-wysokiej-jakosci': {
+    pl: [
+      { id: 'premium-zippers', text: 'Zamek błyskawiczny premium – czy coś takiego w ogóle występuje?' },
+      { id: 'characteristics', text: 'Czym charakteryzuje się dobrze wykonany zamek błyskawiczny?' },
+      { id: 'customer-satisfaction', text: 'Wybór zamków odpowiedniej jakości a zadowolenie klientów' },
+      { id: 'talk-to-us', text: 'Szukasz niezawodnych zamków? Porozmawiaj z nami!' },
+    ],
+    en: [
+      { id: 'premium-zippers', text: 'Premium Zippers—Do They Even Exist?' },
+      { id: 'characteristics', text: 'What Characterizes a Well-Made Zipper?' },
+      { id: 'customer-satisfaction', text: 'The Connection Between Zipper Quality and Customer Satisfaction' },
+      { id: 'talk-to-us', text: 'Looking for Reliable Zippers? Talk to Us!' },
+    ],
+  },
 };
 
 export function getCustomHeadings(slug: string, locale: string): Heading[] | null {
@@ -126,7 +221,6 @@ export function getCustomHeadings(slug: string, locale: string): Heading[] | nul
 interface Props { slug: string; locale: string }
 
 export default function CustomPostBody({ slug, locale }: Props) {
-  // Map both EN and PL slugs to the correct component
   if (slug === 'zippers-comparison-metal-plastic-and-nylon' ||
       slug === 'porownanie-zamkow-blyskawicznych-metalowe-plastikowe-i-nylonowe') {
     return <ComparisonPost locale={locale} />;
@@ -142,6 +236,18 @@ export default function CustomPostBody({ slug, locale }: Props) {
   if (slug === 'zippers-for-bags-and-backpacks' ||
       slug === 'zamki-blyskawiczne-do-toreb-i-plecakow') {
     return <BagsPost locale={locale} />;
+  }
+  if (slug === 'zippers-in-the-furniture-industry' ||
+      slug === 'zamki-blyskawiczne-w-branzy-meblarskiej') {
+    return <FurniturePost locale={locale} />;
+  }
+  if (slug === 'how-to-fix-zipper-problems' ||
+      slug === 'jak-rozwiazac-problemy-z-zamkiem-blyskawicznym') {
+    return <FixZipperPost locale={locale} />;
+  }
+  if (slug === 'how-to-recognize-a-high-quality-zipper' ||
+      slug === 'zamek-wysokiej-jakosci') {
+    return <QualityZipperPost locale={locale} />;
   }
   return null;
 }
