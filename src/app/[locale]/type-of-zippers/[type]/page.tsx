@@ -139,9 +139,9 @@ export default async function TypePage({ params }: Props) {
       {enSlug === 'nylon-zippers' && <NylonZippersContent locale={locale} position="above" />}
       {enSlug === 'metal-zippers' && <MetalZippersContent locale={locale} position="above" />}
 
-      {/* Product grid */}
-      {zippers.length > 0 && (
-        <section className="bg-[#f5f3ef] py-16">
+      {/* Product grid — split into sections of 12 */}
+      {zippers.length > 0 && Array.from({ length: Math.ceil(zippers.length / 12) }, (_, i) => (
+        <section key={i} className="bg-[#f5f3ef] py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-3 text-[#111]">
               {locale === 'en' ? 'Our products' : 'Nasze produkty'}
@@ -149,10 +149,10 @@ export default async function TypePage({ params }: Props) {
             <p className="font-[Jost] text-sm text-gray-400 mb-8">
               {zippers.length} {locale === 'en' ? 'products' : 'produktów'}
             </p>
-            <ZipperGrid zippers={zippers} />
+            <ZipperGrid zippers={zippers.slice(i * 12, i * 12 + 12)} />
           </div>
         </section>
-      )}
+      ))}
 
       {/* Hardcoded content sections (below product grid) */}
       {enSlug === 'plastic-zippers' && <PlasticZippersContent locale={locale} position="below" />}
