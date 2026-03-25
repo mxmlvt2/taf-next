@@ -106,7 +106,7 @@ export default function CoilZippersPost({ locale }: Props) {
       <ul>
         <li><strong>{isEn ? 'Increased Durability:' : 'Zwiększona wytrzymałość:'}</strong> {isEn ? 'Significantly enhanced resistance to stretching, abrasion, and frequent use.' : 'Znacznie zwiększona odporność na rozciąganie, ścieranie i częste użytkowanie.'}</li>
         <li><strong>{isEn ? 'Longer Lifespan:' : 'Dłuższa żywotność:'}</strong> {isEn ? 'Provides greater reliability, especially in demanding applications.' : 'Zapewnia większą niezawodność, szczególnie w wymagających zastosowaniach.'}</li>
-        <li><strong>{isEn ? 'Dimensional Stability:' : 'Stabilność wymiarowa:'}</strong> {isEn ? 'Crucial for applications that require precision and shape retention under stress.' : 'Kluczowa dla zastosowań wymagających precyzji i utrzymania kształtu pod obciążeniem.'}</li>
+        <li><strong>{isEn ? 'High-load Performance:' : 'Lepsze działanie w aplikacjach wysokoobciążanych:'}</strong> {isEn ? 'Ideal for high-load applications such as military backpacks, pouches, and waist bags.' : 'Lepiej radzą sobie w aplikacjach wysokoobciążanych, np. plecaki wojskowe, zasobniki, saszetki typu „nerka".'}</li>
       </ul>
       <p>{isEn
         ? 'Zippers with S-type (woven) tape are ideal for products subject to heavy loads and very frequent opening/closing: high-quality bags, tactical backpacks, outdoor gear, and workwear where reliability is a priority.'
