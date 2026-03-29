@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import FaqAccordion from './FaqAccordion';
 
 const WP = 'https://trimsandfasteners.com/wp-content/uploads/';
 
@@ -134,29 +135,90 @@ export default function BucklesContent({ locale, position }: Props) {
     );
   }
 
-  // position === 'below' — accessories grid
+  const FAQ_EN = [
+    {
+      question: 'What types of buckles and plastic hardware do you offer?',
+      answer:
+        "We offer a comprehensive range of buckles and plastic hardware components for various applications, from delicate children's products to durable tactical gear. Our selection includes side-release buckles (standard and high-strength), magnetic buckles with intuitive closure, belt buckles with dual adjusters, quick-release buckles for vests, self-locking adjustment buckles with cam mechanisms, surface mount buckles, cord stoppers and locks, strap adjusters, snap hooks, quick-attach loops, D-rings, strap holders, clips, and specialized tactical buckles. All components are available in various materials including standard POM, reinforced T-POM, flame-retardant versions meeting UL-94 V0 standards, and NIR-reduced variants for military applications.",
+    },
+    {
+      question: 'What makes YKK LB-WG/WGD buckles ideal for military applications?',
+      answer:
+        "The YKK LB-WG/WGD buckle is one of the best buckles for military applications, injection-molded from a special grade of POM called T-POM (toughened POM). This material makes it extremely durable and resistant to impacts or accidental damage. The buckle is exceptionally easy to operate with gloves and with one hand, which is crucial for tactical situations. T-POM is extremely resistant to low temperatures as well as temperature changes, ensuring reliable performance in harsh environments. The hardened acetal construction makes it one of the strongest buckles on the market, if not the strongest, providing dependable performance where failure is not an option.",
+    },
+    {
+      question: 'How do magnetic buckles work and what are their advantages?',
+      answer:
+        "Magnetic buckles offer convenient, intuitive operation that can be performed with one hand, even while wearing gloves. The 40mm magnetic buckle features a magnetic closure used in personal protective equipment and military applications, making fastening and unfastening quick and effortless. The HP-M 50 belt buckle includes a central, hidden release mechanism with swivel function and tactical matte finish, ideal for tactical belts. Our quick-release vest system uses neodymium magnets in each buckle to enable easy fastening, combined with a central mechanical release that disconnects all four buckles simultaneously. The magnetic feature provides intuitive operation while maintaining secure hold during use.",
+    },
+    {
+      question: 'What materials are buckles made from and what special versions are available?',
+      answer:
+        "Standard buckles are made from POM plastic (acetal), a universal material often modified by manufacturers for specific requirements. For demanding applications, we offer T-POM (toughened POM), which provides exceptional impact resistance and durability, particularly for tactical and military uses. When special applications require it, we supply buckles in flame-retardant versions meeting UL-94 standard, class V0 requirements, essential for workwear and protective equipment. We also offer buckles with reduced Near-Infrared (NIR) signature for military applications where tactical concealment is critical. Each material variant is selected based on the specific performance requirements, environmental conditions, and safety standards of your application.",
+    },
+    {
+      question: 'What specialized buckle systems do you offer for tactical vests?',
+      answer:
+        "We offer several specialized buckle systems designed specifically for tactical vests and plate carriers. The quick-release buckle for 40mm webbing allows rapid release by pulling a cord, with special reinforced material ensuring excellent durability and high resistance to weather conditions including UV, water, snow, and ice. Our quick-release vest system features a central release mechanism that disconnects all four buckles simultaneously through mechanical cable disengagement, with neodymium magnets enabling easy fastening. The LB25WGD YKK belt buckle in T-POM offers exceptional impact resistance, easy operation with gloves, and compatibility with most webbing. These systems are used in professional applications including the new model vests for the Polish Police, demonstrating their proven reliability in demanding field conditions.",
+    },
+  ];
+
+  const FAQ_PL = [
+    {
+      question: 'Jakie rodzaje klamer i plastikowego hardware oferujecie?',
+      answer:
+        'Oferujemy kompleksowy asortyment klamer i plastikowych elementów do różnych zastosowań — od delikatnych produktów dziecięcych po trwały sprzęt taktyczny. Nasza oferta obejmuje: klamry boczne (standardowe i wysokiej wytrzymałości), klamry magnetyczne, klamry pasów z podwójnym regulatorem, klamry szybkiego otwierania do kamizelek, klamry z samozaciskową regulacją, klamry montowane powierzchniowo, stopery i zamki sznurka, regulatory pasów, karabińczyki, pętle szybkiego mocowania, D-ringi i specjalistyczne klamry taktyczne. Wszystkie komponenty dostępne w POM, T-POM, wersjach trudnopalnych UL-94 V0 oraz z obniżoną sygnaturą NIR.',
+    },
+    {
+      question: 'Co sprawia, że klamry YKK LB-WG/WGD są idealne do zastosowań militarnych?',
+      answer:
+        'Klamra YKK LB-WG/WGD to jedna z najlepszych klamer do zastosowań wojskowych, wtryskiwana ze specjalnej odmiany POM — T-POM (utwardzonego POM), co czyni ją niezwykle trwałą i odporną na uderzenia. Klamra jest wyjątkowo łatwa w obsłudze w rękawicach i jedną ręką — kluczowe w sytuacjach taktycznych. T-POM jest wyjątkowo odporny na niskie temperatury i zmiany temperatur, zapewniając niezawodność w trudnych warunkach. Utwardzona konstrukcja acetal czyni ją jedną z najsilniejszych klamer na rynku.',
+    },
+    {
+      question: 'Jak działają klamry magnetyczne i jakie mają zalety?',
+      answer:
+        'Klamry magnetyczne oferują wygodną, intuicyjną obsługę jedną ręką, nawet w rękawiczkach. Klamra magnetyczna 40mm stosowana jest w środkach ochrony indywidualnej i zastosowaniach militarnych. Klamra pasa HP-M 50 ma centralny, ukryty mechanizm zwalniający z funkcją obrotową i taktycznym matowym wykończeniem. Nasz system szybkiego odpinania kamizelek używa magnesów neodymowych do łatwego zapinania w połączeniu z centralnym mechanicznym zwolnieniem, które odłącza wszystkie cztery klamry jednocześnie.',
+    },
+    {
+      question: 'Z jakich materiałów wykonane są klamry i jakie specjalne wersje są dostępne?',
+      answer:
+        'Standardowe klamry wykonane są z tworzywa POM (acetal), modyfikowanego przez producentów do konkretnych wymagań. Do wymagających zastosowań oferujemy T-POM (utwardzony POM) zapewniający wyjątkową odporność na uderzenia. Gdy wymagają tego szczególne zastosowania, dostarczamy klamry w wersjach trudnopalnych spełniających normę UL-94, klasa V0. Oferujemy też klamry z obniżoną sygnaturą NIR do zastosowań militarnych. Każdy wariant materiałowy jest dobierany na podstawie wymagań wydajnościowych, warunków środowiskowych i norm bezpieczeństwa.',
+    },
+    {
+      question: 'Jakie specjalistyczne systemy klamer oferujecie do kamizelek taktycznych?',
+      answer:
+        'Oferujemy kilka specjalistycznych systemów klamer zaprojektowanych dla kamizelek taktycznych i nosidełek płyt. Klamra szybkiego otwierania na taśmy 40mm umożliwia szybkie odpięcie przez pociągnięcie sznurka z wysoką odpornością na UV, wodę, śnieg i lód. Nasz system szybkiego odpinania kamizelek ma centralny mechanizm odłączający wszystkie cztery klamry jednocześnie, z magnesami neodymowymi do łatwego zapinania. Klamra YKK LB25WGD T-POM oferuje wyjątkową odporność na uderzenia i łatwą obsługę w rękawiczkach. Systemy te stosowane są w profesjonalnych zastosowaniach, w tym w nowych modelach kamizelek dla Polskiej Policji.',
+    },
+  ];
+
+  // position === 'below' — accessories grid + FAQ
   return (
-    <section className="py-16 bg-[#f5f3ef]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-10 text-[#111]">
-          {isEn ? 'Hardware & Accessories' : 'Okucia i akcesoria'}
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {ACCESSORIES.map((acc, i) => (
-            <div key={i} className="text-center">
-              <div className="overflow-hidden group bg-white mb-3 aspect-square flex items-center justify-center p-3">
-                <Image src={acc.img} alt={isEn ? acc.heading : acc.headingPl}
-                  width={250} height={250}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                  sizes="20vw" />
+    <>
+      <section className="py-16 bg-[#f5f3ef]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-10 text-[#111]">
+            {isEn ? 'Hardware & Accessories' : 'Okucia i akcesoria'}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {ACCESSORIES.map((acc, i) => (
+              <div key={i} className="text-center">
+                <div className="overflow-hidden group bg-white mb-3 aspect-square flex items-center justify-center p-3">
+                  <Image src={acc.img} alt={isEn ? acc.heading : acc.headingPl}
+                    width={250} height={250}
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                </div>
+                <p className="font-[Jost] text-xs text-gray-600 leading-snug">
+                  {isEn ? acc.heading : acc.headingPl}
+                </p>
               </div>
-              <p className="font-[Jost] text-xs text-gray-600 leading-snug">
-                {isEn ? acc.heading : acc.headingPl}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section className="bg-white">
+        <FaqAccordion items={isEn ? FAQ_EN : FAQ_PL} locale={locale} />
+      </section>
+    </>
   );
 }
