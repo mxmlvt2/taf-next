@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import SubpageCopyright from '@/components/layout/SubpageCopyright';
 import CookieBanner from '@/components/layout/CookieBanner';
 import PageTransition from '@/components/ui/PageTransition';
 import '../globals.css';
@@ -72,6 +73,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Header menu={[]} translations={{}} />
           <main><PageTransition>{children}</PageTransition></main>
+          <SubpageCopyright locale={locale} />
           <Footer />
           <CookieBanner />
         </NextIntlClientProvider>
