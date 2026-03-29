@@ -113,10 +113,10 @@ export default function MilitaryContent({ locale, position }: Props) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
               <div className="overflow-hidden group">
                 <Image
-                  src={`${WP}2025/06/militarnyzamekplastikowy3-1024x576.jpg`}
-                  alt={isEn ? 'Military plastic zipper close-up' : 'Zamek plastikowy militarny zbliżenie'}
+                  src={`${WP}2025/06/militarntyzamekplastikowy-1024x1024.jpg`}
+                  alt={isEn ? 'Military zippers on camo fabric' : 'Zamki militarne na tkaninie moro'}
                   width={800}
-                  height={600}
+                  height={800}
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
@@ -134,8 +134,8 @@ export default function MilitaryContent({ locale, position }: Props) {
                 </div>
                 <div className="overflow-hidden group">
                   <Image
-                    src={`${WP}2025/06/militarntyzamekplastikowy-1024x1024.jpg`}
-                    alt={isEn ? 'Military zippers on camo fabric' : 'Zamki militarne na tkaninie moro'}
+                    src={`${WP}2025/06/militarnyzamekplastikowy3-1024x576.jpg`}
+                    alt={isEn ? 'Military plastic zipper close-up' : 'Zamek plastikowy militarny zbliżenie'}
                     width={600}
                     height={400}
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
