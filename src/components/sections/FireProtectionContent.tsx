@@ -76,9 +76,10 @@ function Tile({ title, items, accent = false }: TileProps) {
       onMouseLeave={() => setHovered(false)}
     >
       <p
-        className="font-[Jost] text-sm font-medium mb-3"
+        className="font-[Jost] text-sm font-medium mb-3 flex items-center gap-1.5"
         style={{ color: accent ? '#a87c7c' : '#555' }}
       >
+        <span className="text-base leading-none">{accent ? '+' : '−'}</span>
         {title}
       </p>
       <ul className="space-y-1.5">
@@ -100,9 +101,9 @@ export default function FireProtectionContent({ locale, position }: Props) {
     return (
       <>
         {/* ── Intro ── */}
-        <section className="py-14 bg-white">
+        <section className="py-14 bg-[#f5f3ef]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl space-y-4 font-[Jost] text-gray-500 text-sm leading-relaxed">
+            <div className="space-y-4 font-[Jost] text-gray-500 text-sm leading-relaxed">
               <p>
                 {isEn
                   ? 'Clothing that protects against fire-related risk factors must meet specific safety standards defined in norms. There are different levels of protection and various standards, but the goal is always the same: to protect the health and life of an employee exposed to a hazardous work environment.'
@@ -118,7 +119,7 @@ export default function FireProtectionContent({ locale, position }: Props) {
         </section>
 
         {/* ── Fire Retardant Metal Zippers ── */}
-        <section className="py-16 bg-[#f5f3ef]">
+        <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
               <div>
@@ -149,13 +150,13 @@ export default function FireProtectionContent({ locale, position }: Props) {
                   />
                 </div>
               </div>
-              <div className="overflow-hidden group">
+              <div className="overflow-hidden group aspect-[4/3]">
                 <Image
                   src={`${WP}2025/06/metalowezamkitrudnopalne.jpg`}
                   alt={isEn ? 'Fire retardant metal zipper' : 'Metalowy zamek ognioodporny'}
                   width={700}
-                  height={500}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  height={525}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
@@ -164,16 +165,16 @@ export default function FireProtectionContent({ locale, position }: Props) {
         </section>
 
         {/* ── Fire Retardant Plastic Zippers ── */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-[#f5f3ef]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-              <div className="overflow-hidden group">
+              <div className="overflow-hidden group aspect-[3/4]">
                 <Image
                   src={`${WP}2025/03/Photoroom_20250328_052331-768x1024.jpeg`}
                   alt={isEn ? 'Fire retardant plastic zipper' : 'Plastikowy zamek ognioodporny'}
                   width={600}
                   height={800}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
@@ -218,10 +219,10 @@ export default function FireProtectionContent({ locale, position }: Props) {
   return (
     <>
       {/* ── D8 FR Open-End ── */}
-      <section className="py-16 bg-[#f5f3ef]">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-stretch">
-            <div className="flex flex-col">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+            <div>
               <h2 className="font-[Jost] text-xl sm:text-2xl font-light mb-4 text-[#111]">
                 {isEn ? 'D8 Fire Retardant Open-End Molded Zipper' : 'D8 Zamek formowany ognioodporny rozdzielny'}
               </h2>
@@ -232,22 +233,23 @@ export default function FireProtectionContent({ locale, position }: Props) {
                     : 'Zamek formowany rozmiar 8 z zębami z tworzywa trudnopalnego na taśmie aramidowej. Wyposażony w plastikowy suwak i uchwyt trudnopalny; brak metalowych części redukuje ryzyko związane z nagrzewaniem się metalu. Nadaje się do odzieży dla elektryków.'}
                 </p>
               </div>
-              <div className="grid grid-cols-3 gap-3 mt-auto">
+              <div className="flex gap-3">
                 {[`${WP}2025/09/2.jpg`, `${WP}2025/09/9.jpg`, `${WP}2025/09/7.jpg`].map((src, i) => (
-                  <div key={i} className="overflow-hidden group aspect-square bg-white">
-                    <Image src={src} alt={`Norm badge ${i + 1}`} width={200} height={200}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="12vw" />
+                  <div key={i} className="w-20 h-20 overflow-hidden flex-shrink-0 bg-white">
+                    <Image src={src} alt={`Norm badge ${i + 1}`} width={80} height={80}
+                      className="w-full h-full object-contain"
+                      sizes="80px" />
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative overflow-hidden group min-h-[300px]">
+            <div className="overflow-hidden group aspect-[4/3]">
               <Image
                 src={`${WP}2025/09/1.jpg`}
                 alt={isEn ? 'D8 FR open-end zipper' : 'Zamek D8 ognioodporny rozdzielny'}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                width={700}
+                height={525}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -256,15 +258,16 @@ export default function FireProtectionContent({ locale, position }: Props) {
       </section>
 
       {/* ── FB40FRGR Suspender Buckle ── */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-stretch">
-            <div className="relative overflow-hidden group min-h-[300px]">
+            <div className="overflow-hidden group aspect-[4/3]">
               <Image
                 src={`${WP}2025/09/5.jpg`}
                 alt={isEn ? 'FB40FRGR suspender buckle' : 'Klamra szelkowa FB40FRGR'}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                width={700}
+                height={525}
+                className="w-full h-full object-contain bg-white group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -286,9 +289,9 @@ export default function FireProtectionContent({ locale, position }: Props) {
               </div>
               <div className="grid grid-cols-2 gap-3 mt-auto">
                 {[`${WP}2025/09/5.jpg`, `${WP}2025/09/4.jpg`].map((src, i) => (
-                  <div key={i} className="overflow-hidden group aspect-square bg-[#f5f3ef]">
-                    <Image src={src} alt={`FB40FRGR ${i + 1}`} width={300} height={300}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  <div key={i} className="overflow-hidden group aspect-[4/3] bg-white">
+                    <Image src={src} alt={`FB40FRGR ${i + 1}`} width={300} height={225}
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                       sizes="20vw" />
                   </div>
                 ))}
@@ -299,10 +302,10 @@ export default function FireProtectionContent({ locale, position }: Props) {
       </section>
 
       {/* ── D8 FR Two-Way ── */}
-      <section className="py-16 bg-[#f5f3ef]">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-stretch">
-            <div className="flex flex-col">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+            <div>
               <h2 className="font-[Jost] text-xl sm:text-2xl font-light mb-4 text-[#111]">
                 {isEn ? 'D8 Fire Retardant Two-Way Separating Molded Zipper' : 'D8 Zamek formowany ognioodporny dwusuwakowy rozdzielny'}
               </h2>
@@ -313,22 +316,23 @@ export default function FireProtectionContent({ locale, position }: Props) {
                     : 'Zamek formowany rozmiar 8 z zębami z tworzywa trudnopalnego na taśmie aramidowej. Wyposażony w metalowy suwak i uchwyt. Dostępny również w wersji szybkiego zwalniania, otwierającej się od góry przez pociągnięcie suwaka.'}
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-3 mt-auto">
+              <div className="flex gap-3">
                 {[`${WP}2025/09/9.jpg`, `${WP}2025/09/7.jpg`].map((src, i) => (
-                  <div key={i} className="overflow-hidden group aspect-square bg-white">
-                    <Image src={src} alt={`D8 two-way FR ${i + 1}`} width={300} height={300}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="20vw" />
+                  <div key={i} className="w-20 h-20 overflow-hidden flex-shrink-0 bg-[#f5f3ef]">
+                    <Image src={src} alt={`D8 two-way FR ${i + 1}`} width={80} height={80}
+                      className="w-full h-full object-contain"
+                      sizes="80px" />
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative overflow-hidden group min-h-[300px]">
+            <div className="overflow-hidden group aspect-[4/3]">
               <Image
                 src={`${WP}2025/09/8.jpg`}
                 alt={isEn ? 'D8 FR two-way zipper' : 'Zamek D8 ognioodporny dwusuwakowy'}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                width={700}
+                height={525}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -337,7 +341,7 @@ export default function FireProtectionContent({ locale, position }: Props) {
       </section>
 
       {/* ── M3/M5/M8 FR Treated ── */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
             <div className="overflow-hidden group">
@@ -346,8 +350,8 @@ export default function FireProtectionContent({ locale, position }: Props) {
                 alt={isEn ? 'M-series FR metal zipper' : 'Zamek metalowy M z impregnacją FR'}
                 width={256}
                 height={1024}
-                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="w-auto max-h-[420px] object-contain group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 50vw, 25vw"
               />
             </div>
             <div>
@@ -367,7 +371,7 @@ export default function FireProtectionContent({ locale, position }: Props) {
       </section>
 
       {/* ── M8 NOMEX ── */}
-      <section className="py-16 bg-[#f5f3ef]">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
             <div>
@@ -382,13 +386,13 @@ export default function FireProtectionContent({ locale, position }: Props) {
                 </p>
               </div>
             </div>
-            <div className="overflow-hidden group">
+            <div className="overflow-hidden group aspect-[4/3]">
               <Image
                 src={`${WP}2025/09/12.jpg`}
                 alt={isEn ? 'M8 NOMEX firefighter zipper' : 'Zamek M8 NOMEX strażacki'}
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                width={700}
+                height={525}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -397,7 +401,7 @@ export default function FireProtectionContent({ locale, position }: Props) {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="bg-white">
+      <section className="bg-[#f5f3ef]">
         <FaqAccordion items={isEn ? FAQ_EN : FAQ_PL} locale={locale} />
       </section>
     </>
