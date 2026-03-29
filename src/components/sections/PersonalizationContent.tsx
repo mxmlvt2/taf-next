@@ -234,11 +234,20 @@ export default function PersonalizationContent({ locale }: Props) {
                     {openFaq === i ? '−' : '+'}
                   </span>
                 </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-5 font-[Jost] text-sm text-gray-500 leading-relaxed border-t border-gray-100 pt-4">
-                    {faq.a}
+                <div
+                  className="overflow-hidden"
+                  style={{
+                    display: 'grid',
+                    gridTemplateRows: openFaq === i ? '1fr' : '0fr',
+                    transition: 'grid-template-rows 0.3s ease-out',
+                  }}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-5 font-[Jost] text-sm text-gray-500 leading-relaxed border-t border-gray-100 pt-4">
+                      {faq.a}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>

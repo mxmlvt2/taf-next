@@ -45,13 +45,19 @@ export default function FaqAccordion({ items, locale = 'en' }: FaqAccordionProps
                 </span>
               </button>
               <div
-                className="overflow-hidden transition-all duration-300 ease-in-out bg-white"
-                style={{ maxHeight: isOpen ? '600px' : '0px' }}
+                className="bg-white overflow-hidden"
+                style={{
+                  display: 'grid',
+                  gridTemplateRows: isOpen ? '1fr' : '0fr',
+                  transition: 'grid-template-rows 0.3s ease-out',
+                }}
               >
-                <div
-                  className="px-6 py-5 font-[Jost] text-sm text-gray-600 leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: item.answer }}
-                />
+                <div className="overflow-hidden">
+                  <div
+                    className="px-6 py-5 font-[Jost] text-sm text-gray-600 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: item.answer }}
+                  />
+                </div>
               </div>
             </div>
           );
