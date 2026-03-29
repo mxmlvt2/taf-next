@@ -33,26 +33,26 @@ export default async function PersonalizationPage({ params }: Props) {
       {/* Dark hero */}
       <div className="subpage-hero relative bg-[#111111] text-white min-h-[90vh] flex items-center overflow-hidden">
         <Image
-          src="https://trimsandfasteners.com/wp-content/uploads/2025/06/logobymoulding-scaled.png"
+          src="https://trimsandfasteners.com/wp-content/uploads/2025/07/logo-WR-1-scaled.png"
           alt=""
           fill
           className="object-cover opacity-40"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-        <div className="relative z-10 w-3/4 pl-4 sm:pl-8 lg:pl-16 xl:pl-24">
-          <nav className="hero-animate text-xs text-white/40 font-[Jost] mb-4 flex items-center gap-2">
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <nav className="hero-animate text-xs text-white/40 font-[Jost] mb-4 flex items-center justify-center gap-2">
             <Link href={isEn ? '/' : '/pl/'} className="hover:text-white transition-colors">
               {isEn ? 'Home' : 'Start'}
             </Link>
             <span>›</span>
             <span className="text-white/70">{isEn ? 'Personalization' : 'Personalizacja'}</span>
           </nav>
-          <h1 className="hero-animate font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl text-white">
+          <h1 className="hero-animate font-[Jost] text-4xl sm:text-6xl font-light mb-3 max-w-3xl mx-auto text-white">
             {isEn ? 'Personalization' : 'Personalizacja'}
           </h1>
-          <p className="hero-animate font-[Jost] text-white/60 mb-8 max-w-xl text-sm leading-relaxed">
+          <p className="hero-animate font-[Jost] text-white/60 mb-8 max-w-xl mx-auto text-lg leading-relaxed">
             {isEn ? 'Your vision, our execution' : 'Twoja wizja, nasze wykonanie'}
           </p>
           <SmoothAnchor

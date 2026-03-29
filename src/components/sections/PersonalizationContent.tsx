@@ -105,13 +105,13 @@ export default function PersonalizationContent({ locale }: Props) {
       <section className="py-20 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div className="overflow-hidden group order-2 lg:order-1">
+            <div className="overflow-hidden group order-2 lg:order-1 aspect-[4/3]">
               <Image
                 src={`${WP}2025/09/white-Photoroom-28-1.png`}
                 alt={isEn ? 'Logo printing on zipper puller' : 'Nadruk logotypu na uchwycie zamka'}
                 width={800}
                 height={800}
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 bg-white"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>

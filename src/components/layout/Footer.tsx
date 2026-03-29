@@ -145,7 +145,7 @@ export default function Footer() {
               {locale === 'en' ? 'Cookie settings' : 'Ustawienia cookies'}
             </button>
           </p>
-          <p className="text-xs text-gray-700 font-[Jost]">
+          <p className="text-xs text-gray-500 font-[Jost]">
             {locale === 'en'
               ? "All rights reserved. Copying, processing, and distribution of materials without the author's consent is prohibited."
               : 'Wszelkie prawa zastrzeżone. Kopiowanie, przetwarzanie i dystrybucja materiałów bez zgody autora jest zabroniona.'}
