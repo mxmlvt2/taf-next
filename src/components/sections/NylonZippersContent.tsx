@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import ImageCarousel from '@/components/ui/ImageCarousel';
 import FaqAccordion from '@/components/sections/FaqAccordion';
 
@@ -227,13 +228,13 @@ export default function NylonZippersContent({ locale, position }: Props) {
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
                 {isEn ? 'Nylon Zippers for Military and Personal Protective Equipment (PPE)' : 'Zamki nylonowe dla wojska i PPE'}
               </h2>
-              <div className="space-y-4 font-[Jost] text-gray-400 text-sm leading-relaxed">
-                <p>
+              <div className="space-y-4 font-[Jost] text-sm leading-relaxed">
+                <p className="text-gray-400">
                   {isEn
                     ? 'We supply all types of zippers used in military applications. Our daily routine involves quickly handling samples, preparing custom colors, and developing products based on client suggestions.'
                     : 'Dostarczamy wszystkie typy zamków błyskawicznych używanych w zastosowaniach wojskowych. Na co dzień szybko obsługujemy próbki, przygotowujemy niestandardowe kolory i rozwijamy produkty według sugestii klientów.'}
                 </p>
-                <p>
+                <p className="text-gray-400">
                   {isEn
                     ? 'Zippers for military use must feature a reduced Near-Infrared (NIR) signature. This means the zipper or other finishes have a similar light reflection percentage as the base fabric. We produce zippers with a reduced NIR signature in various colors and can also prepare special colors upon client request.'
                     : 'Zamki do zastosowań wojskowych muszą mieć zmniejszoną sygnaturę bliskiej podczerwieni (NIR). Oznacza to, że zamek lub inne wykończenia mają podobny procent odbicia światła jak bazowa tkanina. Produkujemy zamki ze zmniejszoną sygnaturą NIR w różnych kolorach i możemy przygotować specjalne kolory na życzenie klienta.'}
@@ -247,8 +248,8 @@ export default function NylonZippersContent({ locale, position }: Props) {
       {/* ── Sportswear / Cycling ── */}
       <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-stretch">
+            <div className="flex flex-col">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                 {isEn ? 'Nylon Zippers for Sportswear & Cycling Apparel' : 'Zamki nylonowe do odzieży sportowej i kolarskiej'}
               </h2>
@@ -259,13 +260,13 @@ export default function NylonZippersContent({ locale, position }: Props) {
                     : 'Mamy długie doświadczenie w dostarczaniu różnego rodzaju zamków błyskawicznych dla producentów odzieży kolarskiej. Doskonale znamy tę branżę i możemy zaoferować zarówno innowacyjne rozwiązania, jak i najlepsze oferty na standardowe zamki.'}
                 </p>
               </div>
-              <div className="overflow-hidden group">
+              <div className="overflow-hidden group flex-1 min-h-[200px]">
                 <Image
                   src={`${WP}2025/06/sport-garment-zipper--1024x576.jpeg`}
                   alt={isEn ? 'Sportswear zipper application' : 'Zamek w odzieży sportowej'}
                   width={700}
                   height={400}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
@@ -368,8 +369,8 @@ export default function NylonZippersContent({ locale, position }: Props) {
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
                 {isEn ? 'Upholstery / Technical Concealed Zippers' : 'Zamki kryte tapicerskie / techniczne'}
               </h2>
-              <div className="space-y-4 font-[Jost] text-gray-400 text-sm leading-relaxed">
-                <p>
+              <div className="space-y-4 font-[Jost] text-sm leading-relaxed">
+                <p className="text-gray-400">
                   {isEn
                     ? 'A replacement for a plastic profile to close the upholstery of a car seat or sofa in an aesthetic way. It resembles a sewn seam and is a quick, time-saving solution. We provide all the necessary equipment, as well as process coordination and staff training at the client\'s facility.'
                     : 'Zastępstwo dla plastikowego profilu do estetycznego zamknięcia poszycia fotela lub sofy. Przypomina szew szyty i jest szybkim, oszczędzającym czas rozwiązaniem. Dostarczamy niezbędne urządzenia oraz koordynację procesu i szkolenie personelu.'}
@@ -397,8 +398,8 @@ export default function NylonZippersContent({ locale, position }: Props) {
       {/* ── Water-Resistant ── */}
       <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-stretch">
+            <div className="flex flex-col">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                 {isEn ? 'Water-Resistant Nylon Zippers' : 'Wodoodporne zamki nylonowe'}
               </h2>
@@ -417,31 +418,30 @@ export default function NylonZippersContent({ locale, position }: Props) {
                   {isEn ? 'Types available: N3, N4, N5, N7, N8, N10' : 'Dostępne rozmiary: N3, N4, N5, N7, N8, N10'}
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3 mt-auto">
                 {[
                   { src: `${WP}2025/06/wodoodporny2-1024x987.jpg`, alt: 'Water resistant zipper 1' },
                   { src: `${WP}2025/06/wodoodporny3-1024x1024.jpg`, alt: 'Water resistant zipper 2' },
                 ].map((img, i) => (
-                  <div key={i} className="overflow-hidden group">
+                  <div key={i} className="overflow-hidden group aspect-square">
                     <Image
                       src={img.src}
                       alt={img.alt}
                       width={300}
                       height={300}
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="25vw"
                     />
                   </div>
                 ))}
               </div>
             </div>
-            <div className="overflow-hidden group">
+            <div className="relative overflow-hidden group min-h-[300px]">
               <Image
                 src={`${WP}2025/06/wodoodpornyzamek-1-1024x576.png`}
                 alt={isEn ? 'Water resistant zipper closeup' : 'Zamek wodoodporny z bliska'}
-                width={700}
-                height={400}
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -452,22 +452,22 @@ export default function NylonZippersContent({ locale, position }: Props) {
       {/* ── Woven S-Tape vs Standard ── */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-8 text-[#111]">
+          <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-8 text-[#111] text-center">
             {isEn ? 'Woven-in S-Tape Zippers vs. Standard Sewn Coil Zippers' : 'Spirala tkana S-Tape vs. standardowa szyta'}
           </h2>
-          <p className="font-[Jost] text-gray-500 text-sm leading-relaxed mb-8 max-w-3xl">
+          <p className="font-[Jost] text-gray-500 text-sm leading-relaxed mb-8 max-w-3xl mx-auto text-center">
             {isEn
               ? "The evolution of coil zippers reflects the industry's continuous drive to enhance durability and reliability. Key differences in construction significantly impact their performance characteristics."
               : 'Ewolucja zamków spiralnych odzwierciedla ciągłe dążenie branży do poprawy trwałości i niezawodności. Kluczowe różnice w budowie znacząco wpływają na charakterystykę wydajności.'}
           </p>
-          <div className="overflow-hidden group mb-8">
+          <div className="overflow-hidden group mb-8 max-w-[70%] mx-auto">
             <Image
               src={`${WP}2025/06/porownanie-spirali-S80-WOVENIN-I-standardowej-80S-sewon-type-1024x718.jpeg`}
               alt={isEn ? 'Woven vs standard coil zipper comparison' : 'Porównanie spirali tkanej i standardowej'}
               width={1024}
               height={718}
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-              sizes="100vw"
+              sizes="70vw"
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -492,6 +492,18 @@ export default function NylonZippersContent({ locale, position }: Props) {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Size Chart ── */}
+      <section className="py-8 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href={locale === 'en' ? '/nylon-zipper-chain-size-chart/' : '/pl/nylon-zipper-chain-size-chart/'}
+            className="inline-flex items-center gap-2 text-sm font-[Jost] text-gray-600 hover:text-black border border-gray-200 hover:border-gray-400 rounded-lg px-5 py-3 transition-colors"
+          >
+            {locale === 'en' ? 'View Nylon Zipper Chain Size Chart →' : 'Zobacz tabelę rozmiarów taśm nylonowych →'}
+          </Link>
         </div>
       </section>
 

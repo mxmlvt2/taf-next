@@ -159,18 +159,6 @@ export default async function TypePage({ params }: Props) {
       {enSlug === 'nylon-zippers' && <NylonZippersContent locale={locale} position="below" />}
       {enSlug === 'metal-zippers' && <MetalZippersContent locale={locale} position="below" />}
 
-      {/* Nylon size chart link (only for nylon page) */}
-      {enSlug === 'nylon-zippers' && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Link
-            href={locale === 'en' ? '/nylon-zipper-chain-size-chart/' : '/pl/nylon-zipper-chain-size-chart/'}
-            className="inline-flex items-center gap-2 text-sm font-[Jost] text-gray-600 hover:text-black border border-gray-200 hover:border-gray-400 rounded-lg px-5 py-3 transition-colors"
-          >
-            {locale === 'en' ? 'View Nylon Zipper Chain Size Chart →' : 'Zobacz tabelę rozmiarów taśm nylonowych →'}
-          </Link>
-        </section>
-      )}
-
     </div>
   );
 }
