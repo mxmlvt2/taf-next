@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ImageCarousel from '@/components/ui/ImageCarousel';
 import FaqAccordion from '@/components/sections/FaqAccordion';
+import FadeIn from '@/components/ui/FadeIn';
 
 const WP = 'https://trimsandfasteners.com/wp-content/uploads/';
 
@@ -66,7 +67,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-              <div>
+              <FadeIn direction="right">
                 <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                   {isEn ? 'Characteristics of Coil Zippers' : 'Charakterystyka zamków spiralnych'}
                 </h2>
@@ -87,8 +88,8 @@ export default function NylonZippersContent({ locale, position }: Props) {
                       : 'Zamki spiralne są również szeroko stosowane w branży jachtowej.'}
                   </p>
                 </div>
-              </div>
-              <div className="relative overflow-hidden group">
+              </FadeIn>
+              <FadeIn direction="left" delay={0.1} className="relative overflow-hidden group">
                 <Image
                   src={`${WP}2025/06/nylonzippers16-scaled.jpg`}
                   alt={isEn ? 'Nylon coil zippers' : 'Zamki spiralne nylonowe'}
@@ -97,7 +98,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-              </div>
+              </FadeIn>
             </div>
           </div>
         </section>
@@ -179,7 +180,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-            <div>
+            <FadeIn direction="right">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                 {isEn ? 'Two Way Separating Zippers' : 'Zamki dwusuwakowe rozdzielne'}
               </h2>
@@ -195,8 +196,8 @@ export default function NylonZippersContent({ locale, position }: Props) {
                     : 'Jest to kluczowe, gdyż wiele zamków dostępnych na rynku sprawia problemy z tym podstawowym elementem komfortu użytkownika. Zawsze zapewniamy zamki dwukierunkowe w naszej serii nylonowej, które są łatwe do zapinania i zamykania.'}
                 </p>
               </div>
-            </div>
-            <div className="relative overflow-hidden group">
+            </FadeIn>
+            <FadeIn direction="left" delay={0.1} className="relative overflow-hidden group">
               <Image
                 src={`${WP}2025/06/nylonzippers4-1024x1024.jpg`}
                 alt={isEn ? 'Two-way separating nylon zipper' : 'Zamek nylonowy dwusuwakowy rozdzielny'}
@@ -205,7 +206,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -214,7 +215,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
       <section className="py-16 bg-[#111111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-            <div className="relative overflow-hidden group">
+            <FadeIn direction="right" className="relative overflow-hidden group">
               <Image
                 src={`${WP}2025/06/nylonzippers5-1024x576.png`}
                 alt={isEn ? 'Military nylon zippers' : 'Zamki nylonowe militarne'}
@@ -223,8 +224,8 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
-            <div>
+            </FadeIn>
+            <FadeIn direction="left" delay={0.1}>
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
                 {isEn ? 'Nylon Zippers for Military and Personal Protective Equipment (PPE)' : 'Zamki nylonowe dla wojska i PPE'}
               </h2>
@@ -240,7 +241,7 @@ export default function NylonZippersContent({ locale, position }: Props) {
                     : 'Zamki do zastosowań wojskowych muszą mieć zmniejszoną sygnaturę bliskiej podczerwieni (NIR). Oznacza to, że zamek lub inne wykończenia mają podobny procent odbicia światła jak bazowa tkanina. Produkujemy zamki ze zmniejszoną sygnaturą NIR w różnych kolorach i możemy przygotować specjalne kolory na życzenie klienta.'}
                 </p>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
