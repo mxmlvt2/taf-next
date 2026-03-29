@@ -52,6 +52,16 @@ export default function NylonZippersContent({ locale, position }: Props) {
         <section className="py-16 bg-[#f5f3ef]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+              <div className="relative overflow-hidden group">
+                <Image
+                  src={`${WP}2025/06/standardowa-spirala-nylonowa-min-1024x681.png`}
+                  alt={isEn ? 'Standard nylon coil zipper' : 'Standardowy zamek spiralny nylonowy'}
+                  width={700}
+                  height={467}
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
               <div>
                 <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                   {isEn ? 'Standard' : 'Standardowy'}
@@ -64,16 +74,6 @@ export default function NylonZippersContent({ locale, position }: Props) {
                   </p>
                 </div>
               </div>
-              <div className="relative overflow-hidden group">
-                <Image
-                  src={`${WP}2025/06/standardowa-spirala-nylonowa-min-1024x681.png`}
-                  alt={isEn ? 'Standard nylon coil zipper' : 'Standardowy zamek spiralny nylonowy'}
-                  width={700}
-                  height={467}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
             </div>
           </div>
         </section>
@@ -82,16 +82,6 @@ export default function NylonZippersContent({ locale, position }: Props) {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-              <div className="relative overflow-hidden group">
-                <Image
-                  src={`${WP}2025/10/2800134-1024x1024.jpg`}
-                  alt={isEn ? 'Reverse nylon zipper' : 'Zamek nylonowy odwrócony'}
-                  width={600}
-                  height={600}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
               <div>
                 <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                   {isEn ? 'Reverse' : 'Odwrócony'}
@@ -103,6 +93,16 @@ export default function NylonZippersContent({ locale, position }: Props) {
                       : 'Ten sam typ zamka, ale suwak działa po stronie taśmy, dzięki czemu elementy zamka pozostają ukryte.'}
                   </p>
                 </div>
+              </div>
+              <div className="relative overflow-hidden group">
+                <Image
+                  src={`${WP}2025/10/2800134-1024x1024.jpg`}
+                  alt={isEn ? 'Reverse nylon zipper' : 'Zamek nylonowy odwrócony'}
+                  width={600}
+                  height={600}
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
             </div>
           </div>
@@ -159,6 +159,16 @@ export default function NylonZippersContent({ locale, position }: Props) {
       <section className="py-16 bg-[#111111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+            <div className="relative overflow-hidden group">
+              <Image
+                src={`${WP}2025/06/nylonzippers5-1024x576.png`}
+                alt={isEn ? 'Military nylon zippers' : 'Zamki nylonowe militarne'}
+                width={700}
+                height={400}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
             <div>
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
                 {isEn ? 'Nylon Zippers for Military and PPE' : 'Zamki nylonowe dla wojska i PPE'}
@@ -170,16 +180,6 @@ export default function NylonZippersContent({ locale, position }: Props) {
                     : 'Dostarczamy wszystkie typy zamków błyskawicznych używanych w zastosowaniach wojskowych. Zamki błyskawiczne dla wojska muszą charakteryzować się zmniejszoną sygnaturą w bliskiej podczerwieni (NIR). Opracowujemy kolory na zamówienie na podstawie próbek tkanin i wymagań specyfikacji NATO.'}
                 </p>
               </div>
-            </div>
-            <div className="relative overflow-hidden group">
-              <Image
-                src={`${WP}2025/06/nylonzippers5-1024x576.png`}
-                alt={isEn ? 'Military nylon zippers' : 'Zamki nylonowe militarne'}
-                width={700}
-                height={400}
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
             </div>
           </div>
         </div>
@@ -219,6 +219,16 @@ export default function NylonZippersContent({ locale, position }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+            <div className="relative overflow-hidden group">
+              <Image
+                src={`${WP}2025/06/nylonzippers10-1024x1024.jpg`}
+                alt={isEn ? 'Concealed coil zipper' : 'Zamek spiralny kryty'}
+                width={600}
+                height={600}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
             <div>
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                 {isEn ? 'Concealed Coil Zippers' : 'Zamki spiralne kryte'}
@@ -231,16 +241,6 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 </p>
               </div>
             </div>
-            <div className="relative overflow-hidden group">
-              <Image
-                src={`${WP}2025/06/nylonzippers10-1024x1024.jpg`}
-                alt={isEn ? 'Concealed coil zipper' : 'Zamek spiralny kryty'}
-                width={600}
-                height={600}
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
           </div>
         </div>
       </section>
@@ -249,16 +249,6 @@ export default function NylonZippersContent({ locale, position }: Props) {
       <section className="py-16 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-            <div className="relative overflow-hidden group">
-              <Image
-                src={`${WP}2025/06/nylonzippers11-1024x1024.jpg`}
-                alt={isEn ? 'Concealed zipper with knitted tape' : 'Zamek kryty z taśmą dzianą'}
-                width={600}
-                height={600}
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
             <div>
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                 {isEn ? 'Concealed Coil Zippers with Knitted Tape' : 'Zamki spiralne kryte z taśmą dzianą'}
@@ -271,6 +261,16 @@ export default function NylonZippersContent({ locale, position }: Props) {
                 </p>
               </div>
             </div>
+            <div className="relative overflow-hidden group">
+              <Image
+                src={`${WP}2025/06/nylonzippers11-1024x1024.jpg`}
+                alt={isEn ? 'Concealed zipper with knitted tape' : 'Zamek kryty z taśmą dzianą'}
+                width={600}
+                height={600}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -279,6 +279,16 @@ export default function NylonZippersContent({ locale, position }: Props) {
       <section className="py-16 bg-[#111111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+            <div className="relative overflow-hidden group">
+              <Image
+                src={`${WP}2025/07/zamek5cc.png`}
+                alt={isEn ? 'Upholstery concealed zipper' : 'Zamek kryty tapicerski'}
+                width={700}
+                height={500}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
             <div>
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
                 {isEn ? 'Upholstery / Technical Concealed Zippers' : 'Zamki kryte tapicerskie / techniczne'}
@@ -304,16 +314,6 @@ export default function NylonZippersContent({ locale, position }: Props) {
                   ))}
                 </ul>
               </div>
-            </div>
-            <div className="relative overflow-hidden group">
-              <Image
-                src={`${WP}2025/07/zamek5cc.png`}
-                alt={isEn ? 'Upholstery concealed zipper' : 'Zamek kryty tapicerski'}
-                width={700}
-                height={500}
-                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
             </div>
           </div>
         </div>
@@ -364,6 +364,16 @@ export default function NylonZippersContent({ locale, position }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+            <div className="relative overflow-hidden group">
+              <Image
+                src={`${WP}2025/06/porownanie-spirali-S80-WOVENIN-I-standardowej-80S-sewon-type-1024x718.jpeg`}
+                alt={isEn ? 'Woven vs standard coil zipper comparison' : 'Porównanie spirali tkanej i standardowej'}
+                width={700}
+                height={490}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
             <div>
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                 {isEn ? 'Woven-in S-Tape vs. Standard Sewn Coil Zippers' : 'Spirala tkana S-Tape vs. standardowa szyta'}
@@ -380,16 +390,6 @@ export default function NylonZippersContent({ locale, position }: Props) {
                     : 'Standardowa spirala szyta ma ząbki przyszywane do taśmy bocznej nicią poliestrową. Nici mogą ulegać degradacji UV, a ząbki mogą się oddzielać od taśmy. Taśma tkana oferuje znacznie dłuższą żywotność.'}
                 </p>
               </div>
-            </div>
-            <div className="relative overflow-hidden group">
-              <Image
-                src={`${WP}2025/06/porownanie-spirali-S80-WOVENIN-I-standardowej-80S-sewon-type-1024x718.jpeg`}
-                alt={isEn ? 'Woven vs standard coil zipper comparison' : 'Porównanie spirali tkanej i standardowej'}
-                width={700}
-                height={490}
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
             </div>
           </div>
         </div>

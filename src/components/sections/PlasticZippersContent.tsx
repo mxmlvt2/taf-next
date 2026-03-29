@@ -67,6 +67,16 @@ export default function PlasticZippersContent({ locale, position }: Props) {
         <section className="py-14 bg-[#111111]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div className="relative overflow-hidden group">
+                <Image
+                  src={`${WP}2025/10/PIAS2739-1024x1024.jpg`}
+                  alt={isEn ? 'Professional workwear zipper' : 'Zamek do odzieży roboczej'}
+                  width={600}
+                  height={600}
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
               <div>
                 <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
                   {isEn ? 'Plastic Zippers for Workwear' : 'Zamki plastikowe do odzieży roboczej'}
@@ -103,16 +113,6 @@ export default function PlasticZippersContent({ locale, position }: Props) {
                     ? 'Just tell us what you need, and we\'ll take care of the rest!'
                     : 'Powiedz nam, czego potrzebujesz — my zajmiemy się resztą!'}
                 </p>
-              </div>
-              <div className="relative overflow-hidden group">
-                <Image
-                  src={`${WP}2025/10/PIAS2739-1024x1024.jpg`}
-                  alt={isEn ? 'Professional workwear zipper' : 'Zamek do odzieży roboczej'}
-                  width={600}
-                  height={600}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
               </div>
             </div>
           </div>
@@ -163,23 +163,6 @@ export default function PlasticZippersContent({ locale, position }: Props) {
       <section className="py-16 bg-[#111111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-            <div>
-              <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
-                {isEn ? 'Glow-in-the-Dark Zippers' : 'Zamki świecące w ciemności'}
-              </h2>
-              <div className="space-y-4 font-[Jost] text-gray-400 text-sm leading-relaxed">
-                <p>
-                  {isEn
-                    ? 'Zipper elements injection-molded from a special glow-in-the-dark material, perfect for children\'s clothing. Just shine a flashlight on the zipper for a moment, and the teeth will start to glow beautifully – kids love it!'
-                    : 'Elementy zamka formowane z materiału świecącego w ciemności — idealne do odzieży dziecięcej. Wystarczy przez chwilę oświetlić zamek latarką, a zęby zaczną pięknie świecić — dzieci to uwielbiają!'}
-                </p>
-                <p>
-                  {isEn
-                    ? 'The secret to these unique zippers lies in the material: specialized plastic enriched with photoluminescent pigments. These pigments absorb and store light energy, then slowly release it as visible greenish or bluish light. The longer and more intense the exposure to light, the brighter and longer-lasting the effect.'
-                    : 'Tajemnica tych wyjątkowych zamków tkwi w materiale: specjalistyczny plastik wzbogacony o pigmenty fotoluminescencyjne. Pigmenty te pochłaniają i przechowują energię świetlną, a następnie powoli uwalniają ją w postaci widzialnego, zielonkawego lub niebieskawego światła.'}
-                </p>
-              </div>
-            </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="overflow-hidden group">
                 <Image
@@ -200,6 +183,23 @@ export default function PlasticZippersContent({ locale, position }: Props) {
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="25vw"
                 />
+              </div>
+            </div>
+            <div>
+              <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
+                {isEn ? 'Glow-in-the-Dark Zippers' : 'Zamki świecące w ciemności'}
+              </h2>
+              <div className="space-y-4 font-[Jost] text-gray-400 text-sm leading-relaxed">
+                <p>
+                  {isEn
+                    ? 'Zipper elements injection-molded from a special glow-in-the-dark material, perfect for children\'s clothing. Just shine a flashlight on the zipper for a moment, and the teeth will start to glow beautifully – kids love it!'
+                    : 'Elementy zamka formowane z materiału świecącego w ciemności — idealne do odzieży dziecięcej. Wystarczy przez chwilę oświetlić zamek latarką, a zęby zaczną pięknie świecić — dzieci to uwielbiają!'}
+                </p>
+                <p>
+                  {isEn
+                    ? 'The secret to these unique zippers lies in the material: specialized plastic enriched with photoluminescent pigments. These pigments absorb and store light energy, then slowly release it as visible greenish or bluish light. The longer and more intense the exposure to light, the brighter and longer-lasting the effect.'
+                    : 'Tajemnica tych wyjątkowych zamków tkwi w materiale: specjalistyczny plastik wzbogacony o pigmenty fotoluminescencyjne. Pigmenty te pochłaniają i przechowują energię świetlną, a następnie powoli uwalniają ją w postaci widzialnego, zielonkawego lub niebieskawego światła.'}
+                </p>
               </div>
             </div>
           </div>
@@ -250,23 +250,6 @@ export default function PlasticZippersContent({ locale, position }: Props) {
       <section className="py-16 bg-[#111111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-            <div>
-              <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
-                {isEn ? 'Military-Grade Zippers' : 'Zamki klasy militarnej'}
-              </h2>
-              <div className="space-y-4 font-[Jost] text-gray-400 text-sm leading-relaxed">
-                <p>
-                  {isEn
-                    ? 'Zippers used in individual tactical equipment, uniforms, or personal protective gear are subjected to extremely intensive use. The functionality of the entire product, which cannot fail, depends on their reliability. Molded zippers are a frequent choice for bulletproof vests as well as for military jackets.'
-                    : 'Zamki intensywnie używane w wyposażeniu taktycznym, mundurach i środkach ochrony osobistej. Zastosowanie w kamizelkach kuloodpornych i kurtkach wojskowych.'}
-                </p>
-                <p>
-                  {isEn
-                    ? 'Our experience in fulfilling deliveries for tenders is a significant asset; we know which accessories are needed to ensure the trouble-free use of the product.'
-                    : 'Nasze doświadczenie w realizacji dostaw przetargowych jest znaczącym atutem — wiemy, jakie akcesoria są potrzebne do zapewnienia bezawaryjnego użytkowania produktu.'}
-                </p>
-              </div>
-            </div>
             <div className="grid grid-cols-3 gap-2">
               {[
                 `${WP}2025/06/militarnyzamekplastikowy1-1024x594.jpg`,
@@ -284,6 +267,23 @@ export default function PlasticZippersContent({ locale, position }: Props) {
                   />
                 </div>
               ))}
+            </div>
+            <div>
+              <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-white">
+                {isEn ? 'Military-Grade Zippers' : 'Zamki klasy militarnej'}
+              </h2>
+              <div className="space-y-4 font-[Jost] text-gray-400 text-sm leading-relaxed">
+                <p>
+                  {isEn
+                    ? 'Zippers used in individual tactical equipment, uniforms, or personal protective gear are subjected to extremely intensive use. The functionality of the entire product, which cannot fail, depends on their reliability. Molded zippers are a frequent choice for bulletproof vests as well as for military jackets.'
+                    : 'Zamki intensywnie używane w wyposażeniu taktycznym, mundurach i środkach ochrony osobistej. Zastosowanie w kamizelkach kuloodpornych i kurtkach wojskowych.'}
+                </p>
+                <p>
+                  {isEn
+                    ? 'Our experience in fulfilling deliveries for tenders is a significant asset; we know which accessories are needed to ensure the trouble-free use of the product.'
+                    : 'Nasze doświadczenie w realizacji dostaw przetargowych jest znaczącym atutem — wiemy, jakie akcesoria są potrzebne do zapewnienia bezawaryjnego użytkowania produktu.'}
+                </p>
+              </div>
             </div>
           </div>
         </div>

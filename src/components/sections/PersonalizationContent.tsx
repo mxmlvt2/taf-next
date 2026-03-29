@@ -1,5 +1,8 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
+
+const WP = 'https://trimsandfasteners.com/wp-content/uploads/';
 
 interface Props {
   locale: string;
@@ -84,8 +87,15 @@ export default function PersonalizationContent({ locale }: Props) {
                 </p>
               </div>
             </div>
-            <div className="bg-[#f5f3ef] aspect-[4/3] flex items-center justify-center">
-              <p className="font-[Jost] text-gray-400 text-sm">{isEn ? 'Laser engraving' : 'Grawer laserowy'}</p>
+            <div className="overflow-hidden group">
+              <Image
+                src={`${WP}2025/06/laserowygrawerlogotypu-2048x2048.jpg`}
+                alt={isEn ? 'Laser logo engraving on zipper puller' : 'Laserowy grawer logotypu na uchwycie zamka'}
+                width={800}
+                height={800}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </div>
@@ -95,8 +105,15 @@ export default function PersonalizationContent({ locale }: Props) {
       <section className="py-20 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div className="bg-white aspect-[4/3] flex items-center justify-center order-2 lg:order-1">
-              <p className="font-[Jost] text-gray-400 text-sm">{isEn ? 'Logo printing' : 'Nadruk logotypu'}</p>
+            <div className="overflow-hidden group order-2 lg:order-1">
+              <Image
+                src={`${WP}2025/09/white-Photoroom-28-1.png`}
+                alt={isEn ? 'Logo printing on zipper puller' : 'Nadruk logotypu na uchwycie zamka'}
+                width={800}
+                height={800}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
             <div className="order-1 lg:order-2">
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
@@ -105,7 +122,7 @@ export default function PersonalizationContent({ locale }: Props) {
               <div className="space-y-4 font-[Jost] text-gray-500 text-sm leading-relaxed">
                 <p>
                   {isEn
-                    ? 'Another interesting and fast method for placing your brand or collection logo is printing on the zipper puller. The technology we offer ensures exceptional print durability — the logo remains visible after many washing cycles and is also scratch-resistant.'
+                    ? 'Another interesting and fast method for placing your brand or collection logo is printing on the zipper puller. The technology we offer ensures exceptional print durability. The logo remains visible after many washing cycles and is also scratch-resistant.'
                     : 'Inną interesującą i szybką metodą na umieszczenie logo Twojej marki lub kolekcji jest drukowanie na uchwycie suwaka. Technologia, którą oferujemy, zapewnia wyjątkową trwałość nadruku — logo pozostaje widoczne po wielu cyklach prania i jest odporne na zarysowania.'}
                 </p>
                 <p className="font-medium text-[#111]">
@@ -116,7 +133,7 @@ export default function PersonalizationContent({ locale }: Props) {
                     <span className="text-gray-400 flex-shrink-0">—</span>
                     <span>
                       {isEn
-                        ? 'Hard and resistant coating: The UV-LED ink curing process creates a hard, smooth, and dense polymer layer that acts as a protective shield for the graphic.'
+                        ? 'Hard and resistant coating: The UV-LED ink curing process creates a hard, smooth, and dense polymer layer that acts as a protective shield for the graphic. Paints with added hardeners work similarly, achieving high surface hardness after fully bonding.'
                         : 'Twarda i odporna powłoka: Proces utwardzania tuszów UV-LED tworzy twardą, gładką i zwartą warstwę polimeru, która działa jak tarcza ochronna dla grafiki.'}
                     </span>
                   </li>
@@ -124,7 +141,7 @@ export default function PersonalizationContent({ locale }: Props) {
                     <span className="text-gray-400 flex-shrink-0">—</span>
                     <span>
                       {isEn
-                        ? 'Protection against minor damage: The print is resistant to scratches from fingernails, accidental contact with keys in a handbag, or abrasion against other metal elements.'
+                        ? 'Protection against minor damage: The print is resistant to scratches from fingernails, accidental contact with keys in a handbag, or abrasion against other metal elements. The logo does not chip or wear off in critical areas, such as the edges of the puller.'
                         : 'Ochrona przed drobnymi uszkodzeniami: Nadruk jest odporny na zarysowania paznokciami, przypadkowy kontakt z kluczami w torebce czy otarcia o inne metalowe elementy.'}
                     </span>
                   </li>
@@ -132,8 +149,8 @@ export default function PersonalizationContent({ locale }: Props) {
                     <span className="text-gray-400 flex-shrink-0">—</span>
                     <span>
                       {isEn
-                        ? 'Lasting aesthetics: A scratched, worn, or illegible logo negatively affects the perception of the entire brand.'
-                        : 'Trwała estetyka: Porysowane, wytarte lub nieczytelne logo negatywnie wpływa na postrzeganie całej marki.'}
+                        ? 'Lasting aesthetics: A scratched, worn, or illegible logo negatively affects the perception of the entire brand. Using a durable print guarantees that this key branding detail will remain aesthetic and legible, maintaining the impression of a premium product for a long time. It is an investment in a consistent and lasting image for your company.'
+                        : 'Trwała estetyka: Porysowane, wytarte lub nieczytelne logo negatywnie wpływa na postrzeganie całej marki. Trwały nadruk to inwestycja w spójny i długotrwały wizerunek firmy.'}
                     </span>
                   </li>
                 </ul>
@@ -151,11 +168,16 @@ export default function PersonalizationContent({ locale }: Props) {
               <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                 {isEn ? 'Molding Technology' : 'Przygotowanie formy z logo klienta'}
               </h2>
-              <div className="space-y-4 font-[Jost] text-gray-500 text-sm leading-relaxed">
+              <div className="space-y-4 font-[Jost] text-gray-500 text-sm leading-relaxed mb-8">
                 <p>
                   {isEn
-                    ? 'Creating a logo this way is the most popular method for branding your pullers. We offer assistance in preparing the design and prototyping before the mold is produced to ensure that every project is tailored to your expectations.'
-                    : 'Przygotowane logo w ten sposób jest najpopularniejszym sposobem na brandowanie swoich pullerów. Proponujemy pomoc w przygotowaniu projektu oraz prototypowanie przed produkcją formy, tak by każdy projekt był dopasowany do Twoich oczekiwań.'}
+                    ? 'Creating a logo this way is the most popular method for branding your pullers.'
+                    : 'Przygotowane logo w ten sposób jest najpopularniejszym sposobem na brandowanie swoich pullerów.'}
+                </p>
+                <p>
+                  {isEn
+                    ? 'We offer assistance in preparing the design and prototyping before the mold is produced to ensure that every project is tailored to your expectations.'
+                    : 'Proponujemy pomoc w przygotowaniu projektu oraz prototypowanie przed produkcją formy, tak by każdy projekt był dopasowany do Twoich oczekiwań.'}
                 </p>
                 <p>
                   {isEn
@@ -163,9 +185,34 @@ export default function PersonalizationContent({ locale }: Props) {
                     : 'Logo może być przygotowane na uchwytach metalowych oraz tworzywowych używanych w odzieży sportowej.'}
                 </p>
               </div>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  `${WP}2025/09/Photoroom_101_20250426_081044-1024x1024.png`,
+                  `${WP}2025/09/9805D375-5C0A-41E7-B1E8-4D82836ADA33-1024x1024.png`,
+                  `${WP}2025/06/laserowygrawerlogotypu-2048x2048.jpg`,
+                ].map((src, i) => (
+                  <div key={i} className="overflow-hidden group aspect-square">
+                    <Image
+                      src={src}
+                      alt={isEn ? `Molding example ${i + 1}` : `Przykład formowania ${i + 1}`}
+                      width={300}
+                      height={300}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="15vw"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="bg-[#f5f3ef] aspect-[4/3] flex items-center justify-center">
-              <p className="font-[Jost] text-gray-400 text-sm">{isEn ? 'Molding technology' : 'Technologia formowania'}</p>
+            <div className="overflow-hidden group">
+              <Image
+                src={`${WP}2025/09/PIAS2524-2048x2048.jpg`}
+                alt={isEn ? 'Molded logo zipper puller' : 'Uchwyt zamka z logo w formie'}
+                width={800}
+                height={800}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </div>

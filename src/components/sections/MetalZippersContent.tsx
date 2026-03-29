@@ -88,6 +88,16 @@ export default function MetalZippersContent({ locale, position }: Props) {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+              <div className="relative overflow-hidden group">
+                <Image
+                  src={`${WP}2025/08/white-Photoroom-12-1024x967.png`}
+                  alt={isEn ? 'Stainless steel zipper' : 'Zamek ze stali nierdzewnej'}
+                  width={600}
+                  height={567}
+                  className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
               <div>
                 <h2 className="font-[Jost] text-2xl sm:text-3xl font-light mb-6 text-[#111]">
                   {isEn ? 'Stainless Steel Zipper' : 'Zamek ze stali nierdzewnej'}
@@ -104,16 +114,6 @@ export default function MetalZippersContent({ locale, position }: Props) {
                       : 'Stal nierdzewna jest odporna na pranie przemysłowe, umożliwiając użycie w ubraniach wymagających takiego procesu. Materiał jest w pełni recyclingowalny, wspierając prosty proces odzyskiwania materiałów.'}
                   </p>
                 </div>
-              </div>
-              <div className="relative overflow-hidden group">
-                <Image
-                  src={`${WP}2025/08/white-Photoroom-12-1024x967.png`}
-                  alt={isEn ? 'Stainless steel zipper' : 'Zamek ze stali nierdzewnej'}
-                  width={600}
-                  height={567}
-                  className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
               </div>
             </div>
           </div>
